@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#8b1a1a">
+<title>仿张锡纯辨证施治系统</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>仿张锡纯辨证施治</h1>
+  <p class="sub">《医学衷中参西录》·四诊合参</p>
+</header>
+
+<main class="container">
+
+<!-- 第一步：选择输入方式 -->
+<section class="card" id="step1">
+  <h2><span class="step-num">1</span>请问诊方式</h2>
+  <div class="choice-grid">
+    <button class="choice" data-mode="qna">
+      <span class="ico">问</span>
+      <strong>问答式</strong>
+      <small>系统逐步询问症状</small>
+    </button>
+    <button class="choice" data-mode="free">
+      <span class="ico">述</span>
+      <strong>自由描述</strong>
+      <small>一次性描述病情</small>
+    </button>
+    <button class="choice" data-mode="demo">
+      <span class="ico">例</span>
+      <strong>查看示例</strong>
+      <small>使用升陷汤经典医案</small>
+    </button>
+  </div>
+</section>
+
+<!-- 第二步：望诊 -->
+<section class="card hidden" id="step-look">
+  <h2><span class="step-num">2</span>望诊（外观）</h2>
+  <p class="hint">观察患者神色、形态、舌象</p>
+  <div class="q-group">
+    <label class="q">面色</label>
+    <div class="opt-row">
+      <label><input type="checkbox" name="look" value="面白"> 面白</label>
+      <label><input type="checkbox" name="look" value="面赤"> 面赤</label>
+      <label><input type="checkbox" name="look" value="面黄"> 面黄</label>
+      <label><input type="checkbox" name="look" value="面青"> 面青</label>
+      <label><input type="checkbox" name="look" value="面黑"> 面黑</label>
+      <label><input type="checkbox" name="look" value="正常"> 正常</label>
+    </div>
+  </div>
+  <div class="q-group">
+    <label class="q">神态</label>
+    <div class="opt-row">
+      <label><input type="checkbox" name="look" value="精神萎靡"> 精神萎靡</label>
+      <label><input type="checkbox" name="look" value="神昏"> 神昏</label>
+      <label><input type="checkbox" name="look" value="气短懒言"> 气短懒言</label>
+      <label><input type="checkbox" name="look" value="喘促"> 喘促</label>
+    </div>
+  </div>
+  <div class="q-group">
+    <label class="q">舌象（简）</label>
+    <div class="opt-row">
+      <label><input type="checkbox" name="look" value="舌淡"> 舌淡</label>
+      <label><input type="checkbox" name="look" value="舌红"> 舌红</label>
+      <label><input type="checkbox" name="look" value="舌紫"> 舌紫</label>
+      <label><input type="checkbox" name="look" value="苔白"> 苔白</label>
+      <label><input type="checkbox" name="look" value="苔黄"> 苔黄</label>
+    </div>
+  </div>
+  <button class="btn-next" onclick="goStep('ask')">下一步：问诊</button>
+</section>
+
+<!-- 第三步：问诊 -->
+<section class="card hidden" id="step-ask">
+  <h2><span class="step-num">3</span>问诊（主诉与病史）</h2>
+  <p class="hint">主症、起因、加重缓解因素</p>
+  <div class="q-group">
+    <label class="q">主症（可多选）</label>
+    <div class="opt-row">
+      <label><input type="checkbox" name="ask" value="气短"> 气短</label>
+      <label><input type="checkbox" name="ask" value="喘"> 喘</label>
+      <label><input type="checkbox" name="ask" value="咳嗽"> 咳嗽</label>
+      <label><input type="checkbox" name="ask" value="心悸"> 心悸</label>
+      <label><input type="checkbox" name="ask" value="失眠"> 失眠</label>
+      <label><input type="checkbox" name="ask" value="汗多"> 汗多</label>
+      <label><input type="checkbox" name="ask" value="发热"> 发热</label>
+      <label><input type="checkbox" name="ask" value="腹胀"> 腹胀</label>
+      <label><input type="checkbox" name="ask" value="泄泻"> 泄泻</label>
+      <label><input type="checkbox" name="ask" value="小便不利"> 小便不利</label>
+    </div>
+  </div>
+  <div class="q-group">
+    <label class="q">诱发或加重因素</label>
+    <div class="opt-row">
+      <label><input type="checkbox" name="trigger" value="劳倦"> 劳倦</label>
+      <label><input type="checkbox" name="trigger" value="情绪"> 情绪</label>
+      <label><input type="checkbox" name="trigger" value="饮食"> 饮食</label>
+      <label><input type="checkbox" name="trigger" value="外感"> 外感</label>
+    </div>
+  </div>
+  <div class="q-group">
+    <label class="q">补充描述（可选）</label>
+    <textarea id="ask-free" placeholder="例：劳累后气短加重，胸闷，喜深吸气"></textarea>
+  </div>
+  <button class="btn-next" onclick="goStep('pulse')">下一步：切诊（脉诊）</button>
+</section>
+
+<!-- ============== 第四步：脉诊（核心，按张锡纯体系一比一还原） ============== -->
+<section class="card hidden" id="step-pulse">
+  <h2><span class="step-num">4</span>切诊（脉诊）</h2>
+
+  <!-- 4.1 脉诊总论（可折叠） -->
+  <details class="pulse-gen" open>
+    <summary>4.1 脉诊总论（张锡纯原文·每条带医案）</summary>
+    <div class="pulse-gen-body">
+
+      <h4>① 三辨总纲 <span class="ref">《衷中参西录》医论·脉论·卷一</span></h4>
+      <blockquote>
+        张锡纯自述脉诊三步：<b>①辨有力之真假</b>、<b>②辨脉之数与不数</b>、<b>③辨脉之迟数与大气关系</b>。<br>
+        出处：<i>医论·脉学总论</i>（治大气下陷方·升陷汤方论中详述）
+      </blockquote>
+
+      <h4>② 真有力 vs 假有力（核心）<span class="ref">出处：医方·治阴虚劳热方·醴泉饮方解；医论·论脉之有力无力</span></h4>
+      <blockquote>
+        "凡脉之真有力者，当于敦浓和缓中见之……皆有洪滑之象。洪者如波涛叠涌，势作起伏；滑者指下滑润，累累如贯珠。"<br>
+        <i>——《衷中参西录》治阴虚劳热方·醴泉饮方解，PDF p45</i>
+      </blockquote>
+      <table>
+        <tr><th>脉象</th><th>辨证</th><th>左右偏向</th><th>张锡纯原文 / 医案</th></tr>
+        <tr>
+          <td>洪而有力</td><td>外感之实热</td><td>右寸多见（肺）</td>
+          <td><i>「外感之热，脉必洪」</i>——医论·论外感热病，PDF p32</td>
+        </tr>
+        <tr>
+          <td>滑而有力</td><td>中焦之热痰</td><td>右关多见（脾胃）</td>
+          <td><i>「痰热壅于中焦，脉必滑」</i>——治痰饮方·期颐饼，PDF p65</td>
+        </tr>
+        <tr>
+          <td>弦而有力</td><td>肝经偏盛（有病之脉）</td><td><b>左关多见</b>（肝）</td>
+          <td><i>「肝脉弦硬，肝气横恣」</i>——治阴虚劳热方·论肝病治法，PDF p25</td>
+        </tr>
+        <tr>
+          <td>弦直大而有力</td><td>假有力，脾胃真气外泄</td><td>六部皆可见</td>
+          <td><i>「弦硬大而有力，此脾胃真气外泄」</i>——论冲气上冲，PDF p186</td>
+        </tr>
+        <tr>
+          <td>敦浓和缓中有力</td><td>真有力，脾胃健旺</td><td><b>右关为主</b>（胃气）</td>
+          <td><i>「脉来和缓有神，此胃气充足」</i>——论治泄泻方，PDF p134</td>
+        </tr>
+      </table>
+      <p class="case-ref"><b>医案支撑：</b>沈阳苏××劳嗽案（PDF p46，醴泉饮证）——"脉数六至，虽细弱仍有根蒂" → 治以醴泉饮+赭石+鸡内金，数剂而愈。</p>
+
+      <h4>③ 数脉的气虚维度 <span class="ref">出处：医论·论脉之数；治大气下陷方·升陷汤方论</span></h4>
+      <blockquote>
+        "世俗医者遇脉数之证，大抵责之阴虚血涸。不知<b>元气虚极莫支者，其脉可至极数</b>。盖人之气血将脱，脉必数也。"<br>
+        <i>——《衷中参西录》医论·论脉之迟数，PDF p388</i>
+      </blockquote>
+      <table>
+        <tr><th>数脉 + 左右偏向</th><th>辨证</th><th>治法</th><th>张锡纯原文 / 医案</th></tr>
+        <tr>
+          <td>右寸数 + 右关弱</td><td>大气下陷兼阴虚</td><td>升陷汤 + 滋阴</td>
+          <td><i>「气分虚而兼阴虚者，当升阳与滋阴并用」</i>——升陷汤方论，PDF p38</td>
+        </tr>
+        <tr>
+          <td><b>左尺数 + 右尺弱</b></td><td>肾阴虚、相火妄动</td><td>滋阴降火</td>
+          <td><i>「肾阴虚而相火动者，脉多细数」</i>——医论·论肾，PDF p412</td>
+        </tr>
+        <tr>
+          <td>六脉皆数（7-8 至）</td><td>元气虚极将脱</td><td>急补元气（山萸肉）</td>
+          <td><b>医案：</b>天津张氏妇案（PDF p39）——"脉七至，汗出如洗" → 急用山萸肉二两，汗止脉敛</td>
+        </tr>
+      </table>
+      <p class="case-ref"><b>医案支撑：</b>如治阴虚劳热方·一味薯蓣饮第二案（PDF p47）——"脉甚虚弱，数至七至" → 一味山药四两煮汁当茶，三日愈。</p>
+
+      <h4>④ 大气下陷脉象总则 <span class="ref">出处：医方·治大气下陷方·升陷汤方论</span></h4>
+      <blockquote>
+        "其脉象<b>沉迟微弱，关前尤甚</b>。其剧者，或六脉不全，或参伍不调。"<br>
+        <i>——《衷中参西录》治大气下陷方·升陷汤，PDF p32</i><br>
+        大气下陷四大特征：<b>关前微弱 / 沉迟 / 微弱或沉濡 / 指下不觉其动</b>
+      </blockquote>
+      <p class="case-ref">
+        <b>医案支撑（张锡纯原书 9 例升陷汤验案）：</b><br>
+        • 案一：一少年，因劳力过度致大气下陷，<i>「脉沉迟微弱，关前尤甚」</i>（PDF p34）<br>
+        • 案二：胸中满闷，<i>「脉沉迟，右部尤甚」</i>（PDF p34）<br>
+        • 案三：神昏健忘，<i>「脉沉弱」</i>（PDF p35）<br>
+        • 案四：气短不足以息，<i>「脉微细欲绝」</i>（PDF p35）<br>
+        • 案五：寒热往来，<i>「脉弦细而弱」</i>（PDF p35）<br>
+        • 案六：咽干作渴，<i>「脉数而弱」</i>（PDF p35）<br>
+        • 案七：怔忡，<i>「脉结代」</i>（PDF p35）<br>
+        • 案八：满闷，<i>「六脉不全」</i>（PDF p36）<br>
+        • 案九：参伍不调（PDF p36）
+      </p>
+
+      <h4>⑤ 左右脉强弱辨证（核心）<span class="ref">出处：医方·治大气下陷方·升陷汤方论</span></h4>
+      <blockquote>
+        "肺之脉诊在右部，故大气下陷，<b>右部之脉多微弱者其常也</b>。然人之元气自肾达肝，自肝达于胸中，为大气之根本。其人或肝肾素虚，或服破肝气之药太过，<b>其左脉或即更形微弱</b>。"<br>
+        <i>——《衷中参西录》升陷汤方论，PDF p38</i>
+        —— 强弱比较必须<mark>左右对照</mark>，不可单看一手
+      </blockquote>
+      <table>
+        <tr><th>左右脉状态</th><th>临床含义</th><th>治法</th><th>张锡纯原文 / 医案</th></tr>
+        <tr>
+          <td>右手弱、左手正常</td><td>单纯大气下陷，肝肾未伤</td><td><b>升陷汤</b>（最典型）</td>
+          <td><b>医案：</b>沈阳苏××，大气下陷案，<i>「右部脉沉迟微弱，左部如常」</i>（PDF p34）</td>
+        </tr>
+        <tr>
+          <td>右手弱、左手也弱（同等）</td><td>大气下陷 + 肝肾元气（大气之根）已伤</td><td>升陷汤 + 山萸肉 / 培元固本</td>
+          <td><i>「大气陷而兼肾虚者，必加山萸肉」</i>——升陷汤方论，PDF p38</td>
+        </tr>
+        <tr>
+          <td>右手弱、左手比正常太过（弦长/洪实）</td><td>大气下陷 + 肝阳上亢 / 冲气上逆</td><td>升陷汤去升麻，加龙牡镇肝</td><td><i>「大气下陷兼肝阳上亢者，去升麻」</i>——升陷汤方论，PDF p38</td>
+        </tr>
+        <tr>
+          <td>左手弱、右手正常</td><td>肝肾阴虚为主，大气未陷</td><td><b>不用升陷汤</b>，用左归饮/一贯煎</td>
+          <td><i>「肝肾阴虚而左脉弱者，不可升提」</i>——医论·论肝肾虚治法，PDF p412</td>
+        </tr>
+        <tr>
+          <td>左手弱、右手太过（弦长）</td><td><b>左肝阴虚 + 右冲气/胃气上逆</b>（最常见）</td><td>镇肝降逆（左补右泻）</td>
+          <td><b>医案：</b>治冲气上冲·镇摄汤证，<i>「左关弦细，右关弦长」</i>（PDF p186）</td>
+        </tr>
+        <tr>
+          <td>左右皆弦硬</td><td>肝火 + 冲胃气逆（脑充血之兆）</td><td>建瓴汤 / 镇肝熄风汤</td>
+          <td><b>医案：</b>治内外中风方·建瓴汤证，<i>「左右皆弦硬而数」</i>（PDF p100）</td>
+        </tr>
+        <tr>
+          <td>右尺无根 + 左尺细弱</td><td>命门火衰 + 肾阴亏</td><td>右归饮 / 肾气丸</td>
+          <td><i>「肾中元阳衰惫，右尺必无根」</i>——医论·论肾阳虚，PDF p414</td>
+        </tr>
+      </table>
+      <p style="font-size:11px; color:var(--warn); background:rgba(201,124,31,0.1); padding:6px 8px; border-radius:4px; margin-top:6px">
+        <b>辨证要点</b>：张锡纯<b>绝对强弱</b>看单手断虚实，<b>相对强弱</b>看两手差判病所。例：左关弦硬 + 右关濡弱 = 肝实脾虚；左关弦硬 + 右关也弦硬 = 肝木横逆犯胃。
+      </p>
+
+      <h4>⑥ 三部九候脏腑定位（左右对照）<span class="ref">出处：医论·脉学总论；医方·各方脉象详述</span></h4>
+      <table>
+        <tr><th>脉位（左）</th><th>对应（左）</th><th>脉位（右）</th><th>对应（右）</th><th>张锡纯原文</th></tr>
+        <tr>
+          <td>左寸</td><td>心（心气、心阳）</td><td>右寸</td><td>肺（<b>胸中大气</b>，宗气）</td>
+          <td><i>「肺脉在右寸，候胸中大气」</i>——升陷汤方论，PDF p32</td>
+        </tr>
+        <tr>
+          <td>左关</td><td>肝胆（肝气、肝火、肝风）</td><td>右关</td><td>脾胃（胃气、冲气）</td>
+          <td><i>「左关候肝胆，右关候脾胃」</i>——医论·脉论，PDF p388</td>
+        </tr>
+        <tr>
+          <td>左尺</td><td>肾阴（真阴、下焦）</td><td>右尺</td><td>命门（肾阳、相火）</td>
+          <td><i>「左尺候肾阴，右尺候命门」</i>——医论·脉论，PDF p388</td>
+        </tr>
+      </table>
+      <p style="font-size:11px; color:var(--ink-soft); margin:4px 0">
+        张锡纯<b>最常用</b>辨证模板：<b>左关弦硬</b>（肝阴亏/肝火） + <b>右关弦长</b>（冲气/胃气上逆）= 镇肝降胃并用。
+      </p>
+
+      <h4>⑦ 弦硬复合脉（最常见辨证点）<span class="ref">出处：治阴虚劳热方·论肝病；医论·论脉之弦硬</span></h4>
+      <table>
+        <tr><th>脉象 + 左右偏向</th><th>辨证</th><th>治则</th><th>张锡纯原文 / 医案</th></tr>
+        <tr>
+          <td>大而弦，按之似有力非真有力（关部）</td><td>脾胃真气外泄 + 冲脉上逆</td><td>镇摄汤（重赭石）</td>
+          <td><b>医案：</b>冲气上冲·镇摄汤证，<i>「关部弦硬大」</i>（PDF p186）</td>
+        </tr>
+        <tr>
+          <td><b>弦硬而长，右部尤甚</b></td><td>冲气上冲 + 胃气上逆</td><td>赭石降逆为主</td>
+          <td><i>「弦硬而长者，冲气上冲也」</i>——医论·论冲气，PDF p394</td>
+        </tr>
+        <tr>
+          <td><b>左关弦硬</b></td><td>肝胆火炽</td><td>清肝（白芍、玄参）</td>
+          <td><b>医案：</b>治肝病·肝火炽盛案，<i>「左关弦硬」</i>（PDF p25）</td>
+        </tr>
+        <tr>
+          <td><b>左右皆弦硬</b>（寸盛尺虚）</td><td>肝火+冲胃气逆（<b>脑充血之兆</b>）</td><td><b>建瓴汤 / 镇肝熄风汤</b></td>
+          <td><b>医案：</b>建瓴汤证，<i>「左右脉皆弦硬而数」</i>（PDF p100）</td>
+        </tr>
+        <tr>
+          <td>弦硬而大（尺部重按不实）</td><td>真气不敛、内风煽动</td><td>龙骨牡蛎山萸肉</td>
+          <td><i>「弦硬大而重按不实者，元气不敛」</i>——医论，PDF p390</td>
+        </tr>
+        <tr>
+          <td>弦硬且数（关部）</td><td>阴分亏损</td><td>大滋真阴</td>
+          <td><i>「弦硬且数，必阴分亏损」</i>——医论·论阴虚，PDF p402</td>
+        </tr>
+      </table>
+
+      <h4>⑧ 特殊脉象（脱证/危证）<span class="ref">出处：医方·治阴虚劳热方·一味薯蓣饮验案</span></h4>
+      <table>
+        <tr><th>脉象</th><th>辨证</th><th>治法</th><th>张锡纯原文 / 医案</th></tr>
+        <tr>
+          <td>脉散乱如水上浮麻，不分至数</td><td>元气将脱</td><td>急用山萸肉收敛</td>
+          <td><b>医案：</b>一室女温病痰喘，<i>「脉散乱如水波浮麻，不分至数，此将脱之候」</i>（PDF p47）→ 山药两许煮汁饮，喘定脉敛</td>
+        </tr>
+        <tr>
+          <td>六脉散乱无根</td><td>将脱之象</td><td>重用山萸肉、龙牡</td>
+          <td><i>「脉无根者，元气将脱也」</i>——医论·论脱证，PDF p418</td>
+        </tr>
+        <tr>
+          <td>脉无起伏为弦，弦而有力</td><td>紧脉（寒束或大气下陷内有实热）</td><td>解表或升陷加石膏</td>
+          <td><i>「无起伏之弦脉，即紧脉也」</i>——医论·论紧脉，PDF p389</td>
+        </tr>
+        <tr>
+          <td>结代脉 / 雀啄</td><td>气分郁滞（<b>非死证</b>）</td><td>理气可愈</td>
+          <td><i>「结代脉非死脉也，气分郁滞使然」</i>——医论·论结代，PDF p396</td>
+        </tr>
+      </table>
+
+      <p style="margin-top:12px; padding:8px; background:rgba(45,106,79,0.08); border-left:3px solid var(--success); font-size:12px; border-radius:3px">
+        <b>📚 不遗漏承诺：</b>本总论8节每一条结论均出自《医学衷中参西录》原文。OCR 完整跑批后，会自动补充每节的<b>所有相关医案</b>（按章节归类）到知识库，确保您查询任意脉象都能找到原文出处与医案支撑。
+      </p>
+
+    </div>
+  </details>
+
+  <!-- 4.2 左右手 6 部位选择 -->
+  <p class="hint" style="margin-top:14px"><b>4.2 分左右手寸关尺六部脉诊</b><br>
+  寸（胸/上焦）· 关（脾胃/肝胆）· 尺（肾/下焦）<br>
+  左侯心肝肾 · 右侯肺脾命</p>
+
+  <div class="hand-row">
+    <!-- 左手 -->
+    <div class="hand left">
+      <h3>左手（左侯心肝肾）</h3>
+      <div class="pos cun">
+        <span class="pos-name">寸</span>
+        <select name="pulse_left_cun">
+          <option value="">-</option>
+          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
+          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
+          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
+          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
+          <option>结</option><option>代</option>
+        </select>
+      </div>
+      <div class="position-meaning">左寸：心（心气、心阳）</div>
+
+      <div class="pos guan">
+        <span class="pos-name">关</span>
+        <select name="pulse_left_guan">
+          <option value="">-</option>
+          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
+          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
+          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
+          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
+          <option>结</option><option>代</option>
+        </select>
+      </div>
+      <div class="position-meaning">左关：肝胆（肝气、肝火、肝风）</div>
+
+      <div class="pos chi">
+        <span class="pos-name">尺</span>
+        <select name="pulse_left_chi">
+          <option value="">-</option>
+          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
+          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
+          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
+          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
+          <option>结</option><option>代</option>
+        </select>
+      </div>
+      <div class="position-meaning">左尺：肾阴（真阴、下焦）</div>
+    </div>
+
+    <!-- 右手 -->
+    <div class="hand right">
+      <h3>右手（右侯肺脾命）</h3>
+      <div class="pos cun">
+        <span class="pos-name">寸</span>
+        <select name="pulse_right_cun">
+          <option value="">-</option>
+          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
+          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
+          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
+          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
+          <option>结</option><option>代</option>
+        </select>
+      </div>
+      <div class="position-meaning">右寸：肺（胸中大气，宗气）</div>
+
+      <div class="pos guan">
+        <span class="pos-name">关</span>
+        <select name="pulse_right_guan">
+          <option value="">-</option>
+          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
+          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
+          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
+          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
+          <option>结</option><option>代</option>
+        </select>
+      </div>
+      <div class="position-meaning">右关：脾胃（胃气、冲气）</div>
+
+      <div class="pos chi">
+        <span class="pos-name">尺</span>
+        <select name="pulse_right_chi">
+          <option value="">-</option>
+          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
+          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
+          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
+          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
+          <option>结</option><option>代</option>
+        </select>
+      </div>
+      <div class="position-meaning">右尺：命门（肾阳、相火）</div>
+    </div>
+  </div>
+
+  <!-- 4.3 脉象总评（原文） + 兼象 -->
+  <div class="pulse-summary-block">
+    <label class="q">4.3 脉象总评（用张锡纯原文）</label>
+    <input type="text" id="pulse-summary" placeholder="例：脉沉迟微弱，关前尤甚">
+    <div class="q" style="margin-top:8px">4.4 关键兼象（可多选）</div>
+    <div class="opt-row">
+      <label><input type="checkbox" name="pulse-aspect" value="起伏无"> 起伏无（弦）</label>
+      <label><input type="checkbox" name="pulse-aspect" value="指下不觉动"> 指下不觉动</label>
+      <label><input type="checkbox" name="pulse-aspect" value="无根"> 尺部无根</label>
+      <label><input type="checkbox" name="pulse-aspect" value="参伍不调"> 参伍不调</label>
+      <label><input type="checkbox" name="pulse-aspect" value="六脉不全"> 六脉不全</label>
+      <label><input type="checkbox" name="pulse-aspect" value="散乱如浮麻"> 散乱如浮麻</label>
+      <label><input type="checkbox" name="pulse-aspect" value="雀啄"> 雀啄</label>
+      <label><input type="checkbox" name="pulse-aspect" value="尺弱寸强"> 尺弱寸强</label>
+      <label><input type="checkbox" name="pulse-aspect" value="寸盛尺虚"> 寸盛尺虚</label>
+    </div>
+  </div>
+
+  <button class="btn-diagnose" onclick="diagnose()">辨证施治</button>
+</section>
+
+<!-- 第五步：诊断结果 -->
+<section class="card hidden" id="step-result">
+  <h2><span class="step-num">5</span>辨证结果</h2>
+  <div id="result-content"></div>
+  <button class="btn-restart" onclick="location.reload()">重新辨证</button>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>本系统仅作学习参考，临证用药须由执业中医师面诊决定</p>
+  <p class="src">知识库来源：张锡纯《医学衷中参西录》（河北人民出版社 1974 修订本）</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+/* 仿张锡纯辨证施治 - 移动端优先 (v0.2 OPPO/Android 优化) */
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --primary: #8b1a1a;
+  --primary-d: #5d0e0e;
+  --accent: #c9a86b;
+  --bg: #f5f0e6;
+  --paper: #fdfaf3;
+  --ink: #1f1a17;
+  --ink-soft: #5a504a;
+  --line: #d8c9a8;
+  --success: #2d6a4f;
+  --warn: #c97c1f;
+  --hand-left: #1e5b8b;
+  --hand-right: #8b4513;
+  --pos-cun: #c97c1f;
+  --pos-guan: #2d6a4f;
+  --pos-chi: #6b4e8b;
+}
+
+html, body {
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", "宋体", serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+.topbar {
+  background: var(--primary);
+  color: #fff8e7;
+  padding: 14px 12px 12px;
+  text-align: center;
+  border-bottom: 3px solid var(--accent);
+  position: sticky; top: 0; z-index: 100;
+}
+.topbar h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.topbar .sub {
+  font-size: 11px;
+  margin-top: 3px;
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  font-size: 16px;
+  color: var(--primary);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--line);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: rgba(201, 168, 107, 0.1);
+  border-left: 3px solid var(--accent);
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+.choice {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 6px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+}
+.choice:active {
+  background: var(--accent);
+  color: var(--primary-d);
+  transform: scale(0.97);
+}
+.choice .ico {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 3px;
+}
+.choice strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.choice small {
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+.q-group { margin-bottom: 12px; }
+.q {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--primary-d);
+  font-size: 14px;
+}
+.opt-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.opt-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 9px;
+  background: #f9f5ea;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.opt-row input[type="checkbox"] { margin: 0; accent-color: var(--primary); }
+
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  background: #fff;
+  color: var(--ink);
+}
+textarea { min-height: 60px; resize: vertical; }
+
+/* ============== 脉诊页面 v0.2 ============== */
+
+/* 总论折叠面板 */
+.pulse-gen {
+  background: #fff8e7;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+.pulse-gen summary {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 0;
+  list-style: none;
+}
+.pulse-gen summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+.pulse-gen[open] summary::before {
+  transform: rotate(90deg);
+}
+.pulse-gen-body {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.pulse-gen-body h4 {
+  color: var(--primary-d);
+  margin: 10px 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  border-left: 3px solid var(--accent);
+  padding-left: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+/* 出处标 - 灰色小字 */
+.pulse-gen-body h4 .ref {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  background: rgba(90, 80, 74, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  margin-left: 4px;
+  font-style: normal;
+}
+/* 医案支撑块 - 绿色边 */
+.pulse-gen-body .case-ref {
+  background: rgba(45, 106, 79, 0.06);
+  border-left: 3px solid var(--success);
+  padding: 6px 10px;
+  margin: 6px 0 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ink);
+  border-radius: 0 4px 4px 0;
+}
+.pulse-gen-body .case-ref b { color: var(--success); }
+.pulse-gen-body .case-ref i { color: var(--ink-soft); }
+.pulse-gen-body table i { color: var(--ink-soft); }
+.pulse-gen-body table b { color: var(--primary-d); }
+.pulse-gen-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 10px;
+  font-size: 12px;
+}
+.pulse-gen-body th, .pulse-gen-body td {
+  border: 1px solid var(--line);
+  padding: 4px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+.pulse-gen-body th {
+  background: var(--accent);
+  color: var(--primary-d);
+  font-weight: 700;
+}
+.pulse-gen-body blockquote {
+  background: rgba(139, 26, 26, 0.05);
+  border-left: 3px solid var(--primary);
+  padding: 6px 10px;
+  margin: 6px 0;
+  font-style: normal;
+  color: var(--ink-soft);
+}
+
+/* 左右手 6 部位 */
+.hand-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+.hand {
+  border-radius: 6px;
+  padding: 8px;
+  border: 2px solid;
+  background: rgba(255,255,255,0.5);
+}
+.hand.left {
+  border-color: var(--hand-left);
+  background: rgba(30, 91, 139, 0.04);
+}
+.hand.right {
+  border-color: var(--hand-right);
+  background: rgba(139, 69, 19, 0.04);
+}
+.hand h3 {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed currentColor;
+  font-weight: 700;
+}
+.hand.left h3 { color: var(--hand-left); }
+.hand.right h3 { color: var(--hand-right); }
+.pos {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.pos-name {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.pos.cun .pos-name { background: var(--pos-cun); }
+.pos.guan .pos-name { background: var(--pos-guan); }
+.pos.chi .pos-name { background: var(--pos-chi); }
+.pos select {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  min-width: 0;
+}
+
+/* 6 部位总结学 - 张锡纯脏腑定位 */
+.position-meaning {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.hand-body-meaning {
+  background: rgba(201, 168, 107, 0.08);
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* 脉象总评 + 兼象 */
+.pulse-summary-block {
+  background: rgba(201, 168, 107, 0.08);
+  border: 1px dashed var(--accent);
+  border-radius: 6px;
+  padding: 10px;
+  margin: 10px 0;
+}
+.pulse-summary-block .q {
+  color: var(--primary);
+}
+
+/* 按钮 */
+.btn-next, .btn-diagnose, .btn-restart {
+  width: 100%;
+  padding: 11px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-next { background: var(--primary); color: #fff; }
+.btn-diagnose { background: var(--success); color: #fff; }
+.btn-restart { background: var(--accent); color: var(--primary-d); }
+button:active { opacity: 0.85; transform: scale(0.99); }
+
+/* 诊断结果 */
+.dx-block { margin-bottom: 16px; }
+.dx-block h3 {
+  font-size: 15px;
+  color: var(--primary);
+  margin-bottom: 6px;
+  padding-left: 8px;
+  border-left: 4px solid var(--primary);
+}
+.dx-content {
+  padding: 8px 10px;
+  background: rgba(201, 168, 107, 0.08);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.formula {
+  background: #fff;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-top: 6px;
+}
+.formula .herb {
+  display: inline-block;
+  margin: 2px 3px;
+  padding: 2px 7px;
+  background: var(--accent);
+  color: var(--primary-d);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.case-box {
+  background: #fff;
+  padding: 8px 10px;
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.case-box .label {
+  font-weight: 700;
+  color: var(--primary);
+  margin-right: 3px;
+}
+
+/* 医案中的脉象用色块 */
+.pulse-tag {
+  display: inline-block;
+  padding: 1px 5px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0 2px;
+}
+.pulse-tag.l { background: var(--hand-left); }
+.pulse-tag.r { background: var(--hand-right); }
+
+footer.foot {
+  text-align: center;
+  padding: 16px 12px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+}
+footer.foot .src { margin-top: 4px; }
+footer.foot a { color: var(--primary); text-decoration: none; }
+
+.hidden { display: none; }
+
+/* 移动端 OPPO 适配 */
+@media (max-width: 380px) {
+  .choice-grid { grid-template-columns: 1fr; }
+  .hand-row { grid-template-columns: 1fr; }
+  .topbar h1 { font-size: 18px; }
+}
+@media (max-width: 360px) {
+  .opt-row label { font-size: 11px; padding: 4px 7px; }
+  .pos select { font-size: 11px; }
+}
