@@ -321,6 +321,38 @@ textarea { min-height: 60px; resize: vertical; }
 .pulse-matrix td.left-c { background: rgba(30, 91, 139, 0.04); }
 .pulse-matrix td.right-c { background: rgba(139, 69, 19, 0.04); }
 
+/* 强调脉（张锡纯最常用） */
+.pulse-matrix .ms-emph {
+  background: rgba(196, 92, 76, 0.12);
+  border: 1px solid rgba(196, 92, 76, 0.4);
+  font-weight: 600;
+}
+.pulse-matrix .ms-emph.on {
+  background: var(--accent, #c45c4c);
+  color: white;
+  border-color: var(--accent, #c45c4c);
+}
+
+/* 总按表特殊样式（位/息/力/体/势/止 6 行） */
+.pulse-total-table {
+  font-size: 11px;
+}
+.pulse-total-table tbody th {
+  width: 36px;
+  font-size: 11px;
+  padding: 2px 1px;
+}
+.pulse-total-table td {
+  padding: 3px 2px;
+  line-height: 1.6;
+  text-align: left;
+}
+.pulse-total-table .ms {
+  padding: 1px 4px;
+  margin: 0px 1px 0px 0px;
+  font-size: 10px;
+}
+
 /* 脉象可点选 chip */
 .ms {
   display: inline-block;
