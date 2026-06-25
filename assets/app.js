@@ -1,7 +1,10 @@
-/* 仿张锡纯辨证施治 v0.6 - 完整知识库 + 脉象矩阵 */
+/* 仿张锡纯辨证施治 v0.7 - 彻底忠实于原书·反向检索 */
 'use strict';
 
 let KB = null;
+let CASES = null;          // 56 个真医案段
+let PULSE_INDEX = null;    // 脉象 → 医案 反向索引
+let FORMULA_INDEX = null;  // 方剂 → 医案 反向索引
 let INPUT_MODE = 'qna';
 
 // 脉象释义（张锡纯/中医基础理论）
@@ -10,41 +13,161 @@ const PULSE_MEANING = {
   '沉': '沉脉轻取不应，重按始得。主里证。沉而有力为里实，沉而无力为里虚。',
   '迟': '迟脉脉来缓慢，一息不足四至（<60次/分）。主寒证，亦主阳虚。',
   '数': '数脉脉来快速，一息五至以上（>90次/分）。主热证，亦主虚热。',
-  '虚': '虚脉举之无力，按之空虚。主气血两虚。张锡纯：「凡虚脉皆元气虚损之象」。',
-  '实': '实脉举按皆有力。主实证。张锡纯：「实脉多见于外感实热、痰火、积滞」。',
-  '滑': '滑脉往来流利，如珠走盘。主痰饮、食滞、孕脉。张锡纯：「滑而有力为热痰，无力为虚痰」。',
-  '涩': '涩脉迟细而短，往来艰涩。主血瘀、气滞、精伤。张锡纯：「涩脉乃气血运行不畅」。',
-  '弦': '弦脉端直以长，如按琴弦。主肝胆病、痛证、痰饮。张锡纯：「弦为肝脉」。',
-  '紧': '紧脉绷急有力，状如转索。主寒证、痛证。张锡纯：「紧脉乃弦之甚者」。',
-  '细': '细脉脉细如线，但应指明显。主气血两虚、诸虚劳损、湿病。张锡纯：「细脉为气血不足」。',
-  '弱': '弱脉极软而沉细。主气血不足、阳气虚衰。张锡纯：「弱脉多见于虚损」。',
-  '微': '微脉极细极软，似有似无。主阴阳气血诸虚，阳气衰微。张锡纯：「微脉为元阳欲脱」。',
-  '洪': '洪脉脉体阔大，滔滔满指，来盛去衰。主热盛、气分热盛。张锡纯：「洪而有力为实热，无力为虚热」。',
+  '虚': '虚脉举之无力，按之空虚。主气血两虚。',
+  '实': '实脉举按皆有力。主实证。',
+  '滑': '滑脉往来流利，如珠走盘。主痰饮、食滞。',
+  '涩': '涩脉迟细而短，往来艰涩。主血瘀、气滞、精伤。',
+  '弦': '弦脉端直以长，如按琴弦。主肝胆病、痛证、痰饮。',
+  '紧': '紧脉绷急有力，状如转索。主寒证、痛证。',
+  '细': '细脉脉细如线，但应指明显。主气血两虚、诸虚劳损、湿病。',
+  '弱': '弱脉极软而沉细。主气血不足、阳气虚衰。',
+  '微': '微脉极细极软，似有似无。主阴阳气血诸虚，阳气衰微。',
+  '洪': '洪脉脉体阔大，滔滔满指，来盛去衰。主热盛、气分热盛。',
   '缓': '缓脉一息四至，从容和缓。主湿病、脾胃虚弱。',
-  '大': '大脉脉体阔大，但无汹涌之势。主病进、虚证。张锡纯：「大而无力为虚阳外越」。',
-  '濡': '濡脉浮而细软。主虚证、湿证。张锡纯：「濡脉多见于气血不足之体」。',
-  '芤': '芤脉浮大中空，如按葱管。主失血、伤阴。张锡纯：「芤脉为阴血大伤」。',
+  '大': '大脉脉体阔大，但无汹涌之势。主病进、虚证。',
+  '濡': '濡脉浮而细软。主虚证、湿证。',
+  '芤': '芤脉浮大中空，如按葱管。主失血、伤阴。',
   '革': '革脉浮弦中空，如按鼓皮。主精血亏虚、崩漏、亡血。',
   '牢': '牢脉沉实弦长，坚牢不移。主里实、疝气、癥瘕。',
   '动': '动脉短而滑数，厥厥动摇。主痛证、惊证。',
   '促': '促脉数而时一止，止无定数。主阳盛实热、气血痰食停滞。',
-  '结': '结脉缓而时一止，止无定数。主阴盛气结、痰滞血瘀。张锡纯：「结脉非死脉也，气分郁滞使然」。',
-  '代': '代脉止有定数，不能自还。主脏气衰微。张锡纯：「代脉多见于气血虚极」。',
+  '结': '结脉缓而时一止，止无定数。主阴盛气结、痰滞血瘀。',
+  '代': '代脉止有定数，不能自还。主脏气衰微。',
+  '伏': '伏脉重按着骨始得。主邪闭、厥证、痛极。',
+  '疾': '疾脉脉来急疾，一息七八至（>120次/分）。主阳极阴竭、元气将脱。',
+  '长': '长脉脉体超过本位。主阳气有余、气逆、火盛。',
+  '短': '短脉脉体短缩，不及本位。主气虚、气郁。',
+  '有力': '有力脉举按皆应指有根，主实证。张锡纯分「真有力」(和缓中见)与「假有力」(弦硬大而有力)两种。',
+  '无力': '无力脉举按皆软弱空虚，主虚证。',
+  '真有力': '真有力脉当于敦浓和缓中见之，张锡纯认为此为脾胃健旺之常脉，区别于弦硬之假有力。',
+  '假有力': '假有力脉弦硬大而按之不实，张锡纯认为此为「脾胃真气外泄」之病脉。',
+  '和缓': '和缓脉从容和缓，一息四至，为平脉之常。张锡纯：「脉来和缓有神，此胃气充足」。',
+  '无根': '无根脉尺部重按不应指，主肾气衰败、命门火衰。',
+  '动脉': '动脉短而滑数，厥厥动摇，主痛证、惊证、孕脉。',
 };
 
-// 加载知识库
-async function loadKB() {
+// 加载所有数据
+async function loadAll() {
   try {
-    const r = await fetch('assets/data/kb.json');
-    KB = await r.json();
-    console.log(`KB loaded: ${KB.total_formulas} 方剂, ${KB.total_cases} 医案, ${KB.total_pulses} 脉象`);
-    return KB;
+    const [kbR, casesR, pIdxR, fIdxR] = await Promise.all([
+      fetch('assets/data/kb.json'),
+      fetch('assets/data/cases_full.json'),
+      fetch('assets/data/pulse_index.json'),
+      fetch('assets/data/formula_index.json'),
+    ]);
+    KB = await kbR.json();
+    CASES = await casesR.json();
+    PULSE_INDEX = await pIdxR.json();
+    FORMULA_INDEX = await fIdxR.json();
+
+    console.log(`KB: ${KB.total_formulas} 方剂`);
+    console.log(`医案: ${CASES.total_case_segments} 段 (真医案)`);
+    console.log(`脉象索引: ${PULSE_INDEX.pulse_count} 种脉象`);
+    console.log(`方剂索引: ${FORMULA_INDEX.formula_count} 个方剂`);
+
+    // 填充 4.1 节
+    fillSection4_1();
   } catch (e) {
-    console.error('KB load failed', e);
-    return null;
+    console.error('数据加载失败', e);
   }
 }
-loadKB();
+
+// ============ 4.1 节数据填充 ============
+function fillSection4_1() {
+  // ① Top 15 脉象
+  const topPulses = Object.entries(PULSE_INDEX.index).slice(0, 15);
+  let html = '<table><tr><th>排名</th><th>脉象</th><th>医案段数</th></tr>';
+  topPulses.forEach(([p, v], i) => {
+    html += `<tr><td>${i+1}</td><td><b>${p}</b></td><td>${v.count}</td></tr>`;
+  });
+  html += '</table>';
+  document.getElementById('top-pulses').innerHTML = html;
+
+  // ② 升陷汤验案脉象
+  const sxData = FORMULA_INDEX.index['升陷汤'];
+  if (sxData) {
+    const sxCases = sxData.cases;
+    const charFreq = {};
+    sxCases.forEach(c => {
+      (c.pulse_chars || []).forEach(ch => {
+        charFreq[ch] = (charFreq[ch] || 0) + 1;
+      });
+    });
+    const sxSorted = Object.entries(charFreq).sort((a,b) => b[1] - a[1]);
+    let h = `<p style="font-size:11px;color:var(--ink-soft);margin:4px 0">统计自 <b>${sxCases.length}</b> 个升陷汤真实医案段：</p>`;
+    h += '<table><tr><th>脉象</th><th>出现频次</th></tr>';
+    sxSorted.slice(0, 10).forEach(([pc, n]) => {
+      h += `<tr><td>${pc}</td><td>${n}</td></tr>`;
+    });
+    h += '</table>';
+    document.getElementById('shengxian-pulse-stats').innerHTML = h;
+  } else {
+    document.getElementById('shengxian-pulse-stats').innerHTML = '<p style="color:var(--ink-soft)">暂无升陷汤医案数据</p>';
+  }
+
+  // ③ 白虎加人参汤验案脉象
+  const bhData = FORMULA_INDEX.index['白虎加人参汤'];
+  if (bhData) {
+    const bhCases = bhData.cases;
+    const charFreq = {};
+    bhCases.forEach(c => {
+      (c.pulse_chars || []).forEach(ch => {
+        charFreq[ch] = (charFreq[ch] || 0) + 1;
+      });
+    });
+    const bhSorted = Object.entries(charFreq).sort((a,b) => b[1] - a[1]);
+    let h = `<p style="font-size:11px;color:var(--ink-soft);margin:4px 0">统计自 <b>${bhCases.length}</b> 个白虎加人参汤真实医案段：</p>`;
+    h += '<table><tr><th>脉象</th><th>出现频次</th></tr>';
+    bhSorted.slice(0, 10).forEach(([pc, n]) => {
+      h += `<tr><td>${pc}</td><td>${n}</td></tr>`;
+    });
+    h += '</table>';
+    document.getElementById('baihu-pulse-stats').innerHTML = h;
+  }
+
+  // ④ 弦脉医案主方
+  const xianData = PULSE_INDEX.index['弦'];
+  if (xianData) {
+    const fFreq = {};
+    xianData.cases.forEach(c => {
+      (c.formulas || []).forEach(f => {
+        fFreq[f] = (fFreq[f] || 0) + 1;
+      });
+    });
+    const fSorted = Object.entries(fFreq).sort((a,b) => b[1] - a[1]);
+    let h = `<p style="font-size:11px;color:var(--ink-soft);margin:4px 0">统计自 <b>${xianData.count}</b> 个含"弦"脉的真实医案：</p>`;
+    h += '<table><tr><th>方剂</th><th>频次</th></tr>';
+    fSorted.slice(0, 10).forEach(([f, n]) => {
+      h += `<tr><td>${f}</td><td>${n}</td></tr>`;
+    });
+    h += '</table>';
+    document.getElementById('xian-formula-stats').innerHTML = h;
+  }
+
+  // ⑤ 特殊脉统计
+  const setText = (id, n) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = `${n} 段`;
+  };
+  setText('stat-zhenyouli', PULSE_INDEX.index['真有力']?.count || 0);
+  setText('stat-jiayouli', PULSE_INDEX.index['假有力']?.count || 0);
+  setText('stat-hehuan', PULSE_INDEX.index['和缓']?.count || 0);
+  setText('stat-wugen', PULSE_INDEX.index['无根']?.count || 0);
+  // 数+虚/微/弱
+  const shuXu = CASES.cases.filter(c => {
+    const pc = c.pulse_chars || [];
+    return pc.includes('数') && pc.some(x => ['虚','微','弱'].includes(x));
+  }).length;
+  setText('stat-shuxu', shuXu);
+  // 弦+细+弱
+  const xianXiRuo = CASES.cases.filter(c => {
+    const pc = c.pulse_chars || [];
+    return pc.includes('弦') && pc.includes('细') && pc.includes('弱');
+  }).length;
+  setText('stat-xianxiruo', xianXiRuo);
+}
+
+loadAll();
 
 // 步骤切换
 function goStep(step) {
@@ -70,31 +193,27 @@ document.querySelectorAll('.choice').forEach(btn => {
 });
 
 // ========== 脉象矩阵交互 ==========
-// 脉象推荐显示顺序（按张锡纯常用描述次序：沉迟微弱）
 const PULSE_ORDER = ['浮','沉','伏','迟','缓','数','疾','虚','实','滑','涩','弦','紧','细','微','弱','洪','大','濡','芤','革','牢','动','促','结','代','长','短','散'];
 document.querySelectorAll('.ms').forEach(span => {
   span.addEventListener('click', () => {
     span.classList.toggle('on');
-    // 更新对应 hidden input
     const pos = span.dataset.pos;
     const posMap = {
       '左寸': 'pulse_left_cun', '左关': 'pulse_left_guan', '左尺': 'pulse_left_chi',
-      '右寸': 'pulse_right_cun', '右关': 'pulse_right_guan', '右尺': 'pulse_right_chi'
+      '右寸': 'pulse_right_cun', '右关': 'pulse_right_guan', '右尺': 'pulse_right_chi',
+      '左总': 'pulse_left_total', '右总': 'pulse_right_total'
     };
     const inputId = posMap[pos];
+    if (!inputId) return;
     const selected = [...document.querySelectorAll(`.ms[data-pos="${pos}"].on`)].map(s => s.textContent);
-    // 按推荐顺序排序（如：沉→迟→微→弱 而不是 弱→微→迟→沉）
     selected.sort((a, b) => PULSE_ORDER.indexOf(a) - PULSE_ORDER.indexOf(b));
     document.getElementById(inputId).value = selected.join('');
-    // 更新左右脉差分析
-    updateDiff();
+    updateAllDiff();
   });
   // 长按显示释义
   let pressTimer = null;
-  span.addEventListener('touchstart', (e) => {
-    pressTimer = setTimeout(() => {
-      showMeaning(span);
-    }, 500);
+  span.addEventListener('touchstart', () => {
+    pressTimer = setTimeout(() => showMeaning(span), 500);
   });
   span.addEventListener('touchend', () => clearTimeout(pressTimer));
   span.addEventListener('mousedown', () => {
@@ -108,9 +227,7 @@ function showMeaning(span) {
   const pulse = span.textContent;
   const meaning = PULSE_MEANING[pulse];
   if (!meaning) return;
-  // 移除所有已有的释义
   document.querySelectorAll('.pulse-meaning').forEach(el => el.remove());
-  // 在该 span 后插入
   const div = document.createElement('div');
   div.className = 'pulse-meaning show';
   div.innerHTML = `<b>${pulse}脉：</b>${meaning}`;
@@ -118,263 +235,222 @@ function showMeaning(span) {
   setTimeout(() => div.classList.remove('show'), 4000);
 }
 
-// 左右脉差自动识别
-function updateDiff() {
+// ========== 核心: 反向检索 + 整合所有差分析 ==========
+function updateAllDiff() {
   const get = id => document.getElementById(id).value || '';
-  const data = {
-    左寸: get('pulse_left_cun'),
-    左关: get('pulse_left_guan'),
-    左尺: get('pulse_left_chi'),
-    右寸: get('pulse_right_cun'),
-    右关: get('pulse_right_guan'),
-    右尺: get('pulse_right_chi')
-  };
-  const result = analyzePulseDiff(data);
-  document.getElementById('diff-content').innerHTML = result;
+
+  // 收集所有已勾选脉象(总按 + 分部)
+  const allPulses = new Set();
+  ['pulse_left_total', 'pulse_right_total',
+   'pulse_left_cun', 'pulse_left_guan', 'pulse_left_chi',
+   'pulse_right_cun', 'pulse_right_guan', 'pulse_right_chi'].forEach(id => {
+     const v = get(id);
+     [...v].forEach(ch => allPulses.add(ch));
+   });
+  const userPulses = [...allPulses];
+
+  // 4.0 两手总按对比(只显示用户勾的总按部分)
+  const totalL = get('pulse_left_total');
+  const totalR = get('pulse_right_total');
+  const totalEl = document.getElementById('diff-content-total');
+  if (totalEl) {
+    totalEl.innerHTML = renderTotalPulseDiff(totalL, totalR);
+  }
+
+  // 4.2 反向检索(使用所有已勾的脉象)
+  const diffEl = document.getElementById('diff-content');
+  if (diffEl) {
+    if (userPulses.length === 0) {
+      diffEl.innerHTML = '勾选脉象后自动反查张锡纯真实医案';
+    } else {
+      diffEl.innerHTML = renderReverseLookup(userPulses);
+    }
+  }
 }
 
-// 核心：分析左右脉差
-function analyzePulseDiff(p) {
+// 4.0 总按左右对比(简化,只显示已勾脉象,不做病机推断)
+function renderTotalPulseDiff(l, r) {
+  if (!l && !r) return '勾选后自动对比';
   const lines = [];
-  // 复合脉解析
-  const composite = (str) => {
-    if (!str) return [];
-    return [...str]; // 每个字
-  };
-
-  const allL = (p.左寸 + p.左关 + p.左尺);
-  const allR = (p.右寸 + p.右关 + p.右尺);
-  if (!allL && !allR) return '勾选脉象后自动分析';
-
-  // 1. 单手 vs 双手总览（去重 + 排序）
-  const PULSE_SORT = ['浮','沉','伏','迟','缓','数','疾','虚','实','滑','涩','弦','紧','细','微','弱','洪','大','濡','芤','革','牢','动','促','结','代','长','短','散'];
+  const PULSE_SORT = PULSE_ORDER.concat(['有力','无力','和缓','真有力','假有力','无根','动脉']);
   const uniqSorted = (str) => {
     const chars = [...new Set([...str])];
     return chars.sort((a,b) => PULSE_SORT.indexOf(a) - PULSE_SORT.indexOf(b)).join('');
   };
-  if (allL || allR) {
-    const summary = [];
-    if (allL) summary.push(`左手：${uniqSorted(allL) || '-'}`);
-    if (allR) summary.push(`右手：${uniqSorted(allR) || '-'}`);
-    lines.push(`<b>两手总览：</b>${summary.join(' | ')}`);
+  if (l) lines.push(`<b>左手：</b>${uniqSorted(l)}`);
+  if (r) lines.push(`<b>右手：</b>${uniqSorted(r)}`);
+  if (l && r) {
+    const onlyL = [...l].filter(x => !r.includes(x));
+    const onlyR = [...r].filter(x => !l.includes(x));
+    if (onlyL.length || onlyR.length) {
+      lines.push('<br><b>左右差异:</b>');
+      if (onlyL.length) lines.push(`仅左手有: <b>${uniqSorted(onlyL.join(''))}</b>`);
+      if (onlyR.length) lines.push(`仅右手有: <b>${uniqSorted(onlyR.join(''))}</b>`);
+    }
   }
-
-  // 2. 左右寸对比
-  analyzeLRSame(p.左寸, p.右寸, '寸（上焦：心 vs 肺）', lines);
-  analyzeLRSame(p.左关, p.右关, '关（中焦：肝 vs 脾胃）', lines);
-  analyzeLRSame(p.左尺, p.右尺, '尺（下焦：肾阴 vs 命门）', lines);
-
-  // 3. 张锡纯特有辨证规则
-  if (p.右寸.includes('微') || p.右寸.includes('弱') || (p.右关.includes('弱') && p.右关.includes('迟'))) {
-    lines.push(`<div class="diff-case"><b>🔍 大气下陷预警：</b>右寸/右关见微弱，可能为大气下陷（升陷汤证）。张锡纯："肺之脉诊在右部，大气下陷右部多微弱"。</div>`);
-  }
-  if (p.左关.includes('弦') && p.右关.includes('弦')) {
-    lines.push(`<div class="diff-case"><b>🔍 肝木横逆犯胃：</b>左右关皆弦。张锡纯："左关弦硬为肝阴亏，右关弦长为冲胃气逆，左右皆弦硬为脑充血之兆"。</div>`);
-  }
-  if (p.右关.includes('弦') && !p.左关.includes('弦')) {
-    lines.push(`<div class="diff-warn"><b>⚠️ 冲气上冲：</b>仅右关弦长，可能为冲气上冲 + 胃气上逆。镇摄汤（重赭石）主之。</div>`);
-  }
-  if (allL.includes('数') && allL.includes('细')) {
-    lines.push(`<div class="diff-warn"><b>⚠️ 阴虚内热：</b>左脉细数。张锡纯："阴虚火动者，脉多细数"。</div>`);
-  }
-  if (p.左尺.includes('数') && (p.右尺.includes('弱') || p.右尺.includes('微'))) {
-    lines.push(`<div class="diff-warn"><b>⚠️ 阴虚阳浮：</b>左尺数 + 右尺弱。张锡纯："左尺数右尺弱，肾阴虚而相火动"。</div>`);
-  }
-
-  // 4. 数至
-  const summary = document.getElementById('pulse-summary').value;
-  if (summary) lines.push(`<b>原文/补充：</b>${summary}`);
-
   return lines.join('<br>');
 }
 
-function analyzeLRSame(l, r, name, lines) {
-  if (!l && !r) return;
-  if (!l) { lines.push(`<b>${name}：</b>仅右（${r}）`); return; }
-  if (!r) { lines.push(`<b>${name}：</b>仅左（${l}）`); return; }
-  if (l === r) {
-    lines.push(`<b>${name}：</b>左右相同（${l}）`);
-  } else {
-    lines.push(`<b>${name}：</b>左：${l} ≠ 右：${r} <span style="color:#c97c1f">⚠️左右差</span>`);
-  }
-}
+// 4.2 反向检索: 用户脉象 → 真实医案
+function renderReverseLookup(userPulses) {
+  if (!PULSE_INDEX) return '<p style="color:var(--ink-soft)">数据加载中...</p>';
 
-// 监听总评输入
-document.addEventListener('DOMContentLoaded', () => {
-  const sum = document.getElementById('pulse-summary');
-  if (sum) sum.addEventListener('input', updateDiff);
-});
-
-// 收集表单数据
-function collect() {
-  const look = [...document.querySelectorAll('input[name="look"]:checked')].map(i => i.value);
-  const ask = [...document.querySelectorAll('input[name="ask"]:checked')].map(i => i.value);
-  const trigger = [...document.querySelectorAll('input[name="trigger"]:checked')].map(i => i.value);
-  const pulse = {
-    左寸: document.getElementById('pulse_left_cun').value,
-    左关: document.getElementById('pulse_left_guan').value,
-    左尺: document.getElementById('pulse_left_chi').value,
-    右寸: document.getElementById('pulse_right_cun').value,
-    右关: document.getElementById('pulse_right_guan').value,
-    右尺: document.getElementById('pulse_right_chi').value,
-  };
-  const pulseAspects = [...document.querySelectorAll('input[name="pulse-aspect"]:checked')].map(i => i.value);
-  return {
-    望: look,
-    问: { 主症: ask, 诱发: trigger, 补充: document.getElementById('ask-free').value },
-    切: { ...pulse, 总评: document.getElementById('pulse-summary').value, 兼象: pulseAspects }
-  };
-}
-
-// 诊断
-function diagnose() {
-  if (!KB) { alert('知识库加载中，请稍候再试'); return; }
-  const data = collect();
-  const result = matchFormula(data);
-  renderResult(data, result);
-  goStep('result');
-}
-
-function findCasesByPulse(pulses) {
-  if (!pulses || pulses.length === 0) return [];
-  const result = [];
-  const seen = new Set();
-  pulses.forEach(p => {
-    if (KB.pulse_to_cases[p]) {
-      KB.pulse_to_cases[p].forEach(c => {
-        if (!seen.has(c.case_id)) {
-          seen.add(c.case_id);
-          result.push({...c, matched_pulse: p});
-        }
-      });
-    }
+  // 1. 对每个脉象反查
+  const pulseHits = {};
+  userPulses.forEach(p => {
+    const idx = PULSE_INDEX.index[p];
+    if (idx) pulseHits[p] = idx;
   });
-  return result;
-}
 
-function matchFormula(data) {
-  // 收集所有脉象
-  const allPulses = [];
-  Object.entries(data.切).forEach(([k, v]) => {
-    if (k !== '总评' && k !== '兼象' && v) {
-      [...v].forEach(c => { if (!allPulses.includes(c)) allPulses.push(c); });
-    }
-  });
-  if (data.切.总评) {
-    ['浮','沉','迟','数','微','弱','弦','细','洪','滑','涩','紧','虚','实','结','代','大','长','短','芤','革','牢','动','缓','促','濡'].forEach(p => {
-      if (data.切.总评.includes(p) && !allPulses.includes(p)) allPulses.push(p);
+  // 2. 找同时含所有用户脉象的医案(交集)
+  let intersection = null;
+  if (userPulses.length > 0) {
+    const sets = userPulses.map(p => {
+      const idx = pulseHits[p];
+      return idx ? new Set(idx.cases.map(c => c.src_idx + '_' + (c.src_title || '').slice(0,15))) : new Set();
     });
+    if (sets.every(s => s.size > 0)) {
+      intersection = [...sets[0]].filter(x => sets.every(s => s.has(x)));
+    } else {
+      intersection = [];
+    }
   }
-  const relatedCases = findCasesByPulse(allPulses);
-  const formulaCount = {};
-  relatedCases.forEach(c => {
-    formulaCount[c.formula_id] = (formulaCount[c.formula_id] || 0) + 1;
+
+  // 3. 输出
+  let html = `<p style="font-size:12px;color:var(--primary-d)">您勾选了 <b>${userPulses.join(' + ')}</b>：</p>`;
+
+  // 各脉象独立命中
+  html += '<div style="margin:6px 0"><b>各脉象单独命中:</b><ul style="margin:4px 0 0 16px;font-size:12px">';
+  userPulses.forEach(p => {
+    const idx = pulseHits[p];
+    if (idx) {
+      // 找该脉象 Top 3 方剂
+      const fFreq = {};
+      idx.cases.forEach(c => {
+        (c.formulas || []).forEach(f => {
+          fFreq[f] = (fFreq[f] || 0) + 1;
+        });
+      });
+      const topF = Object.entries(fFreq).sort((a,b) => b[1] - a[1]).slice(0, 3);
+      html += `<li><b>${p}</b>: ${idx.count} 个医案段,主方 ${topF.map(([f,n]) => `${f}(${n})`).join(' / ')}</li>`;
+    } else {
+      html += `<li><b>${p}</b>: 0 个医案段 (此脉张锡纯原书未单独立案)</li>`;
+    }
   });
-  const top = Object.entries(formulaCount).sort((a,b) => b[1]-a[1]).slice(0, 5);
-  const formulas = top.map(([fid, count]) => {
-    const f = KB.formulas.find(x => x.id === fid);
-    if (!f) return null;
-    return { ...f, matched_count: count };
-  }).filter(Boolean);
-  return { formulas, relatedCases, allPulses };
+  html += '</ul></div>';
+
+  // 全部交集
+  if (userPulses.length >= 2) {
+    if (intersection && intersection.length > 0) {
+      html += `<div class="diff-case" style="margin-top:8px"><b>✅ 同时含 ${userPulses.length} 个脉象的真实医案: ${intersection.length} 个</b><ul style="margin:4px 0 0 16px;font-size:11px">`;
+      intersection.slice(0, 5).forEach(key => {
+        const [idx, title] = key.split('_');
+        html += `<li>篇 #${idx}: ${title}</li>`;
+      });
+      if (intersection.length > 5) {
+        html += `<li>...还有 ${intersection.length - 5} 个</li>`;
+      }
+      html += '</ul></div>';
+    } else {
+      html += `<div class="diff-warn" style="margin-top:8px"><b>⚠️ 您的组合 ${userPulses.join('+')} 在张锡纯 56 个真实医案中未同时出现</b><br><span style="font-size:11px">这不一定说明组合错误,可能因:①原书脉象描述方式与教科书不同 ②案例数量有限 ③您可参考各脉象单独命中的方剂</span></div>`;
+    }
+  }
+
+  return html;
 }
 
-function renderResult(data, result) {
-  const root = document.getElementById('result-content');
-  if (!result || result.formulas.length === 0) {
-    root.innerHTML = `<div class="dx-block">
-      <h3>未匹配到方剂</h3>
-      <div class="dx-content">请补充脉象或症状描述。当前知识库: ${KB.total_formulas} 方剂 / ${KB.total_cases} 医案 / ${KB.total_pulses} 脉象。</div>
-    </div>`;
-    return;
-  }
-  const { formulas, relatedCases, allPulses } = result;
-  const pulseStr = allPulses.length > 0 ? allPulses.join('、') : '无';
-
-  // 脉象概要
-  const pulseRows = [];
-  ['寸','关','尺'].forEach(p => {
-    const l = data.切['左'+p] || '-';
-    const r = data.切['右'+p] || '-';
-    pulseRows.push(`<tr><th>${p}</th><td>${l}</td><td>${r}</td></tr>`);
-  });
-
-  // 方剂 HTML
-  const formulaHtml = formulas.map((f, idx) => {
-    const cases = relatedCases.filter(c => c.formula_id === f.id);
-    const caseHtml = cases.slice(0, 3).map(c => `
-      <div class="case-box">
-        <div><span class="pulse-tag">脉${c.matched_pulse}</span> <span class="label">出处：</span>${f.name}（${f.id}）</div>
-        <div class="case-text">${c.case_text.substring(0, 250)}...</div>
-      </div>
-    `).join('');
-    return `
-      <div class="dx-block ${idx === 0 ? 'top-formula' : ''}">
-        <h3>${idx === 0 ? '⭐ 最佳匹配：' : '备选：'}${f.name} <small style="font-weight:400; font-size:12px;">（${f.matched_count} 例医案支撑）</small></h3>
-        <div class="dx-content"><div class="label">属性：</div>${f.attr}</div>
-        <div class="dx-content" style="margin-top:6px"><div class="label">组成与方解：</div>${f.body.substring(0, 400)}...</div>
-        ${caseHtml ? `<div class="dx-content" style="margin-top:6px"><div class="label">📚 真实医案（${cases.length} 例，展示前 3）：</div>${caseHtml}</div>` : ''}
-      </div>
-    `;
-  }).join('');
-
-  const summary = data.切.总评 ? `<br><strong>脉象总评：</strong>${data.切.总评}` : '';
-  const aspects = data.切.兼象.length > 0 ? `<br><strong>关键兼象：</strong>${data.切.兼象.join('、')}` : '';
-
-  root.innerHTML = `
-    <div class="dx-block">
-      <h3>辨证依据（您输入的脉象 + 症状）</h3>
-      <div class="dx-content">
-        <strong>六部脉象：</strong>
-        <table style="margin-top:6px; width:100%; border-collapse:collapse; font-size:12px;">
-          <tr style="background:var(--accent)"><th></th><th>左</th><th>右</th></tr>
-          ${pulseRows.join('')}
-        </table>
-        ${summary}${aspects}<br>
-        <strong>主症：</strong>${data.问.主症.join('、') || '无'}<br>
-        <strong>诱发：</strong>${data.问.诱发.join('、') || '无'}<br>
-        <strong>补充：</strong>${data.问.补充 || '无'}<br>
-        <strong>望诊：</strong>${data.望.join('、') || '无'}
-      </div>
-    </div>
-    <div class="dx-block">
-      <h3>📋 找到 ${relatedCases.length} 例相关医案（来自 ${formulas.length} 个方剂）</h3>
-    </div>
-    ${formulaHtml}
-    <div class="dx-block">
-      <h3>📖 知识库统计</h3>
-      <div class="dx-content">
-        方剂总数: <strong>${KB.total_formulas}</strong> · 医案总数: <strong>${KB.total_cases}</strong> · 脉象种类: <strong>${KB.total_pulses}</strong><br>
-        数据来源: ${KB.source}
-      </div>
-    </div>
-  `;
+// 收集函数
+function collect() {
+  return {
+    look: [...document.querySelectorAll('input[name="look"]:checked')].map(x => x.value),
+    ask: [...document.querySelectorAll('input[name="ask"]:checked')].map(x => x.value),
+    trigger: [...document.querySelectorAll('input[name="trigger"]:checked')].map(x => x.value),
+    pulse_left_total: document.getElementById('pulse_left_total').value,
+    pulse_right_total: document.getElementById('pulse_right_total').value,
+    pulse_left_cun: document.getElementById('pulse_left_cun').value,
+    pulse_left_guan: document.getElementById('pulse_left_guan').value,
+    pulse_left_chi: document.getElementById('pulse_left_chi').value,
+    pulse_right_cun: document.getElementById('pulse_right_cun').value,
+    pulse_right_guan: document.getElementById('pulse_right_guan').value,
+    pulse_right_chi: document.getElementById('pulse_right_chi').value,
+    pulse_summary: document.getElementById('pulse-summary')?.value || '',
+    pulse_aspect: [...document.querySelectorAll('input[name="pulse-aspect"]:checked')].map(x => x.value),
+    ask_free: document.getElementById('ask-free')?.value || '',
+  };
 }
 
-// 演示模式
-function showDemo() {
-  document.getElementById('result-content').innerHTML = `
-    <div class="dx-block">
-      <h3>演示案例：升陷汤·沈阳苏××案</h3>
-      <div class="dx-content">完整流程：四诊合参 → 识别脉象"沉迟微弱，关前尤甚" → 判定"大气下陷" → 用升陷汤升举胸中大气。</div>
-    </div>
-    <div class="dx-block">
-      <h3>辨证逻辑（张锡纯）</h3>
-      <div class="dx-content">
-        "此证得之力田劳苦过度。夫劳倦伤脾，脾伤则中气下陷；然脉右部濡、关前沉细，此胸中大气下陷之的候也。当升补胸中大气，佐以补肾固摄。"
-      </div>
-    </div>
-    <div class="dx-block">
-      <h3>处方：升陷汤</h3>
-      <div class="formula">
-        <span class="herb">生黄芪 六钱</span>
-        <span class="herb">知母 三钱</span>
-        <span class="herb">柴胡 一钱五分</span>
-        <span class="herb">桔梗 一钱五分</span>
-        <span class="herb">升麻 一钱</span>
-      </div>
-    </div>
-    <button class="btn-restart" onclick="location.reload()">返回辨证</button>
-  `;
+// 辨证: 简化为反向检索+数据展示
+function diagnose() {
+  const data = collect();
+  const resultEl = document.getElementById('result-content') || document.getElementById('dx-result') || document.getElementById('step-result');
   goStep('result');
+
+  // 收集所有脉象
+  const allPulses = new Set();
+  ['pulse_left_total','pulse_right_total',
+   'pulse_left_cun','pulse_left_guan','pulse_left_chi',
+   'pulse_right_cun','pulse_right_guan','pulse_right_chi'].forEach(k => {
+     if (data[k]) [...data[k]].forEach(ch => allPulses.add(ch));
+   });
+  const pulses = [...allPulses];
+
+  // 显示辨证结果
+  let html = '<h2>📋 辨证结果（基于张锡纯真实医案）</h2>';
+
+  // 1. 用户输入总结
+  html += '<div class="dx-block"><h3>您输入的脉象</h3><div class="dx-content">';
+  if (data.pulse_summary) {
+    html += `<p><b>原话:</b> <i>${data.pulse_summary}</i></p>`;
+  }
+  if (data.pulse_left_total) html += `<p>左手总按: <b>${data.pulse_left_total}</b></p>`;
+  if (data.pulse_right_total) html += `<p>右手总按: <b>${data.pulse_right_total}</b></p>`;
+  ['pulse_left_cun','pulse_left_guan','pulse_left_chi',
+   'pulse_right_cun','pulse_right_guan','pulse_right_chi'].forEach(k => {
+     if (data[k]) {
+       const label = {pulse_left_cun:'左寸',pulse_left_guan:'左关',pulse_left_chi:'左尺',
+                      pulse_right_cun:'右寸',pulse_right_guan:'右关',pulse_right_chi:'右尺'}[k];
+       html += `<p>${label}: <b>${data[k]}</b></p>`;
+     }
+   });
+  if (data.pulse_aspect.length) html += `<p>兼象: ${data.pulse_aspect.join(' / ')}</p>`;
+  html += '</div></div>';
+
+  // 2. 反向检索结果
+  html += '<div class="dx-block"><h3>📚 张锡纯真实医案对照</h3><div class="dx-content">';
+  if (pulses.length === 0) {
+    html += '<p style="color:var(--ink-soft)">未勾选脉象,无法反查医案</p>';
+  } else {
+    html += renderReverseLookup(pulses);
+  }
+  html += '</div></div>';
+
+  // 3. 提示
+  html += `<div style="background:rgba(201,124,31,0.1); padding:10px; border-left:3px solid var(--warn); border-radius:3px; font-size:12px; margin-top:12px">
+    <b>⚠️ 重要提示</b>:本系统<b>不</b>给出辨证结论(如"气虚血瘀"等),<b>只</b>展示张锡纯原书用相同脉象治过的真实医案。
+    临床请结合四诊、患者整体情况,由执业中医师判断。
+  </div>`;
+
+  if (resultEl) {
+    resultEl.innerHTML = html;
+    resultEl.classList.remove('hidden');
+  }
+}
+
+function showDemo() {
+  // 自动填充一个升陷汤经典医案
+  goStep('pulse');
+  // 模拟勾选
+  setTimeout(() => {
+    const demo = {左总: ['沉','迟','微','弱'], 右总: ['沉','迟','微','弱','无力']};
+    Object.entries(demo).forEach(([pos, ps]) => {
+      ps.forEach(p => {
+        const span = document.querySelector(`.ms[data-pos="${pos}"][class*="ms"]:not(.on)`);
+        // 简单办法: 直接点
+        const allSpans = document.querySelectorAll(`.ms[data-pos="${pos}"]`);
+        allSpans.forEach(s => {
+          if (s.textContent === p) s.click();
+        });
+      });
+    });
+  }, 100);
 }
