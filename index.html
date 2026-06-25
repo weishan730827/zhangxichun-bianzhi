@@ -312,97 +312,127 @@
     </div>
   </details>
 
-  <!-- 4.2 左右手 6 部位选择 -->
-  <p class="hint" style="margin-top:14px"><b>4.2 分左右手寸关尺六部脉诊</b><br>
-  寸（胸/上焦）· 关（脾胃/肝胆）· 尺（肾/下焦）<br>
-  左侯心肝肾 · 右侯肺脾命</p>
+  <!-- 4.2 两手总脉象对比表（核心：左右寸关尺 6 格总览） -->
+  <p class="hint" style="margin-top:14px"><b>4.2 两手总脉象对比表</b>（左右寸关尺 6 格总览）<br>
+  <span style="font-size:11px">填写后实时显示对比 + 自动识别"左右脉差"，每格可多选以表达复合脉（如"沉迟"、"弦细数"）</span></p>
 
-  <div class="hand-row">
-    <!-- 左手 -->
-    <div class="hand left">
-      <h3>左手（左侯心肝肾）</h3>
-      <div class="pos cun">
-        <span class="pos-name">寸</span>
-        <select name="pulse_left_cun">
-          <option value="">-</option>
-          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
-          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
-          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
-          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
-          <option>结</option><option>代</option>
-        </select>
-      </div>
-      <div class="position-meaning">左寸：心（心气、心阳）</div>
+  <div class="pulse-matrix-wrap">
+    <table class="pulse-matrix" id="pulse-matrix">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="left-h">左<br>（心肝肾）</th>
+          <th class="right-h">右<br>（肺脾命）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>寸<br><small>上焦</small></th>
+          <td class="left-c">
+            <span class="ms" data-pos="左寸">浮</span><span class="ms" data-pos="左寸">沉</span>
+            <span class="ms" data-pos="左寸">迟</span><span class="ms" data-pos="左寸">数</span>
+            <span class="ms" data-pos="左寸">虚</span><span class="ms" data-pos="左寸">实</span>
+            <span class="ms" data-pos="左寸">滑</span><span class="ms" data-pos="左寸">涩</span>
+            <span class="ms" data-pos="左寸">弦</span><span class="ms" data-pos="左寸">紧</span>
+            <span class="ms" data-pos="左寸">细</span><span class="ms" data-pos="左寸">弱</span>
+            <span class="ms" data-pos="左寸">微</span><span class="ms" data-pos="左寸">洪</span>
+            <span class="ms" data-pos="左寸">缓</span><span class="ms" data-pos="左寸">大</span>
+            <span class="ms" data-pos="左寸">濡</span><span class="ms" data-pos="左寸">芤</span>
+            <span class="ms" data-pos="左寸">革</span><span class="ms" data-pos="左寸">牢</span>
+            <span class="ms" data-pos="左寸">动</span><span class="ms" data-pos="左寸">促</span>
+            <span class="ms" data-pos="左寸">结</span><span class="ms" data-pos="左寸">代</span>
+            <input type="hidden" name="pulse_left_cun" id="pulse_left_cun">
+          </td>
+          <td class="right-c">
+            <span class="ms" data-pos="右寸">浮</span><span class="ms" data-pos="右寸">沉</span>
+            <span class="ms" data-pos="右寸">迟</span><span class="ms" data-pos="右寸">数</span>
+            <span class="ms" data-pos="右寸">虚</span><span class="ms" data-pos="右寸">实</span>
+            <span class="ms" data-pos="右寸">滑</span><span class="ms" data-pos="右寸">涩</span>
+            <span class="ms" data-pos="右寸">弦</span><span class="ms" data-pos="右寸">紧</span>
+            <span class="ms" data-pos="右寸">细</span><span class="ms" data-pos="右寸">弱</span>
+            <span class="ms" data-pos="右寸">微</span><span class="ms" data-pos="右寸">洪</span>
+            <span class="ms" data-pos="右寸">缓</span><span class="ms" data-pos="右寸">大</span>
+            <span class="ms" data-pos="右寸">濡</span><span class="ms" data-pos="右寸">芤</span>
+            <span class="ms" data-pos="右寸">革</span><span class="ms" data-pos="右寸">牢</span>
+            <span class="ms" data-pos="右寸">动</span><span class="ms" data-pos="右寸">促</span>
+            <span class="ms" data-pos="右寸">结</span><span class="ms" data-pos="右寸">代</span>
+            <input type="hidden" name="pulse_right_cun" id="pulse_right_cun">
+          </td>
+        </tr>
+        <tr>
+          <th>关<br><small>中焦</small></th>
+          <td class="left-c">
+            <span class="ms" data-pos="左关">浮</span><span class="ms" data-pos="左关">沉</span>
+            <span class="ms" data-pos="左关">迟</span><span class="ms" data-pos="左关">数</span>
+            <span class="ms" data-pos="左关">虚</span><span class="ms" data-pos="左关">实</span>
+            <span class="ms" data-pos="左关">滑</span><span class="ms" data-pos="左关">涩</span>
+            <span class="ms" data-pos="左关">弦</span><span class="ms" data-pos="左关">紧</span>
+            <span class="ms" data-pos="左关">细</span><span class="ms" data-pos="左关">弱</span>
+            <span class="ms" data-pos="左关">微</span><span class="ms" data-pos="左关">洪</span>
+            <span class="ms" data-pos="左关">缓</span><span class="ms" data-pos="左关">大</span>
+            <span class="ms" data-pos="左关">濡</span><span class="ms" data-pos="左关">芤</span>
+            <span class="ms" data-pos="左关">革</span><span class="ms" data-pos="左关">牢</span>
+            <span class="ms" data-pos="左关">动</span><span class="ms" data-pos="左关">促</span>
+            <span class="ms" data-pos="左关">结</span><span class="ms" data-pos="左关">代</span>
+            <input type="hidden" name="pulse_left_guan" id="pulse_left_guan">
+          </td>
+          <td class="right-c">
+            <span class="ms" data-pos="右关">浮</span><span class="ms" data-pos="右关">沉</span>
+            <span class="ms" data-pos="右关">迟</span><span class="ms" data-pos="右关">数</span>
+            <span class="ms" data-pos="右关">虚</span><span class="ms" data-pos="右关">实</span>
+            <span class="ms" data-pos="右关">滑</span><span class="ms" data-pos="右关">涩</span>
+            <span class="ms" data-pos="右关">弦</span><span class="ms" data-pos="右关">紧</span>
+            <span class="ms" data-pos="右关">细</span><span class="ms" data-pos="右关">弱</span>
+            <span class="ms" data-pos="右关">微</span><span class="ms" data-pos="右关">洪</span>
+            <span class="ms" data-pos="右关">缓</span><span class="ms" data-pos="右关">大</span>
+            <span class="ms" data-pos="右关">濡</span><span class="ms" data-pos="右关">芤</span>
+            <span class="ms" data-pos="右关">革</span><span class="ms" data-pos="右关">牢</span>
+            <span class="ms" data-pos="右关">动</span><span class="ms" data-pos="右关">促</span>
+            <span class="ms" data-pos="右关">结</span><span class="ms" data-pos="右关">代</span>
+            <input type="hidden" name="pulse_right_guan" id="pulse_right_guan">
+          </td>
+        </tr>
+        <tr>
+          <th>尺<br><small>下焦</small></th>
+          <td class="left-c">
+            <span class="ms" data-pos="左尺">浮</span><span class="ms" data-pos="左尺">沉</span>
+            <span class="ms" data-pos="左尺">迟</span><span class="ms" data-pos="左尺">数</span>
+            <span class="ms" data-pos="左尺">虚</span><span class="ms" data-pos="左尺">实</span>
+            <span class="ms" data-pos="左尺">滑</span><span class="ms" data-pos="左尺">涩</span>
+            <span class="ms" data-pos="左尺">弦</span><span class="ms" data-pos="左尺">紧</span>
+            <span class="ms" data-pos="左尺">细</span><span class="ms" data-pos="左尺">弱</span>
+            <span class="ms" data-pos="左尺">微</span><span class="ms" data-pos="左尺">洪</span>
+            <span class="ms" data-pos="左尺">缓</span><span class="ms" data-pos="左尺">大</span>
+            <span class="ms" data-pos="左尺">濡</span><span class="ms" data-pos="左尺">芤</span>
+            <span class="ms" data-pos="左尺">革</span><span class="ms" data-pos="左尺">牢</span>
+            <span class="ms" data-pos="左尺">动</span><span class="ms" data-pos="左尺">促</span>
+            <span class="ms" data-pos="左尺">结</span><span class="ms" data-pos="左尺">代</span>
+            <input type="hidden" name="pulse_left_chi" id="pulse_left_chi">
+          </td>
+          <td class="right-c">
+            <span class="ms" data-pos="右尺">浮</span><span class="ms" data-pos="右尺">沉</span>
+            <span class="ms" data-pos="右尺">迟</span><span class="ms" data-pos="右尺">数</span>
+            <span class="ms" data-pos="右尺">虚</span><span class="ms" data-pos="右尺">实</span>
+            <span class="ms" data-pos="右尺">滑</span><span class="ms" data-pos="右尺">涩</span>
+            <span class="ms" data-pos="右尺">弦</span><span class="ms" data-pos="右尺">紧</span>
+            <span class="ms" data-pos="右尺">细</span><span class="ms" data-pos="右尺">弱</span>
+            <span class="ms" data-pos="右尺">微</span><span class="ms" data-pos="右尺">洪</span>
+            <span class="ms" data-pos="右尺">缓</span><span class="ms" data-pos="右尺">大</span>
+            <span class="ms" data-pos="右尺">濡</span><span class="ms" data-pos="右尺">芤</span>
+            <span class="ms" data-pos="右尺">革</span><span class="ms" data-pos="右尺">牢</span>
+            <span class="ms" data-pos="右尺">动</span><span class="ms" data-pos="右尺">促</span>
+            <span class="ms" data-pos="右尺">结</span><span class="ms" data-pos="右尺">代</span>
+            <input type="hidden" name="pulse_right_chi" id="pulse_right_chi">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <div class="pos guan">
-        <span class="pos-name">关</span>
-        <select name="pulse_left_guan">
-          <option value="">-</option>
-          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
-          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
-          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
-          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
-          <option>结</option><option>代</option>
-        </select>
-      </div>
-      <div class="position-meaning">左关：肝胆（肝气、肝火、肝风）</div>
-
-      <div class="pos chi">
-        <span class="pos-name">尺</span>
-        <select name="pulse_left_chi">
-          <option value="">-</option>
-          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
-          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
-          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
-          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
-          <option>结</option><option>代</option>
-        </select>
-      </div>
-      <div class="position-meaning">左尺：肾阴（真阴、下焦）</div>
-    </div>
-
-    <!-- 右手 -->
-    <div class="hand right">
-      <h3>右手（右侯肺脾命）</h3>
-      <div class="pos cun">
-        <span class="pos-name">寸</span>
-        <select name="pulse_right_cun">
-          <option value="">-</option>
-          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
-          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
-          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
-          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
-          <option>结</option><option>代</option>
-        </select>
-      </div>
-      <div class="position-meaning">右寸：肺（胸中大气，宗气）</div>
-
-      <div class="pos guan">
-        <span class="pos-name">关</span>
-        <select name="pulse_right_guan">
-          <option value="">-</option>
-          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
-          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
-          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
-          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
-          <option>结</option><option>代</option>
-        </select>
-      </div>
-      <div class="position-meaning">右关：脾胃（胃气、冲气）</div>
-
-      <div class="pos chi">
-        <span class="pos-name">尺</span>
-        <select name="pulse_right_chi">
-          <option value="">-</option>
-          <option>浮</option><option>沉</option><option>迟</option><option>数</option>
-          <option>虚</option><option>实</option><option>滑</option><option>涩</option>
-          <option>弦</option><option>紧</option><option>细</option><option>弱</option>
-          <option>微</option><option>洪</option><option>缓</option><option>芤</option>
-          <option>结</option><option>代</option>
-        </select>
-      </div>
-      <div class="position-meaning">右尺：命门（肾阳、相火）</div>
-    </div>
+  <!-- 左右脉差自动识别 -->
+  <div class="pulse-diff" id="pulse-diff">
+    <div class="diff-title">📊 左右脉差自动识别：</div>
+    <div class="diff-content" id="diff-content">勾选脉象后自动分析</div>
   </div>
 
   <!-- 4.3 脉象总评（原文） + 兼象 -->

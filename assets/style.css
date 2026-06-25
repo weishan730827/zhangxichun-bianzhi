@@ -270,85 +270,128 @@ textarea { min-height: 60px; resize: vertical; }
   color: var(--ink-soft);
 }
 
-/* 左右手 6 部位 */
-.hand-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+/* 脉象矩阵表 */
+.pulse-matrix-wrap {
+  overflow-x: auto;
   margin: 8px 0 12px;
+  -webkit-overflow-scrolling: touch;
 }
-.hand {
-  border-radius: 6px;
-  padding: 8px;
-  border: 2px solid;
-  background: rgba(255,255,255,0.5);
-}
-.hand.left {
-  border-color: var(--hand-left);
-  background: rgba(30, 91, 139, 0.04);
-}
-.hand.right {
-  border-color: var(--hand-right);
-  background: rgba(139, 69, 19, 0.04);
-}
-.hand h3 {
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 6px;
-  padding-bottom: 4px;
-  border-bottom: 1px dashed currentColor;
-  font-weight: 700;
-}
-.hand.left h3 { color: var(--hand-left); }
-.hand.right h3 { color: var(--hand-right); }
-.pos {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 5px;
-}
-.pos-name {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  font-weight: 700;
+.pulse-matrix {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 12px;
-  color: #fff;
-  flex-shrink: 0;
-}
-.pos.cun .pos-name { background: var(--pos-cun); }
-.pos.guan .pos-name { background: var(--pos-guan); }
-.pos.chi .pos-name { background: var(--pos-chi); }
-.pos select {
-  flex: 1;
-  padding: 4px 6px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
   background: #fff;
-  font-family: inherit;
-  font-size: 12px;
-  min-width: 0;
+  border-radius: 4px;
+  overflow: hidden;
 }
-
-/* 6 部位总结学 - 张锡纯脏腑定位 */
-.position-meaning {
+.pulse-matrix th, .pulse-matrix td {
+  border: 1px solid var(--line);
+  padding: 4px;
+  text-align: center;
+  vertical-align: middle;
+}
+.pulse-matrix thead th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
   font-size: 11px;
+  padding: 6px 4px;
+}
+.pulse-matrix thead th.left-h { background: var(--hand-left); }
+.pulse-matrix thead th.right-h { background: var(--hand-right); }
+.pulse-matrix tbody th {
+  background: var(--accent);
+  color: var(--primary-d);
+  font-size: 12px;
+  font-weight: 700;
+  width: 40px;
+}
+.pulse-matrix tbody th small {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
   color: var(--ink-soft);
   margin-top: 2px;
-  font-style: italic;
-  line-height: 1.4;
 }
-.hand-body-meaning {
-  background: rgba(201, 168, 107, 0.08);
-  padding: 6px 8px;
-  border-radius: 4px;
+.pulse-matrix td {
+  padding: 5px 3px;
+  text-align: left;
+  line-height: 1.8;
+}
+.pulse-matrix td.left-c { background: rgba(30, 91, 139, 0.04); }
+.pulse-matrix td.right-c { background: rgba(139, 69, 19, 0.04); }
+
+/* 脉象可点选 chip */
+.ms {
+  display: inline-block;
+  padding: 2px 5px;
+  margin: 1px;
+  background: #f9f5ea;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   font-size: 11px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+.ms:active { transform: scale(0.95); }
+.ms.on {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(139,26,26,0.3);
+}
+
+/* 脉象释义 tooltip */
+.pulse-meaning {
+  font-size: 10px;
   color: var(--ink-soft);
-  margin-top: 6px;
-  line-height: 1.5;
+  font-style: italic;
+  padding: 4px 6px;
+  background: rgba(201, 168, 107, 0.08);
+  border-radius: 3px;
+  margin-top: 3px;
+  display: none;
+}
+.pulse-meaning.show { display: block; }
+
+/* 左右脉差自动识别框 */
+.pulse-diff {
+  background: linear-gradient(135deg, #fff8e7 0%, #fdfaf3 100%);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.pulse-diff .diff-title {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+.pulse-diff .diff-content {
+  color: var(--ink);
+}
+.pulse-diff .diff-content b { color: var(--primary-d); }
+.pulse-diff .diff-case {
+  background: rgba(45, 106, 79, 0.08);
+  border-left: 3px solid var(--success);
+  padding: 5px 8px;
+  margin: 5px 0;
+  border-radius: 0 3px 3px 0;
+  font-size: 11px;
+}
+.pulse-diff .diff-warn {
+  background: rgba(201, 124, 31, 0.08);
+  border-left: 3px solid var(--warn);
+  padding: 5px 8px;
+  margin: 5px 0;
+  border-radius: 0 3px 3px 0;
+  font-size: 11px;
 }
 
 /* 脉象总评 + 兼象 */

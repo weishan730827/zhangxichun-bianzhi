@@ -1,0 +1,11 @@
+# 临时工作目录
+/data/user/work/
+
+# 大型 TXT 原书(>1MB)
+zhangxichun_originals/校后_2018完整版_全8期30卷.txt
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
