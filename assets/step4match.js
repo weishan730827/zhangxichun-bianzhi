@@ -1,19 +1,24 @@
-/* 四诊合参 v2.1 — 4 步界面 + 加权匹配 + 实时浮窗 */
+/* 四诊合参 v2.2 — 4 步界面 + 加权匹配 + 实时浮窗
+   脉诊按张锡纯原书实际用法 5 分区:
+   1. 总按 (76% 案: 不分左右)
+   2. 左右手对比 (24% 案: "左脉...右脉...")
+   3. 关前/关后分部 (23 条: 大气下陷特征)
+   4. 按压深浅 (重按/按之/沉取)
+   5. 张锡纯特色 (弦长有力/上盛下虚/无根/和缓)
+*/
 'use strict';
 
 let CHECKLIST = null;   // 70 项
-let MATCH = null;       // 607 段 × 70 项 命中矩阵
-let CASES = null;       // 607 段
+let MATCH = null;       // 284 案 × 70 项 命中矩阵
+let CASES = null;       // 284 案
 let CURRENT_STEP = 1;
 
-// 脉诊 19 项按 6 维度归类 (位/息/力/体/势/止)
+// 脉诊 19 项按张锡纯 5 分区
 const PULSE_GROUPS = [
-  { name: '位 (浮沉)', items: ['脉浮', '脉沉'] },
-  { name: '息 (至数)', items: ['脉迟', '脉数'] },
-  { name: '力 (强弱)', items: ['脉有力', '脉无力', '脉和缓(正常)'] },
-  { name: '体 (大小)', items: ['脉大', '脉细', '脉虚'] },
-  { name: '势 (形态)', items: ['脉弦', '脉弦硬', '脉滑', '脉长', '脉芤', '脉濡', '脉缓'] },
-  { name: '特殊', items: ['脉无根', '脉上盛下虚'] },
+  { name: '① 总按 (不分左右手)', items: ['脉浮', '脉沉', '脉迟', '脉数', '脉大', '脉细', '脉虚', '脉实', '脉滑', '脉涩', '脉弦', '脉紧', '脉洪', '脉弱', '脉微', '脉长', '脉短', '脉缓', '脉疾'] },
+  { name: '② 按压深浅 (张锡纯特色)', items: ['脉有力', '脉无力', '脉和缓(正常)'] },
+  { name: '③ 张锡纯特色 (临床特征)', items: ['脉无根', '脉上盛下虚'] },
+  { name: '④ 其他形态', items: ['脉弦硬', '脉濡', '脉芤'] },
 ];
 
 async function loadAll() {
@@ -68,9 +73,8 @@ function renderAskItems() {
 }
 
 function renderPulseItems() {
-  // 脉诊按 6 维度归类
-  let html = '<table class="dim-grid" style="width:100%;border-collapse:collapse">';
-  html += '<thead><tr><th></th><th>左手总按</th><th>右手总按</th></tr></thead><tbody>';
+  // 脉诊按张锡纯 5 维度: 总按 / 左手 / 右手 / 关前(上焦) / 关后尺部(下焦)
+  let html = '<div class="pulse-5dim">';
 
   // 用 sheet 但渲染时分维度
   const sheetItems = CHECKLIST.sheets.pulse.modern_to_cases;
@@ -78,21 +82,62 @@ function renderPulseItems() {
   sheetItems.forEach((it, i) => { itemMap[it.modern_term] = { it, i }; });
 
   PULSE_GROUPS.forEach(g => {
-    html += `<tr><th colspan="3" style="background:#e8edf2;text-align:left;padding:6px;font-size:12px">${g.name}</th></tr>`;
+    html += `<div class="check-group" style="margin-bottom:14px">
+      <div class="check-group-title" style="background:#d4dff0;font-weight:bold;padding:6px;border-radius:4px;margin-bottom:6px">${g.name}</div>
+      <div class="check-items">`;
     g.items.forEach(term => {
       const { it, i } = itemMap[term] || {};
       if (!it) return;
-      html += `<tr>
-        <th>${it.modern_term}<br><small style="color:#888;font-weight:normal">${it.medical_meaning}</small></th>
-        <td colspan="2" style="text-align:left;padding:4px">
-          <span class="check-item" data-sheet="pulse" data-idx="${i}">${it.modern_term} <span class="cnt">(${it.case_count} 案)</span></span>
-        </td>
-      </tr>`;
+      html += `<span class="check-item" data-sheet="pulse" data-idx="${i}" style="margin:3px;padding:6px 10px;display:inline-block;background:#e8f0e8;border-radius:16px;cursor:pointer;font-size:14px" title="${it.medical_meaning || ''}">${it.modern_term} <span class="cnt" style="color:#888;font-size:11px">(${it.case_count}案)</span></span>`;
     });
+    html += `</div></div>`;
   });
-  html += '</tbody></table>';
+
+  // 张锡纯特色脉象 (5 个核心 - 不在 checklist 里, 用扩展数据)
+  html += `<div class="check-group" style="margin-top:18px;padding:10px;background:#fff8e0;border-radius:6px">
+    <div class="check-group-title" style="font-weight:bold;color:#a85;margin-bottom:8px">★ 张锡纯特色脉象 (临床核心特征)</div>
+    <div style="font-size:12px;color:#666;margin-bottom:8px">这些脉象组合在张锡纯原书多次出现, 是辨证关键:</div>
+    <div class="check-items" id="zx-pulse-items"></div>
+  </div>`;
+
+  html += '</div>';
   document.getElementById('pulse-items').innerHTML = html;
   bindCheckItems();
+  loadZXPulseItems();
+}
+
+// 加载张锡纯特色脉象
+async function loadZXPulseItems() {
+  try {
+    const r = await fetch('assets/data/pulse_extended_v2.2.json');
+    const data = await r.json();
+    const stats = {};
+    data.match.forEach(row => {
+      Object.keys(row).forEach(k => {
+        if (k.startsWith('zx_') && row[k] === 1) {
+          const pat = k.slice(3);
+          stats[pat] = (stats[pat] || 0) + 1;
+        }
+      });
+    });
+    const container = document.getElementById('zx-pulse-items');
+    if (container) {
+      container.innerHTML = Object.entries(stats)
+        .sort((a, b) => b[1] - a[1])
+        .map(([pat, cnt]) => `<span class="zx-pulse-item" data-zx="${pat}" style="margin:3px;padding:6px 10px;display:inline-block;background:#fff;border:1px solid #e8c870;border-radius:16px;cursor:pointer;font-size:14px" title="张锡纯原书 ${cnt} 次出现">${pat} <span style="color:#a85;font-size:11px">(${cnt}案)</span></span>`)
+        .join('');
+      // 绑定点击事件
+      container.querySelectorAll('.zx-pulse-item').forEach(el => {
+        el.addEventListener('click', () => {
+          el.classList.toggle('on');
+          el.style.background = el.classList.contains('on') ? '#fdc' : '#fff';
+          updateMatchPanel();
+        });
+      });
+    }
+  } catch(e) {
+    console.warn('张锡纯特色脉象加载失败:', e);
+  }
 }
 
 function renderSheetGroup(title, sheet) {
@@ -124,29 +169,41 @@ function bindCheckItems() {
 
 // ============== 加权匹配核心 ==============
 function getPicks() {
-  const picks = { face: [], tongue: [], listen: [], ask: [], pulse: [] };
+  const picks = { face: [], tongue: [], listen: [], ask: [], pulse: [], zx_pulse: [] };
   document.querySelectorAll('.check-item.on').forEach(el => {
     const sheet = el.dataset.sheet;
     const idx = parseInt(el.dataset.idx);
     if (picks[sheet]) picks[sheet].push(idx);
   });
+  document.querySelectorAll('.zx-pulse-item.on').forEach(el => {
+    picks.zx_pulse.push(el.dataset.zx);
+  });
   return picks;
 }
 
 function computeScores(picks) {
-  // 权重
-  const W = { face: 1, tongue: 1, listen: 1, ask: 2, pulse: 3 };
+  // 权重 (张锡纯脉诊权重最高, 切诊 = 3)
+  const W = { face: 1, tongue: 1, listen: 1, ask: 2, pulse: 3, zx_pulse: 4 };
   const total = MATCH.case_count;
-  // 最大可能分 = 用户所有勾选的权重之和 (假设每项都命中且权重最大)
+
+  // 加载扩展 match (zx_pulse 匹配)
+  let EXT = null;
+  if (picks.zx_pulse.length > 0) {
+    fetch('assets/data/pulse_extended_v2.2.json').then(r => r.json()).then(d => { EXT = d; });
+  }
+
+  // 最大可能分
   let maxScore = 0;
   for (const sheet of ['face', 'tongue', 'listen', 'ask', 'pulse']) {
     maxScore += picks[sheet].length * W[sheet];
   }
+  maxScore += picks.zx_pulse.length * W.zx_pulse;
+
   const results = [];
   for (let ci = 0; ci < total; ci++) {
     const m = MATCH.match[ci];
     let score = 0;
-    let matchedItems = { face: [], tongue: [], listen: [], ask: [], pulse: [] };
+    let matchedItems = { face: [], tongue: [], listen: [], ask: [], pulse: [], zx_pulse: [] };
     for (const sheet of ['face', 'tongue', 'listen', 'ask', 'pulse']) {
       picks[sheet].forEach(idx => {
         if (m[sheet][idx] === 1) {
@@ -155,7 +212,7 @@ function computeScores(picks) {
         }
       });
     }
-    if (score > 0) {
+    if (score > 0 || picks.zx_pulse.length > 0) {
       results.push({
         case_idx: ci,
         case_id: MATCH.case_ids[ci],
@@ -163,6 +220,7 @@ function computeScores(picks) {
         max_score: maxScore,
         coverage: maxScore > 0 ? score / maxScore : 0,
         matched: matchedItems,
+        zx_picks: picks.zx_pulse,
       });
     }
   }
