@@ -1,0 +1,96 @@
+{
+  "version": "v1.2",
+  "description": "★ 三部九候分部指纹: 从医案中提取的\"左寸X/左关X/左尺X/右寸X...\"分部脉诊",
+  "method": "寸/关/尺 6 个分部的脉象指纹",
+  "total_signatures": 6,
+  "signatures": [
+    {
+      "signature": "右关洪实",
+      "count": 10,
+      "case_ids": [
+        133,
+        133,
+        148,
+        148,
+        322,
+        322,
+        464,
+        464,
+        568,
+        568
+      ],
+      "formulas": {
+        "遂至做豆腐家买得生石膏": 4,
+        "但煎汤饮": 4,
+        "徐温饮": 4,
+        "谓石膏": 4,
+        "白虎汤": 4,
+        "离中丹": 8
+      },
+      "top_formula": "离中丹"
+    },
+    {
+      "signature": "右尺浮弦",
+      "count": 4,
+      "case_ids": [
+        105,
+        105,
+        639,
+        639
+      ],
+      "formulas": {
+        "继将汤": 2,
+        "制作丸": 4,
+        "安冲汤": 4
+      },
+      "top_formula": "制作丸"
+    },
+    {
+      "signature": "右寸微弱",
+      "count": 2,
+      "case_ids": [
+        23,
+        23
+      ],
+      "formulas": {
+        "升陷汤": 4
+      },
+      "top_formula": "升陷汤"
+    },
+    {
+      "signature": "左关浮弦",
+      "count": 2,
+      "case_ids": [
+        105,
+        105
+      ],
+      "formulas": {
+        "继将汤": 2,
+        "制作丸": 2
+      },
+      "top_formula": "继将汤"
+    },
+    {
+      "signature": "左关微弱",
+      "count": 2,
+      "case_ids": [
+        156,
+        156
+      ],
+      "formulas": {},
+      "top_formula": null
+    },
+    {
+      "signature": "左关微浮",
+      "count": 2,
+      "case_ids": [
+        378,
+        378
+      ],
+      "formulas": {
+        "煮作茶汤": 2
+      },
+      "top_formula": "煮作茶汤"
+    }
+  ]
+}

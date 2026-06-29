@@ -1,0 +1,2123 @@
+{
+  "version": "v0.6",
+  "description": "脉诊指纹库: 1 医案 ↔ 1 脉诊组合 (全书扫描)",
+  "total_signatures": 135,
+  "total_cases_with_sig": 405,
+  "signatures": [
+    {
+      "signature": "弦",
+      "count": 30,
+      "case_ids": [
+        23,
+        133,
+        148,
+        238,
+        245,
+        271,
+        289,
+        294,
+        307,
+        315,
+        321,
+        330,
+        331,
+        334,
+        356,
+        363,
+        374,
+        375,
+        394,
+        397,
+        439,
+        442,
+        458,
+        463,
+        471,
+        492,
+        498,
+        507,
+        508,
+        585
+      ],
+      "formulas": {
+        "升陷汤": 2,
+        "遂至做豆腐家买得生石膏": 2,
+        "但煎汤饮": 2,
+        "徐温饮": 2,
+        "谓石膏": 2,
+        "白虎汤": 2,
+        "再将余药煎汤": 2,
+        "惟石膏": 2,
+        "不受饮": 2,
+        "钱煎汤": 2
+      },
+      "top_formula": "升陷汤",
+      "sample_pulse_raw": "左部弦硬"
+    },
+    {
+      "signature": "弦长",
+      "count": 20,
+      "case_ids": [
+        42,
+        224,
+        291,
+        297,
+        305,
+        308,
+        311,
+        314,
+        317,
+        338,
+        346,
+        364,
+        368,
+        370,
+        371,
+        380,
+        454,
+        484,
+        528,
+        602
+      ],
+      "formulas": {
+        "白虎加人参汤": 5,
+        "白虎汤": 4,
+        "麻杏甘石汤": 4,
+        "次温饮": 3,
+        "因石膏": 2,
+        "煮作茶汤": 2,
+        "白头翁汤": 2,
+        "镇肝熄风汤": 1,
+        "必用白虎加人参汤": 1,
+        "离中丹": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "左部弦长"
+    },
+    {
+      "signature": "洪实",
+      "count": 20,
+      "case_ids": [
+        56,
+        123,
+        132,
+        138,
+        147,
+        159,
+        169,
+        205,
+        226,
+        234,
+        250,
+        260,
+        355,
+        413,
+        432,
+        506,
+        512,
+        548,
+        577,
+        587
+      ],
+      "formulas": {
+        "白虎加人参汤": 5,
+        "次温饮": 3,
+        "煎汤兑所余之石膏水饮": 2,
+        "复本小柴胡汤": 2,
+        "煮水当茶饮": 2,
+        "诸药煎汤": 2,
+        "白虎汤": 2,
+        "建瓴汤": 2,
+        "至石膏": 2,
+        "有旋复代赭石汤": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "象洪实"
+    },
+    {
+      "signature": "数",
+      "count": 19,
+      "case_ids": [
+        4,
+        7,
+        8,
+        37,
+        69,
+        115,
+        166,
+        196,
+        274,
+        390,
+        415,
+        424,
+        481,
+        490,
+        532,
+        543,
+        555,
+        600,
+        630
+      ],
+      "formulas": {
+        "肾气丸": 2,
+        "急救回生丹": 2,
+        "资生通脉汤": 2,
+        "小青龙汤": 2,
+        "白虎加人参汤": 2,
+        "大青龙汤": 2,
+        "醒脾升陷汤": 2,
+        "资生汤": 1,
+        "参麦汤": 1,
+        "煮作粥": 1
+      },
+      "top_formula": "肾气丸",
+      "sample_pulse_raw": "数身热"
+    },
+    {
+      "signature": "实",
+      "count": 14,
+      "case_ids": [
+        176,
+        191,
+        194,
+        211,
+        216,
+        265,
+        418,
+        425,
+        530,
+        537,
+        567,
+        591,
+        599,
+        623
+      ],
+      "formulas": {
+        "白虎加人参汤": 3,
+        "钱煎汤": 2,
+        "次温饮": 1,
+        "白虎汤": 1,
+        "以白虎汤": 1,
+        "以八味丸": 1,
+        "以通圣散": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "确有实热"
+    },
+    {
+      "signature": "微细",
+      "count": 10,
+      "case_ids": [
+        208,
+        210,
+        324,
+        340,
+        342,
+        466,
+        479,
+        480,
+        553,
+        596
+      ],
+      "formulas": {
+        "麻黄附子细辛汤": 6,
+        "麻黄汤": 4,
+        "两次温饮": 2,
+        "白虎加人参汤": 1,
+        "再用生石膏": 1,
+        "蘸生石膏": 1,
+        "遂停服汤": 1
+      },
+      "top_formula": "麻黄附子细辛汤",
+      "sample_pulse_raw": "象微细"
+    },
+    {
+      "signature": "微弱",
+      "count": 9,
+      "case_ids": [
+        17,
+        102,
+        156,
+        319,
+        349,
+        357,
+        384,
+        461,
+        517
+      ],
+      "formulas": {
+        "白虎加人参汤": 5,
+        "能进饮": 3,
+        "白虎汤": 3,
+        "滋阴清燥汤": 3,
+        "投以升陷汤": 1,
+        "曲直汤": 1,
+        "次温饮": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "左右皆微弱"
+    },
+    {
+      "signature": "弦细",
+      "count": 9,
+      "case_ids": [
+        97,
+        183,
+        292,
+        293,
+        318,
+        381,
+        441,
+        514,
+        533
+      ],
+      "formulas": {
+        "小青龙汤": 4,
+        "煮作茶汤": 1
+      },
+      "top_formula": "小青龙汤",
+      "sample_pulse_raw": "左部弦细"
+    },
+    {
+      "signature": "弦长有力",
+      "count": 8,
+      "case_ids": [
+        46,
+        204,
+        229,
+        232,
+        244,
+        327,
+        400,
+        547
+      ],
+      "formulas": {
+        "白虎加人参汤": 5,
+        "大承气汤": 4,
+        "承气汤": 3,
+        "硝石矾石散": 2,
+        "送服丸": 2,
+        "投以参赭培气汤": 1,
+        "能进饮": 1,
+        "分三次徐徐温饮": 1,
+        "以白虎汤": 1,
+        "药之外兼服犀黄丸": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "弦长有力"
+    },
+    {
+      "signature": "长",
+      "count": 8,
+      "case_ids": [
+        421,
+        443,
+        449,
+        456,
+        495,
+        499,
+        504,
+        513
+      ],
+      "formulas": {
+        "白虎汤": 2,
+        "白虎加人参汤": 2,
+        "少进饮": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "浴长其"
+    },
+    {
+      "signature": "洪滑有力",
+      "count": 7,
+      "case_ids": [
+        14,
+        124,
+        139,
+        268,
+        367,
+        501,
+        627
+      ],
+      "formulas": {
+        "白虎汤": 6,
+        "重用生石膏": 3,
+        "虎加人参以山药代粳米汤": 2,
+        "更以生山药代粳米煎汤": 2,
+        "必用白虎加人参汤": 2,
+        "小青龙加石膏汤": 2,
+        "斯非重用生石膏": 2,
+        "取竹皮大丸": 2,
+        "作两次温饮": 2,
+        "徐温饮": 2
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "洪滑有力"
+    },
+    {
+      "signature": "洪滑",
+      "count": 7,
+      "case_ids": [
+        31,
+        80,
+        81,
+        86,
+        130,
+        145,
+        624
+      ],
+      "formulas": {
+        "白虎汤": 7,
+        "寒降汤": 3,
+        "方中石膏": 2,
+        "小青龙汤": 2,
+        "大青龙汤": 2,
+        "从龙汤": 2,
+        "每剂中用生石膏": 2,
+        "原宜治以白虎汤": 2,
+        "仍可用白虎汤": 2,
+        "竟以重用石膏": 2
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "洪滑"
+    },
+    {
+      "signature": "沉弦",
+      "count": 7,
+      "case_ids": [
+        181,
+        325,
+        326,
+        345,
+        362,
+        382,
+        515
+      ],
+      "formulas": {
+        "离中丹": 2,
+        "桂枝加桂汤": 1,
+        "遂停服汤": 1,
+        "内托生肌散": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "离中丹",
+      "sample_pulse_raw": "左部沉弦"
+    },
+    {
+      "signature": "数有力",
+      "count": 7,
+      "case_ids": [
+        221,
+        272,
+        366,
+        422,
+        539,
+        634,
+        636
+      ],
+      "formulas": {
+        "次温饮": 2,
+        "素多痰饮": 1,
+        "分多次徐徐温饮": 1,
+        "活络效灵丹": 1
+      },
+      "top_formula": "次温饮",
+      "sample_pulse_raw": "数而有力"
+    },
+    {
+      "signature": "沉细",
+      "count": 6,
+      "case_ids": [
+        19,
+        179,
+        240,
+        301,
+        304,
+        448
+      ],
+      "formulas": {
+        "急救回生丹": 4,
+        "升陷汤": 3,
+        "白虎加人参汤": 1,
+        "徐温饮": 1,
+        "若入汤": 1
+      },
+      "top_formula": "急救回生丹",
+      "sample_pulse_raw": "左部沉细"
+    },
+    {
+      "signature": "弱",
+      "count": 6,
+      "case_ids": [
+        55,
+        153,
+        329,
+        333,
+        474,
+        609
+      ],
+      "formulas": {
+        "继用左归饮": 1,
+        "镇肝熄风汤": 1,
+        "又加丹": 1,
+        "建瓴汤": 1,
+        "起痿汤": 1,
+        "干颓汤": 1,
+        "故加丹": 1
+      },
+      "top_formula": "继用左归饮",
+      "sample_pulse_raw": "六部皆弱"
+    },
+    {
+      "signature": "洪数",
+      "count": 6,
+      "case_ids": [
+        75,
+        78,
+        93,
+        257,
+        620,
+        633
+      ],
+      "formulas": {
+        "寒解汤": 2,
+        "白虎加人参汤": 2,
+        "滋阴清燥汤": 1,
+        "次温饮": 1,
+        "辟秽驱毒饮": 1,
+        "钱煎汤": 1
+      },
+      "top_formula": "寒解汤",
+      "sample_pulse_raw": "洪数"
+    },
+    {
+      "signature": "浮弦",
+      "count": 6,
+      "case_ids": [
+        236,
+        290,
+        306,
+        335,
+        353,
+        359
+      ],
+      "formulas": {
+        "益元散": 4,
+        "次温饮": 2,
+        "白虎加人参汤": 1,
+        "小承气汤": 1,
+        "少进饮": 1,
+        "升陷汤": 1,
+        "白虎汤": 1,
+        "两次温饮": 1,
+        "俾停服汤": 1
+      },
+      "top_formula": "益元散",
+      "sample_pulse_raw": "关前浮弦"
+    },
+    {
+      "signature": "滑",
+      "count": 5,
+      "case_ids": [
+        26,
+        36,
+        109,
+        231,
+        592
+      ],
+      "formulas": {
+        "变质化瘀丸": 2,
+        "固冲汤": 1,
+        "可用药汤": 1,
+        "能进饮": 1,
+        "偶思饮": 1
+      },
+      "top_formula": "变质化瘀丸",
+      "sample_pulse_raw": "滑、体丰"
+    },
+    {
+      "signature": "弦有力",
+      "count": 5,
+      "case_ids": [
+        60,
+        125,
+        140,
+        350,
+        612
+      ],
+      "formulas": {
+        "白头翁汤": 1
+      },
+      "top_formula": "白头翁汤",
+      "sample_pulse_raw": "左右皆弦而有力"
+    },
+    {
+      "signature": "细数",
+      "count": 5,
+      "case_ids": [
+        76,
+        106,
+        468,
+        621,
+        639
+      ],
+      "formulas": {
+        "安冲汤": 3,
+        "滋阴清燥汤": 1,
+        "治以安冲汤": 1,
+        "制作丸": 1
+      },
+      "top_formula": "安冲汤",
+      "sample_pulse_raw": "甚细数"
+    },
+    {
+      "signature": "洪长有力",
+      "count": 5,
+      "case_ids": [
+        82,
+        127,
+        142,
+        223,
+        563
+      ],
+      "formulas": {
+        "宜当汗正出时饮": 2,
+        "然宜先用生石膏": 2,
+        "煎汤乘热饮": 2,
+        "惟生石膏": 2,
+        "白虎加人参汤": 1,
+        "乘热饮": 1
+      },
+      "top_formula": "宜当汗正出时饮",
+      "sample_pulse_raw": "洪长有力"
+    },
+    {
+      "signature": "微弱无力",
+      "count": 4,
+      "case_ids": [
+        43,
+        233,
+        343,
+        603
+      ],
+      "formulas": {
+        "白虎汤": 2,
+        "投以升陷汤": 1,
+        "寒温证当用白虎加人参汤": 1,
+        "白虎加人参汤": 1,
+        "两次温饮": 1,
+        "次温饮": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "微弱无力"
+    },
+    {
+      "signature": "洪大",
+      "count": 4,
+      "case_ids": [
+        85,
+        264,
+        417,
+        626
+      ],
+      "formulas": {
+        "次温饮": 1
+      },
+      "top_formula": "次温饮",
+      "sample_pulse_raw": "非洪大"
+    },
+    {
+      "signature": "洪滑长",
+      "count": 4,
+      "case_ids": [
+        89,
+        92,
+        251,
+        351
+      ],
+      "formulas": {
+        "次温饮": 5,
+        "白虎加人参汤": 4,
+        "将方中石膏": 2,
+        "白虎汤": 2,
+        "虎加人参以山药代粳米汤": 1,
+        "重用生石膏": 1,
+        "升陷汤": 1,
+        "因石膏": 1,
+        "至石膏": 1,
+        "承气汤": 1
+      },
+      "top_formula": "次温饮",
+      "sample_pulse_raw": "洪滑而长"
+    },
+    {
+      "signature": "大",
+      "count": 4,
+      "case_ids": [
+        114,
+        303,
+        447,
+        554
+      ],
+      "formulas": {
+        "桂枝加桂汤": 2,
+        "资生通脉汤": 1
+      },
+      "top_formula": "桂枝加桂汤",
+      "sample_pulse_raw": "大致近和平"
+    },
+    {
+      "signature": "浮有力",
+      "count": 4,
+      "case_ids": [
+        126,
+        141,
+        249,
+        562
+      ],
+      "formulas": {
+        "谓石膏": 2
+      },
+      "top_formula": "谓石膏",
+      "sample_pulse_raw": "浮而有力"
+    },
+    {
+      "signature": "洪数实",
+      "count": 4,
+      "case_ids": [
+        128,
+        143,
+        155,
+        564
+      ],
+      "formulas": {
+        "仍以汽水所煎石膏汤": 2,
+        "以蒸汽水煎汤": 2,
+        "俾其多进饮": 2,
+        "穷极石膏": 2,
+        "生肌散": 2,
+        "补络补管汤": 1
+      },
+      "top_formula": "仍以汽水所煎石膏汤",
+      "sample_pulse_raw": "洪数而实"
+    },
+    {
+      "signature": "沉无力",
+      "count": 4,
+      "case_ids": [
+        285,
+        302,
+        434,
+        446
+      ],
+      "formulas": {
+        "遂改用升陷汤": 1,
+        "钱煎汤": 1
+      },
+      "top_formula": "遂改用升陷汤",
+      "sample_pulse_raw": "左右皆沉而无力"
+    },
+    {
+      "signature": "虚数",
+      "count": 3,
+      "case_ids": [
+        1,
+        3,
+        628
+      ],
+      "formulas": {
+        "资生汤": 1,
+        "虎加人参以山药代粳米汤": 1,
+        "徐温饮": 1,
+        "次温饮": 1
+      },
+      "top_formula": "资生汤",
+      "sample_pulse_raw": "甚虚数"
+    },
+    {
+      "signature": "细数有力",
+      "count": 3,
+      "case_ids": [
+        2,
+        253,
+        407
+      ],
+      "formulas": {
+        "资生汤": 2,
+        "次温饮": 2,
+        "以之煮汤": 1
+      },
+      "top_formula": "资生汤",
+      "sample_pulse_raw": "细数有力"
+    },
+    {
+      "signature": "沉迟微弱",
+      "count": 3,
+      "case_ids": [
+        15,
+        16,
+        152
+      ],
+      "formulas": {
+        "升陷汤": 3,
+        "麦门冬汤": 1
+      },
+      "top_formula": "升陷汤",
+      "sample_pulse_raw": "沉迟微弱"
+    },
+    {
+      "signature": "沉微",
+      "count": 3,
+      "case_ids": [
+        20,
+        67,
+        227
+      ],
+      "formulas": {
+        "升陷汤": 3,
+        "两次温饮": 1,
+        "煎数沸当茶饮": 1,
+        "干颓汤": 1
+      },
+      "top_formula": "升陷汤",
+      "sample_pulse_raw": "甚沉微"
+    },
+    {
+      "signature": "滑实",
+      "count": 3,
+      "case_ids": [
+        30,
+        228,
+        275
+      ],
+      "formulas": {
+        "投以清金解毒汤": 1,
+        "药之外兼服犀黄丸": 1,
+        "清凉华盖饮": 1
+      },
+      "top_formula": "投以清金解毒汤",
+      "sample_pulse_raw": "滑实"
+    },
+    {
+      "signature": "微弱迟",
+      "count": 3,
+      "case_ids": [
+        68,
+        112,
+        218
+      ],
+      "formulas": {
+        "升陷汤": 1
+      },
+      "top_formula": "升陷汤",
+      "sample_pulse_raw": "微弱而迟"
+    },
+    {
+      "signature": "虚",
+      "count": 3,
+      "case_ids": [
+        74,
+        79,
+        477
+      ],
+      "formulas": {
+        "肾气丸": 2,
+        "白虎加人参汤": 1,
+        "重用生石膏": 1,
+        "薯蓣粥": 1
+      },
+      "top_formula": "肾气丸",
+      "sample_pulse_raw": "虚者"
+    },
+    {
+      "signature": "洪实数",
+      "count": 3,
+      "case_ids": [
+        135,
+        150,
+        383
+      ],
+      "formulas": {
+        "再投以白虎加人参汤": 2,
+        "遵先生重用生石膏": 2,
+        "蘸生石膏": 2,
+        "徐温饮": 2,
+        "白虎加人参汤": 1,
+        "煎汤乘热饮": 1,
+        "两次温饮": 1,
+        "况石膏": 1,
+        "次温饮": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "再投以白虎加人参汤",
+      "sample_pulse_raw": "来洪实兼数"
+    },
+    {
+      "signature": "浮弦有力",
+      "count": 3,
+      "case_ids": [
+        161,
+        347,
+        579
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "浮弦有力者"
+    },
+    {
+      "signature": "沉实",
+      "count": 3,
+      "case_ids": [
+        162,
+        580,
+        631
+      ],
+      "formulas": {
+        "再服汤": 1
+      },
+      "top_formula": "再服汤",
+      "sample_pulse_raw": "象沉实"
+    },
+    {
+      "signature": "洪滑实",
+      "count": 3,
+      "case_ids": [
+        197,
+        199,
+        373
+      ],
+      "formulas": {
+        "小青龙汤": 8,
+        "从龙汤": 5,
+        "继服从龙汤": 3,
+        "小青龙加石膏汤": 2,
+        "滋阴清燥汤": 2,
+        "白虎加人参汤": 2,
+        "白虎汤": 2,
+        "加石膏汤": 1,
+        "青龙汤": 1,
+        "陷胸汤": 1
+      },
+      "top_formula": "小青龙汤",
+      "sample_pulse_raw": "洪滑而实"
+    },
+    {
+      "signature": "数无力",
+      "count": 3,
+      "case_ids": [
+        273,
+        352,
+        489
+      ],
+      "formulas": {
+        "滋阴清燥汤": 1
+      },
+      "top_formula": "滋阴清燥汤",
+      "sample_pulse_raw": "数而无力"
+    },
+    {
+      "signature": "浮",
+      "count": 3,
+      "case_ids": [
+        450,
+        594,
+        613
+      ],
+      "formulas": {
+        "虎加人参汤": 1
+      },
+      "top_formula": "虎加人参汤",
+      "sample_pulse_raw": "关前浮荡"
+    },
+    {
+      "signature": "涩",
+      "count": 2,
+      "case_ids": [
+        39,
+        246
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "郁涩"
+    },
+    {
+      "signature": "细微浮数",
+      "count": 2,
+      "case_ids": [
+        54,
+        608
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "细微浮数"
+    },
+    {
+      "signature": "弦浮",
+      "count": 2,
+      "case_ids": [
+        61,
+        165
+      ],
+      "formulas": {
+        "白头翁汤": 1
+      },
+      "top_formula": "白头翁汤",
+      "sample_pulse_raw": "弦而浮"
+    },
+    {
+      "signature": "洪滑浮",
+      "count": 2,
+      "case_ids": [
+        73,
+        201
+      ],
+      "formulas": {
+        "白虎汤": 5,
+        "白虎加人参汤": 4,
+        "徐温饮": 2,
+        "承气汤": 1,
+        "宜治以白虎汤": 1,
+        "以石膏": 1,
+        "将石膏": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "洪滑兼浮"
+    },
+    {
+      "signature": "微细数",
+      "count": 2,
+      "case_ids": [
+        87,
+        104
+      ],
+      "formulas": {
+        "虎加人参以山药代粳米汤": 4,
+        "徐温饮": 2,
+        "加人参于白虎汤": 1,
+        "白虎加人参汤": 1,
+        "滋阴清燥汤": 1,
+        "升陷汤": 1,
+        "天水散": 1,
+        "次温饮": 1,
+        "将石膏": 1,
+        "投以活络效灵丹": 1
+      },
+      "top_formula": "虎加人参以山药代粳米汤",
+      "sample_pulse_raw": "微细而数"
+    },
+    {
+      "signature": "微弦",
+      "count": 2,
+      "case_ids": [
+        99,
+        455
+      ],
+      "formulas": {
+        "活络效灵丹": 5,
+        "投以活络效灵丹": 1,
+        "若承气汤": 1
+      },
+      "top_formula": "活络效灵丹",
+      "sample_pulse_raw": "微弦"
+    },
+    {
+      "signature": "微细无力",
+      "count": 2,
+      "case_ids": [
+        110,
+        641
+      ],
+      "formulas": {
+        "固冲汤": 1
+      },
+      "top_formula": "固冲汤",
+      "sample_pulse_raw": "皆微细无力"
+    },
+    {
+      "signature": "细弱数",
+      "count": 2,
+      "case_ids": [
+        116,
+        252
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "细弱而数"
+    },
+    {
+      "signature": "细弱",
+      "count": 2,
+      "case_ids": [
+        154,
+        595
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "甚细弱"
+    },
+    {
+      "signature": "洪",
+      "count": 2,
+      "case_ids": [
+        158,
+        282
+      ],
+      "formulas": {
+        "小陷胸汤": 2,
+        "捣碎煮汤": 1,
+        "大陷胸汤": 1,
+        "两次温饮": 1,
+        "遂去石膏": 1
+      },
+      "top_formula": "小陷胸汤",
+      "sample_pulse_raw": "关前洪"
+    },
+    {
+      "signature": "沉数",
+      "count": 2,
+      "case_ids": [
+        175,
+        590
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "沉数"
+    },
+    {
+      "signature": "浮弱",
+      "count": 2,
+      "case_ids": [
+        198,
+        546
+      ],
+      "formulas": {
+        "小青龙汤": 3,
+        "又加生石膏": 1,
+        "从龙汤": 1
+      },
+      "top_formula": "小青龙汤",
+      "sample_pulse_raw": "则浮弱不堪重按"
+    },
+    {
+      "signature": "弦数",
+      "count": 2,
+      "case_ids": [
+        214,
+        452
+      ],
+      "formulas": {
+        "白虎加人参汤": 3,
+        "以白虎汤": 1,
+        "次温饮": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "弦数"
+    },
+    {
+      "signature": "弦大",
+      "count": 2,
+      "case_ids": [
+        225,
+        529
+      ],
+      "formulas": {
+        "建瓴汤": 2
+      },
+      "top_formula": "建瓴汤",
+      "sample_pulse_raw": "象弦硬而大"
+    },
+    {
+      "signature": "迟无力",
+      "count": 2,
+      "case_ids": [
+        263,
+        416
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "迟而无力"
+    },
+    {
+      "signature": "浮洪长",
+      "count": 2,
+      "case_ids": [
+        269,
+        619
+      ],
+      "formulas": {
+        "小青龙汤": 1
+      },
+      "top_formula": "小青龙汤",
+      "sample_pulse_raw": "浮洪而长"
+    },
+    {
+      "signature": "弦无力",
+      "count": 2,
+      "case_ids": [
+        295,
+        372
+      ],
+      "formulas": {
+        "珠玉二宝粥": 1,
+        "传送饮": 1
+      },
+      "top_formula": "珠玉二宝粥",
+      "sample_pulse_raw": "左部弦而无力"
+    },
+    {
+      "signature": "上盛下虚",
+      "count": 2,
+      "case_ids": [
+        339,
+        379
+      ],
+      "formulas": {
+        "肾气丸": 3,
+        "送服生石膏": 2,
+        "分多次徐徐温饮": 1,
+        "分多次温饮": 1,
+        "诸药煎汤": 1,
+        "且石膏": 1,
+        "将石膏": 1
+      },
+      "top_formula": "肾气丸",
+      "sample_pulse_raw": "上盛下虚"
+    },
+    {
+      "signature": "动",
+      "count": 2,
+      "case_ids": [
+        365,
+        419
+      ],
+      "formulas": {
+        "白虎加人参汤": 2,
+        "徐温饮": 2,
+        "投以大剂白虎加人参汤": 1,
+        "虎加人参汤": 1,
+        "以石膏": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "摇摇而动"
+    },
+    {
+      "signature": "实大",
+      "count": 2,
+      "case_ids": [
+        376,
+        509
+      ],
+      "formulas": {
+        "每次送服卫生防疫宝丹": 1,
+        "离中丹": 1
+      },
+      "top_formula": "每次送服卫生防疫宝丹",
+      "sample_pulse_raw": "无火而其实际转大热者"
+    },
+    {
+      "signature": "沉细迟",
+      "count": 2,
+      "case_ids": [
+        377,
+        510
+      ],
+      "formulas": {
+        "卫生防疫宝丹": 3
+      },
+      "top_formula": "卫生防疫宝丹",
+      "sample_pulse_raw": "沉细且迟"
+    },
+    {
+      "signature": "虚弱",
+      "count": 2,
+      "case_ids": [
+        378,
+        511
+      ],
+      "formulas": {
+        "煮作茶汤": 1,
+        "作茶汤": 1
+      },
+      "top_formula": "煮作茶汤",
+      "sample_pulse_raw": "虽甚虚弱"
+    },
+    {
+      "signature": "弦微",
+      "count": 2,
+      "case_ids": [
+        386,
+        519
+      ],
+      "formulas": {
+        "资生通脉汤": 1,
+        "硝石矾石散": 1,
+        "煮作茶汤": 1
+      },
+      "top_formula": "资生通脉汤",
+      "sample_pulse_raw": "左部弦而微硬"
+    },
+    {
+      "signature": "长有力",
+      "count": 2,
+      "case_ids": [
+        388,
+        582
+      ],
+      "formulas": {
+        "清凉华盖饮": 1
+      },
+      "top_formula": "清凉华盖饮",
+      "sample_pulse_raw": "妆长有力"
+    },
+    {
+      "signature": "洪有力",
+      "count": 2,
+      "case_ids": [
+        420,
+        522
+      ],
+      "formulas": {
+        "白虎加人参汤": 1,
+        "宜治以白虎汤": 1,
+        "加人参汤": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "洪汕有力"
+    },
+    {
+      "signature": "细",
+      "count": 2,
+      "case_ids": [
+        438,
+        491
+      ],
+      "formulas": {
+        "分多次温饮": 1
+      },
+      "top_formula": "分多次温饮",
+      "sample_pulse_raw": "细参、纯系阳分偏盛阴分不足"
+    },
+    {
+      "signature": "沉濡",
+      "count": 1,
+      "case_ids": [
+        6
+      ],
+      "formulas": {
+        "醴泉饮": 2,
+        "升陷汤": 2
+      },
+      "top_formula": "醴泉饮",
+      "sample_pulse_raw": "现沉濡"
+    },
+    {
+      "signature": "大弦",
+      "count": 1,
+      "case_ids": [
+        13
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "大而弦"
+    },
+    {
+      "signature": "沉",
+      "count": 1,
+      "case_ids": [
+        21
+      ],
+      "formulas": {
+        "炙甘草汤": 1,
+        "升陷汤": 1
+      },
+      "top_formula": "炙甘草汤",
+      "sample_pulse_raw": "皆极沉"
+    },
+    {
+      "signature": "微细迟",
+      "count": 1,
+      "case_ids": [
+        32
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "微细而迟"
+    },
+    {
+      "signature": "大无力",
+      "count": 1,
+      "case_ids": [
+        33
+      ],
+      "formulas": {
+        "保元寒降汤": 1
+      },
+      "top_formula": "保元寒降汤",
+      "sample_pulse_raw": "大而无力"
+    },
+    {
+      "signature": "迟濡",
+      "count": 1,
+      "case_ids": [
+        38
+      ],
+      "formulas": {
+        "加味理中地黄汤": 1,
+        "逐寒荡惊汤": 1,
+        "白通汤": 1,
+        "煮作粥": 1
+      },
+      "top_formula": "加味理中地黄汤",
+      "sample_pulse_raw": "甚迟濡"
+    },
+    {
+      "signature": "浮数濡",
+      "count": 1,
+      "case_ids": [
+        48
+      ],
+      "formulas": {
+        "参赭镇气汤": 1
+      },
+      "top_formula": "参赭镇气汤",
+      "sample_pulse_raw": "浮数而濡"
+    },
+    {
+      "signature": "弦细涩",
+      "count": 1,
+      "case_ids": [
+        51
+      ],
+      "formulas": {
+        "送服益元散": 1,
+        "人参汤": 1
+      },
+      "top_formula": "送服益元散",
+      "sample_pulse_raw": "弦细以涩"
+    },
+    {
+      "signature": "微弱沉",
+      "count": 1,
+      "case_ids": [
+        62
+      ],
+      "formulas": {
+        "桃花汤": 1,
+        "煎浓汤": 1
+      },
+      "top_formula": "桃花汤",
+      "sample_pulse_raw": "微弱而沉"
+    },
+    {
+      "signature": "缓迟涩",
+      "count": 1,
+      "case_ids": [
+        63
+      ],
+      "formulas": {
+        "大承气汤": 1
+      },
+      "top_formula": "大承气汤",
+      "sample_pulse_raw": "缓小迟涩"
+    },
+    {
+      "signature": "微弱迟濡",
+      "count": 1,
+      "case_ids": [
+        66
+      ],
+      "formulas": {
+        "玉液汤": 2
+      },
+      "top_formula": "玉液汤",
+      "sample_pulse_raw": "微弱迟濡"
+    },
+    {
+      "signature": "浮洪",
+      "count": 1,
+      "case_ids": [
+        71
+      ],
+      "formulas": {
+        "小青龙汤": 1
+      },
+      "top_formula": "小青龙汤",
+      "sample_pulse_raw": "浮洪"
+    },
+    {
+      "signature": "浮数滑",
+      "count": 1,
+      "case_ids": [
+        72
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "浮数而滑"
+    },
+    {
+      "signature": "沉滑实",
+      "count": 1,
+      "case_ids": [
+        91
+      ],
+      "formulas": {
+        "再服汤": 1
+      },
+      "top_formula": "再服汤",
+      "sample_pulse_raw": "沉滑而实"
+    },
+    {
+      "signature": "弦长实",
+      "count": 1,
+      "case_ids": [
+        96
+      ],
+      "formulas": {
+        "白虎汤": 3,
+        "重用生石膏": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "弦长（凡疟脉皆弦）重按甚实"
+    },
+    {
+      "signature": "洪数有力",
+      "count": 1,
+      "case_ids": [
+        101
+      ],
+      "formulas": {
+        "活络效灵丹": 1
+      },
+      "top_formula": "活络效灵丹",
+      "sample_pulse_raw": "洪数有力"
+    },
+    {
+      "signature": "有力微弦",
+      "count": 1,
+      "case_ids": [
+        117
+      ],
+      "formulas": {
+        "次温饮": 1
+      },
+      "top_formula": "次温饮",
+      "sample_pulse_raw": "有力而微弦"
+    },
+    {
+      "signature": "浮无力",
+      "count": 1,
+      "case_ids": [
+        157
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "浮而无力"
+    },
+    {
+      "signature": "芤无力",
+      "count": 1,
+      "case_ids": [
+        174
+      ],
+      "formulas": {
+        "下瘀血汤": 1
+      },
+      "top_formula": "下瘀血汤",
+      "sample_pulse_raw": "芤而无力"
+    },
+    {
+      "signature": "迟弱无力",
+      "count": 1,
+      "case_ids": [
+        177
+      ],
+      "formulas": {
+        "固冲汤": 1,
+        "安冲汤": 1,
+        "清带汤": 1
+      },
+      "top_formula": "固冲汤",
+      "sample_pulse_raw": "迟弱无力"
+    },
+    {
+      "signature": "沉微弦",
+      "count": 1,
+      "case_ids": [
+        180
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "沉而微弦"
+    },
+    {
+      "signature": "沉牢",
+      "count": 1,
+      "case_ids": [
+        182
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "沉牢"
+    },
+    {
+      "signature": "洪紧",
+      "count": 1,
+      "case_ids": [
+        190
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "较右脉洪紧"
+    },
+    {
+      "signature": "沉洪有力",
+      "count": 1,
+      "case_ids": [
+        200
+      ],
+      "formulas": {
+        "白虎汤": 2,
+        "重用生石膏": 1,
+        "投以生石膏": 1,
+        "中有石膏": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "沉洪有力"
+    },
+    {
+      "signature": "数弦",
+      "count": 1,
+      "case_ids": [
+        202
+      ],
+      "formulas": {
+        "白虎汤": 3,
+        "宜治以白虎加人参汤": 1,
+        "分三次徐徐温饮": 1,
+        "白虎加人参汤": 1,
+        "以白虎汤": 1,
+        "次温饮": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "数或弦硬"
+    },
+    {
+      "signature": "数虚",
+      "count": 1,
+      "case_ids": [
+        203
+      ],
+      "formulas": {
+        "白虎加人参汤": 10,
+        "次温饮": 2,
+        "白虎汤": 2,
+        "寒温证当用白虎加人参汤": 1,
+        "加人参于白虎汤": 1,
+        "虎加人参汤": 1,
+        "两次温饮": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "数者独非阴分虚损乎？李××闻愚言而心中会悟"
+    },
+    {
+      "signature": "沉弦有力",
+      "count": 1,
+      "case_ids": [
+        206
+      ],
+      "formulas": {
+        "小柴胡汤": 1
+      },
+      "top_formula": "小柴胡汤",
+      "sample_pulse_raw": "沉弦有力"
+    },
+    {
+      "signature": "洪实有力",
+      "count": 1,
+      "case_ids": [
+        215
+      ],
+      "formulas": {
+        "白虎加人参汤": 4,
+        "白虎汤": 2,
+        "次温饮": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "洪实有力"
+    },
+    {
+      "signature": "紧",
+      "count": 1,
+      "case_ids": [
+        220
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "象热而兼紧"
+    },
+    {
+      "signature": "弦细迟",
+      "count": 1,
+      "case_ids": [
+        235
+      ],
+      "formulas": {
+        "白虎加人参汤": 2,
+        "急用生石膏": 1,
+        "白头翁汤": 1,
+        "徐温饮": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "弦细兼迟"
+    },
+    {
+      "signature": "紧迟",
+      "count": 1,
+      "case_ids": [
+        239
+      ],
+      "formulas": {
+        "卫生防疫宝丹": 6,
+        "急救回生丹": 4
+      },
+      "top_formula": "卫生防疫宝丹",
+      "sample_pulse_raw": "尤紧而迟"
+    },
+    {
+      "signature": "浮缓",
+      "count": 1,
+      "case_ids": [
+        241
+      ],
+      "formulas": {
+        "诸药煎汤": 2,
+        "能进饮": 1,
+        "再服汤": 1,
+        "桂枝汤": 1
+      },
+      "top_formula": "诸药煎汤",
+      "sample_pulse_raw": "浮而缓"
+    },
+    {
+      "signature": "细微",
+      "count": 1,
+      "case_ids": [
+        243
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "细微"
+    },
+    {
+      "signature": "洪大弦长有力",
+      "count": 1,
+      "case_ids": [
+        247
+      ],
+      "formulas": {
+        "活络效灵丹": 1,
+        "起痿汤": 1
+      },
+      "top_formula": "活络效灵丹",
+      "sample_pulse_raw": "象必然洪大或弦长有力"
+    },
+    {
+      "signature": "微细迟缓",
+      "count": 1,
+      "case_ids": [
+        254
+      ],
+      "formulas": {
+        "黄连阿胶汤": 4,
+        "白虎加人参汤": 3,
+        "坎离互根汤": 2,
+        "滋阴清燥汤": 1,
+        "将方中石膏": 1,
+        "中有石膏": 1,
+        "可煎汤": 1,
+        "取其汤": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "黄连阿胶汤",
+      "sample_pulse_raw": "象间有不微细迟缓"
+    },
+    {
+      "signature": "沉迟细弱",
+      "count": 1,
+      "case_ids": [
+        256
+      ],
+      "formulas": {
+        "坎离互根汤": 1
+      },
+      "top_formula": "坎离互根汤",
+      "sample_pulse_raw": "沉迟细弱也"
+    },
+    {
+      "signature": "沉迟弦紧",
+      "count": 1,
+      "case_ids": [
+        259
+      ],
+      "formulas": {
+        "白虎加人参汤": 1,
+        "通脉四逆汤": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "沉迟而弦紧"
+    },
+    {
+      "signature": "洪长",
+      "count": 1,
+      "case_ids": [
+        266
+      ],
+      "formulas": {
+        "分多次徐徐温饮": 1,
+        "白虎加人参汤": 1,
+        "滋阴清燥汤": 1,
+        "以白虎汤": 1,
+        "徐温饮": 1
+      },
+      "top_formula": "分多次徐徐温饮",
+      "sample_pulse_raw": "左右皆洪长"
+    },
+    {
+      "signature": "浮微数",
+      "count": 1,
+      "case_ids": [
+        270
+      ],
+      "formulas": {
+        "麻杏甘石汤": 1
+      },
+      "top_formula": "麻杏甘石汤",
+      "sample_pulse_raw": "浮而微数"
+    },
+    {
+      "signature": "沉濡迟",
+      "count": 1,
+      "case_ids": [
+        299
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "沉濡而迟"
+    },
+    {
+      "signature": "弦芤",
+      "count": 1,
+      "case_ids": [
+        309
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "弦而芤"
+    },
+    {
+      "signature": "浮实芤",
+      "count": 1,
+      "case_ids": [
+        310
+      ],
+      "formulas": {
+        "俾用生怀山药细末煮作粥": 1,
+        "敦复汤": 1
+      },
+      "top_formula": "俾用生怀山药细末煮作粥",
+      "sample_pulse_raw": "浮而不实有似芤脉"
+    },
+    {
+      "signature": "弦细有力长",
+      "count": 1,
+      "case_ids": [
+        312
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "弦细有力而长"
+    },
+    {
+      "signature": "大缓",
+      "count": 1,
+      "case_ids": [
+        313
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "亦大见缓和"
+    },
+    {
+      "signature": "细微无力",
+      "count": 1,
+      "case_ids": [
+        316
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "细微无力"
+    },
+    {
+      "signature": "洪滑弦",
+      "count": 1,
+      "case_ids": [
+        344
+      ],
+      "formulas": {
+        "白虎加人参汤": 3,
+        "分四次温饮": 1,
+        "滋阴清燥汤": 1,
+        "以白虎汤": 1,
+        "惟生石膏": 1,
+        "白虎汤": 1,
+        "将石膏": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_pulse_raw": "不为洪滑而为弦硬者"
+    },
+    {
+      "signature": "洪大实",
+      "count": 1,
+      "case_ids": [
+        348
+      ],
+      "formulas": {
+        "徐温饮": 1,
+        "寒解汤": 1,
+        "以石膏": 1
+      },
+      "top_formula": "徐温饮",
+      "sample_pulse_raw": "洪大而实"
+    },
+    {
+      "signature": "大有力",
+      "count": 1,
+      "case_ids": [
+        354
+      ],
+      "formulas": {
+        "离中丹": 2,
+        "投以大剂白虎加人参汤": 1,
+        "每次送服卫生防疫宝丹": 1,
+        "卫生防疫宝丹": 1,
+        "次温饮": 1
+      },
+      "top_formula": "离中丹",
+      "sample_pulse_raw": "左右皆似大而有力"
+    },
+    {
+      "signature": "浮滑长",
+      "count": 1,
+      "case_ids": [
+        369
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "浮滑而长"
+    },
+    {
+      "signature": "濡弱",
+      "count": 1,
+      "case_ids": [
+        387
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "濡弱"
+    },
+    {
+      "signature": "沉细微",
+      "count": 1,
+      "case_ids": [
+        399
+      ],
+      "formulas": {
+        "急救回生丹": 2
+      },
+      "top_formula": "急救回生丹",
+      "sample_pulse_raw": "沉细人微无者,方可酌用《伤寒论》"
+    },
+    {
+      "signature": "沉迟紧",
+      "count": 1,
+      "case_ids": [
+        412
+      ],
+      "formulas": {
+        "白虎汤": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_pulse_raw": "沉迟而蓄紧"
+    },
+    {
+      "signature": "沉迟",
+      "count": 1,
+      "case_ids": [
+        445
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "沉潘而迟"
+    },
+    {
+      "signature": "弦沉",
+      "count": 1,
+      "case_ids": [
+        467
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "弦硬而沉者"
+    },
+    {
+      "signature": "微",
+      "count": 1,
+      "case_ids": [
+        485
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "象衣而微"
+    },
+    {
+      "signature": "实虚",
+      "count": 1,
+      "case_ids": [
+        493
+      ],
+      "formulas": {
+        "白头翁汤": 1,
+        "人参汤": 1
+      },
+      "top_formula": "白头翁汤",
+      "sample_pulse_raw": "合参、此万再实正虚"
+    },
+    {
+      "signature": "沉有力",
+      "count": 1,
+      "case_ids": [
+        549
+      ],
+      "formulas": {
+        "大柴胡汤": 1
+      },
+      "top_formula": "大柴胡汤",
+      "sample_pulse_raw": "沉莎有力"
+    },
+    {
+      "signature": "微细疾",
+      "count": 1,
+      "case_ids": [
+        551
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "象仍然微细《著疾坑尝多机高冤时高志本)》"
+    },
+    {
+      "signature": "弦迟细弱",
+      "count": 1,
+      "case_ids": [
+        552
+      ],
+      "formulas": {
+        "遂停汤": 1
+      },
+      "top_formula": "遂停汤",
+      "sample_pulse_raw": "弦迟细弱"
+    },
+    {
+      "signature": "有力微",
+      "count": 1,
+      "case_ids": [
+        556
+      ],
+      "formulas": {
+        "人参汤": 1
+      },
+      "top_formula": "人参汤",
+      "sample_pulse_raw": "有力无微绪"
+    },
+    {
+      "signature": "滑数",
+      "count": 1,
+      "case_ids": [
+        557
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "滑数"
+    },
+    {
+      "signature": "实数",
+      "count": 1,
+      "case_ids": [
+        569
+      ],
+      "formulas": {
+        "人参汤": 1
+      },
+      "top_formula": "人参汤",
+      "sample_pulse_raw": "来烘实兼数"
+    },
+    {
+      "signature": "迟微弱",
+      "count": 1,
+      "case_ids": [
+        572
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "总迟微弱"
+    },
+    {
+      "signature": "微动",
+      "count": 1,
+      "case_ids": [
+        573
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_pulse_raw": "不全仿佛微动"
+    },
+    {
+      "signature": "结",
+      "count": 1,
+      "case_ids": [
+        593
+      ],
+      "formulas": {
+        "投以清金解毒汤": 1
+      },
+      "top_formula": "投以清金解毒汤",
+      "sample_pulse_raw": "结核证至此"
+    },
+    {
+      "signature": "数濡",
+      "count": 1,
+      "case_ids": [
+        605
+      ],
+      "formulas": {
+        "参赭镇气汤": 1
+      },
+      "top_formula": "参赭镇气汤",
+      "sample_pulse_raw": "译数而濡, 尺能于寸, 面色枯术"
+    },
+    {
+      "signature": "微迟濡",
+      "count": 1,
+      "case_ids": [
+        616
+      ],
+      "formulas": {
+        "玉液汤": 1
+      },
+      "top_formula": "玉液汤",
+      "sample_pulse_raw": "微勇迟濡"
+    }
+  ]
+}

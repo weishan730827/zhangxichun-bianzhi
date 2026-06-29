@@ -1,11 +1,20 @@
-# 临时工作目录
-/data/user/work/
+# 中间产物 (大文件/OCR 原始文件)
+zhangxichun_originals/*.txt
+zhangxichun_originals/*.md
+zhangxichun_originals/*_v0.*.json
+zhangxichun_originals/*_v1.*.json
+zhangxichun_originals/医案全量提取_*.json
+zhangxichun_originals/方剂-*.json
+zhangxichun_originals/脉象-*.json
+zhangxichun_originals/症状-*.json
+zhangxichun_originals/关键方剂-*.json
+zhangxichun_originals/三部九候指纹库_v1.2.json
+zhangxichun_originals/重按指纹库_v1.2.json
+zhangxichun_originals/左右对比指纹库_v1.2.json
+zhangxichun_originals/脉诊指纹库_v0.5.json
+zhangxichun_originals/脉诊指纹库_v0.6.json
 
-# 大型 TXT 原书(>1MB)
-zhangxichun_originals/校后_2018完整版_全8期30卷.txt
+# screenshots 目录
+screenshots/
 
-# 系统文件
-.DS_Store
-Thumbs.db
-*.swp
-*.tmp
+# python/data 中间脚本 (只保留 .py, 不保留结果)

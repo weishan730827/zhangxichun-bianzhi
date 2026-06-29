@@ -1,0 +1,942 @@
+{
+  "version": "v1.2",
+  "description": "★ 左右对比指纹库: 从 607 个真实医案中提取的\"左脉X, 右脉Y\"组合 (76+ 个)",
+  "method": "不推断, 直接从原书提取左右对比原话, 标准化为指纹",
+  "total_signatures": 59,
+  "total_case_segments": 607,
+  "left_right_match_count": 89,
+  "signatures": [
+    {
+      "signature": "左弦/右弦长",
+      "count": 7,
+      "case_ids": [
+        307,
+        307,
+        313,
+        313,
+        363,
+        363,
+        498
+      ],
+      "raw_quotes": [
+        "左部弦硬，右部弦长，",
+        "左脉弦硬者，阴分亏损而肝胆有热也，右部弦长者，",
+        "左部弦而甚硬，右部弦硬且长。",
+        "左脉弦硬者，肝气挟火上升也。右脉弦硬且长者，",
+        "左部弦硬，右部弦长有力，"
+      ],
+      "formulas": {
+        "以石膏": 2
+      },
+      "top_formula": "以石膏",
+      "sample_raw_quote": "左部弦硬者，肝胆之火炽盛也。右部弦长者，"
+    },
+    {
+      "signature": "左弦/右洪实",
+      "count": 6,
+      "case_ids": [
+        133,
+        148,
+        355,
+        355,
+        374,
+        568
+      ],
+      "raw_quotes": [
+        "左关弦硬，右关洪实，",
+        "左关弦硬，右关洪实，",
+        "左部弦硬，右部洪实，",
+        "右脉洪实，其炽盛之肝火下迫肠中作痢，是以左脉弦硬。",
+        "左部弦硬，右部洪实。"
+      ],
+      "formulas": {
+        "但煎汤饮": 2,
+        "徐温饮": 2,
+        "白虎汤": 2,
+        "白头翁汤": 2,
+        "惟石膏": 2,
+        "钱煎汤": 2
+      },
+      "top_formula": "但煎汤饮",
+      "sample_raw_quote": "左关弦硬，右关洪实，"
+    },
+    {
+      "signature": "左弦长/右洪长",
+      "count": 6,
+      "case_ids": [
+        224,
+        224,
+        297,
+        364,
+        370,
+        528
+      ],
+      "raw_quotes": [
+        "左部弦长，右部洪长，",
+        "左脉之弦长，懊 所生之热也。右脉之洪长，",
+        "左部弦长，右部洪长，",
+        "左部弦长，右部洪长，",
+        "左部弦长，右部洪长，"
+      ],
+      "formulas": {
+        "必用白虎加人参汤": 1,
+        "白虎加人参汤": 3,
+        "煮作茶汤": 1,
+        "离中丹": 1,
+        "白虎汤": 2,
+        "少进饮": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_raw_quote": "左部弦长，右部洪长，"
+    },
+    {
+      "signature": "左微弱/右",
+      "count": 4,
+      "case_ids": [
+        102,
+        102,
+        103,
+        637
+      ],
+      "raw_quotes": [
+        "左脉微弱，较差于右脉一倍。",
+        "右脉和平如常，左脉微弱，",
+        "右部如常，左部微弱。",
+        "右部如常，左部微弱。"
+      ],
+      "formulas": {
+        "曲直汤": 4
+      },
+      "top_formula": "曲直汤",
+      "sample_raw_quote": "右部如常，左部微弱。"
+    },
+    {
+      "signature": "左弦/右浮",
+      "count": 3,
+      "case_ids": [
+        296,
+        334,
+        439
+      ],
+      "raw_quotes": [
+        "左部弦而无力，右部浮取似有力，",
+        "左脉弦硬者，肝脉挟风之象，其右脉浮而无力者，",
+        "左脉秀而弦硬，右脉浮而封，"
+      ],
+      "formulas": {
+        "肾气丸": 1
+      },
+      "top_formula": "肾气丸",
+      "sample_raw_quote": "左部弦而无力，右部浮取似有力，"
+    },
+    {
+      "signature": "左/右弦长",
+      "count": 3,
+      "case_ids": [
+        323,
+        368,
+        465
+      ],
+      "raw_quotes": [
+        "左部如常，而右部弦长，",
+        "左脉，为其冲气挟胃气肝火上冲，是以左右脉皆弦长。",
+        "左部如常，而右部弦长，"
+      ],
+      "formulas": {
+        "而又重用生石膏": 1,
+        "如麻杏甘石汤": 1,
+        "麻杏甘石汤": 4
+      },
+      "top_formula": "麻杏甘石汤",
+      "sample_raw_quote": "左部如常，而右部弦长，"
+    },
+    {
+      "signature": "左弦/右濡滑",
+      "count": 2,
+      "case_ids": [
+        294,
+        294
+      ],
+      "raw_quotes": [
+        "左部弦硬，右部濡滑，",
+        "左部弦硬者，肝肾之阴液不足也。右部濡滑者，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦硬，右部濡滑，"
+    },
+    {
+      "signature": "左弦/右濡",
+      "count": 2,
+      "case_ids": [
+        294,
+        442
+      ],
+      "raw_quotes": [
+        "左部仍似弦硬，右部仍濡，",
+        "左部弦硬者，肝肾之阴波不足也。右部濡请者，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部仍似弦硬，右部仍濡，"
+    },
+    {
+      "signature": "左弦/右滑",
+      "count": 2,
+      "case_ids": [
+        295,
+        328
+      ],
+      "raw_quotes": [
+        "左部弦而无力，右部滑而无力，",
+        "左部弦而有力，右部滑而有力。"
+      ],
+      "formulas": {
+        "珠玉二宝粥": 1,
+        "传送饮": 1
+      },
+      "top_formula": "珠玉二宝粥",
+      "sample_raw_quote": "左部弦而无力，右部滑而无力，"
+    },
+    {
+      "signature": "左弦长/右长",
+      "count": 2,
+      "case_ids": [
+        308,
+        308
+      ],
+      "raw_quotes": [
+        "左部弦长，右部长而兼硬，",
+        "左脉弦长；为其肝火挟冲胃之气上冲，是以右脉长而兼硬；"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦长，右部长而兼硬，"
+    },
+    {
+      "signature": "左沉弦/右沉牢",
+      "count": 2,
+      "case_ids": [
+        326,
+        345
+      ],
+      "raw_quotes": [
+        "左部沉弦，右部沉牢，",
+        "左部沉弦，右部沉牢。"
+      ],
+      "formulas": {
+        "内托生肌散": 1,
+        "离中丹": 2
+      },
+      "top_formula": "离中丹",
+      "sample_raw_quote": "左部沉弦，右部沉牢，"
+    },
+    {
+      "signature": "左长/右洪长",
+      "count": 2,
+      "case_ids": [
+        443,
+        503
+      ],
+      "raw_quotes": [
+        "左部芝长，右部洪长，",
+        "左部足长，右部洪长，"
+      ],
+      "formulas": {
+        "白虎加人参汤": 2
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_raw_quote": "左部芝长，右部洪长，"
+    },
+    {
+      "signature": "左长/右长",
+      "count": 2,
+      "case_ids": [
+        452,
+        504
+      ],
+      "raw_quotes": [
+        "左部蔷长，右部长而兼硬，",
+        "左部蓄硬而长，右部法请而长，"
+      ],
+      "formulas": {
+        "白虎汤": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_raw_quote": "左部蔷长，右部长而兼硬，"
+    },
+    {
+      "signature": "左弦细/右微弱",
+      "count": 1,
+      "case_ids": [
+        2
+      ],
+      "raw_quotes": [
+        "左部弦细，右部微弱，"
+      ],
+      "formulas": {
+        "资生汤": 2
+      },
+      "top_formula": "资生汤",
+      "sample_raw_quote": "左部弦细，右部微弱，"
+    },
+    {
+      "signature": "左弦/右微弱",
+      "count": 1,
+      "case_ids": [
+        23
+      ],
+      "raw_quotes": [
+        "左关弦硬，右寸独微弱，"
+      ],
+      "formulas": {
+        "升陷汤": 2
+      },
+      "top_formula": "升陷汤",
+      "sample_raw_quote": "左关弦硬，右寸独微弱，"
+    },
+    {
+      "signature": "左/右滑实",
+      "count": 1,
+      "case_ids": [
+        30
+      ],
+      "raw_quotes": [
+        "左脉近平和，右脉滑而实，"
+      ],
+      "formulas": {
+        "投以清金解毒汤": 1
+      },
+      "top_formula": "投以清金解毒汤",
+      "sample_raw_quote": "左脉近平和，右脉滑而实，"
+    },
+    {
+      "signature": "左细弱/右弦",
+      "count": 1,
+      "case_ids": [
+        31
+      ],
+      "raw_quotes": [
+        "左脉细弱，右脉则弦而有力，"
+      ],
+      "formulas": {
+        "寒降汤": 3
+      },
+      "top_formula": "寒降汤",
+      "sample_raw_quote": "左脉细弱，右脉则弦而有力，"
+    },
+    {
+      "signature": "左弦细/右",
+      "count": 1,
+      "case_ids": [
+        97
+      ],
+      "raw_quotes": [
+        "左部弦细，右部似有似无，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦细，右部似有似无，"
+    },
+    {
+      "signature": "左/右浮弦",
+      "count": 1,
+      "case_ids": [
+        105
+      ],
+      "raw_quotes": [
+        "左关尺及右尺皆浮弦，"
+      ],
+      "formulas": {
+        "继将汤": 1,
+        "制作丸": 1
+      },
+      "top_formula": "继将汤",
+      "sample_raw_quote": "左关尺及右尺皆浮弦，"
+    },
+    {
+      "signature": "左弦/右弦细",
+      "count": 1,
+      "case_ids": [
+        106
+      ],
+      "raw_quotes": [
+        "右脉弦细，左脉弦硬。"
+      ],
+      "formulas": {
+        "治以安冲汤": 1,
+        "安冲汤": 1
+      },
+      "top_formula": "治以安冲汤",
+      "sample_raw_quote": "右脉弦细，左脉弦硬。"
+    },
+    {
+      "signature": "左弦浮/右沉滑",
+      "count": 1,
+      "case_ids": [
+        165
+      ],
+      "raw_quotes": [
+        "左脉弦硬而浮，右脉沉滑。"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉弦硬而浮，右脉沉滑。"
+    },
+    {
+      "signature": "左弦细/右沉濡",
+      "count": 1,
+      "case_ids": [
+        183
+      ],
+      "raw_quotes": [
+        "左脉弦细，右脉沉濡，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉弦细，右脉沉濡，"
+    },
+    {
+      "signature": "左/右洪紧",
+      "count": 1,
+      "case_ids": [
+        190
+      ],
+      "raw_quotes": [
+        "左脉较右脉洪紧，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉较右脉洪紧，"
+    },
+    {
+      "signature": "左弦细浮/右弦细",
+      "count": 1,
+      "case_ids": [
+        203
+      ],
+      "raw_quotes": [
+        "左部弦细而浮，不任重按，右部亦弦细而重诊似有力，"
+      ],
+      "formulas": {
+        "加人参于白虎汤": 1,
+        "白虎加人参汤": 10,
+        "白虎汤": 2
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_raw_quote": "左部弦细而浮，不任重按，右部亦弦细而重诊似有力，"
+    },
+    {
+      "signature": "左/右微弱",
+      "count": 1,
+      "case_ids": [
+        247
+      ],
+      "raw_quotes": [
+        "左部如常，右部则微弱无力，"
+      ],
+      "formulas": {
+        "活络效灵丹": 1,
+        "起痿汤": 1
+      },
+      "top_formula": "活络效灵丹",
+      "sample_raw_quote": "左部如常，右部则微弱无力，"
+    },
+    {
+      "signature": "左弦/右洪",
+      "count": 1,
+      "case_ids": [
+        271
+      ],
+      "raw_quotes": [
+        "左脉弦硬有真气不敛之象，右脉近洪而不任重按，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉弦硬有真气不敛之象，右脉近洪而不任重按，"
+    },
+    {
+      "signature": "左浮弦/右浮芤",
+      "count": 1,
+      "case_ids": [
+        290
+      ],
+      "raw_quotes": [
+        "左脉浮而弦硬，右脉浮而芤，"
+      ],
+      "formulas": {
+        "俾停服汤": 1
+      },
+      "top_formula": "俾停服汤",
+      "sample_raw_quote": "左脉浮而弦硬，右脉浮而芤，"
+    },
+    {
+      "signature": "左沉细/右弦长",
+      "count": 1,
+      "case_ids": [
+        304
+      ],
+      "raw_quotes": [
+        "左部沉细，右部则弦硬而长，"
+      ],
+      "formulas": {
+        "若入汤": 1
+      },
+      "top_formula": "若入汤",
+      "sample_raw_quote": "左部沉细，右部则弦硬而长，"
+    },
+    {
+      "signature": "左数/右弦长大",
+      "count": 1,
+      "case_ids": [
+        304
+      ],
+      "raw_quotes": [
+        "右部则弦硬而长，大于左部数倍。"
+      ],
+      "formulas": {
+        "若入汤": 1
+      },
+      "top_formula": "若入汤",
+      "sample_raw_quote": "右部则弦硬而长，大于左部数倍。"
+    },
+    {
+      "signature": "左弦长/右大芤",
+      "count": 1,
+      "case_ids": [
+        305
+      ],
+      "raw_quotes": [
+        "左部弦长，重按无力，右部大而芤，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦长，重按无力，右部大而芤，"
+    },
+    {
+      "signature": "左弦/右大",
+      "count": 1,
+      "case_ids": [
+        305
+      ],
+      "raw_quotes": [
+        "左脉之弦，右脉之大，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉之弦，右脉之大，"
+    },
+    {
+      "signature": "左弦长/右弦长",
+      "count": 1,
+      "case_ids": [
+        311
+      ],
+      "raw_quotes": [
+        "左脉弦硬而长者，肝胆之火上升也；其右脉弦硬而长者，"
+      ],
+      "formulas": {
+        "犹白虎汤": 1
+      },
+      "top_formula": "犹白虎汤",
+      "sample_raw_quote": "左脉弦硬而长者，肝胆之火上升也；其右脉弦硬而长者，"
+    },
+    {
+      "signature": "左弦长弦/右",
+      "count": 1,
+      "case_ids": [
+        321
+      ],
+      "raw_quotes": [
+        "左部弦长，关脉犹弦而兼硬，右脉则稍和平。"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦长，关脉犹弦而兼硬，右脉则稍和平。"
+    },
+    {
+      "signature": "左微细/右",
+      "count": 1,
+      "case_ids": [
+        324
+      ],
+      "raw_quotes": [
+        "左部微细，按之即无，右脉似近和平，"
+      ],
+      "formulas": {
+        "遂停服汤": 1
+      },
+      "top_formula": "遂停服汤",
+      "sample_raw_quote": "左部微细，按之即无，右脉似近和平，"
+    },
+    {
+      "signature": "左弦长/右微浮",
+      "count": 1,
+      "case_ids": [
+        327
+      ],
+      "raw_quotes": [
+        "左部弦长有力且甚硬，右部脉亦有力而微浮，"
+      ],
+      "formulas": {
+        "硝石矾石散": 2,
+        "所送服之汤": 1,
+        "水和为丸": 1,
+        "送服丸": 2
+      },
+      "top_formula": "硝石矾石散",
+      "sample_raw_quote": "左部弦长有力且甚硬，右部脉亦有力而微浮，"
+    },
+    {
+      "signature": "左/右弱虚",
+      "count": 1,
+      "case_ids": [
+        329
+      ],
+      "raw_quotes": [
+        "右脉皆弱者，气血两虚也。而左脉之力似略胜于右脉者，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "右脉皆弱者，气血两虚也。而左脉之力似略胜于右脉者，"
+    },
+    {
+      "signature": "左弦/右弦浮",
+      "count": 1,
+      "case_ids": [
+        331
+      ],
+      "raw_quotes": [
+        "左部弦而硬，右部弦而浮，"
+      ],
+      "formulas": {
+        "再将余药煎汤": 1,
+        "惟石膏": 1,
+        "不思饮": 1
+      },
+      "top_formula": "再将余药煎汤",
+      "sample_raw_quote": "左部弦而硬，右部弦而浮，"
+    },
+    {
+      "signature": "左弦/右微浮",
+      "count": 1,
+      "case_ids": [
+        334
+      ],
+      "raw_quotes": [
+        "左部弦硬，右部微浮重按无力。"
+      ],
+      "formulas": {
+        "肾气丸": 1
+      },
+      "top_formula": "肾气丸",
+      "sample_raw_quote": "左部弦硬，右部微浮重按无力。"
+    },
+    {
+      "signature": "左浮弦/右弦",
+      "count": 1,
+      "case_ids": [
+        335
+      ],
+      "raw_quotes": [
+        "左部浮弦，右脉尤弦而兼硬，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部浮弦，右脉尤弦而兼硬，"
+    },
+    {
+      "signature": "左弦虚/右弦长",
+      "count": 1,
+      "case_ids": [
+        338
+      ],
+      "raw_quotes": [
+        "左脉弦硬者，肝血虚而火炽盛也。右脉弦长者，"
+      ],
+      "formulas": {
+        "能进饮": 1
+      },
+      "top_formula": "能进饮",
+      "sample_raw_quote": "左脉弦硬者，肝血虚而火炽盛也。右脉弦长者，"
+    },
+    {
+      "signature": "左细浮/右弦细",
+      "count": 1,
+      "case_ids": [
+        343
+      ],
+      "raw_quotes": [
+        "左部细而浮，不任重按，右部亦弦细，"
+      ],
+      "formulas": {
+        "白虎加人参汤": 1,
+        "白虎汤": 2
+      },
+      "top_formula": "白虎汤",
+      "sample_raw_quote": "左部细而浮，不任重按，右部亦弦细，"
+    },
+    {
+      "signature": "左弦/右实",
+      "count": 1,
+      "case_ids": [
+        356
+      ],
+      "raw_quotes": [
+        "左部弦而兼硬，右部似有力而重按不实，"
+      ],
+      "formulas": {
+        "白虎加人参汤": 1,
+        "再将余药煎汤": 1,
+        "白头翁汤": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_raw_quote": "左部弦而兼硬，右部似有力而重按不实，"
+    },
+    {
+      "signature": "左弦虚/右实",
+      "count": 1,
+      "case_ids": [
+        356
+      ],
+      "raw_quotes": [
+        "左脉弦而兼硬者，肝血虚而胆火盛也。其右脉似有力而重按不实者，"
+      ],
+      "formulas": {
+        "白虎加人参汤": 1,
+        "再将余药煎汤": 1,
+        "白头翁汤": 1
+      },
+      "top_formula": "白虎加人参汤",
+      "sample_raw_quote": "左脉弦而兼硬者，肝血虚而胆火盛也。其右脉似有力而重按不实者，"
+    },
+    {
+      "signature": "左微弱/右实",
+      "count": 1,
+      "case_ids": [
+        357
+      ],
+      "raw_quotes": [
+        "左部微弱，右部重按颇实，"
+      ],
+      "formulas": {
+        "白虎加人参汤": 2,
+        "滋阴清燥汤": 3,
+        "白虎汤": 2
+      },
+      "top_formula": "滋阴清燥汤",
+      "sample_raw_quote": "左部微弱，右部重按颇实，"
+    },
+    {
+      "signature": "左沉弦/右洪实",
+      "count": 1,
+      "case_ids": [
+        362
+      ],
+      "raw_quotes": [
+        "左部沉弦，右部洪实，"
+      ],
+      "formulas": {
+        "白虎汤": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_raw_quote": "左部沉弦，右部洪实，"
+    },
+    {
+      "signature": "左弦长/右洪滑长",
+      "count": 1,
+      "case_ids": [
+        371
+      ],
+      "raw_quotes": [
+        "左部弦硬而长，右部洪滑而长，"
+      ],
+      "formulas": {
+        "白虎汤": 1
+      },
+      "top_formula": "白虎汤",
+      "sample_raw_quote": "左部弦硬而长，右部洪滑而长，"
+    },
+    {
+      "signature": "左弦长/右洪滑",
+      "count": 1,
+      "case_ids": [
+        380
+      ],
+      "raw_quotes": [
+        "左部弦长，右部洪滑，"
+      ],
+      "formulas": {
+        "白虎加人参汤": 1,
+        "白头翁汤": 2,
+        "人参汤": 1,
+        "白虎汤": 1
+      },
+      "top_formula": "白头翁汤",
+      "sample_raw_quote": "左部弦长，右部洪滑，"
+    },
+    {
+      "signature": "左弦细/右沉虚",
+      "count": 1,
+      "case_ids": [
+        381
+      ],
+      "raw_quotes": [
+        "左部弦细，右部沉虚，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦细，右部沉虚，"
+    },
+    {
+      "signature": "左沉弦/右沉涩",
+      "count": 1,
+      "case_ids": [
+        382
+      ],
+      "raw_quotes": [
+        "左部沉弦，右部沉涩，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部沉弦，右部沉涩，"
+    },
+    {
+      "signature": "左弦微/右弦",
+      "count": 1,
+      "case_ids": [
+        386
+      ],
+      "raw_quotes": [
+        "左部弦而微硬，右部脉亦近弦，"
+      ],
+      "formulas": {
+        "资生通脉汤": 1,
+        "硝石矾石散": 1,
+        "煮作茶汤": 1
+      },
+      "top_formula": "资生通脉汤",
+      "sample_raw_quote": "左部弦而微硬，右部脉亦近弦，"
+    },
+    {
+      "signature": "左沉细/右长",
+      "count": 1,
+      "case_ids": [
+        448
+      ],
+      "raw_quotes": [
+        "左脉沉细，为冲气上冲，是以右脉纺长，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉沉细，为冲气上冲，是以右脉纺长，"
+    },
+    {
+      "signature": "左/右大",
+      "count": 1,
+      "case_ids": [
+        449
+      ],
+      "raw_quotes": [
+        "左脉之骆。右脉之大，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左脉之骆。右脉之大，"
+    },
+    {
+      "signature": "左弦长/右",
+      "count": 1,
+      "case_ids": [
+        454
+      ],
+      "raw_quotes": [
+        "左部弦长，、右部浴讲。"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦长，、右部浴讲。"
+    },
+    {
+      "signature": "左沉弦/右沉",
+      "count": 1,
+      "case_ids": [
+        468
+      ],
+      "raw_quotes": [
+        "左部沉弦，右部沉率，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部沉弦，右部沉率，"
+    },
+    {
+      "signature": "左/右弦浮",
+      "count": 1,
+      "case_ids": [
+        472
+      ],
+      "raw_quotes": [
+        "左部东而硬，右部弦而浮，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部东而硬，右部弦而浮，"
+    },
+    {
+      "signature": "左长/右",
+      "count": 1,
+      "case_ids": [
+        495
+      ],
+      "raw_quotes": [
+        "左部下而长，右部则纺硬有为，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部下而长，右部则纺硬有为，"
+    },
+    {
+      "signature": "左弦细/右虚",
+      "count": 1,
+      "case_ids": [
+        514
+      ],
+      "raw_quotes": [
+        "左部弦细，右部这虚，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦细，右部这虚，"
+    },
+    {
+      "signature": "左弦微/右",
+      "count": 1,
+      "case_ids": [
+        519
+      ],
+      "raw_quotes": [
+        "左部弦而微硬，右部脉亦近怠，"
+      ],
+      "formulas": {},
+      "top_formula": null,
+      "sample_raw_quote": "左部弦而微硬，右部脉亦近怠，"
+    },
+    {
+      "signature": "左弦/右细",
+      "count": 1,
+      "case_ids": [
+        639
+      ],
+      "raw_quotes": [
+        "右脉细，左脉弦硬。"
+      ],
+      "formulas": {
+        "安冲汤": 2,
+        "制作丸": 1
+      },
+      "top_formula": "安冲汤",
+      "sample_raw_quote": "右脉细，左脉弦硬。"
+    }
+  ]
+}
