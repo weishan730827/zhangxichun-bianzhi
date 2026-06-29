@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#8b1a1a">
+<title>四诊合参 v2.1 — 仿张锡纯辨证</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* v2.1 专用样式 */
+.step4-wrap { max-width: 1100px; margin: 0 auto; padding: 12px; }
+.step4-grid { display: grid; grid-template-columns: 1fr 320px; gap: 14px; }
+@media (max-width: 768px) { .step4-grid { grid-template-columns: 1fr; } }
+.step4-card { background:#fff; border-radius:8px; padding:14px; box-shadow:0 2px 6px rgba(0,0,0,.08); }
+.step4-card h2 { margin: 0 0 8px; color: var(--primary-d, #2d6a4f); font-size: 18px; border-left: 4px solid var(--primary-d, #2d6a4f); padding-left: 8px; }
+.step4-card h2 .step-num { background: var(--primary-d, #2d6a4f); color:#fff; border-radius: 50%; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-right:6px; }
+.check-group { margin: 8px 0; padding: 6px 0; border-top: 1px dashed #eee; }
+.check-group-title { font-weight: bold; font-size: 13px; color: #444; margin-bottom: 4px; }
+.check-items { display: flex; flex-wrap: wrap; gap: 4px; }
+.check-item { display: inline-flex; align-items: center; padding: 4px 10px; background: #f4f6f8; border: 1.5px solid transparent; border-radius: 16px; cursor: pointer; font-size: 12px; user-select: none; transition: all 0.15s; }
+.check-item:hover { background: #e8edf2; }
+.check-item.on { background: #d4e8d4; border-color: var(--primary-d, #2d6a4f); color: var(--primary-d, #2d6a4f); font-weight: bold; }
+.check-item .cnt { color: #888; font-size: 10px; margin-left: 4px; font-weight: normal; }
+.check-item.on .cnt { color: var(--primary-d, #2d6a4f); }
+.dim-grid { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 4px; align-items: center; }
+.dim-grid th { background: #f4f6f8; font-size: 12px; padding: 6px; text-align: center; }
+.dim-grid td { padding: 4px 6px; }
+.btn-nav { background: var(--primary-d, #2d6a4f); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; margin-top: 12px; }
+.btn-nav:hover { background: #1b4332; }
+.btn-nav:disabled { background: #ccc; cursor: not-allowed; }
+.btn-back { background: #6c757d; }
+.match-panel { position: sticky; top: 12px; }
+.match-count { font-size: 28px; font-weight: bold; color: var(--primary-d, #2d6a4f); text-align: center; margin: 8px 0; }
+.match-count.zero { color: #c00; }
+.match-breakdown { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin: 6px 0; font-size: 11px; }
+.match-breakdown div { text-align: center; padding: 4px; background: #f4f6f8; border-radius: 4px; }
+.match-breakdown div.on { background: #d4e8d4; font-weight: bold; color: var(--primary-d, #2d6a4f); }
+.top-list { font-size: 12px; max-height: 320px; overflow-y: auto; }
+.top-list .ti { padding: 6px 4px; border-bottom: 1px solid #eee; cursor: pointer; }
+.top-list .ti:hover { background: #f4f6f8; }
+.top-list .ti .score { float: right; color: var(--primary-d, #2d6a4f); font-weight: bold; }
+.top-list .ti .matched { font-size: 10px; color: #666; display: block; margin-top: 2px; }
+.result-card { background: #fff; border: 1.5px solid var(--primary-d, #2d6a4f); border-radius: 8px; padding: 12px; margin: 8px 0; }
+.result-card .rc-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-bottom: 8px; }
+.result-card .rc-rank { background: var(--primary-d, #2d6a4f); color: #fff; border-radius: 50%; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; }
+.result-card .rc-score { color: var(--primary-d, #2d6a4f); font-weight: bold; font-size: 18px; }
+.result-card .rc-formula { color: #c00; font-weight: bold; margin: 4px 0; }
+.result-card .rc-snippet { font-size: 12px; color: #444; padding: 6px 8px; background: #f8f9fa; border-left: 3px solid #888; margin: 6px 0; font-style: italic; max-height: 100px; overflow-y: auto; }
+.result-card .rc-matched { font-size: 11px; color: #666; }
+.result-card .rc-matched span { display: inline-block; padding: 2px 6px; margin: 2px; background: #d4e8d4; border-radius: 8px; }
+.matched-hl { background: #fff3a3; padding: 0 2px; }
+.tab-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.tab-row a { padding: 6px 12px; background: #f4f6f8; border-radius: 4px; text-decoration: none; color: #444; }
+.tab-row a.active { background: var(--primary-d, #2d6a4f); color: #fff; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <h1>四诊合参 v2.1</h1>
+  <p class="sub">《医学衷中参西录》· 望闻问切 4 步走 · 70 项勾选表 · 加权匹配</p>
+  <div class="tab-row">
+    <a href="index.html">← 回到主页 (旧版)</a>
+    <a href="step4match.html" class="active">4 步四诊合参 (v2.1)</a>
+  </div>
+</header>
+
+<main class="step4-wrap">
+<div class="step4-grid">
+  <!-- 左侧：4 步界面 -->
+  <div>
+    <!-- 顶部状态条 -->
+    <div class="step4-card" id="status-bar" style="background: #fff8e1; border-left: 4px solid #c97c1f;">
+      <b>📊 加载中…</b>
+    </div>
+
+    <!-- 步骤 1：望诊 -->
+    <div class="step4-card hidden" id="step-look" data-step="1">
+      <h2><span class="step-num">1</span>望诊（看）</h2>
+      <p class="hint" style="font-size:12px;color:#666;margin:4px 0 8px">医生通过视觉观察患者：面色、神态、舌象。共 17 项。</p>
+      <div id="look-items"></div>
+      <button class="btn-nav" onclick="goStep(2)">下一步：闻诊 →</button>
+    </div>
+
+    <!-- 步骤 2：闻诊 -->
+    <div class="step4-card hidden" id="step-listen" data-step="2">
+      <h2><span class="step-num">2</span>闻诊（听声）</h2>
+      <p class="hint" style="font-size:12px;color:#666;margin:4px 0 8px">医生通过听觉与嗅觉辨患者声音、呼吸、痰声。共 4 项。</p>
+      <div id="listen-items"></div>
+      <button class="btn-nav btn-back" onclick="goStep(1)">← 上一步</button>
+      <button class="btn-nav" onclick="goStep(3)">下一步：问诊 →</button>
+    </div>
+
+    <!-- 步骤 3：问诊 -->
+    <div class="step4-card hidden" id="step-ask" data-step="3">
+      <h2><span class="step-num">3</span>问诊（问症状）</h2>
+      <p class="hint" style="font-size:12px;color:#666;margin:4px 0 8px">医生询问患者主症、起因、伴随症状。共 30 项。</p>
+      <div id="ask-items"></div>
+      <button class="btn-nav btn-back" onclick="goStep(2)">← 上一步</button>
+      <button class="btn-nav" onclick="goStep(4)">下一步：切诊 →</button>
+    </div>
+
+    <!-- 步骤 4：切诊 -->
+    <div class="step4-card hidden" id="step-pulse" data-step="4">
+      <h2><span class="step-num">4</span>切诊（脉诊）</h2>
+      <p class="hint" style="font-size:12px;color:#666;margin:4px 0 8px">医生用指端按脉，分总按（双手整体）和分部（寸关尺）。共 19 项。</p>
+      <div id="pulse-items"></div>
+      <button class="btn-nav btn-back" onclick="goStep(3)">← 上一步</button>
+      <button class="btn-nav" onclick="goResult()" style="background:#c00">🔍 开始辨证 (加权匹配)</button>
+    </div>
+
+    <!-- 结果 -->
+    <div class="step4-card hidden" id="step-result">
+      <h2>辨证结果</h2>
+      <div id="result-summary" style="background:#fff8e1;padding:8px;border-radius:4px;margin-bottom:10px;font-size:12px"></div>
+      <div id="result-list"></div>
+      <button class="btn-nav btn-back" onclick="goStep(4)">← 回到脉诊</button>
+      <button class="btn-nav" onclick="resetAll()">重新辨证</button>
+    </div>
+  </div>
+
+  <!-- 右侧：实时匹配浮窗 -->
+  <div class="match-panel">
+    <div class="step4-card">
+      <h3 style="margin:0;font-size:14px">实时匹配</h3>
+      <div class="match-count" id="match-count">607</div>
+      <div style="text-align:center;font-size:11px;color:#666">个医案段仍匹配</div>
+      <div class="match-breakdown">
+        <div id="bd-face">面<br><span id="bd-face-n">0</span></div>
+        <div id="bd-tongue">舌<br><span id="bd-tongue-n">0</span></div>
+        <div id="bd-listen">闻<br><span id="bd-listen-n">0</span></div>
+        <div id="bd-ask">问<br><span id="bd-ask-n">0</span></div>
+        <div id="bd-pulse">切<br><span id="bd-pulse-n">0</span></div>
+      </div>
+      <div style="font-size:11px;color:#666;margin-top:6px">
+        <b>当前已选：</b>
+        <div id="current-picks" style="margin-top:2px;color:var(--primary-d,#2d6a4f)">（未勾选）</div>
+      </div>
+      <hr style="margin:8px 0;border:0;border-top:1px solid #eee">
+      <div style="font-size:11px;color:#666">
+        <b>Top 5 当前最像：</b>
+        <div class="top-list" id="top-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<script src="assets/step4match.js"></script>
+</body>
+</html>
