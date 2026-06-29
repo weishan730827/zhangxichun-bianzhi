@@ -333,8 +333,13 @@ function goStep(step) {
   ['step1','step-look','step-ask','step-pulse','step-result','step-fingerprint'].forEach(id => {
     document.getElementById(id).classList.add('hidden');
   });
-  const target = 'step-' + step;
-  const el = document.getElementById(target);
+  // step 可以是 'look'/'ask'/... 或 '1'/'2'/... 或 'home' (回 step1)
+  let target = 'step-' + step;
+  let el = document.getElementById(target);
+  if (!el) {
+    // 数字
+    if (step === '1' || step === 'home') { el = document.getElementById('step1'); target = 'step1'; }
+  }
   if (el) el.classList.remove('hidden');
   window.scrollTo({top: 0, behavior: 'smooth'});
 }

@@ -15,31 +15,44 @@
 
 <main class="container">
 
-<!-- 第一步：选择输入方式 -->
-<section class="card" id="step1">
-  <h2><span class="step-num">1</span>请问诊方式</h2>
-  <div class="choice-grid">
-    <button class="choice" data-mode="qna">
-      <span class="ico">问</span>
-      <strong>问答式</strong>
-      <small>系统逐步询问症状</small>
-    </button>
-    <button class="choice" data-mode="free">
-      <span class="ico">述</span>
-      <strong>自由描述</strong>
-      <small>一次性描述病情</small>
-    </button>
-    <button class="choice" data-mode="demo">
-      <span class="ico">例</span>
-      <strong>查看示例</strong>
-      <small>使用升陷汤经典医案</small>
-    </button>
-    <button class="choice" data-mode="signature" onclick="goStep('fingerprint')">
-      <span class="ico">指</span>
-      <strong>脉诊指纹</strong>
-      <small>输入脉诊组合反查医案</small>
-    </button>
-  </div>
+<!-- v2.1 主入口 -->
+<section class="card" id="step1" style="background: linear-gradient(135deg, #f5f9f5 0%, #e8f0e8 100%); border-left: 4px solid var(--primary-d, #2d6a4f);">
+  <h2 style="border:none;color:var(--primary-d,#2d6a4f)">🏥 进入辨证系统</h2>
+  <p class="hint" style="font-size:13px">基于《医学衷中参西录》<b>607 段真实医案</b> + <b>70 项古汉语→现代用语勾选表</b>，按 望闻问切 4 步走，加权匹配 (脉 3 / 问 2 / 望闻 1) 输出 Top 10 医案与张锡纯原方。</p>
+
+  <a href="step4match.html" class="choice" style="background:#2d6a4f;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;padding:20px;margin:12px 0;border-radius:8px;font-size:16px;font-weight:bold;box-shadow:0 2px 6px rgba(45,106,79,0.3)">
+    <span class="ico" style="background:#ffd700;color:#8b1a1a;width:36px;height:36px;font-size:18px">四</span>
+    <span style="margin-left:12px;text-align:left">
+      <span style="display:block">🚀 4 步四诊合参 v2.1</span>
+      <span style="display:block;font-size:12px;font-weight:normal;opacity:0.9">望→闻→问→切 · 70 项勾选 · 加权匹配 · Top 10 方剂</span>
+    </span>
+  </a>
+
+  <details style="margin-top:18px">
+    <summary style="cursor:pointer;font-size:13px;color:#666;padding:6px 0">▸ 高级功能 (旧版 4 模式)</summary>
+    <div class="choice-grid" style="margin-top:10px">
+      <button class="choice" data-mode="qna">
+        <span class="ico">问</span>
+        <strong>问答式</strong>
+        <small>系统逐步询问症状</small>
+      </button>
+      <button class="choice" data-mode="free">
+        <span class="ico">述</span>
+        <strong>自由描述</strong>
+        <small>一次性描述病情</small>
+      </button>
+      <button class="choice" data-mode="demo">
+        <span class="ico">例</span>
+        <strong>查看示例</strong>
+        <small>使用升陷汤经典医案</small>
+      </button>
+      <button class="choice" data-mode="signature" onclick="goStep('fingerprint')">
+        <span class="ico">指</span>
+        <strong>脉诊指纹</strong>
+        <small>输入脉诊组合反查医案</small>
+      </button>
+    </div>
+  </details>
 </section>
 
 <!-- 第二步：望诊 -->
@@ -505,6 +518,7 @@
   <h2><span class="step-num">5</span>辨证结果</h2>
   <div id="result-content"></div>
   <button class="btn-restart" onclick="location.reload()">重新辨证</button>
+  <a href="step4match.html" class="btn-restart" style="display:inline-block;margin-left:8px;background:#2d6a4f;text-decoration:none">试 v2.1 新版 →</a>
 </section>
 
 </main>
