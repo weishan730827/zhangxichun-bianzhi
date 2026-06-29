@@ -1,0 +1,17 @@
+张锡纯四诊合参 v2.3 链接收藏
+==============================
+
+主入口 (点这个):
+https://weishan730827.github.io/zhangxichun-bianzhi/step4match.html
+
+首页:
+https://weishan730827.github.io/zhangxichun-bianzhi/
+
+GitHub 仓库:
+https://github.com/weishan730827/zhangxichun-bianzhi
+
+v2.3 数据文件 (JSON):
+- 一案一脉诊: https://weishan730827.github.io/zhangxichun-bianzhi/assets/data/cases_unified_v2.2.json
+- 5 维度脉诊: https://weishan730827.github.io/zhangxichun-bianzhi/assets/data/pulse_v2.3.json
+- 70 项勾选: https://weishan730827.github.io/zhangxichun-bianzhi/assets/data/checklist_v2.0.json
+- 匹配矩阵: https://weishan730827.github.io/zhangxichun-bianzhi/assets/data/case_match_v2.2.json
