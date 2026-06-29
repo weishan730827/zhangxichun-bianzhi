@@ -19,18 +19,18 @@ const PULSE_GROUPS = [
 async function loadAll() {
   const [cR, mR, csR] = await Promise.all([
     fetch('assets/data/checklist_v2.0.json'),
-    fetch('assets/data/case_match_v2.1.json'),
-    fetch('assets/data/cases_full.json'),
+    fetch('assets/data/case_match_v2.2.json'),
+    fetch('assets/data/cases_unified_v2.2.json'),
   ]);
   CHECKLIST = await cR.json();
   MATCH = await mR.json();
   CASES = await csR.json();
 
   document.getElementById('status-bar').innerHTML =
-    `<b>📊 数据加载完成</b>：共 <b>${MATCH.case_count}</b> 段真实医案 (来自 ${CASES.sources.length} 个原书文件)，` +
+    `<b>📊 v2.2 数据加载完成</b>：共 <b>${MATCH.case_count}</b> 条 <b>一案一脉诊</b> 完整医案 (来自 8 个原书篇), ` +
     `<b>${Object.values(CHECKLIST.sheets).reduce((s, sh) => s + sh.modern_to_cases.length, 0)}</b> 项勾选 ` +
     `(面 ${CHECKLIST.sheets.face.modern_to_cases.length} + 舌 ${CHECKLIST.sheets.tongue.modern_to_cases.length} + 闻 ${CHECKLIST.sheets.listen.modern_to_cases.length} + 问 ${CHECKLIST.sheets.ask.modern_to_cases.length} + 切 ${CHECKLIST.sheets.pulse.modern_to_cases.length})。` +
-    `<br>权重：<b>望诊 1 / 闻诊 1 / 问诊 2 / 切诊 3</b>。`;
+    `权重：<b>望诊 1 / 闻诊 1 / 问诊 2 / 切诊 3</b>。`;
 
   renderLookItems();
   renderListenItems();
@@ -212,7 +212,7 @@ function updateMatchPanel() {
     let h = '';
     results.slice(0, 5).forEach((r, i) => {
       const c = CASES.cases[r.case_idx];
-      const title = c.src_title.split('\n')[0].substring(0, 22);
+      const title = (c.title || c.src_title || '').split('\n')[0].substring(0, 22);
       h += `<div class="ti">
         <span class="score">${r.score}</span>
         <b>#${r.case_id}</b> ${title}
@@ -255,8 +255,8 @@ function goResult() {
   let html = '';
   top10.forEach((r, i) => {
     const c = CASES.cases[r.case_idx];
-    const formulas = (c.formulas || []).map(f => f.name || f).join(' + ') || '（原书未列方剂）';
-    const snippet = c.content_preview || c.content.substring(0, 200);
+    const formulas = (c.formulas || []).map(f => (f.name || f)).join(' + ') || '（原书未列方剂）';
+    const snippet = c.content_excerpt || (c.content ? c.content.substring(0, 200) : '');
 
     // 收集匹配项的中文名
     const matchedNames = [];
@@ -271,7 +271,7 @@ function goResult() {
       <div class="rc-head">
         <div>
           <span class="rc-rank">${i + 1}</span>
-          <b>#${r.case_id}</b> <span style="color:#666">${(c.src_title || '').split('\n')[0].substring(0, 30)}</span>
+          <b>#${r.case_id}</b> <span style="color:#666">${(c.title || c.src_title || '').split('\n')[0].substring(0, 30)}</span>
         </div>
         <div>
           <span class="rc-score">${r.score} / ${r.max_score} 分</span>
