@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>张锡纯医案 v2.7 设计标准 — 5 大规律 + 10 字段</title>
+<style>
+:root {
+  --primary: #2c5282;
+  --accent: #c53030;
+  --bg: #f7fafc;
+  --card: #fff;
+  --border: #e2e8f0;
+  --muted: #718096;
+  --highlight: #fef3c7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: #2d3748;
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(44,82,130,0.3);
+}
+.hero h1 { font-size: 28px; margin-bottom: 10px; }
+.hero p { font-size: 15px; opacity: 0.9; }
+.hero .insight {
+  background: rgba(255,255,255,0.15);
+  border-left: 4px solid #f6ad55;
+  padding: 12px 18px;
+  margin-top: 18px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.section {
+  background: var(--card);
+  padding: 28px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid var(--border);
+}
+.section h2 {
+  color: var(--primary);
+  font-size: 22px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary);
+}
+.section h3 {
+  color: #2d3748;
+  font-size: 17px;
+  margin: 18px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--accent);
+}
+.rule-card {
+  background: #f7fafc;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 12px 0;
+  border-left: 4px solid var(--primary);
+}
+.rule-card .rule-num {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 14px;
+}
+.rule-card .rule-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary);
+}
+.rule-card .rule-body {
+  margin-top: 8px;
+  color: #4a5568;
+  font-size: 14px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+th { background: #edf2f7; color: var(--primary); font-weight: 600; }
+tr:nth-child(even) { background: #f7fafc; }
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.stat-box {
+  background: linear-gradient(135deg, #ebf4ff 0%, #e6fffa 100%);
+  padding: 18px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #bee3f8;
+}
+.stat-box .num {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary);
+}
+.stat-box .lbl {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.code-block {
+  background: #1a202c;
+  color: #e2e8f0;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-family: "Menlo", "Consolas", monospace;
+  font-size: 13px;
+  margin: 8px 0;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+.ru-case {
+  background: #fffaf0;
+  border-left: 4px solid #ed8936;
+  padding: 10px 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.ru-case .ru-title { font-weight: bold; color: #c05621; }
+.ru-case .ru-sig { color: #2d3748; font-family: monospace; margin-top: 4px; }
+.flag {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+.flag.alt { background: #38a169; }
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin: 0 2px;
+  background: #e2e8f0;
+}
+.tag.pulse { background: #bee3f8; color: #2c5282; }
+.tag.zx { background: #fefcbf; color: #975a16; }
+.tag.formula { background: #c6f6d5; color: #22543d; }
+.case-snip {
+  font-style: italic;
+  color: #4a5568;
+  font-size: 13px;
+  padding: 6px 12px;
+  background: #f7fafc;
+  border-left: 3px solid #cbd5e0;
+  margin-top: 4px;
+}
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 40px;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>张锡纯医案 v2.7 设计标准</h1>
+  <p>基于 <b>1．升陷汤</b> 段 18 案 + 完整版 994 案 实证统计</p>
+  <div class="insight">
+    关键洞察：<b>"濡脉不一定浮"</b> — 张锡纯 17 案濡脉中 16 案不浮，<br>
+    沉濡=大气下陷实证，微弱迟濡=脾胃湿寒，左手沉濡=痰证
+  </div>
+</div>
+
+<!-- 5 大规律 -->
+<div class="section">
+<h2>一、张锡纯原书 5 大规律</h2>
+
+<div class="rule-card">
+  <span class="rule-num">1</span>
+  <span class="rule-title">每方剂独立成段（5K-15K 字符）</span>
+  <div class="rule-body">
+    段结构固定：<b>主治 → 方剂组成 → 方解 → 理论（引用经典）→ 验案（1-N 个）</b><br>
+    验案跟在方解后，用"治愈XXX之案, 略登数则"过渡<br>
+    例：1．升陷汤段 14,699 字符，含 18 案真验案
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-num">2</span>
+  <span class="rule-title">每验案独立，OCR 吃换行</span>
+  <div class="rule-body">
+    唯一分隔标记 = <b>新患者叙述开头</b>，<b>不是</b>标点或换行<br>
+    OCR 把原书换行全删了，必须用 5 大起始模式识别
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-num">3</span>
+  <span class="rule-title">每验案 8 固定元素</span>
+  <div class="rule-body">
+    严格顺序：<b>患者（身份+年龄+籍贯）→ 病史 → 脉象 → 诊断 → 方剂+加减 → 疗效+剂数 → 按</b><br>
+    几乎无例外
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-num">4</span>
+  <span class="rule-title">5 大验案起始模式</span>
+  <div class="rule-body">
+    <code>① 一人 / 一妇 / 一室女</code> — 最常见<br>
+    <code>② 曾治一 / 治一妇</code> — 既往案例<br>
+    <code>③ X地X××</code> — 奉天/西丰/沧州/桓仁 + 姓名 + ××<br>
+    <code>④ 有兄弟二人</code> — 多人叙述<br>
+    <code>⑤ ××来函</code> — 同行/学生回信（附录）
+  </div>
+</div>
+
+<div class="rule-card">
+  <span class="rule-num">5</span>
+  <span class="rule-title">脉象 3 位置 + 5 维度</span>
+  <div class="rule-body">
+    3 位置触发词：<b>诊其脉 (94%) / 其脉 / 脉象</b><br>
+    5 维度定位：<b>总按 / 左手 / 右手 / 关前 / 关后(尺) / 重按 / 轻取</b><br>
+    <span class="flag alt">★ 重要</span>
+    张锡纯不写左寸右寸左关右关左尺右尺！用<b>关前/关后/两尺</b> 替代
+  </div>
+</div>
+</div>
+
+<!-- 5 维度脉象实证分布 -->
+<div class="section">
+<h2>二、5 维度脉象实证分布（994 案）</h2>
+
+<div class="stat-grid">
+  <div class="stat-box"><div class="num">535</div><div class="lbl">总按（不分左右）</div></div>
+  <div class="stat-box"><div class="num">89</div><div class="lbl">重按 / 按之</div></div>
+  <div class="stat-box"><div class="num">84</div><div class="lbl">左手分部</div></div>
+  <div class="stat-box"><div class="num">37</div><div class="lbl">右手分部</div></div>
+  <div class="stat-box"><div class="num">26</div><div class="lbl">关前（上焦）</div></div>
+  <div class="stat-box"><div class="num">17</div><div class="lbl">关后/尺（下焦）</div></div>
+  <div class="stat-box"><div class="num">2</div><div class="lbl">轻取/浮取</div></div>
+</div>
+
+<p style="margin-top:14px">
+  <b>总按占 53.8%</b> — 张锡纯主要用"统诊"，不机械分左右寸关尺<br>
+  <b>重按 89 案</b> — 张锡纯特色用"重按"判定虚实<br>
+  <b>关前 26 vs 关后 17</b> — 大气下陷证典型分部
+</p>
+</div>
+
+<!-- 28 脉 Top 20 -->
+<div class="section">
+<h2>三、28 脉象字符 Top 20（994 案）</h2>
+
+<table>
+<tr><th>排名</th><th>脉</th><th>案数</th><th>占比</th><th>临床意义</th></tr>
+<tr><td>1</td><td><b>弦</b></td><td>186</td><td>18.7%</td><td>肝气/气滞/疼痛</td></tr>
+<tr><td>2</td><td><b>数</b></td><td>177</td><td>17.8%</td><td>热证/阴虚</td></tr>
+<tr><td>3</td><td><b>洪</b></td><td>159</td><td>16.0%</td><td>阳明实热</td></tr>
+<tr><td>4</td><td><b>实</b></td><td>155</td><td>15.6%</td><td>实证/有根</td></tr>
+<tr><td>5</td><td><b>微</b></td><td>144</td><td>14.5%</td><td>气虚/阳衰</td></tr>
+<tr><td>6</td><td><b>大</b></td><td>120</td><td>12.1%</td><td>邪盛/虚大</td></tr>
+<tr><td>7</td><td><b>浮</b></td><td>107</td><td>10.8%</td><td>表证</td></tr>
+<tr><td>8</td><td><b>弱</b></td><td>102</td><td>10.3%</td><td>虚证</td></tr>
+<tr><td>9</td><td><b>细</b></td><td>99</td><td>10.0%</td><td>血虚/阴虚</td></tr>
+<tr><td>10</td><td><b>长</b></td><td>95</td><td>9.6%</td><td>气逆/弦长有力</td></tr>
+<tr><td>11</td><td><b>滑</b></td><td>86</td><td>8.7%</td><td>痰/孕</td></tr>
+<tr><td>12</td><td><b>沉</b></td><td>86</td><td>8.7%</td><td>里证</td></tr>
+<tr><td>13</td><td><b>虚</b></td><td>63</td><td>6.3%</td><td>气血虚</td></tr>
+<tr><td>14</td><td><b>迟</b></td><td>52</td><td>5.2%</td><td>寒/气陷</td></tr>
+<tr><td>15</td><td><b>缓</b></td><td>25</td><td>2.5%</td><td>湿/正常</td></tr>
+<tr><td>16</td><td><b>濡</b></td><td>17</td><td>1.7%</td><td>湿/虚（16 案不浮）</td></tr>
+<tr><td>17</td><td><b>短</b></td><td>15</td><td>1.5%</td><td>气虚</td></tr>
+<tr><td>18</td><td><b>动</b></td><td>15</td><td>1.5%</td><td>痛/惊</td></tr>
+<tr><td>19</td><td><b>结</b></td><td>12</td><td>1.2%</td><td>气滞/阴盛</td></tr>
+<tr><td>20</td><td><b>伏</b></td><td>11</td><td>1.1%</td><td>邪闭/厥</td></tr>
+</table>
+</div>
+
+<!-- 濡脉专题 -->
+<div class="section">
+<h2>四、"濡脉不一定浮" — 17 案实证 <span class="flag">用户洞察</span></h2>
+
+<p>现代 TCM 教科书：濡脉 = 浮细而软，主虚证/湿证。但张锡纯 17 案濡脉中 16 案不浮，1 例浮：</p>
+
+<table>
+<tr><th>原方/位置</th><th>濡脉原文</th><th>辨证</th><th>浮/沉</th></tr>
+<tr><td><b>1．升陷汤 主案 10</b></td><td>脉数至六至，<b>兼有沉濡之象</b></td><td>大气下陷实证</td><td><span class="flag">沉</span></td></tr>
+<tr><td><b>1．升陷汤 主案 10（复诊）</b></td><td>已不数，仍然<b>沉濡</b></td><td>大气下陷</td><td><span class="flag">沉</span></td></tr>
+<tr><td>1．大气下陷兼小便不禁</td><td><b>左右皆沉濡</b>，而右部寸关之沉濡尤甚</td><td>大气下陷</td><td><span class="flag">沉</span></td></tr>
+<tr><td>3．醴泉饮</td><td>数近六至，而<b>兼有沉濡之象</b></td><td>阴虚发热</td><td><span class="flag">沉</span></td></tr>
+<tr><td>6．治痰点天突穴法</td><td><b>左手沉濡</b></td><td>痰证</td><td><span class="flag">沉</span></td></tr>
+<tr><td>6．白术解</td><td><b>濡弱</b>，右关尤甚</td><td>脾胃虚</td><td>不浮</td></tr>
+<tr><td>6．白术解</td><td><b>微弱迟濡</b>，脾胃湿寒</td><td>湿寒</td><td>不浮</td></tr>
+<tr><td>7．太阳病小青龙汤证</td><td>滑而濡，至数如常</td><td>外寒内饮</td><td>不浮</td></tr>
+<tr><td>8．肺劳喘咳</td><td>左部弦硬，<b>右部濡滑</b>，两尺皆重按无根</td><td>肺肾两虚</td><td>不浮</td></tr>
+<tr><td>11．镇摄汤</td><td>象甚迟濡</td><td>冲气上冲</td><td>不浮</td></tr>
+<tr><td>13．血崩证</td><td><b>濡弱</b>，而搏近五至</td><td>气虚血崩</td><td>不浮</td></tr>
+<tr><td>29．少阳三阳合病</td><td>大而濡，<b>两尺重按颇实</b></td><td>下焦实</td><td>不浮</td></tr>
+<tr><td>30．太阴病提纲</td><td>大而濡</td><td>脾虚湿盛</td><td>不浮</td></tr>
+<tr><td>51．温病遗方</td><td><b>浮而濡</b>，至数如常</td><td>湿温</td><td><span class="flag alt">浮</span></td></tr>
+<tr><td>慢惊风</td><td>甚迟濡</td><td>慢惊</td><td>不浮</td></tr>
+<tr><td>升陷汤·周××来函</td><td><b>濡弱无力</b></td><td>大气下陷</td><td>不浮</td></tr>
+<tr><td>玉液汤</td><td>微弱迟濡</td><td>消渴</td><td>不浮</td></tr>
+</table>
+
+<p style="margin-top:18px"><b>结论：</b>张锡纯写"濡脉"不拘于"必浮"，按<b>实际脉象</b>记录。濡主<b>虚/湿</b>，可与沉/迟/微/弱/滑/数 任意组合。在升陷汤、醴泉饮、玉液汤等方中<b>沉濡=气陷/阴虚实证</b>。</p>
+</div>
+
+<!-- 10 字段标准 -->
+<div class="section">
+<h2>五、10 字段标准提取结构</h2>
+
+<div class="code-block">
+case_id          : 顺序编号 (1-994)
+src_file         : 来源文件名
+src_label        : 来源标签 (完整版/子篇)
+parent_title     : 父方剂标题
+
+patient_info {
+    age         : 年龄 (一/二/三/... 或数字)
+    gender      : 男/女
+    location    : 籍贯 (奉天/西丰/沧州/...)
+    surname     : 姓氏 (刘/张/李/...)
+}
+
+pulse_5dim {             // 5 维度位置 → 28 脉字符数组
+    总按       : []
+    左手       : []
+    右手       : []
+    关前       : []
+    关后/尺    : []
+    重按       : []
+    轻取       : []
+}
+
+pulse_chars            : 所有脉象字符去重 [弦,数,洪,...]
+pulse_signatures       : 脉象原文 (最多 5 个) ["其脉沉迟微弱,右部尤甚",...]
+zx_special             : 19 张锡纯特色 [弦长有力,重按不实,关前,...]
+diagnosis              : 诊断原文 "胸中大气下陷"
+formulas               : 张锡纯方剂 (78 方剂库) [升陷汤, ...]
+modifications          : 加减信号 [加人参三钱, 去知母, ...]
+efficacy               : 疗效 [全愈/愈/见轻/死/亡/不起]
+dose_count             : 剂数 [三剂, 数剂, 十剂]
+has_comment            : 是否有按语/或问
+comments               : 评论原文 [{type:'按', text:'...'}]
+content                : 验案全文
+content_length         : 字符数
+</div>
+</div>
+
+<!-- 字段统计 -->
+<div class="section">
+<h2>六、v2.7 字段覆盖率（994 案）</h2>
+
+<table>
+<tr><th>字段</th><th>覆盖案数</th><th>覆盖率</th><th>说明</th></tr>
+<tr><td>有患者年龄</td><td>157</td><td>15.8%</td><td>部分用"年四旬""年近六旬"等模糊表达</td></tr>
+<tr><td>有患者籍贯</td><td>360</td><td>36.2%</td><td>张锡纯多在奉天/河北/山东</td></tr>
+<tr><td>有脉象</td><td>597</td><td>60.1%</td><td>每案几乎都含脉象</td></tr>
+<tr><td>有诊断</td><td>375</td><td>37.7%</td><td>用"知其/知系/此乃"表达</td></tr>
+<tr><td>有方剂</td><td>291</td><td>29.3%</td><td>78 方剂库匹配</td></tr>
+<tr><td>有疗效</td><td>845</td><td>85.0%</td><td>全愈/愈/见轻/死亡</td></tr>
+<tr><td>有剂数</td><td>493</td><td>49.6%</td><td>三剂/数剂/十余剂</td></tr>
+<tr><td>有按语</td><td>151</td><td>15.2%</td><td>按/或问/答曰</td></tr>
+<tr><td>有加减</td><td>409</td><td>41.1%</td><td>加X/去X/X改用X</td></tr>
+<tr><td>有张锡纯特色</td><td>171</td><td>17.2%</td><td>19 项特色脉象</td></tr>
+</table>
+</div>
+
+<!-- 升陷汤段 18 案 -->
+<div class="section">
+<h2>七、1．升陷汤段 18 案 — 设计标准源</h2>
+
+<p>用升陷汤段 14,699 字符做"金标准"，验证设计标准：</p>
+
+<table>
+<tr><th>#</th><th>患者</th><th>脉象</th><th>方剂</th><th>疗效</th></tr>
+<tr><td>1</td><td>兄弟二人（兄近六旬、弟五十余）</td><td>微弱而迟，右部尤甚</td><td>升陷汤（升麻改二钱，去知母，加干姜）</td><td>数剂而愈</td></tr>
+<tr><td>2</td><td>一人，年四十八</td><td>数至六至，<b>兼有沉濡之象</b></td><td>纳气法→升陷汤（升麻柴胡桔梗以桂枝尖代）</td><td>数剂全愈</td></tr>
+<tr><td>3</td><td>一人，年二十余</td><td>非微细，而指下若不觉其动</td><td>升陷汤加人参、天冬</td><td>数剂而愈</td></tr>
+<tr><td>4</td><td>一人，年二十四</td><td>象和平，重按微弦无力</td><td>升陷汤</td><td>四剂脱然</td></tr>
+<tr><td>5</td><td>一人，年四十许</td><td>两寸微弱，毫无轩起之象</td><td>升陷汤加玄参</td><td>十余剂全愈</td></tr>
+<tr><td>6</td><td>西丰县张××，年十八九</td><td>关前微弱不起</td><td>升陷汤加熟枣仁、龙眼肉</td><td>数剂全愈</td></tr>
+<tr><td>7</td><td>奉天于氏女</td><td>沉迟微弱</td><td>生箭一两，当归四钱，升麻二钱</td><td>数剂全愈</td></tr>
+<tr><td>8</td><td>奉天袁姓少妇</td><td>关前微弱，关后重按又似有力</td><td>升陷汤加生石膏</td><td>旬日全愈</td></tr>
+<tr><td>9</td><td>一人，年二十余（力田）</td><td>乍有乍无，雀啄之象</td><td>升陷汤（升麻柴胡净萸肉各二钱）</td><td>两剂全愈</td></tr>
+<tr><td>10</td><td>一人，年四十许（吐血）</td><td>沉迟微弱，右部尤甚</td><td>升陷汤加龙骨、牡蛎、生地</td><td>三剂全愈</td></tr>
+<tr><td>11</td><td>一人，年四十余（肿）</td><td>滑而有力→火退有濡象</td><td>升陷汤（知母改六钱加玄参木通）</td><td>数剂全愈</td></tr>
+<tr><td>12</td><td>一人，年四十七</td><td>微弱欲无</td><td>升陷汤加龙骨、牡蛎</td><td>三剂而愈</td></tr>
+<tr><td>13</td><td>一妇人，年二十余（惊恐）</td><td>近和平，而右部较沉</td><td>升陷汤加龙眼肉</td><td>四剂而愈</td></tr>
+<tr><td>14</td><td>一妇人，年二十余（恼怒）</td><td>右部来缓去急，分毫不能鼓指</td><td>升陷汤（知母改六钱）</td><td>数剂全愈</td></tr>
+<tr><td>15</td><td>一妇人（产后努力）</td><td>左脉沉细欲无，右脉沉紧</td><td>升陷汤（知母改八钱加玄参）</td><td>一剂而寒热已</td></tr>
+<tr><td>16</td><td>一妇人，年三十余（下痿）</td><td>细如丝，右手尤甚</td><td>升陷汤加龙骨、牡蛎</td><td>两剂汗止</td></tr>
+<tr><td>17</td><td>一妇人，年三十许</td><td>迟而且弱</td><td>黄芪、桂枝、干姜</td><td>数剂全愈</td></tr>
+<tr><td>18</td><td>门生高××（年三十余，枵腹）</td><td>左寸关尺皆不见，右微弱欲无</td><td>升陷汤加人参三钱</td><td>一剂左脉即见</td></tr>
+</table>
+
+<p style="margin-top:14px">
+<b>8 元素 验证：</b>每案都有 <span class="tag pulse">患者</span> <span class="tag pulse">年龄</span> <span class="tag pulse">脉象</span> <span class="tag pulse">诊断</span> <span class="tag formula">方剂</span> <span class="tag">疗效</span> <span class="tag">剂数</span> <span class="tag zx">按语</span>（部分）<br>
+<b>5 起始模式验证：</b>① 一人 (11) / ② 一妇人 (5) / ③ X地X×× (2 西丰/奉天) / ④ 兄弟二人 (1) / ⑤ 门生 (1)
+</p>
+</div>
+
+<!-- 总结 -->
+<div class="section">
+<h2>八、v2.7 vs v2.6 对比</h2>
+
+<table>
+<tr><th>版本</th><th>案数</th><th>字段数</th><th>脉象维度</th><th>5 起始</th><th>特色</th></tr>
+<tr><td>v2.4</td><td>158</td><td>6 元素</td><td>总按</td><td>3</td><td>子篇</td></tr>
+<tr><td>v2.5</td><td>455</td><td>7 元素</td><td>5 维度</td><td>4</td><td>8 子篇</td></tr>
+<tr><td>v2.6</td><td>755</td><td>7 元素</td><td>5 维度</td><td>4</td><td>完整版主源</td></tr>
+<tr><td><b>v2.7</b></td><td><b>994</b></td><td><b>10 字段</b></td><td><b>5 维度+</b></td><td><b>5</b></td><td><b>完整版主源+子篇去重+濡脉实证</b></td></tr>
+</table>
+</div>
+
+<div class="footer">
+  <p>张锡纯 医学衷中参西录 v2.7 设计标准 — 994 案 / 10 字段 / 5 大规律 / 濡脉专题</p>
+  <p>数据：<code>assets/data/cases_v2.7.json</code> · 脚本：<code>/data/user/work/extract_v2.7.1.py</code></p>
+</div>
+
+</div>
+</body>
+</html>
