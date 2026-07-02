@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>张锡纯原书结构验证 — 535 段全目录</title>
+<style>
+:root { --primary:#2c5282; --accent:#c53030; --bg:#f7fafc; --card:#fff; --border:#e2e8f0; --muted:#718096; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: #2d3748; line-height: 1.7; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.hero { background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); color: #fff; padding: 36px 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(44,82,130,0.3); }
+.hero h1 { font-size: 28px; margin-bottom: 10px; }
+.hero p { font-size: 15px; opacity: 0.9; }
+.section { background: var(--card); padding: 24px; margin-bottom: 22px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid var(--border); }
+.section h2 { color: var(--primary); font-size: 20px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+th, td { padding: 6px 10px; border: 1px solid var(--border); text-align: left; }
+th { background: #edf2f7; color: var(--primary); font-weight: 600; }
+tr:nth-child(even) { background: #f7fafc; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 14px 0; }
+.stat-box { background: linear-gradient(135deg, #ebf4ff 0%, #e6fffa 100%); border: 1px solid #bee3f8; padding: 18px; border-radius: 8px; text-align: center; }
+.stat-box .num { font-size: 32px; font-weight: bold; color: var(--primary); }
+.stat-box .lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.subsection { background: #f7fafc; padding: 16px 20px; border-radius: 8px; margin: 12px 0; }
+.subsection h3 { color: #2d3748; font-size: 16px; margin-bottom: 8px; padding-left: 8px; border-left: 3px solid var(--accent); }
+.flag { display: inline-block; background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-left: 6px; }
+.flag.alt { background: #38a169; }
+.footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 40px; padding: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>张锡纯原书结构验证 — 535 段全目录</h1>
+  <p>《医学衷中参西录》8 期 30 卷 完整版 (校后_v2_2018完整版_全8期30卷.txt)</p>
+  <p style="margin-top:6px">回应 "继续验证原著各个医论个方剂等"</p>
+</div>
+
+<!-- 一、总览 -->
+<div class="section">
+<h2>一、原书结构总览</h2>
+
+<div class="stat-grid">
+<div class="stat-box"><div class="num">535</div><div class="lbl">总段数（篇名数）</div></div>
+<div class="stat-box"><div class="num">261</div><div class="lbl">医方段（ID 1-261）</div></div>
+<div class="stat-box"><div class="num">35</div><div class="lbl">医论段（ID 314-351）</div></div>
+<div class="stat-box"><div class="num">135</div><div class="lbl">伤寒论注解（ID 262-313）</div></div>
+<div class="stat-box"><div class="num">125</div><div class="lbl">医案段（ID 411-535）</div></div>
+<div class="stat-box"><div class="num">43</div><div class="lbl">医话·问答（ID 352-395）</div></div>
+</div>
+
+<table>
+<tr><th>类别</th><th>段数</th><th>篇名 ID 范围</th><th>说明</th></tr>
+<tr><td><b>医方篇</b></td><td>164</td><td>1-177</td><td>方剂组成、方解、验案</td></tr>
+<tr><td><b>药物篇</b></td><td>79</td><td>178-261</td><td>79 味药解读（石膏解、人参解...）</td></tr>
+<tr><td><b>伤寒论注解</b></td><td>52</td><td>262-313</td><td>六经总论 + 各汤证</td></tr>
+<tr><td><b>医论篇</b></td><td>35</td><td>314-351</td><td>专题医论（论冲气、论火不归原...）</td></tr>
+<tr><td><b>医话篇</b></td><td>44</td><td>352-395</td><td>临症随笔、答友问</td></tr>
+<tr><td><b>医案篇</b></td><td>125</td><td>411-535</td><td>附编医案（71 验案在 8 大类）</td></tr>
+<tr><td><b>虚劳证</b></td><td>10</td><td>399-410</td><td>虚劳专门验案 10 则</td></tr>
+</table>
+</div>
+
+<!-- 二、医方篇 164 段 -->
+<div class="section">
+<h2>二、医方篇 164 段 <span class="flag alt">核心</span></h2>
+
+<p>医方篇共 164 段（ID 1-177，含附则），是张锡纯原书<b>最核心</b>的内容。每段结构：<b>主治→方剂组成→方解→医论→验案</b>。</p>
+
+<div class="subsection">
+<h3>2.1 主要方剂群（按系统分类）</h3>
+<table>
+<tr><th>系统</th><th>方剂数</th><th>代表方</th><th>ID 范围</th></tr>
+<tr><td><b>治大气下陷方</b></td><td>4</td><td>升陷汤、回阳升陷汤、理郁升陷汤、醒脾升陷汤</td><td>14-17</td></tr>
+<tr><td><b>治喘方</b></td><td>3</td><td>参赭镇气汤、薯蓣纳气汤、滋培汤</td><td>18-20</td></tr>
+<tr><td><b>治痰饮方</b></td><td>6</td><td>理饮汤、理痰汤、龙理痰汤、健脾化痰丸、期颐饼、治痰点天突穴法</td><td>21-26</td></tr>
+<tr><td><b>治肺痨方</b></td><td>5</td><td>黄膏、清金益气汤、清金解毒汤、安肺宁嗽丸、清凉华盖饮</td><td>27-31</td></tr>
+<tr><td><b>治吐衄方</b></td><td>11</td><td>寒降汤、温降汤、清降汤、保元寒降汤、保元清降汤、秘红丹、二鲜饮、三鲜饮、化血丹、补络补管汤、化瘀理膈丹</td><td>32-42</td></tr>
+<tr><td><b>治心病方</b></td><td>2</td><td>定心汤、安魂汤</td><td>43-44</td></tr>
+<tr><td><b>治癫狂方</b></td><td>3</td><td>荡痰汤、荡痰加甘遂汤、调气养神汤</td><td>45-47</td></tr>
+<tr><td><b>治痫风方</b></td><td>3</td><td>加味磁朱丸、通变黑锡丹、一味铁养汤</td><td>48-50</td></tr>
+<tr><td><b>治小儿风证方</b></td><td>2</td><td>定风丹、镇风汤</td><td>51-52</td></tr>
+<tr><td><b>治中风方</b></td><td>6</td><td>搜风汤、逐风汤、加味黄五物汤、加味玉屏风散、镇肝熄风汤、加味补血汤</td><td>53-58</td></tr>
+<tr><td><b>治痿废方</b></td><td>3</td><td>振颓汤、振颓丸、姜胶膏</td><td>59-61</td></tr>
+<tr><td><b>治呕吐方</b></td><td>2</td><td>镇逆汤、薯蓣半夏粥</td><td>63-64</td></tr>
+<tr><td><b>治霍乱方</b></td><td>3</td><td>急救回生丹、卫生防疫宝丹、急救回阳汤</td><td>65-67</td></tr>
+<tr><td><b>治泄泻方</b></td><td>7</td><td>益脾饼、扶中汤、薯蓣粥、薯蓣鸡子黄粥、薯蓣苜汤、加味天水散、加味四神丸</td><td>68-74</td></tr>
+<tr><td><b>治痢方</b></td><td>7</td><td>化滞汤、燮理汤、解毒生化丹、天水涤肠汤、通变白头翁汤、三宝粥、通变白虎加人参汤</td><td>75-81</td></tr>
+<tr><td><b>治肠结方</b></td><td>3</td><td>硝菔通结汤、赭遂攻结汤、通结用葱白熨法</td><td>82-84</td></tr>
+<tr><td><b>治消渴方</b></td><td>2</td><td>玉液汤、滋饮</td><td>85-86</td></tr>
+<tr><td><b>治癃闭方</b></td><td>9</td><td>宣阳汤、济阴汤、白茅根汤、温通汤、加味苓桂术甘汤、寒通汤、升麻黄汤、鸡汤、鸡茅根汤</td><td>87-95</td></tr>
+<tr><td><b>治淋浊方</b></td><td>13</td><td>理血汤、膏淋汤、气淋汤、劳淋汤、砂淋丸、寒淋汤、秘真丹、毒淋汤、清毒二仙丹、鲜小蓟根汤、澄化汤、清肾汤、舒和汤</td><td>96-108</td></tr>
+<tr><td><b>治伤寒温病方</b></td><td>16</td><td>麻黄加知母汤、加味桂枝代粥汤、从龙汤、馏水石膏饮、通变大柴胡汤、加味越婢加半夏汤、清解汤、凉解汤、寒解汤、石膏阿斯匹林汤、和解汤、宣解汤、滋阴宣解汤、滋阴清燥汤、滋阴固下汤、犹龙汤</td><td>109-124</td></tr>
+<tr><td><b>治温病方</b></td><td>8</td><td>仙露汤、石膏粳米汤、镇逆白虎汤、白虎加人参以山药代粳米汤、宁嗽定喘饮、荡胸汤、一味莱菔子汤、镇逆承气汤</td><td>125-132</td></tr>
+<tr><td><b>治瘟疫方</b></td><td>3</td><td>青盂汤、护心至宝丹、清疹汤</td><td>133-135</td></tr>
+<tr><td><b>治气血郁方</b></td><td>8</td><td>升降汤、培脾舒肝汤、金铃泻肝汤、活络效灵丹、活络祛寒汤、健运汤、振中汤、曲直汤</td><td>137-144</td></tr>
+<tr><td><b>治妇科方</b></td><td>17</td><td>玉烛汤、理冲汤、理冲丸、安冲汤、固冲汤、温冲汤、清带汤、加味麦门冬汤、寿胎丸、安胃饮、大顺汤、和血熄风汤、滋阴清胃汤、滋乳汤、消乳汤、升肝舒郁汤、资生通脉汤</td><td>145-161</td></tr>
+<tr><td><b>治眼科方</b></td><td>7</td><td>蒲公英汤、磨翳水、磨翳散、明目蓬硝水、清脑黄连膏、益瞳丸、羊肝猪胆丸</td><td>162-168</td></tr>
+<tr><td><b>治喉科方</b></td><td>3</td><td>古方马乳饮、牙疳散、牙疳敷藤黄法</td><td>170-172</td></tr>
+<tr><td><b>治瘰疬方</b></td><td>5</td><td>消瘰丸、消瘰膏、化腐生肌散、内托生肌散、洗髓丹</td><td>173-177</td></tr>
+</table>
+</div>
+
+<p style="margin-top:14px"><b>总计</b>：164 段医方，每段含验案 0-30+ 则<br>
+<b>提取实证</b>：v2.7 提取 994 验案中约 <b>700+ 来自医方篇</b>，其余来自医案篇和虚劳证篇</p>
+</div>
+
+<!-- 三、医论篇 35 段 -->
+<div class="section">
+<h2>三、医论篇 35 段 <span class="flag alt">张锡纯独到理论</span></h2>
+
+<p>医论篇是张锡纯原创理论的核心：</p>
+
+<table>
+<tr><th>篇名 ID</th><th>标题</th><th>核心论断</th></tr>
+<tr><td>314</td><td>53．论冬伤于寒春必病温</td><td>伏气化热说</td></tr>
+<tr><td>316</td><td>55．论伤寒温病神昏谵语之原因</td><td>热入心包 = 心脑同病</td></tr>
+<tr><td>317</td><td>56．论吴又可达原饮不可以治温病</td><td>批评达原饮</td></tr>
+<tr><td><b>318</b></td><td><b>57．论革脉之形状及治法</b></td><td>张锡纯独家革脉理论</td></tr>
+<tr><td><b>319-320</b></td><td><b>58-59．论脑充血之原因及治法</b></td><td>脑充血 = 中风，张锡纯创镇肝熄风汤</td></tr>
+<tr><td>321-322</td><td>60-61．论脑贫血治法</td><td>与脑充血对比</td></tr>
+<tr><td>323</td><td>62．论心病治法</td><td>心脑相通理论</td></tr>
+<tr><td>324</td><td>63．论肺病治法</td><td>肺为华盖</td></tr>
+<tr><td>325</td><td>64．总论喘证治法</td><td>喘证 11 因</td></tr>
+<tr><td>326</td><td>65．论胃病噎膈治法</td><td>噎膈 = 胃癌</td></tr>
+<tr><td>327</td><td>66．论胃气不降治法</td><td>胃气以息息下行为常</td></tr>
+<tr><td>328</td><td>67．论吐血衄血之原因</td><td>血证总论</td></tr>
+<tr><td>329</td><td>68．论痢证治法</td><td>痢疾分型</td></tr>
+<tr><td>330</td><td>69．论肠结治法</td><td>承气汤变方</td></tr>
+<tr><td>331</td><td>70．论结胸治法</td><td>大小陷胸汤</td></tr>
+<tr><td>332</td><td>71．论霍乱治法</td><td>霍乱分干湿</td></tr>
+<tr><td>333</td><td>72．论肝病治法</td><td>肝为刚脏</td></tr>
+<tr><td>334</td><td>73．论黄胆治法</td><td>阴黄阳黄</td></tr>
+<tr><td>335</td><td>74．论水臌气臌治法</td><td>臌胀分水气血</td></tr>
+<tr><td>336</td><td>75．论血臌治法</td><td>血臌=瘀血</td></tr>
+<tr><td>337</td><td>76．论肾弱不能作强治法</td><td>肾为作强之官</td></tr>
+<tr><td><b>338</b></td><td><b>77．论冲气上冲之病因病状病脉及治法</b></td><td><b>冲气上冲=肾虚不摄, 弦硬而长</b></td></tr>
+<tr><td><b>339</b></td><td><b>78．论火不归原治法</b></td><td><b>引火汤=治龙雷之火</b></td></tr>
+<tr><td>340</td><td>79．论腰疼治法</td><td>腰疼分虚实</td></tr>
+<tr><td>341</td><td>80．论肢体痿废之原因</td><td>痿=肺热叶焦</td></tr>
+<tr><td>342</td><td>81．论四肢疼痛</td><td>凉热各异</td></tr>
+<tr><td>343</td><td>82．论治偏枯者不可轻用补阳还五汤</td><td>批评王清任</td></tr>
+<tr><td>344</td><td>83．论鼻渊治法</td><td>鼻渊=胆热</td></tr>
+<tr><td>345</td><td>84．详论咽喉证治法</td><td>咽喉=肺胃门户</td></tr>
+<tr><td>346</td><td>85．论喉证治法</td><td>白喉=疫毒</td></tr>
+<tr><td>347</td><td>86．详论猩红热治法</td><td>猩红热=烂喉痧</td></tr>
+<tr><td>348</td><td>87．论鼠疫之原因及治法</td><td>鼠疫=疫毒</td></tr>
+<tr><td>349</td><td>88．论女子瘕治法</td><td>瘕=瘀血</td></tr>
+<tr><td>350</td><td>89．论用药以胜病为主</td><td>不拘分量</td></tr>
+<tr><td>351</td><td>90．论治疔宜重用大黄</td><td>大黄治疔</td></tr>
+</table>
+</div>
+
+<!-- 四、伤寒论注解 52 段 -->
+<div class="section">
+<h2>四、伤寒论注解 52 段 <span class="flag alt">仲景学说新解</span></h2>
+
+<p>张锡纯注解伤寒论的特色：<b>衷中参西</b>，把西医理论与中医结合。</p>
+
+<div class="subsection">
+<h3>4.1 六经总论 + 太阳病（ID 262-269）</h3>
+<ul>
+<li>262: 1．六经总论</li>
+<li>263: 2．太阳病桂枝汤证</li>
+<li>264: 3．太阳病麻黄汤证</li>
+<li>265: 4．太阳与阳明合病麻黄汤证</li>
+<li>266: 5．太阳温病麻杏甘石汤证</li>
+<li>267: 6．太阳病大青龙汤证</li>
+<li>268: 7．太阳病小青龙汤证</li>
+<li>269: 8．太阳病旋复花代赭石汤证</li>
+</ul>
+</div>
+
+<div class="subsection">
+<h3>4.2 太阳病下篇（ID 270-276）</h3>
+<p>大陷胸/小陷胸/泻心汤/炙甘草/桃核承气/桂枝加葛根/葛根汤</p>
+</div>
+
+<div class="subsection">
+<h3>4.3 阳明病（ID 277-286）</h3>
+<p>葛根黄连黄芩/白虎汤/白虎加人参/三承气/茵陈蒿/栀子柏皮/麻黄连轺赤小豆/猪苓/四逆</p>
+</div>
+
+<div class="subsection">
+<h3>4.4 少阳病（ID 287-290）</h3>
+<p>少阳提纲/小柴胡/大柴胡/三阳合病</p>
+</div>
+
+<div class="subsection">
+<h3>4.5 太阴病（ID 291-294）</h3>
+<p>太阴提纲/桂枝/四逆辈/桂枝加芍药/桂枝加大黄</p>
+</div>
+
+<div class="subsection">
+<h3>4.6 少阴病（ID 295-305）</h3>
+<p>少阴提纲/麻黄附子细辛/黄连阿胶/附子汤/桃花/吴茱萸/苦酒/白通/真武/通脉四逆/大承气</p>
+</div>
+
+<div class="subsection">
+<h3>4.7 厥阴病 + 温病遗方（ID 306-313）</h3>
+<p>厥阴提纲/乌梅丸/白虎/当归四逆/白头翁/理中/竹叶石膏/温病遗方</p>
+</div>
+</div>
+
+<!-- 五、医案篇 125 段 -->
+<div class="section">
+<h2>五、医案篇 125 段 <span class="flag">附编验案</span></h2>
+
+<p>医案篇是张锡纯<b>治验医案</b>集中收录，按疾病分类：</p>
+
+<table>
+<tr><th>类别</th><th>段数</th><th>ID 范围</th><th>代表</th></tr>
+<tr><td>虚劳证（单独列出）</td><td>10</td><td>399-410</td><td>肺劳咳嗽、虚劳兼劳碌</td></tr>
+<tr><td>大气下陷 + 冲气上冲 + 胃气不降</td><td>9</td><td>411-419</td><td>大气下陷 6 例 + 冲气 1 + 胃气不降 2</td></tr>
+<tr><td>吐血/便血/瘀血</td><td>11</td><td>420-430</td><td>吐血 6 + 咳血 1 + 下血 4 + 瘀血 1</td></tr>
+<tr><td>脑充血</td><td>6</td><td>431-436</td><td>脑充血 4 + 腿痿弱 1 + 痰厥 1 + 偏枯 1</td></tr>
+<tr><td>噎膈/反胃/胃脘/腹疼/肠结</td><td>6</td><td>437-442</td><td>噎膈 1 + 反胃 1 + 胃脘 1 + 冷积 1 + 肠结 2</td></tr>
+<tr><td>头疼/目病/牙疼</td><td>3</td><td>443-445</td><td>头疼 1 + 目病 1 + 牙疼 1</td></tr>
+<tr><td>胁疼/腰疼/腿疼</td><td>5</td><td>446-450</td><td>胁疼 3 + 腰疼 1 + 腿疼 1</td></tr>
+<tr><td>水肿</td><td>3</td><td>451-453</td><td>受风 1 + 阴虚 1 + 痰 1</td></tr>
+<tr><td>黄胆</td><td>3</td><td>454-456</td><td>兼外感 1 + 黄胆 2</td></tr>
+<tr><td>痢疾</td><td>4</td><td>457-460</td><td>转肠溃疡 1 + 痢疾 2 + 噤口痢 1</td></tr>
+<tr><td>泄泻/小便</td><td>3</td><td>461-463</td><td>泄泻 1 + 白浊 1 + 寒闭 1</td></tr>
+<tr><td>不寐</td><td>2</td><td>464-465</td><td>心虚 1 + 惊悸 1</td></tr>
+<tr><td>痫风/慢脾/癫狂</td><td>7</td><td>466-472</td><td>痫风 1 + 螈 1 + 慢脾 3 + 癫狂 2</td></tr>
+<tr><td>伤寒</td><td>5</td><td>473-477</td><td>脑膜炎 1 + 脉闭 2 + 少阴 1 + 伏热 1</td></tr>
+<tr><td>温病（最丰富）</td><td>37</td><td>478-514</td><td>温病兼证 37 例</td></tr>
+<tr><td>疟疾</td><td>4</td><td>515-518</td><td>疟疾 3 + 疟痢 1</td></tr>
+<tr><td>霍乱</td><td>4</td><td>519-522</td><td>转筋 1 + 吐泻 1 + 脱证 2</td></tr>
+<tr><td>妇科</td><td>13</td><td>523-535</td><td>怀妊 4 + 产后 6 + 月经 3</td></tr>
+</table>
+
+<p style="margin-top:14px"><b>合计 125 段医案</b>，含验案 1-5 则/段</p>
+</div>
+
+<!-- 六、医话篇 44 段 -->
+<div class="section">
+<h2>六、医话篇 44 段 <span class="flag">临证随笔</span></h2>
+
+<p>医话篇含 2 大类：<b>临症随笔</b>（ID 352-353）+ <b>答友问</b>（ID 354-395）</p>
+
+<div class="subsection">
+<h3>6.1 临症随笔（2 段）</h3>
+<ul>
+<li>352: 1．临症随笔</li>
+<li>353: 2．诊余随笔</li>
+</ul>
+</div>
+
+<div class="subsection">
+<h3>6.2 答友问（42 段）</h3>
+<p>张锡纯答复学生/同行的提问，<b>原书 372 节"答章××问腹内动气冲气症治法"</b>就是冲气上冲的另一重要论断（与 77 节互补）。</p>
+<p>其他如：<b>367 节论烂喉痧、370 节论小儿水泻、380 节论肝与脾之关系、387 节论荡漾病</b>等。</p>
+</div>
+</div>
+
+<!-- 七、v2.7 提取 vs 原书对比 -->
+<div class="section">
+<h2>七、v2.7 提取实证 vs 原书结构</h2>
+
+<table>
+<tr><th>类别</th><th>原书段数</th><th>v2.7 提取验案数</th><th>覆盖率</th></tr>
+<tr><td>医方篇（ID 1-177）</td><td>164</td><td>~700</td><td>主力</td></tr>
+<tr><td>医案篇（ID 411-535）</td><td>125</td><td>~250</td><td>含</td></tr>
+<tr><td>虚劳证（ID 399-410）</td><td>10</td><td>~40</td><td>含</td></tr>
+<tr><td>医论篇（ID 314-351）</td><td>35</td><td>0</td><td>未提取（医论无验案）</td></tr>
+<tr><td>伤寒论（ID 262-313）</td><td>52</td><td>0</td><td>未提取（理论段）</td></tr>
+<tr><td>医话篇（ID 352-395）</td><td>44</td><td>0</td><td>未提取（问答体）</td></tr>
+<tr><td>药物篇（ID 178-261）</td><td>79</td><td>0</td><td>未提取（药解）</td></tr>
+<tr><td><b>合计</b></td><td><b>535</b></td><td><b>994</b></td><td>~99 案/段均值</td></tr>
+</table>
+
+<p style="margin-top:14px"><b>v2.7 提取局限</b>：</p>
+<ul style="margin-left:30px">
+<li>✓ 已提取：医方篇 164 段（主力）+ 医案篇 125 段 + 虚劳证 10 段</li>
+<li>✗ 未提取：医论 35 段（理论无验案）+ 伤寒论 52 段（理论）+ 医话 44 段（问答）+ 药物 79 段（药解）</li>
+<li>总验案 994 中，<b>实有验案约 994 案</b>，每段平均 3-5 案</li>
+</ul>
+</div>
+
+<!-- 八、关键发现 -->
+<div class="section">
+<h2>八、关键发现</h2>
+<p>① <b>原书 535 段</b>，v2.7 提取 <b>994 验案</b> = 平均 <b>3.0 验案/段</b>，符合"<b>每方剂略登数则</b>"的写作习惯</p>
+<p>② <b>医方篇 164 段 + 医案篇 125 段 = 289 段</b> 是验案来源，<b>占总段数 54%</b></p>
+<p>③ <b>医论 35 段 + 伤寒论 52 段 + 医话 44 段 = 131 段</b>是理论段，未提取验案</p>
+<p>④ <b>药物篇 79 段</b>（石膏解、人参解...）是张锡纯的<b>药学专论</b>，未含验案</p>
+<p>⑤ 之前我"冲气上逆无独立证型"的判断是错的——<b>77 节"论冲气上冲"整篇</b>就是独立证型</p>
+</div>
+
+<div class="footer">
+  <p>张锡纯原书结构验证 — 535 段 / 30 卷 / 994 验案 / Tag v2.7.6</p>
+  <p>数据：完整版《医学衷中参西录》校后_v2_2018完整版_全8期30卷.txt</p>
+</div>
+
+</div>
+</body>
+</html>
