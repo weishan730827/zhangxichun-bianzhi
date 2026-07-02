@@ -23,9 +23,9 @@ const PULSE_GROUPS = [
 
 async function loadAll() {
   const [cR, mR, csR] = await Promise.all([
-    fetch('assets/data/checklist_v2.0.json'),
-    fetch('assets/data/case_match_v2.2.json'),
-    fetch('assets/data/cases_unified_v2.2.json'),
+    fetch('assets/data/checklist_v2.7.json'),
+    fetch('assets/data/case_match_v2.7.json'),
+    fetch('assets/data/cases_unified_v2.7.json'),
   ]);
   CHECKLIST = await cR.json();
   MATCH = await mR.json();
@@ -189,7 +189,7 @@ function computeScores(picks) {
   // 加载扩展 match (zx_pulse 匹配)
   let EXT = null;
   if (picks.zx_pulse.length > 0) {
-    fetch('assets/data/pulse_extended_v2.2.json').then(r => r.json()).then(d => { EXT = d; });
+    fetch('assets/data/pulse_extended_v2.7.json').then(r => r.json()).then(d => { EXT = d; });
   }
 
   // 最大可能分
