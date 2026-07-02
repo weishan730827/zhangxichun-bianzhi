@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>张锡纯 28 脉专题 — v2.7 实证统计 994 案</title>
+<style>
+:root {
+  --primary: #2c5282;
+  --accent: #c53030;
+  --bg: #f7fafc;
+  --card: #fff;
+  --border: #e2e8f0;
+  --muted: #718096;
+  --highlight: #fef3c7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: #2d3748;
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+  color: #fff;
+  padding: 36px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(44,82,130,0.3);
+}
+.hero h1 { font-size: 28px; margin-bottom: 10px; }
+.hero p { font-size: 15px; opacity: 0.9; }
+.section {
+  background: var(--card);
+  padding: 24px;
+  margin-bottom: 22px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid var(--border);
+}
+.section h2 {
+  color: var(--primary);
+  font-size: 20px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary);
+}
+.pulse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 16px;
+}
+.pulse-card {
+  background: #f7fafc;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: all 0.2s;
+}
+.pulse-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.pulse-card .pch {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 8px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.pulse-card .pct {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary);
+  vertical-align: middle;
+}
+.pulse-card .pcnt {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #4a5568;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.pulse-card .pcmean {
+  color: #4a5568;
+  font-size: 13px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #e2e8f0;
+}
+.pulse-card .pcloc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.pulse-card .pcloc-tag {
+  font-size: 11px;
+  padding: 2px 7px;
+  background: #edf2f7;
+  border-radius: 10px;
+  color: #2d3748;
+}
+.pulse-card .pcloc-tag.hot { background: #fed7d7; color: #c53030; font-weight: bold; }
+.pulse-card .pcsigs {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #4a5568;
+}
+.pulse-card .pcsigs .sig {
+  display: block;
+  background: #fff;
+  border-left: 3px solid #cbd5e0;
+  padding: 4px 8px;
+  margin: 4px 0;
+  font-family: monospace;
+  font-size: 12px;
+}
+.combo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+.combo-table th, .combo-table td {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.combo-table th { background: #edf2f7; color: var(--primary); }
+.combo-table tr:nth-child(even) { background: #f7fafc; }
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 40px;
+  padding: 20px;
+}
+.summary-box {
+  background: #ebf8ff;
+  border: 1px solid #bee3f8;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 14px 0;
+}
+.summary-box h3 { color: var(--primary); font-size: 16px; margin-bottom: 8px; }
+.loc-bar {
+  display: inline-flex;
+  height: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 4px;
+  font-size: 10px;
+  color: #fff;
+  align-items: center;
+  min-width: 100px;
+}
+.loc-bar span { padding: 0 4px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>张锡纯 28 脉完整专题</h1>
+  <p>基于 <b>994 案</b> 实证统计 — v2.7 数据 (cases_v2.7.json)</p>
+  <p style="margin-top:8px">每脉含：5 维度位置分布 + 典型原文 + 代表医案 + 辨证意义</p>
+</div>
+
+<div class="summary-box">
+<h3>一、994 案 28 脉 总体分布</h3>
+<p><b>最常见 5 脉：</b>弦 263 / 数 263 / 洪 262 / 实 219 / 微 202</p>
+<p><b>罕见 5 脉：</b>疾 0 / 革 0 / 散 3 / 促 2 / 代 6</p>
+<p><b>张锡纯特色：</b>实+洪 (86 案, 最强组合=阳明实热) / 弱+微 (61 案, 阴阳两虚) / 弦+长 (58 案, 肝阳上亢)</p>
+</div>
+
+<!-- 二、28 脉完整卡片 -->
+<div class="section">
+<h2>二、28 脉 × 5 维度 × 典型原文</h2>
+
+<div class="pulse-grid">
+
+<!-- 浮 -->
+<div class="pulse-card">
+<span class="pch">浮</span><span class="pct">浮脉</span><span class="pcnt">152 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 88</span>
+<span class="pcloc-tag">左手 10</span>
+<span class="pcloc-tag">右手 2</span>
+<span class="pcloc-tag">关前 6</span>
+<span class="pcloc-tag">重按 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主表证。浮洪=表热，浮紧=伤寒，浮而无力=表虚</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">浮洪而长，知其阳明经</span>
+<span class="sig">犹浮，虽洪滑而按之不实者</span>
+<span class="sig">浮而有力，知其因风束生热</span>
+</div>
+</div>
+
+<!-- 沉 -->
+<div class="pulse-card">
+<span class="pch">沉</span><span class="pct">沉脉</span><span class="pcnt">118 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 66</span>
+<span class="pcloc-tag">左手 14</span>
+<span class="pcloc-tag">关前 4</span>
+<span class="pcloc-tag">重按 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主里证。沉弦=肝郁，沉细=里虚，沉伏=邪闭</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">弦长有力，然在沉分</span>
+<span class="sig">甚沉伏，重按</span>
+<span class="sig">沉弦</span>
+<span class="sig">左部沉弦，右部沉牢</span>
+</div>
+</div>
+
+<!-- 伏 -->
+<div class="pulse-card">
+<span class="pch">伏</span><span class="pct">伏脉</span><span class="pcnt">14 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">总按 7</span>
+<span class="pcloc-tag">右手 2</span>
+<span class="pcloc-tag">重按 2</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主邪闭/厥证。沉伏重按乃得=实邪内结</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">甚沉伏，重按</span>
+<span class="sig">左关弦硬，右关洪实，知系伏气之热</span>
+</div>
+</div>
+
+<!-- 迟 -->
+<div class="pulse-card">
+<span class="pch">迟</span><span class="pct">迟脉</span><span class="pcnt">68 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 42</span>
+<span class="pcloc-tag hot">重按 13</span>
+<span class="pcloc-tag">右手 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主寒/气陷。迟而有力=寒实，迟而无力=虚寒。<b>张锡纯特色：大气下陷脉多迟</b></div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">微弱而迟</span>
+<span class="sig">弦细而迟</span>
+<span class="sig">沉迟，兼有闭塞之象</span>
+</div>
+</div>
+
+<!-- 数 -->
+<div class="pulse-card">
+<span class="pch">数</span><span class="pct">数脉</span><span class="pcnt">263 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 164</span>
+<span class="pcloc-tag">重按 6</span>
+<span class="pcloc-tag">左手 3</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主热/阴虚。263 案=最常见之一。数而有力=实热，数而无力=虚热</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">数而有力，微有弦意</span>
+<span class="sig">细数无力，周身肌肤发热</span>
+<span class="sig">虚数，不能饮食</span>
+</div>
+</div>
+
+<!-- 缓 -->
+<div class="pulse-card">
+<span class="pch">缓</span><span class="pct">缓脉</span><span class="pcnt">34 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 24</span>
+<span class="pcloc-tag">右手 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主湿/正常。缓而有力=正常，缓而无力=湿困</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">仍似有力，而无弦缓之致</span>
+<span class="sig">较前缓和</span>
+</div>
+</div>
+
+<!-- 虚 -->
+<div class="pulse-card">
+<span class="pch">虚</span><span class="pct">虚脉</span><span class="pcnt">81 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 54</span>
+<span class="pcloc-tag">关后 5</span>
+<span class="pcloc-tag">左手 3</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主气血虚。虚数=阴虚，虚大=虚阳外越</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">虚数，不能饮食</span>
+<span class="sig">虚不能胜</span>
+<span class="sig">气息有将脱之意</span>
+</div>
+</div>
+
+<!-- 实 -->
+<div class="pulse-card">
+<span class="pch">实</span><span class="pct">实脉</span><span class="pcnt">219 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 106</span>
+<span class="pcloc-tag hot">重按 29</span>
+<span class="pcloc-tag">右手 13</span>
+<span class="pcloc-tag">左手 8</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主实证。有根之脉。实+洪=阳明实热 (86 案, <b>最强组合</b>)</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">象洪实</span>
+<span class="sig">甚洪实，舌苔黄而欲黑，撮空摸床</span>
+<span class="sig">洪实，寒凉亦在所不忌</span>
+</div>
+</div>
+
+<!-- 滑 -->
+<div class="pulse-card">
+<span class="pch">滑</span><span class="pct">滑脉</span><span class="pcnt">121 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 68</span>
+<span class="pcloc-tag">关前 9</span>
+<span class="pcloc-tag">左手 7</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主痰/孕/食积。滑数=痰热，洪滑=实热</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">左右皆洪滑有力，一分钟九十八</span>
+<span class="sig">关前洪滑，两尺无力</span>
+<span class="sig">洪滑有力，心中热而且渴</span>
+</div>
+</div>
+
+<!-- 涩 -->
+<div class="pulse-card">
+<span class="pch">涩</span><span class="pct">涩脉</span><span class="pcnt">10 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">总按 5</span>
+<span class="pcloc-tag">重按 2</span>
+<span class="pcloc-tag">左手 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主血瘀/精伤。涩而细=血虚，芤而涩=失血</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">搏至数如常，芤而无力，重按甚涩</span>
+<span class="sig">弦细以涩，两尺如无</span>
+</div>
+</div>
+
+<!-- 弦 -->
+<div class="pulse-card">
+<span class="pch">弦</span><span class="pct">弦脉</span><span class="pcnt">263 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 122</span>
+<span class="pcloc-tag hot">左手 56</span>
+<span class="pcloc-tag">重按 9</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主肝气/气滞/痛。弦长有力=肝阳上亢 (58 案)<br>
+<b>张锡纯最常用脉之一</b></div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">弦长有力</span>
+<span class="sig">数而有力，微有弦意</span>
+<span class="sig">弦细无力</span>
+<span class="sig">左部弦长</span>
+</div>
+</div>
+
+<!-- 紧 -->
+<div class="pulse-card">
+<span class="pch">紧</span><span class="pct">紧脉</span><span class="pcnt">16 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 10</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主寒/痛。浮紧=表寒，沉紧=里寒</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">阴阳俱紧者，谍以太阳为周身外卫</span>
+<span class="sig">似紧而不任重按</span>
+</div>
+</div>
+
+<!-- 细 -->
+<div class="pulse-card">
+<span class="pch">细</span><span class="pct">细脉</span><span class="pcnt">139 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 74</span>
+<span class="pcloc-tag hot">重按 16</span>
+<span class="pcloc-tag">左手 12</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主血虚/阴虚。细数=阴虚内热</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">弦细无力</span>
+<span class="sig">微细稍数</span>
+<span class="sig">细数无力，周身肌肤发热</span>
+</div>
+</div>
+
+<!-- 微 -->
+<div class="pulse-card">
+<span class="pch">微</span><span class="pct">微脉</span><span class="pcnt">202 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 112</span>
+<span class="pcloc-tag hot">重按 14</span>
+<span class="pcloc-tag">左手 12</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主阳衰/气虚。<b>大气下陷核心脉</b>，常与弱、迟同见</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">微弱而迟 (3次)</span>
+<span class="sig">微细稍数</span>
+<span class="sig">亦右部如常，左部微弱</span>
+</div>
+</div>
+
+<!-- 弱 -->
+<div class="pulse-card">
+<span class="pch">弱</span><span class="pct">弱脉</span><span class="pcnt">152 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 81</span>
+<span class="pcloc-tag">重按 10</span>
+<span class="pcloc-tag">左手 6</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主虚证。弱而迟=虚寒，弱而数=虚热</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">微弱而迟</span>
+<span class="sig">左部微弱</span>
+<span class="sig">象亦弱，而左脉之力似略胜于右</span>
+</div>
+</div>
+
+<!-- 洪 -->
+<div class="pulse-card">
+<span class="pch">洪</span><span class="pct">洪脉</span><span class="pcnt">262 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 131</span>
+<span class="pcloc-tag">左手 15</span>
+<span class="pcloc-tag">关前 9</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主阳明实热。洪大=热盛，洪而无根=虚热。<b>实+洪=最强组合 86 案</b></div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">象洪实 (3次)</span>
+<span class="sig">洪而无力，肌肤之热烙手</span>
+<span class="sig">浮洪而长，知其阳明经</span>
+</div>
+</div>
+
+<!-- 大 -->
+<div class="pulse-card">
+<span class="pch">大</span><span class="pct">大脉</span><span class="pcnt">175 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 113</span>
+<span class="pcloc-tag">右手 5</span>
+<span class="pcloc-tag">重按 3</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主邪盛/虚大。大而有力=邪盛，大而无力=虚大</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">亦大有起色</span>
+<span class="sig">洪大者</span>
+<span class="sig">左大于右者一倍，按之且有力</span>
+</div>
+</div>
+
+<!-- 长 -->
+<div class="pulse-card">
+<span class="pch">长</span><span class="pct">长脉</span><span class="pcnt">127 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 66</span>
+<span class="pcloc-tag hot">左手 25</span>
+<span class="pcloc-tag">重按 2</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主气逆/有余。弦长有力=肝阳上亢。左手 25 案=肝气上逆左脉独显</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">弦长有力 (3次)</span>
+<span class="sig">浮洪而长，知其阳明经</span>
+<span class="sig">左部弦长</span>
+</div>
+</div>
+
+<!-- 短 -->
+<div class="pulse-card">
+<span class="pch">短</span><span class="pct">短脉</span><span class="pcnt">16 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 14</span>
+<span class="pcloc-tag">重按 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主气虚。短而无力=元气不足</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">气短</span>
+<span class="sig">主疼，又主血液短少</span>
+</div>
+</div>
+
+<!-- 濡 -->
+<div class="pulse-card" style="border-left-color: #ed8936; background: #fffaf0;">
+<span class="pch" style="background:#ed8936">濡</span><span class="pct" style="color:#c05621">濡脉</span><span class="pcnt" style="background:#fefcbf">25 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 12</span>
+<span class="pcloc-tag hot">重按 3</span>
+<span class="pcloc-tag">左手 2</span>
+</div>
+<div class="pcmean" style="background:#fef3c7;padding:6px;border-radius:4px">
+<b style="color:#c05621">★ 用户洞察：濡脉不一定浮</b><br>
+17 案濡脉中 <b>16 案不浮</b>，仅 1 例"浮而濡"=湿温。<br>
+沉濡=大气下陷/阴虚；微弱迟濡=脾胃湿寒；左手沉濡=痰证
+</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">数至六至，兼有沉濡之象</span>
+<span class="sig">象甚迟濡</span>
+<span class="sig">濡弱无力</span>
+<span class="sig">微弱迟濡，当系脾胃湿寒</span>
+</div>
+</div>
+
+<!-- 芤 -->
+<div class="pulse-card">
+<span class="pch">芤</span><span class="pct">芤脉</span><span class="pcnt">10 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">总按 6</span>
+<span class="pcloc-tag">右手 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主失血/伤阴。芤而涩=失血</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">搏至数如常，芤而无力，重按甚涩</span>
+<span class="sig">左部弦长，重按无力，右部大而芤</span>
+</div>
+</div>
+
+<!-- 牢 -->
+<div class="pulse-card">
+<span class="pch">牢</span><span class="pct">牢脉</span><span class="pcnt">7 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">左手 3</span>
+<span class="pcloc-tag">重按 2</span>
+<span class="pcloc-tag">右手 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主坚积/寒痛。沉弦而实</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">左部沉弦，右部沉牢</span>
+<span class="sig">左右皆弦细，右脉又兼有牢意</span>
+</div>
+</div>
+
+<!-- 动 -->
+<div class="pulse-card">
+<span class="pch">动</span><span class="pct">动脉</span><span class="pcnt">18 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 14</span>
+<span class="pcloc-tag">关前 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主痛/惊。动而摇摇=痛证</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">仿佛若动</span>
+<span class="sig">有力，摇摇而动，似将发痉</span>
+<span class="sig">乍有乍无，寸关尺或一部独见，又皆一再动而止</span>
+</div>
+</div>
+
+<!-- 促 -->
+<div class="pulse-card">
+<span class="pch">促</span><span class="pct">促脉</span><span class="pcnt">2 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">总按 2</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主阳盛/气滞。数而时止</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">微弱欲无，呼吸略似迫促</span>
+<span class="sig">上盛下虚，喘逆若斯迫促</span>
+</div>
+</div>
+
+<!-- 结 -->
+<div class="pulse-card">
+<span class="pch">结</span><span class="pct">结脉</span><span class="pcnt">14 案</span>
+<div class="pcloc">
+<span class="pcloc-tag hot">总按 12</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主阴盛/气滞。缓而时止</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">虽结代</span>
+<span class="sig">寒实结胸证</span>
+</div>
+</div>
+
+<!-- 代 -->
+<div class="pulse-card">
+<span class="pch">代</span><span class="pct">代脉</span><span class="pcnt">6 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">总按 6</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主脏气衰。止有定数</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">虽结代</span>
+</div>
+</div>
+
+<!-- 散 -->
+<div class="pulse-card">
+<span class="pch">散</span><span class="pct">散脉</span><span class="pcnt">3 案</span>
+<div class="pcloc">
+<span class="pcloc-tag">总按 1</span>
+<span class="pcloc-tag">重按 1</span>
+</div>
+<div class="pcmean"><b>辨证：</b>主元气离散。浮散无根</div>
+<div class="pcsigs">
+<b>Top 原文：</b>
+<span class="sig">则沉微，察其瞳，亦涣散</span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 三、Top 30 脉象组合 -->
+<div class="section">
+<h2>三、Top 30 脉象二元组合（实证频次）</h2>
+
+<table class="combo-table">
+<tr><th>组合</th><th>案数</th><th>常见辨证</th></tr>
+<tr><td><b>实 + 洪</b></td><td>86</td><td>阳明实热 (白虎汤证)</td></tr>
+<tr><td><b>弱 + 微</b></td><td>61</td><td>阴阳两虚 / 大气下陷</td></tr>
+<tr><td><b>弦 + 长</b></td><td>58</td><td>肝阳上亢</td></tr>
+<tr><td><b>洪 + 滑</b></td><td>55</td><td>痰热壅盛</td></tr>
+<tr><td><b>弦 + 数</b></td><td>54</td><td>肝郁化火</td></tr>
+<tr><td><b>实 + 数</b></td><td>53</td><td>实热内结</td></tr>
+<tr><td><b>微 + 数</b></td><td>53</td><td>阴虚内热</td></tr>
+<tr><td><b>洪 + 长</b></td><td>52</td><td>阳明气分热盛</td></tr>
+<tr><td><b>实 + 弦</b></td><td>48</td><td>肝气实邪</td></tr>
+<tr><td><b>大 + 洪</b></td><td>46</td><td>热盛邪实</td></tr>
+<tr><td><b>数 + 洪</b></td><td>45</td><td>气分大热</td></tr>
+<tr><td><b>数 + 浮</b></td><td>45</td><td>表热</td></tr>
+<tr><td><b>数 + 细</b></td><td>42</td><td>阴虚内热</td></tr>
+<tr><td><b>微 + 细</b></td><td>40</td><td>气血两虚</td></tr>
+<tr><td><b>大 + 数</b></td><td>40</td><td>实热亢盛</td></tr>
+<tr><td><b>大 + 实</b></td><td>39</td><td>邪气壅实</td></tr>
+<tr><td><b>大 + 弦</b></td><td>39</td><td>肝气盛实</td></tr>
+<tr><td><b>弦 + 洪</b></td><td>38</td><td>肝火上炎</td></tr>
+<tr><td><b>大 + 微</b></td><td>38</td><td>虚阳外越</td></tr>
+<tr><td><b>弦 + 浮</b></td><td>35</td><td>表证兼肝气</td></tr>
+<tr><td><b>实 + 滑</b></td><td>34</td><td>痰食积滞</td></tr>
+<tr><td><b>弦 + 细</b></td><td>34</td><td>肝血不足</td></tr>
+<tr><td><b>微 + 洪</b></td><td>33</td><td>虚热</td></tr>
+<tr><td><b>实 + 微</b></td><td>31</td><td>虚实夹杂</td></tr>
+<tr><td><b>微 + 浮</b></td><td>31</td><td>表虚 / 阴虚外感</td></tr>
+<tr><td><b>沉 + 细</b></td><td>31</td><td>里虚证</td></tr>
+<tr><td><b>数 + 虚</b></td><td>31</td><td>阴虚火旺</td></tr>
+<tr><td><b>实 + 长</b></td><td>30</td><td>气逆邪实</td></tr>
+<tr><td><b>弦 + 微</b></td><td>30</td><td>肝血虚</td></tr>
+<tr><td><b>洪 + 浮</b></td><td>29</td><td>表里俱热</td></tr>
+</table>
+</div>
+
+<!-- 四、Top 20 三元组合 -->
+<div class="section">
+<h2>四、Top 20 脉象三元组合</h2>
+
+<table class="combo-table">
+<tr><th>组合</th><th>案数</th><th>辨证</th></tr>
+<tr><td><b>实 + 数 + 洪</b></td><td>28</td><td>阳明实热（白虎汤/承气汤证）</td></tr>
+<tr><td><b>实 + 洪 + 滑</b></td><td>27</td><td>痰热壅实</td></tr>
+<tr><td><b>实 + 弦 + 洪</b></td><td>27</td><td>肝胃实热</td></tr>
+<tr><td><b>大 + 实 + 洪</b></td><td>23</td><td>实热亢盛</td></tr>
+<tr><td><b>弱 + 微 + 迟</b></td><td>22</td><td>阴阳两虚/大气下陷（升陷汤证）</td></tr>
+<tr><td><b>弦 + 洪 + 长</b></td><td>21</td><td>肝阳上亢</td></tr>
+<tr><td><b>实 + 洪 + 长</b></td><td>21</td><td>气逆实热</td></tr>
+<tr><td><b>微 + 数 + 浮</b></td><td>21</td><td>阴虚外感</td></tr>
+<tr><td><b>大 + 弱 + 微</b></td><td>21</td><td>虚阳外越</td></tr>
+<tr><td><b>实 + 微 + 洪</b></td><td>20</td><td>虚实夹杂热证</td></tr>
+<tr><td><b>微 + 数 + 细</b></td><td>20</td><td>阴虚内热</td></tr>
+<tr><td><b>实 + 弦 + 数</b></td><td>19</td><td>肝郁化火</td></tr>
+<tr><td><b>实 + 微 + 数</b></td><td>18</td><td>虚实夹杂</td></tr>
+<tr><td><b>数 + 洪 + 滑</b></td><td>18</td><td>痰热内盛</td></tr>
+<tr><td><b>大 + 弦 + 长</b></td><td>18</td><td>肝气盛实</td></tr>
+<tr><td><b>实 + 弦 + 长</b></td><td>18</td><td>肝气实邪</td></tr>
+<tr><td><b>微 + 洪 + 滑</b></td><td>17</td><td>虚热痰壅</td></tr>
+<tr><td><b>洪 + 滑 + 长</b></td><td>17</td><td>痰热气逆</td></tr>
+<tr><td><b>弦 + 数 + 浮</b></td><td>17</td><td>表热兼肝郁</td></tr>
+<tr><td><b>弦 + 数 + 洪</b></td><td>16</td><td>肝火上炎</td></tr>
+</table>
+</div>
+
+<div class="summary-box">
+<h3>五、张锡纯 5 大反教科书脉象</h3>
+<p>从 994 案发现的<b>张锡纯特色"反常组合"</b>：</p>
+<p>① <b>沉迟=大气下陷</b>：教科书"沉=里/迟=寒"，张锡纯用来辨<b>大气下陷</b>。<b>升陷汤主方</b>，3 案都是"沉迟微弱"</p>
+<p>② <b>弦长有力=白虎汤证</b>：不是肝阳上亢，而是<b>阳明实热</b>的标志（4 案用<b>白虎加人参汤</b>）</p>
+<p>③ <b>微弱而迟=气陷</b>：8 案中 6 案是<b>大气下陷/回阳升陷汤/固冲汤</b>，而非虚寒</p>
+<p>④ <b>濡脉不一定浮</b>：17 案濡脉中 16 案不浮（见濡脉卡片）</p>
+<p>⑤ <b>数+弦+浮=表热兼肝</b>：常用于<b>温病</b>初起，治以白虎/凉解</p>
+</div>
+
+<div class="footer">
+  <p>张锡纯 28 脉专题 — v2.7 实证统计 994 案</p>
+  <p>数据：<code>assets/data/cases_v2.7.json</code> · 5 维度脉象位置分布 + Top 原文 + Top 30/20 组合</p>
+</div>
+
+</div>
+</body>
+</html>
