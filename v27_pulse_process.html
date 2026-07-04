@@ -276,6 +276,31 @@ body {
   cursor: pointer;
 }
 .sm-progress .sm-clear:hover { background: #fff5f5; }
+.sm-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px;
+  background: #fffaf0;
+  border-bottom: 1px solid #fde8b8;
+  flex-wrap: wrap;
+}
+.auto-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #744210;
+  font-weight: bold;
+}
+.auto-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #b7791f;
+}
+.sm-toolbar-hint { font-size: 11px; color: #a0aec0; }
 
 .sm-body { flex: 1; padding: 20px 24px; overflow-y: auto; }
 .sm-header {
@@ -983,12 +1008,12 @@ body { padding-bottom: 80px; }
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.24</span>
+    <span class="tag">v2.7.25</span>
     <span class="tag">994 案实证</span>
-    <span class="tag">5 步引导 (全屏模态)</span>
+    <span class="tag">5 步引导 (手动优先)</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">一次只显示 1 步</span>
-    <span class="tag" style="background:#fed7d7;color:#9b2c2c">底部大按钮</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">下一步按钮可点</span>
+    <span class="tag" style="background:#fef5e7;color:#744210">可选自动跳步</span>
   </p>
 </div>
 
@@ -1082,6 +1107,13 @@ body { padding-bottom: 80px; }
     <div class="sm-arrow">→</div>
     <div class="sm-step"><span>⑤</span> 主证</div>
     <button class="sm-clear" onclick="clearAll()">🗑 清空</button>
+  </div>
+  <div class="sm-toolbar">
+    <label class="auto-toggle">
+      <input type="checkbox" id="auto-advance" onchange="toggleAutoAdvance(this)">
+      <span>⚡ 自动跳步 (选完 1-2 秒后自动进入下一步)</span>
+    </label>
+    <span class="sm-toolbar-hint">建议新手先关闭, 主动点底部"下一步 →"按钮</span>
   </div>
   <div class="sm-body">
     <div class="sm-header" style="background:#2c5282">
@@ -1550,9 +1582,12 @@ function toggleOption(group, key, el) {
     ps.classList.add('done');
     ps.classList.remove('active');
   }
-  // 不再自动跳步 — 强步骤感: 让用户自己点"下一步"按钮
-  // 这样用户有时间看清本步结果, 不会"没看就跳"
-  if (typeof sabRefresh === 'function') sabRefresh();
+  if (typeof refreshSmFooter === 'function') refreshSmFooter();
+  // 同步 sm-progress 的 done 标记
+  const smStep = document.querySelector(`#modal-${myStep} .sm-step.active`);
+  if (smStep) smStep.classList.add('done');
+  // 自动跳步: 1.2 秒后进入下一步 (让用户看清结果再走)
+  scheduleAutoAdvance(myStep, isSingle);
 }
 
 function getStepNum(group) {
@@ -1575,7 +1610,63 @@ function togglePos(key, el) {
   if (rightGroup) rightGroup.style.display = SELECTED.pos.has('右部') ? '' : 'none';
   renderCurrentPill();
   updateStepResults();
-  if (typeof sabRefresh === 'function') sabRefresh();
+  if (typeof refreshSmFooter === 'function') refreshSmFooter();
+  const smStep = document.querySelector('#modal-2 .sm-step.active');
+  if (smStep) smStep.classList.add('done');
+  scheduleAutoAdvance(2, false);
+}
+
+// 自动前进逻辑 (默认关闭 — 用户主动点"下一步"按钮)
+let AUTO_ADVANCE = false;  // 默认手动, 用户可在顶部开关开启
+let _autoTimer = null;
+function scheduleAutoAdvance(currentStep, isSingle) {
+  if (!AUTO_ADVANCE) return;  // 默认手动
+  // 清除上一个 timer (用户连续点击则重新计时)
+  if (_autoTimer) { clearTimeout(_autoTimer); _autoTimer = null; }
+
+  // 第 5 步选完 → 等 2 秒后直接出最终结果
+  if (currentStep === 5) {
+    _autoTimer = setTimeout(() => {
+      doMatch();
+      gotoStep('final');
+    }, 2000);
+    return;
+  }
+  // 第 1 步 (单选): 1.2 秒后自动跳第 2 步
+  if (isSingle && currentStep === 1) {
+    _autoTimer = setTimeout(() => gotoStep(2), 1200);
+    return;
+  }
+  // 第 2 步: 1.8 秒后
+  if (currentStep === 2) {
+    _autoTimer = setTimeout(() => {
+      if (SELECTED.pos.size > 0) gotoStep(3);
+    }, 1800);
+    return;
+  }
+  // 第 3 步: 2 秒后
+  if (currentStep === 3) {
+    _autoTimer = setTimeout(() => {
+      if (SELECTED.pulse.size > 0) gotoStep(4);
+    }, 2000);
+    return;
+  }
+  // 第 4 步: 1.5 秒后
+  if (currentStep === 4) {
+    _autoTimer = setTimeout(() => {
+      if (SELECTED.compound.size > 0) gotoStep(5);
+    }, 1500);
+    return;
+  }
+}
+
+// 顶部开关: 自动 / 手动
+function toggleAutoAdvance(checkbox) {
+  AUTO_ADVANCE = checkbox.checked;
+  if (!AUTO_ADVANCE && _autoTimer) {
+    clearTimeout(_autoTimer);
+    _autoTimer = null;
+  }
 }
 
 // 实时更新"每步结果" — 累进汇总: 第 N 步 result = 前 N 步所有选项的 case 交集 Top 5
