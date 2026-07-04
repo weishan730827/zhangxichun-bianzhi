@@ -111,6 +111,11 @@ body {
 .option.zx.on { background: var(--zx); color: #fff; }
 .option.normal { background: #f0fff4; border-color: #22543d; }
 .option.normal.on { background: #22543d; color: #fff; }
+.option.big { padding: 14px 16px; border-width: 2px; background: #fffaf0; border-color: #9b2c2c; }
+.option.big.on { background: #9b2c2c; color: #fff; }
+.option.big .opt-name { font-size: 17px; }
+.pos-group { margin-top: 8px; padding: 10px 12px; background: #fff5f5; border: 1px dashed #9b2c2c; border-radius: 6px; }
+.pos-group-title { font-size: 12px; color: #9b2c2c; font-weight: bold; margin-bottom: 6px; }
 .option .opt-name { font-size: 16px; font-weight: bold; }
 .option .opt-desc { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
 .option.on .opt-desc { color: rgba(255,255,255,0.85); }
@@ -305,10 +310,10 @@ body {
   left: 0;
   right: 0;
   background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(247,250,252,0.98) 100%);
-  border-top: 2px solid var(--primary, #2c5282);
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  padding: 10px 20px;
-  z-index: 200;
+  border-top: 3px solid var(--primary, #2c5282);
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+  padding: 12px 20px;
+  z-index: 9999 !important;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -388,6 +393,15 @@ body { padding-bottom: 80px; }
   font-size: 12px;
   font-weight: bold;
 }
+.step-guide {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #2d3748;
+}
+.step-guide b { color: #1a365d; }
 .step-status {
   display: inline-block;
   background: #edf2f7;
@@ -788,12 +802,12 @@ body { padding-bottom: 80px; }
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.22</span>
+    <span class="tag">v2.7.23</span>
     <span class="tag">994 案实证</span>
     <span class="tag">5 步引导 (单步显示)</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">底部固定操作条</span>
-    <span class="tag" style="background:#fed7d7;color:#9b2c2c">正常脉+病理脉分类</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">每步引导卡</span>
+    <span class="tag" style="background:#fed7d7;color:#9b2c2c">底部固定操作条</span>
   </p>
 </div>
 
@@ -917,6 +931,12 @@ body { padding-bottom: 80px; }
       <span class="step-status" id="step1-status">⏳ 未选</span>
     </div>
     <h2>第 1 步: 选手法 (按脉顺序)</h2>
+    <div class="step-guide" style="background:#ebf8ff;border-left:5px solid #2c5282">
+      <b>👋 引导</b> — 张氏按脉第 1 步, 决定后续思路<br>
+      <b>1️</b> 点选下方任一手法 (重按/轻取/总按/单按/举按)<br>
+      <b>2️</b> 紧贴下方立即显示该手法下的张氏原案 (Top 5)<br>
+      <b>3️</b> 看清楚后点页面底部"下一步 →"或"下一步: 选部位"
+    </div>
     <div class="zx-intro">
       <b>张氏脉诊第 1 步</b> — 决定按脉顺序, 顺序对了才能判断后续<br>
       <b>张氏原书顺序</b>: <b style="color:#c53030">重按 (辨真假有力) → 轻取 (辨浮沉) → 总按 (三指同按) → 单按 (分寸关尺) → 举按 (举之浮按之沉)</b>
@@ -942,13 +962,66 @@ body { padding-bottom: 80px; }
       <span class="step-status" id="step2-status">⏳ 未选</span>
     </div>
     <h2>第 2 步: 选部位 (异常在哪)</h2>
+    <div class="step-guide" style="background:#fff5f5;border-left:5px solid #9b2c2c">
+      <b>👋 引导</b> — 张氏分部顺序: <b>先整体 (左/右) → 再局部 (寸/关/尺)</b><br>
+      <b>1️</b> 先点左/右整体大按钮 (左手=心肝肾, 右手=肺脾命)<br>
+      <b>2️</b> 展开后再选组内具体寸关尺 (可细化, 也可跳过)
+    </div>
     <div class="zx-intro">
       <b>张氏分部不是教科书 6 部</b> — 而是按实证 8 部位 (张氏实际用的)<br>
       <b>核心</b>: 部位 = 反推脏腑的依据 ("左关弦" = 肝, "右关实" = 脾胃, "右寸弱" = 肺)
     </div>
-    <p style="margin-top:10px">点选你摸到异常的部位 (<b style="color:#2c5282">可多选</b> — 可能左右都有异常)：</p>
-    <div class="option-grid" id="step2-grid"></div>
-    <!-- 本步当前结果 — 前 2 步交集 -->
+
+    <!-- 2a: 左/右整体 -->
+    <h3 style="color:#9b2c2c; font-size:14px; margin:14px 0 6px">🅰 整体 (可多选)</h3>
+    <div class="option-grid" id="step2a-grid">
+      <div class="option big" data-pos="左部" onclick="togglePos('左部', this)">
+        <div class="opt-name">左部 (左手整体)</div>
+        <div class="opt-desc">心·肝·肾 — 张氏常 "左部弦而兼硬" 辨肝</div>
+      </div>
+      <div class="option big" data-pos="右部" onclick="togglePos('右部', this)">
+        <div class="opt-name">右部 (右手整体)</div>
+        <div class="opt-desc">肺·脾·命 — 张氏常 "右部弱" 辨大气下陷</div>
+      </div>
+    </div>
+
+    <!-- 2b: 具体寸关尺 (选完整体后展开) -->
+    <h3 style="color:#9b2c2c; font-size:14px; margin:18px 0 6px">🅱 局部 (选完整体后展开, 可跳过)</h3>
+    <div class="pos-group" id="pos-group-left" style="display:none">
+      <div class="pos-group-title">👈 左手细分 (选了 "左部" 后可细化)</div>
+      <div class="option-grid" id="step2b-left-grid">
+        <div class="option" data-pos="左寸" onclick="togglePos('左寸', this)">
+          <div class="opt-name">左寸</div>
+          <div class="opt-desc">心·心包</div>
+        </div>
+        <div class="option" data-pos="左关" onclick="togglePos('左关', this)">
+          <div class="opt-name">左关</div>
+          <div class="opt-desc">肝·胆</div>
+        </div>
+        <div class="option" data-pos="关前" onclick="togglePos('关前', this)">
+          <div class="opt-name">关前 (寸脉, 胸中)</div>
+          <div class="opt-desc">张氏辨大气下陷关键位</div>
+        </div>
+      </div>
+    </div>
+    <div class="pos-group" id="pos-group-right" style="display:none">
+      <div class="pos-group-title">👉 右手细分 (选了 "右部" 后可细化)</div>
+      <div class="option-grid" id="step2b-right-grid">
+        <div class="option" data-pos="右寸" onclick="togglePos('右寸', this)">
+          <div class="opt-name">右寸</div>
+          <div class="opt-desc">肺·胸中</div>
+        </div>
+        <div class="option" data-pos="右关" onclick="togglePos('右关', this)">
+          <div class="opt-name">右关</div>
+          <div class="opt-desc">脾·胃</div>
+        </div>
+        <div class="option" data-pos="两尺" onclick="togglePos('两尺', this)">
+          <div class="opt-name">两尺</div>
+          <div class="opt-desc">肾·命门</div>
+        </div>
+      </div>
+    </div>
+
     <div class="step-result" id="step2-result">
       <div class="step-result-empty">👇 第 2 步选完, 这里显示 <b>前 2 步 (手法 + 部位) 交集</b>的真实张氏原案 (Top 5)。<br>候选会逐步<b>收窄</b>。</div>
     </div>
@@ -967,6 +1040,12 @@ body { padding-bottom: 80px; }
       <span class="step-status" id="step3-status">⏳ 未选</span>
     </div>
     <h2>第 3 步: 选脉象 (正常脉 + 病理脉)</h2>
+    <div class="step-guide" style="background:#f0fff4;border-left:5px solid #22543d">
+      <b>👋 引导</b> — 张氏第 3 步才辨具体脉象<br>
+      <b>1️</b> 绿框 = 正常脉 (缓/和缓/长/大) — 摸到说明胃气尚存<br>
+      <b>2️</b> 红框 = 病理脉 (浮/沉/迟/数/弦/细/微弱/濡/芤…) — 张氏原书高频<br>
+      <b>3️</b> 可多选 1-3 个, 选完下方立即显示前 3 步交集的 Top 5
+    </div>
     <div class="zx-intro">
       <b>不是所有脉都是病脉</b> — 张氏: "缓为有胃气, 和缓为常人脉, 长为有气"<br>
       <b>36 脉分两类</b>: 正常脉 (生理脉) + 病理脉 (病脉)。<b>案均 2.96 个脉</b>，1-3 个最常见。
@@ -995,6 +1074,11 @@ body { padding-bottom: 80px; }
       <span class="step-status" id="step4-status">⏳ 未选</span>
     </div>
     <h2>第 4 步: 选复合脉 (病机指纹)</h2>
+    <div class="step-guide" style="background:#fef5e7;border-left:5px solid #b7791f">
+      <b>👋 引导</b> — 复合脉 = 病机指纹, 张氏常直接定方剂<br>
+      <b>1️</b> 例: <b>微弱</b>=气血两虚 · <b>弦硬而长</b>=肝阳上亢 · <b>重按不实</b>=大气下陷<br>
+      <b>2️</b> 可跳过 (点底部"下一步"即可), 跳过不会清空前 3 步
+    </div>
     <div class="zx-intro">
       <b>复合脉 = 病机指纹</b> — 张氏原书常用的复合脉直接指向病机和方剂<br>
       <b>核心</b>: 系统根据第 3 步选择的脉象, 自动提示最可能的复合脉
@@ -1019,6 +1103,11 @@ body { padding-bottom: 80px; }
       <span class="step-status" id="step5-status">⏳ 未选</span>
     </div>
     <h2>第 5 步: 选主证 (患者主诉)</h2>
+    <div class="step-guide" style="background:#f9f5ff;border-left:5px solid #553c9a">
+      <b>👋 引导</b> — 主证 + 复合脉 = 张氏定方关键<br>
+      <b>1️</b> 例: <b>气短</b>=大气下陷 · <b>怔忡</b>=心气虚 · <b>喘</b>=肺气上逆<br>
+      <b>2️</b> 选完点底部"完成"出 Top 5, 也可跳过 (但跳过会让结果多)
+    </div>
     <div class="zx-intro">
       <b>18 个张氏原书主证</b> — 不是您必须勾选, 而是加速匹配<br>
       <b>核心</b>: 主证 + 脉象 = 直接指向张氏方剂
@@ -1050,8 +1139,8 @@ body { padding-bottom: 80px; }
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.22 — 来源: 《医学衷中参西录》994 案实证</p>
-  <p>真正的步骤式向导: 一次只显示当前步, 顶部面包屑显示前几步已选 + 累进候选数 (逐步收窄到精准)</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.23 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>5 步引导 + 每步引导卡 + 底部固定操作条 + 顶部累进面包屑 — 真正的步骤式向导</p>
 </div>
 
 <!-- ========== 底部固定操作条 (永远可见) ========== -->
@@ -1125,8 +1214,27 @@ const _origGoStep = goStep;
 goStep = function(n) {
   _origGoStep(n);
   CURRENT_STEP = n;
-  setTimeout(sabRefresh, 50);
+  // 立即调用, 不延迟
+  if (typeof sabRefresh === 'function') sabRefresh();
+  // 同步底部按钮 enabled 状态
+  const stepNum = (typeof n === 'number') ? n : 0;
+  const stepToGroup = {1:'handful', 2:'pos', 3:'pulse', 4:'compound', 5:'zheng'};
+  const next = document.getElementById('sab-next');
+  const finish = document.getElementById('sab-finish');
+  const prev = document.getElementById('sab-prev');
+  if (stepNum >= 1 && stepNum <= 5) {
+    const sel = SELECTED[stepToGroup[stepNum]];
+    if (next) next.disabled = (sel.size === 0);
+    if (finish) finish.disabled = false;  // 第 5 步可空
+    if (prev) prev.disabled = (stepNum === 1);
+  } else {
+    // final 页
+    if (next) next.disabled = true;
+    if (finish) finish.disabled = true;
+  }
 };
+// 初始化时也调一次
+setTimeout(() => { if (typeof sabRefresh === 'function') sabRefresh(); }, 100);
 </script>
 
 </div>
@@ -1225,22 +1333,13 @@ function renderStep1() {
   }
 }
 
+// 第 2 步 HTML 已手写 (2a 整体 + 2b 局部), 这里不重复渲染
 function renderStep2() {
-  const grid = document.getElementById('step2-grid');
-  grid.innerHTML = '';
-  for (const [key, opt] of Object.entries(PROCESS.process.step2.options)) {
-    const cnt = opt.matches.length;
-    const div = document.createElement('div');
-    div.className = 'option';
-    div.innerHTML = `
-      <div class="opt-name">${opt.name}</div>
-      <div class="opt-desc">${opt.desc}<br><span style="color:var(--muted)">${opt.zangfu}</span></div>
-      <div class="opt-cnt">${cnt} 代表案</div>
-    `;
-    div.onclick = () => toggleOption('pos', key, div);
-    div.title = opt.zx_quote;
-    grid.appendChild(div);
-  }
+  // 联动: 根据已选 pos 显示对应组
+  const leftGroup = document.getElementById('pos-group-left');
+  const rightGroup = document.getElementById('pos-group-right');
+  if (leftGroup) leftGroup.style.display = SELECTED.pos.has('左部') ? '' : 'none';
+  if (rightGroup) rightGroup.style.display = SELECTED.pos.has('右部') ? '' : 'none';
 }
 
 // 正常脉 (生理脉) — 张氏: 缓为有胃气, 和缓为常人脉, 长为有气
@@ -1348,6 +1447,25 @@ function toggleOption(group, key, el) {
 
 function getStepNum(group) {
   return { handful: 1, pos: 2, pulse: 3, compound: 4, zheng: 5 }[group];
+}
+
+// 第 2 步专用: 部位选择 (支持 2a/2b 子步骤联动)
+function togglePos(key, el) {
+  if (SELECTED.pos.has(key)) {
+    SELECTED.pos.delete(key);
+    el.classList.remove('on');
+  } else {
+    SELECTED.pos.add(key);
+    el.classList.add('on');
+  }
+  // 联动: 选"左部"展开左手细分, 选"右部"展开右手细分
+  const leftGroup = document.getElementById('pos-group-left');
+  const rightGroup = document.getElementById('pos-group-right');
+  if (leftGroup) leftGroup.style.display = SELECTED.pos.has('左部') ? '' : 'none';
+  if (rightGroup) rightGroup.style.display = SELECTED.pos.has('右部') ? '' : 'none';
+  renderCurrentPill();
+  updateStepResults();
+  if (typeof sabRefresh === 'function') sabRefresh();
 }
 
 // 实时更新"每步结果" — 累进汇总: 第 N 步 result = 前 N 步所有选项的 case 交集 Top 5
