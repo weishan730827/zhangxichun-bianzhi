@@ -271,6 +271,29 @@ body {
   max-height: 70px;
   overflow: hidden;
 }
+.step-result-opt-zxquote {
+  background: #fef5e7;
+  border-left: 3px solid #c53030;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #744210;
+  margin: 4px 0;
+  border-radius: 2px;
+  line-height: 1.6;
+  font-style: italic;
+}
+.step-next-hint {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+  border: 1.5px solid #3182ce;
+  border-left: 5px solid #3182ce;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #2c5282;
+  line-height: 1.7;
+}
+.step-next-hint b { color: #2c5282; }
 .step-nav {
   display: flex;
   justify-content: space-between;
@@ -538,11 +561,11 @@ body {
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.20.7</span>
+    <span class="tag">v2.7.20.8</span>
     <span class="tag">994 案实证</span>
     <span class="tag">5 步引导</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">每步结果即时显示</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">每步结果+下一步建议</span>
     <span class="tag" style="background:#fed7d7;color:#9b2c2c">手法单选互斥</span>
   </p>
 </div>
@@ -646,16 +669,16 @@ body {
 <!-- 第 1 步：手法 -->
 <div class="step-section step1-color active" id="step1">
 <div class="section">
-<h2>第 1 步：手法 (按压力度) <span class="step-status" id="step1-status">⏳ 未选</span></h2>
+<h2>第 1 步：手法 (按脉顺序) <span class="step-status" id="step1-status">⏳ 未选</span></h2>
 <div class="zx-intro">
-<b>张氏脉诊第一步</b> — 先按压力度, 决定后续思路<br>
-<b>核心</b>: <b>重按是张氏第一辨</b> (辨真假有力) — "脉之有力无力者…重按之而实者, 真有力也; 重按之而虚者, 非真有力也"
+<b>张氏脉诊第 1 步</b> — 决定按脉顺序, 顺序对了才能判断后续<br>
+<b>张氏原书顺序</b>: <b style="color:#c53030">重按 (辨真假有力) → 轻取 (辨浮沉) → 总按 (三指同按) → 单按 (分寸关尺) → 举按 (举之浮按之沉)</b>
 </div>
-<p style="margin-top:8px">点选你按脉时使用的力度 (<b style="color:#c53030">单选互斥 — 按脉时只可能用一种力</b>)：</p>
+<p style="margin-top:8px">张氏按脉 <b style="color:#c53030">按顺序走</b>, 每步完成才进下一步。请选当前 <b>第一步</b> 使用的按脉手法 (<b style="color:#c53030">单选互斥</b>)：</p>
 <div class="option-grid" id="step1-grid"></div>
 <!-- 第 1 步结果 — 紧贴选项下方, 选了立刻显示 -->
 <div class="step-result" id="step1-result">
-  <div class="step-result-empty">👇 选完上面任一力度, 这里立即显示 <b>该力度下的张氏代表案</b> (Top 3)</div>
+  <div class="step-result-empty">👇 选完上面任一手法, 这里立即显示 <b>该手法下的张氏代表案 + 张氏原话</b> (Top 3)。<br>选完会<b>自动跳到第 2 步: 选部位</b>。</div>
 </div>
 <div class="step-nav">
   <button class="btn-next" data-go="2" disabled>下一步: 选部位 →</button>
@@ -815,8 +838,8 @@ body {
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.20.7 — 来源: 《医学衷中参西录》994 案实证</p>
-  <p>每步选项 / 张氏原话 / 真实医案引用 — 全部来自 994 案原文 · 手法单选 / 部位脉象复合脉主证多选</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.20.8 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>每步选项 / 张氏原话 / 真实医案引用 + 下一步建议 — 全部来自 994 案原文 · 手法单选 / 部位脉象复合脉主证多选</p>
 </div>
 
 </div>
@@ -1089,8 +1112,12 @@ function updateStepResults() {
       if (!opt) continue;
       const top3 = opt.matches.slice(0, 3);
       html += `<div class="step-result-opt">
-        <div class="step-result-opt-name">▸ ${opt.name} <span style="color:#a0aec0;font-weight:normal;font-size:10px">(${opt.matches.length} 案命中)</span></div>
-        <div class="step-result-opt-cases">`;
+        <div class="step-result-opt-name">▸ ${opt.name} <span style="color:#a0aec0;font-weight:normal;font-size:10px">(${opt.matches.length} 案命中)</span></div>`;
+      // 显示张氏原话 (如有)
+      if (opt.zx_quote) {
+        html += `<div class="step-result-opt-zxquote">张氏原话: "${esc(opt.zx_quote)}"</div>`;
+      }
+      html += `<div class="step-result-opt-cases">`;
       for (const c of top3) {
         html += `<a onclick="event.preventDefault();showCaseDetail('${c.case_id}')" title="${esc(c.title || '')}">#${c.case_id}</a>`;
       }
@@ -1099,11 +1126,51 @@ function updateStepResults() {
       }
       html += '</div></div>';
     }
+
+    // 加上"下一步建议"卡片
+    const nextHint = getNextStepHint(m.step);
+    if (nextHint) {
+      html += `<div class="step-next-hint">
+        <b>👉 下一步建议</b>: ${nextHint}
+      </div>`;
+    }
+
     resultBox.innerHTML = html;
   }
 
   // 同步更新底部 dim-grid (保留, 方便用户对比)
   updatePerDimResults();
+}
+
+// 张氏脉诊顺序的下一步建议
+function getNextStepHint(currentStep) {
+  if (currentStep === 1) {
+    const h = SELECTED.handful;
+    if (h.size === 0) return null;
+    const items = Array.from(h);
+    const h0 = items[0];
+    const hints = {
+      '重按': '完成重按后, 第 2 步<b>选部位</b> (左/右/寸/关/尺) — 看你重按时哪部异常。<br>张氏常 "重按左寸" 辨心气、"重按右关" 辨脾。',
+      '轻取': '轻取后, 第 2 步<b>选部位</b> (左/右/寸/关/尺) — 看你轻取时哪部脉浮。<br>张氏轻取左寸多辨心肺上焦。',
+      '总按': '总按后, 第 2 步<b>选部位</b> (左部/右部) — 总按先看左右整体, 再分部细看。<br>张氏: "总按…其脉左部弦而兼硬"。',
+      '单按': '单按后, 第 2 步<b>选具体部</b> (左寸/左关/左尺/右寸/右关/右尺) — 单按就是分寸关尺。<br>张氏: "按其左寸…" 详辨某部。',
+      '举按': '举按后, 第 2 步<b>选部位</b> (浮/沉所现的部) — 举之浮按之沉看分布。<br>张氏: "举之则浮, 按之则沉"。',
+    };
+    return hints[h0] || `第 2 步: 选<b>部位</b> (左/右/寸/关/尺), 看你按此手法时哪部异常。`;
+  }
+  if (currentStep === 2) {
+    return '第 3 步: 选<b>脉象</b> (弦/数/细/微弱…), 部位定了, 看该部具体什么脉。<br>张氏案均 2.96 个脉, 可多选。';
+  }
+  if (currentStep === 3) {
+    return '第 4 步: 选<b>复合脉</b> (病机指纹, 可跳) — 多个单脉组合直接指病机。<br>例: 弦+细+微弱 = 气血两虚 → 升陷汤。';
+  }
+  if (currentStep === 4) {
+    return '第 5 步: 选<b>主证</b> (患者主诉, 可跳) — 主证 + 复合脉 = 直接定方剂。';
+  }
+  if (currentStep === 5) {
+    return '👆 全部 5 步选完, 点底部 "🔍 一比一匹配" 或本页 <b>✅ 完成 — 出汇总辨证 Top 5</b> 出最终结果。';
+  }
+  return null;
 }
 
 // 实时更新"分维度结果" — 5 个 dim-card 汇总 (保留, 方便用户对比)
