@@ -298,7 +298,83 @@ body {
   .bc-step { min-width: 0; }
 }
 
-/* === 步骤头部: badge + status === */
+/* === 底部固定操作条 (永远可见 — 用户任何时候都看得到"下一步"按钮) === */
+.step-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(247,250,252,0.98) 100%);
+  border-top: 2px solid var(--primary, #2c5282);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  padding: 10px 20px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(8px);
+}
+.step-action-bar .sab-hint {
+  flex: 1;
+  font-size: 12px;
+  color: #4a5568;
+  line-height: 1.5;
+}
+.step-action-bar .sab-hint b { color: var(--primary, #2c5282); }
+.step-action-bar .sab-hint .sab-cnt {
+  display: inline-block;
+  background: #c53030;
+  color: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 0 4px;
+}
+.step-action-bar .sab-prev {
+  background: #fff;
+  color: var(--primary, #2c5282);
+  border: 1.5px solid var(--primary, #2c5282);
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.step-action-bar .sab-prev:disabled { opacity: 0.3; cursor: not-allowed; }
+.step-action-bar .sab-next {
+  background: var(--primary, #2c5282);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(44,82,130,0.3);
+  transition: all 0.15s;
+}
+.step-action-bar .sab-next:hover:not(:disabled) { background: var(--primary-d, #1a365d); transform: translateY(-1px); }
+.step-action-bar .sab-next:disabled {
+  background: #cbd5e0;
+  color: #a0aec0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.step-action-bar .sab-finish {
+  background: var(--accent, #c53030);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(197,48,48,0.3);
+}
+.step-action-bar .sab-finish:hover { background: #9b2c2c; transform: translateY(-1px); }
+.step-action-bar .sab-finish:disabled { background: #cbd5e0; color: #a0aec0; cursor: not-allowed; box-shadow: none; }
+/* 底部 padding 防止被固定 bar 遮挡内容 */
+body { padding-bottom: 80px; }
 .step-head-row {
   display: flex;
   justify-content: space-between;
@@ -712,11 +788,11 @@ body {
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.21</span>
+    <span class="tag">v2.7.22</span>
     <span class="tag">994 案实证</span>
     <span class="tag">5 步引导 (单步显示)</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">顶部面包屑 + 累进</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">底部固定操作条</span>
     <span class="tag" style="background:#fed7d7;color:#9b2c2c">正常脉+病理脉分类</span>
   </p>
 </div>
@@ -974,9 +1050,84 @@ body {
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.21 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.22 — 来源: 《医学衷中参西录》994 案实证</p>
   <p>真正的步骤式向导: 一次只显示当前步, 顶部面包屑显示前几步已选 + 累进候选数 (逐步收窄到精准)</p>
 </div>
+
+<!-- ========== 底部固定操作条 (永远可见) ========== -->
+<div class="step-action-bar" id="step-action-bar">
+  <div class="sab-hint" id="sab-hint">
+    💡 请完成当前步的选择, 然后点 "下一步"
+  </div>
+  <button class="sab-prev" id="sab-prev" onclick="sabPrev()">← 上一步</button>
+  <button class="sab-next" id="sab-next" onclick="sabNext()" disabled>下一步 →</button>
+  <button class="sab-finish" id="sab-finish" onclick="sabFinish()" style="display:none">✅ 完成出 Top 5</button>
+</div>
+
+<script>
+// 底部固定操作条逻辑
+const SAB_HINTS = {
+  1: '💡 <b>第 1 步</b>: 选 <b>重按</b>/<b>轻取</b>/<b>总按</b>/<b>单按</b>/<b>举按</b> 中任一手法 (单选互斥)',
+  2: '💡 <b>第 2 步</b>: 选异常部位 (可多选)。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
+  3: '💡 <b>第 3 步</b>: 选脉象 (可多选, 1-3 个最佳)。绿框=正常脉, 红框=病脉。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
+  4: '💡 <b>第 4 步 (可跳)</b>: 选复合脉 (病机指纹)。不确定可点 "下一步" 跳过。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
+  5: '💡 <b>第 5 步 (可跳)</b>: 选主证 (患者主诉)。完成后点 "完成" 出 Top 5。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
+  'final': '🎉 <b>最终辨证</b>: Top 5 张锡纯原案已生成'
+};
+let CURRENT_STEP = 1;
+function sabRefresh() {
+  const n = CURRENT_STEP;
+  const hint = document.getElementById('sab-hint');
+  const prev = document.getElementById('sab-prev');
+  const next = document.getElementById('sab-next');
+  const finish = document.getElementById('sab-finish');
+  if (hint) hint.innerHTML = SAB_HINTS[n] || SAB_HINTS[1];
+  // 更新候选数
+  const cntEl = document.getElementById('sab-cnt');
+  if (cntEl) {
+    const cum = document.getElementById('bc-cum-count');
+    cntEl.textContent = cum ? cum.textContent : '—';
+  }
+  // 切换按钮
+  if (n === 'final') {
+    prev.style.display = 'none';
+    next.style.display = 'none';
+    finish.style.display = 'none';
+  } else {
+    prev.style.display = '';
+    next.style.display = '';
+    finish.style.display = 'none';
+    prev.disabled = (n === 1);
+    // 第 5 步: 按钮变"完成"
+    if (n === 5) {
+      next.style.display = 'none';
+      finish.style.display = '';
+      const sel5 = SELECTED.zheng;
+      finish.disabled = false;  // 第 5 步可空 (可跳)
+    } else {
+      const sel = SELECTED[({1:'handful',2:'pos',3:'pulse',4:'compound',5:'zheng'})[n]];
+      next.disabled = (sel.size === 0);
+    }
+  }
+}
+function sabPrev() {
+  if (CURRENT_STEP > 1) goStep(CURRENT_STEP - 1);
+}
+function sabNext() {
+  if (CURRENT_STEP < 5) goStep(CURRENT_STEP + 1);
+}
+function sabFinish() {
+  doMatch();
+  goStep('final');
+}
+// 监听 goStep 调用, 同步 CURRENT_STEP
+const _origGoStep = goStep;
+goStep = function(n) {
+  _origGoStep(n);
+  CURRENT_STEP = n;
+  setTimeout(sabRefresh, 50);
+};
+</script>
 
 </div>
 
@@ -1183,18 +1334,16 @@ function toggleOption(group, key, el) {
   renderCurrentPill();
   // 实时更新每步结果 (紧贴每步选项下方)
   updateStepResults();
-  // 自动跳到下一步 (强步骤感 — 张氏就是一步步切脉)
-  const myStep = getStepNum(group);
   // 标记顶部进度条该步为已完成
+  const myStep = getStepNum(group);
   const ps = document.querySelector(`.process-step[data-step="${myStep}"]`);
   if (ps && SELECTED[group].size > 0) {
     ps.classList.add('done');
     ps.classList.remove('active');
   }
-  // 若该步选完 (任一项) 且还没到第 5 步, 自动跳下一步
-  if (SELECTED[group].size > 0 && myStep < 5) {
-    setTimeout(() => goStep(myStep + 1), 250);
-  }
+  // 不再自动跳步 — 强步骤感: 让用户自己点"下一步"按钮
+  // 这样用户有时间看清本步结果, 不会"没看就跳"
+  if (typeof sabRefresh === 'function') sabRefresh();
 }
 
 function getStepNum(group) {
