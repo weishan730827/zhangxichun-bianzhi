@@ -281,7 +281,128 @@ body {
   .flow-arrow { transform: rotate(90deg); align-self: center; }
 }
 
-.step1-color { border-top: 4px solid var(--step1); }
+.match-hint {
+  background: #fff8e1;
+  border-left: 4px solid #b7791f;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #744210;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.dim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.dim-card {
+  background: var(--surface-muted, #f7fafc);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.dim-head {
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dim-num {
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 11px;
+}
+.dim-body { padding: 8px 10px; }
+.dim-empty {
+  color: #a0aec0;
+  font-size: 12px;
+  font-style: italic;
+  padding: 8px 0;
+}
+.dim-opt {
+  margin: 6px 0;
+  padding: 6px 8px;
+  background: #fff;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 4px;
+  border-left: 3px solid var(--good, #2f855a);
+}
+.dim-opt-name {
+  font-weight: bold;
+  color: var(--primary, #2c5282);
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.dim-opt-cases {
+  font-size: 11px;
+  color: #4a5568;
+  line-height: 1.5;
+}
+.dim-opt-cases a {
+  display: inline-block;
+  background: var(--primary, #2c5282);
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 10px;
+  margin: 1px 2px 1px 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.dim-opt-cases a:hover { background: var(--primary-d, #1a365d); }
+.dim-opt-quote {
+  background: #fef5e7;
+  border-left: 2px solid #b7791f;
+  padding: 3px 6px;
+  font-size: 11px;
+  color: #744210;
+  margin-top: 3px;
+  border-radius: 2px;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.final-summary {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+  border: 2px solid #fc8181;
+  border-radius: 8px;
+}
+.final-summary h3 {
+  margin: 0 0 6px 0;
+  color: #c53030;
+  font-size: 15px;
+}
+.algo-info {
+  background: #fff;
+  border: 1px dashed #fc8181;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #744210;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.dim-tag {
+  display: inline-block;
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin: 1px 3px 1px 0;
+  font-weight: bold;
+}
+.rc-dim-tags { margin: 4px 0; }
 .step2-color { border-top: 4px solid var(--step2); }
 .step3-color { border-top: 4px solid var(--step3); }
 .step4-color { border-top: 4px solid var(--step4); }
@@ -474,22 +595,72 @@ body {
 </div>
 </div>
 
-<!-- 匹配区 -->
-<div class="section" id="match-section">
-<h2>匹配结果 (Top 10 真实医案)</h2>
-<div class="match-area" id="match-area">
-  <b>算法</b>: 4 维加权 — <b>重按/分部/脉象/主证</b> 各权重 25%<br>
-  <span style="font-size:12px">每个匹配会显示 真实医案号 / 标题 / 张氏原脉段 / 诊断 / 方剂 / 评分</span>
-  <div class="case-list" id="match-cases">
-    <div class="empty">完成 5 步后, 系统会自动匹配最像的 10 个张氏原案</div>
+<!-- 匹配区 — 分维度结果 + 汇总 -->
+<div class="section match-section" id="match-section">
+  <h2>🎯 实时辨证 — 分维度结果 + 汇总</h2>
+  <div class="match-area" id="match-area">
+    <div class="match-hint">
+      <b>用法</b>: 你每选一项, 下面立即显示 <b>该维度下的代表张氏原案</b> (Top 3)。<br>
+      5 个维度都选完后, <b>点底部按钮</b> 出汇总 Top 5 辨证结果 (4 维加权, 各 25%)。
+    </div>
+
+    <!-- 5 维分结果 — 每选一项实时更新 -->
+    <div class="dim-grid">
+      <div class="dim-card" id="dim-1">
+        <div class="dim-head" style="background:#2c5282">
+          <span class="dim-num">①</span> 手法 (你按压力度)
+        </div>
+        <div class="dim-body" id="dim-body-1">
+          <div class="dim-empty">未选 — 选 "重按"/"轻取" 等看结果</div>
+        </div>
+      </div>
+      <div class="dim-card" id="dim-2">
+        <div class="dim-head" style="background:#9b2c2c">
+          <span class="dim-num">②</span> 部位 (异常在哪)
+        </div>
+        <div class="dim-body" id="dim-body-2">
+          <div class="dim-empty">未选 — 选 "左部"/"右部" 等看结果</div>
+        </div>
+      </div>
+      <div class="dim-card" id="dim-3">
+        <div class="dim-head" style="background:#2f855a">
+          <span class="dim-num">③</span> 脉象 (你摸到)
+        </div>
+        <div class="dim-body" id="dim-body-3">
+          <div class="dim-empty">未选 — 选 "弦"/"数"/"微弱" 等看结果</div>
+        </div>
+      </div>
+      <div class="dim-card" id="dim-4">
+        <div class="dim-head" style="background:#b7791f">
+          <span class="dim-num">④</span> 复合脉 (病机指纹)
+        </div>
+        <div class="dim-body" id="dim-body-4">
+          <div class="dim-empty">未选 — 选 "弦细微弱" 等看结果 (可跳)</div>
+        </div>
+      </div>
+      <div class="dim-card" id="dim-5">
+        <div class="dim-head" style="background:#553c9a">
+          <span class="dim-num">⑤</span> 主证 (患者主诉)
+        </div>
+        <div class="dim-body" id="dim-body-5">
+          <div class="dim-empty">未选 — 选 "大气下陷"/"怔忡" 等看结果 (可跳)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 汇总区 — 点按钮才显示 -->
+    <div class="final-summary" id="final-summary" style="display:none">
+      <h3>📋 汇总辨证结果 (Top 5 张锡纯原案)</h3>
+      <div class="algo-info">算法: 4 维加权 — 手法 25% + 部位 25% + 脉象 25% + 主证 25% (复合脉作加权子项)。Top 5 = 至少 2 维命中 + 加权分最高。</div>
+      <div class="case-list" id="match-cases"></div>
+    </div>
   </div>
-</div>
-<div class="btn-row">
-  <button class="btn gold" onclick="doMatch()">🔍 一比一匹配张锡纯原案</button>
-  <button class="btn ghost" onclick="loadDemo()">📋 一键演示: 升陷汤证</button>
-  <button class="btn ghost" onclick="loadDemo2()">📋 演示: 大气下陷重症</button>
-  <button class="btn ghost" onclick="loadDemo3()">📋 演示: 肝气上冲</button>
-</div>
+  <div class="btn-row">
+    <button class="btn gold" onclick="doMatch()">🔍 汇总辨证 — 出 Top 5 张氏原方</button>
+    <button class="btn ghost" onclick="loadDemo()">📋 一键演示: 升陷汤证</button>
+    <button class="btn ghost" onclick="loadDemo2()">📋 演示: 大气下陷重症</button>
+    <button class="btn ghost" onclick="loadDemo3()">📋 演示: 肝气上冲</button>
+  </div>
 </div>
 
 <div class="footer">
@@ -549,6 +720,7 @@ function renderAll() {
   renderStep4();
   renderStep5();
   renderCurrentPill();
+  updatePerDimResults();
 }
 
 function renderStep1() {
@@ -647,8 +819,85 @@ function toggleOption(group, key, el) {
     el.classList.add('on');
   }
   renderCurrentPill();
+  // 实时更新分维度结果
+  updatePerDimResults();
   // 自动跳到下一步 (如果当前步全选了)
   autoAdvance();
+}
+
+// 实时更新"分维度结果" — 每选一项立刻显示该维度的代表医案
+function updatePerDimResults() {
+  if (!PROCESS) return;
+  // group → step 映射: handful→1, pos→2, pulse→3, compound→4, zheng→5
+  const map = [
+    { group: 'handful', step: 1 },
+    { group: 'pos', step: 2 },
+    { group: 'pulse', step: 3 },
+    { group: 'compound', step: 4 },
+    { group: 'zheng', step: 5 },
+  ];
+  for (const m of map) {
+    const body = document.getElementById('dim-body-' + m.step);
+    if (!body) continue;
+    const sel = SELECTED[m.group];
+    if (sel.size === 0) {
+      body.innerHTML = '<div class="dim-empty">未选 — 选上面 5 步的按钮, 这里会显示结果</div>';
+      continue;
+    }
+    let html = '';
+    // 把所有勾选项的代表案聚合并去重
+    const seen = new Set();
+    const items = [];
+    for (const key of sel) {
+      const opt = PROCESS.process['step' + m.step].options[key];
+      if (!opt) continue;
+      for (const m_ of opt.matches) {
+        if (seen.has(m_.case_id)) continue;
+        seen.add(m_.case_id);
+        items.push(m_);
+      }
+    }
+    // 按勾选项分组列出, 每组前 3 个案
+    for (const key of sel) {
+      const opt = PROCESS.process['step' + m.step].options[key];
+      if (!opt) continue;
+      const top3 = opt.matches.slice(0, 3);
+      html += `<div class="dim-opt">
+        <div class="dim-opt-name">▸ ${opt.name} <span style="color:#a0aec0;font-weight:normal;font-size:10px">(${opt.matches.length} 案)</span></div>
+        <div class="dim-opt-cases">`;
+      for (const c of top3) {
+        html += `<a onclick="event.preventDefault();showCaseDetail('${c.case_id}')" title="${c.title || ''}">#${c.case_id}</a>`;
+      }
+      if (top3[0] && top3[0].content_excerpt) {
+        html += `<div class="dim-opt-quote">"${esc(top3[0].content_excerpt).slice(0, 80)}…"</div>`;
+      }
+      html += '</div></div>';
+    }
+    body.innerHTML = html;
+  }
+}
+
+function esc(s) {
+  return String(s || '').replace(/[<>&"']/g, ch => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+// 点击案号 — 显示该案详情 (浮层)
+function showCaseDetail(caseId) {
+  if (!CASES) return;
+  const c = CASES.find(x => String(x.case_id) === String(caseId) || x.id === caseId);
+  if (!c) { alert('案 ' + caseId + ' 详情未找到'); return; }
+  const title = c.title || c.case_title || ('案 #' + caseId);
+  const pulse = c.pulse || c.pulse_text || '';
+  const diag = c.diagnosis || c.syndrome || '';
+  const formula = c.formula || c.prescription || '';
+  const content = c.content || c.content_excerpt || '';
+  alert(
+    '【案 #' + caseId + '】 ' + title + '\n\n' +
+    '原脉段: ' + (pulse || '(无)') + '\n\n' +
+    '诊断: ' + (diag || '(无)') + '\n\n' +
+    '方剂: ' + (formula || '(无)') + '\n\n' +
+    '原文: ' + (content || '(无)').slice(0, 500) + '…'
+  );
 }
 
 function autoAdvance() {
@@ -690,7 +939,10 @@ function clearAll() {
   Object.keys(SELECTED).forEach(k => SELECTED[k].clear());
   document.querySelectorAll('.option.on').forEach(o => o.classList.remove('on'));
   renderCurrentPill();
-  document.getElementById('match-cases').innerHTML = '<div class="empty">已清空, 请重新勾选</div>';
+  updatePerDimResults();
+  const fs = document.getElementById('final-summary');
+  if (fs) fs.style.display = 'none';
+  document.getElementById('match-cases').innerHTML = '';
 }
 
 // ========== 匹配算法 ==========
@@ -735,12 +987,16 @@ function doMatch() {
 
   const sorted = Object.entries(scoreMap)
     .sort((a, b) => b[1].score - a[1].score)
-    .slice(0, 10);
+    .slice(0, 5);
 
   if (!sorted.length) {
     document.getElementById('match-cases').innerHTML = '<div class="empty">请先勾选 1-5 步的选项</div>';
+    document.getElementById('final-summary').style.display = 'block';
     return;
   }
+
+  // 显示汇总区
+  document.getElementById('final-summary').style.display = 'block';
 
   document.getElementById('match-cases').innerHTML = sorted.map(([cid, info], i) => {
     const cs = CASES_MAP[cid] || info.sources[0];
@@ -748,6 +1004,13 @@ function doMatch() {
     const title = cs.parent_title || cs.title || '';
     const diag = (cs.diagnosis || info.sources[0]?.diagnosis || '').substring(0, 80);
     const formulas = (cs.formulas || info.sources[0]?.formulas || []).slice(0, 3);
+    // 命中维度标签
+    const dimTags = [];
+    if (info.sources.some(s => s.dim === 'handful')) dimTags.push('<span class="dim-tag" style="background:#2c5282">① 手法</span>');
+    if (info.sources.some(s => s.dim === 'pos')) dimTags.push('<span class="dim-tag" style="background:#9b2c2c">② 部位</span>');
+    if (info.sources.some(s => s.dim === 'pulse')) dimTags.push('<span class="dim-tag" style="background:#2f855a">③ 脉象</span>');
+    if (info.sources.some(s => s.dim === 'compound')) dimTags.push('<span class="dim-tag" style="background:#b7791f">④ 复合脉</span>');
+    if (info.sources.some(s => s.dim === 'zheng')) dimTags.push('<span class="dim-tag" style="background:#553c9a">⑤ 主证</span>');
     return `
       <div class="result-card">
         <div class="rc-head">
@@ -755,6 +1018,7 @@ function doMatch() {
           <span class="rc-title">${title}</span>
           <span class="rc-score">${(info.score * 100).toFixed(0)}% 匹配</span>
         </div>
+        <div class="rc-dim-tags">${dimTags.join('')}</div>
         ${pulse ? `<div class="rc-pulse">"${pulse.substring(0, 250)}"</div>` : ''}
         <div class="rc-meta">
           ${formulas.map(f => `<span class="rc-formula">${typeof f === 'object' ? f.name : f}</span>`).join('')}
