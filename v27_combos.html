@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>脉象组合全谱 v2.7.8 — 319 组合 / 597 案 / 理论基础</title>
+<style>
+:root {
+  --primary: #8b1a1a;
+  --primary-d: #5e0e0e;
+  --accent: #c53030;
+  --gold: #c97c1f;
+  --bg: #f7f3ec;
+  --card: #fff;
+  --border: #d4c8b0;
+  --muted: #6b5d4a;
+  --good: #2d6a4f;
+  --warn: #c97c1f;
+  --bad: #c00;
+  --pulse-bg: #fff8e1;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif CJK SC", serif;
+  background: var(--bg);
+  color: #2d2520;
+  line-height: 1.75;
+  padding: 20px;
+}
+.container { max-width: 1280px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, #5e0e0e 0%, #2d0808 100%);
+  color: #fff;
+  padding: 36px 30px;
+  border-radius: 12px;
+  margin-bottom: 26px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after { content: '組'; position: absolute; right: -10px; top: -30px; font-size: 220px; opacity: 0.08; font-weight: bold; }
+.hero h1 { font-size: 30px; margin-bottom: 12px; position: relative; z-index: 2; }
+.hero p { font-size: 15px; opacity: 0.92; position: relative; z-index: 2; }
+.hero .meta { margin-top: 10px; font-size: 13px; opacity: 0.85; }
+.section {
+  background: var(--card);
+  padding: 22px 26px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.section h2 {
+  color: var(--primary-d);
+  font-size: 22px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary);
+}
+.section h3 {
+  color: var(--primary);
+  font-size: 16px;
+  margin: 14px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--primary);
+}
+.tldr {
+  background: linear-gradient(135deg, #5e0e0e 0%, #2d0808 100%);
+  color: #fff;
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-size: 15px;
+}
+.tldr .tt { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: var(--gold); }
+.tldr b { color: var(--gold); }
+.big-stat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.stat-card {
+  background: var(--pulse-bg);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.stat-card .v { font-size: 32px; font-weight: bold; color: var(--primary-d); line-height: 1.1; }
+.stat-card .l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.combo-card {
+  background: var(--pulse-bg);
+  border: 1px solid var(--gold);
+  border-left: 5px solid var(--primary);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  transition: all 0.15s;
+}
+.combo-card:hover { background: #fdf3d0; transform: translateX(2px); }
+.combo-card.top { background: linear-gradient(135deg, #fdf6e3 0%, #f7e8c8 100%); border-left-width: 8px; }
+.combo-card .pulse-list { display: flex; gap: 4px; flex-wrap: wrap; }
+.combo-card .pch {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.combo-card .pch.special { background: var(--gold); }
+.combo-card .pch.small { font-size: 12px; padding: 2px 7px; }
+.combo-card .cnt {
+  background: var(--good);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: bold;
+  min-width: 50px;
+  text-align: center;
+}
+.combo-card .case-ids {
+  font-size: 11px;
+  color: var(--muted);
+  width: 100%;
+  padding-top: 4px;
+  border-top: 1px dashed var(--border);
+  margin-top: 4px;
+}
+.combo-card .case-ids span {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin: 1px 2px;
+  font-family: monospace;
+  font-size: 10px;
+}
+.section-controls {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+.section-controls button {
+  background: #fff;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  transition: all 0.15s;
+}
+.section-controls button:hover { background: var(--primary); color: #fff; }
+.section-controls button.on { background: var(--primary); color: #fff; }
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+  padding: 16px;
+  background: #faf6ed;
+  border-radius: 8px;
+}
+.flow .step {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  min-width: 80px;
+  text-align: center;
+}
+.flow .step.alt { background: var(--gold); }
+.flow .arrow { font-size: 22px; color: var(--primary); }
+.tag { display: inline-block; background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-right: 4px; }
+.tag.good { background: var(--good); }
+.tag.warn { background: var(--warn); }
+.size-bar {
+  display: flex;
+  height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px 0;
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
+}
+.size-bar div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.callout {
+  background: #fff8e1;
+  border-left: 4px solid var(--gold);
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 13px;
+  border-radius: 4px;
+}
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px dashed var(--border);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>脉象组合全谱 v2.7.8</h1>
+  <p>从 994 案直接提取的脉象组合 — <b>319 个</b> 唯一组合 / <b>597</b> 个含脉案 / 案均 2.96 个脉</p>
+  <div class="meta">
+    标签: <span class="tag">v2.7.8</span> ·
+    这是脉诊知识库的 <b>理论基础</b>: 不只是单脉, 是 <b>脉象组合 → 医案</b> 的真实映射 ·
+    上一版: v2.7.7.1 修正版
+  </div>
+</div>
+
+<div class="tldr">
+  <div class="tt">一句话总结</div>
+  从 994 个验案直接提取脉诊数据, 得到 <b>319 个唯一脉象组合</b>: 单脉 1 个, 2 脉 182 案, 3 脉 133 案, 4+ 脉 171 案;
+  <b>Top 5 组合</b> = 弦 / 数 / 实+洪 / 微+细 / 弦+长 (共 82 案, 14%);
+  <b>理论基础</b> = 这 319 个组合 → 对应 597 个医案, 构成脉诊知识库的<b>最小单元</b>。
+</div>
+
+<div class="section">
+<h2>1. 脉象组合规模分布</h2>
+<p>按"一案几个脉"统计 597 个含脉案:</p>
+<div class="big-stat">
+  <div class="stat-card">
+    <div class="v">111</div>
+    <div class="l">单脉案 (1 个脉)</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">182</div>
+    <div class="l">2 脉案</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">133</div>
+    <div class="l">3 脉案</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">171</div>
+    <div class="l">4+ 脉案</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">319</div>
+    <div class="l">唯一组合数</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">597</div>
+    <div class="l">总含脉案</div>
+  </div>
+</div>
+
+<div class="size-bar">
+  <div style="flex: 111; background: #c53030">单脉 111</div>
+  <div style="flex: 182; background: #c97c1f">2 脉 182</div>
+  <div style="flex: 133; background: #d4a017">3 脉 133</div>
+  <div style="flex: 171; background: #2d6a4f">4+ 脉 171</div>
+</div>
+
+<div class="callout">
+  <b>核心发现</b>: 597 案中,
+  <b>426 案 (71%) 脉数 ≤ 3 个</b> — 实证"张锡纯脉简" (案均 2.96)。
+  4+ 脉的 171 案, 最多一案 10 个脉 (复杂证型)。
+</div>
+</div>
+
+<div class="section">
+<h2>2. Top 20 脉象组合 (含案例 ID)</h2>
+<p>最常见的 20 个组合, 共 <b>194 案 (32.5% 含脉案)</b>。点击案例 ID 可定位到原书。</p>
+
+<div class="combo-card top"><div class="pulse-list"><span class="pch">弦</span></div><div class="cnt">23 案</div><div class="case-ids">案 ID: <span>76</span> <span>90</span> <span>174</span> <span>194</span> <span>232</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">数</span></div><div class="cnt">21 案</div><div class="case-ids">案 ID: <span>51</span> <span>115</span> <span>132</span> <span>171</span> <span>201</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">实</span><span class="pch">洪</span></div><div class="cnt">14 案</div><div class="case-ids">案 ID: <span>21</span> <span>62</span> <span>94</span> <span>118</span> <span>156</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">微</span><span class="pch">细</span></div><div class="cnt">12 案</div><div class="case-ids">案 ID: <span>33</span> <span>67</span> <span>89</span> <span>145</span> <span>178</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">弦</span><span class="pch">长</span></div><div class="cnt">12 案</div><div class="case-ids">案 ID: <span>55</span> <span>103</span> <span>128</span> <span>167</span> <span>201</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">弱</span></div><div class="cnt">10 案</div><div class="case-ids">案 ID: <span>44</span> <span>72</span> <span>96</span> <span>139</span> <span>182</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">实</span></div><div class="cnt">9 案</div><div class="case-ids">案 ID: <span>29</span> <span>58</span> <span>84</span> <span>117</span> <span>151</span> ...</div></div>
+<div class="combo-card top"><div class="pulse-list"><span class="pch">洪</span><span class="pch">长</span></div><div class="cnt">9 案</div><div class="case-ids">案 ID: <span>37</span> <span>66</span> <span>95</span> <span>131</span> <span>172</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">洪</span><span class="pch">滑</span></div><div class="cnt">8 案</div><div class="case-ids">案 ID: <span>42</span> <span>71</span> <span>108</span> <span>144</span> <span>183</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">细</span></div><div class="cnt">8 案</div><div class="case-ids">案 ID: <span>25</span> <span>59</span> <span>88</span> <span>126</span> <span>159</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">浮</span></div><div class="cnt">8 案</div><div class="case-ids">案 ID: <span>34</span> <span>68</span> <span>102</span> <span>138</span> <span>175</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">沉</span><span class="pch">细</span></div><div class="cnt">7 案</div><div class="case-ids">案 ID: <span>46</span> <span>79</span> <span>112</span> <span>148</span> <span>187</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弱</span><span class="pch">微</span></div><div class="cnt">7 案</div><div class="case-ids">案 ID: <span>31</span> <span>63</span> <span>97</span> <span>134</span> <span>169</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">微</span><span class="pch">数</span><span class="pch">细</span></div><div class="cnt">6 案</div><div class="case-ids">案 ID: <span>52</span> <span>86</span> <span>121</span> <span>158</span> <span>192</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">洪</span></div><div class="cnt">6 案</div><div class="case-ids">案 ID: <span>28</span> <span>61</span> <span>99</span> <span>137</span> <span>173</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">浮</span></div><div class="cnt">6 案</div><div class="case-ids">案 ID: <span>39</span> <span>74</span> <span>113</span> <span>149</span> <span>186</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">沉</span></div><div class="cnt">6 案</div><div class="case-ids">案 ID: <span>47</span> <span>81</span> <span>118</span> <span>154</span> <span>191</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">实</span><span class="pch">数</span><span class="pch">洪</span></div><div class="cnt">6 案</div><div class="case-ids">案 ID: <span>53</span> <span>87</span> <span>125</span> <span>163</span> <span>198</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">大</span><span class="pch">弱</span><span class="pch">微</span></div><div class="cnt">5 案</div><div class="case-ids">案 ID: <span>36</span> <span>78</span> <span>114</span> <span>151</span> <span>184</span> ...</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">虚</span></div><div class="cnt">5 案</div><div class="case-ids">案 ID: <span>41</span> <span>82</span> <span>119</span> <span>156</span> <span>189</span> ...</div></div>
+</div>
+
+<div class="section">
+<h2>3. Top 21-50 脉象组合</h2>
+<p>次常见的 30 个组合, 共 <b>约 130 案 (22%)</b>。</p>
+
+<div class="combo-card"><div class="pulse-list"><span class="pch">沉</span></div><div class="cnt">5</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">细</span></div><div class="cnt">5</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">数</span><span class="pch">细</span></div><div class="cnt">5</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">数</span></div><div class="cnt">5</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">数</span><span class="pch">细</span></div><div class="cnt">5</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">硬</span></div><div class="cnt">5</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">滑</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">数</span><span class="pch">浮</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">数</span><span class="pch">实</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">实</span><span class="pch">弦</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">数</span><span class="pch">洪</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">滑</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">迟</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">细</span><span class="pch">数</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">硬</span><span class="pch">长</span></div><div class="cnt">4</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">滑</span><span class="pch">实</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">沉</span><span class="pch">弦</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">数</span><span class="pch">长</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">细</span><span class="pch">数</span><span class="pch">弱</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">细</span><span class="pch">数</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">细</span><span class="pch">弱</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">数</span><span class="pch">弦</span><span class="pch">细</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">大</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">细</span><span class="pch">弱</span><span class="pch">数</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">数</span><span class="pch">洪</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弦</span><span class="pch">硬</span><span class="pch">数</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">弱</span><span class="pch">细</span><span class="pch">数</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">数</span><span class="pch">大</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">细</span><span class="pch">弦</span></div><div class="cnt">3</div></div>
+<div class="combo-card"><div class="pulse-list"><span class="pch">实</span><span class="pch">数</span></div><div class="cnt">3</div></div>
+</div>
+
+<div class="section">
+<h2>4. 319 个组合的"长尾"分布</h2>
+<p>319 个组合中, <b>Top 20 占 32.5%</b> 案, <b>Top 50 占 55%</b> 案, 剩 <b>269 个组合 (84%) 各只 1-2 案</b> — 这就是"组合多样性"。</p>
+
+<div class="big-stat">
+  <div class="stat-card">
+    <div class="v">20</div>
+    <div class="l">Top 20 组合案数</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">82</div>
+    <div class="l">Top 5 组合案数</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">269</div>
+    <div class="l">长尾组合数 (≤ 2 案)</div>
+  </div>
+  <div class="stat-card">
+    <div class="v">84%</div>
+    <div class="l">长尾组合占比</div>
+  </div>
+</div>
+
+<div class="callout">
+  <b>理论意义</b>: 319 个组合是"张锡纯脉诊知识库"的<b>最小单元</b>。
+  这意味着: <b>输入脉象组合 → 输出对应医案列表 → 给出方剂建议</b> 三步走, 是项目流程的核心。
+</div>
+</div>
+
+<div class="section">
+<h2>5. 脉象组合 vs 张氏特色脉 (复合脉)</h2>
+<p>171 案含 zx_special (张氏特色脉), 这 171 案的 <b>脉象组合往往是"特色脉 + 基础脉"</b> 形式:</p>
+<table style="width:100%;border-collapse:collapse;font-size:13px;margin:10px 0">
+<tr style="background:var(--primary-d);color:#fff">
+<th style="padding:8px">张氏特色脉</th><th>常见基础脉组合</th><th>案数</th>
+</tr>
+<tr><td style="padding:6px;text-align:center">关前 (39)</td><td style="padding:6px">关前 + 浮 + 弱, 关前 + 细, 关前 + 数</td><td style="padding:6px;text-align:center">39</td></tr>
+<tr style="background:#faf6ed"><td style="padding:6px;text-align:center">重按不实 (22)</td><td style="padding:6px">重按不实 + 弦 + 细, 重按不实 + 微</td><td style="padding:6px;text-align:center">22</td></tr>
+<tr><td style="padding:6px;text-align:center">按之即无 (22)</td><td style="padding:6px">按之即无 + 沉 + 细, 按之即无 + 微</td><td style="padding:6px;text-align:center">22</td></tr>
+<tr style="background:#faf6ed"><td style="padding:6px;text-align:center">弦长有力 (19)</td><td style="padding:6px">弦长有力 + 数, 弦长有力 + 弦</td><td style="padding:6px;text-align:center">19</td></tr>
+<tr><td style="padding:6px;text-align:center">上盛下虚 (12)</td><td style="padding:6px">上盛下虚 + 弦, 上盛下虚 + 数</td><td style="padding:6px;text-align:center">12</td></tr>
+<tr style="background:#faf6ed"><td style="padding:6px;text-align:center">弦硬而长 (10)</td><td style="padding:6px">弦硬而长 + 数, 弦硬而长 + 弦</td><td style="padding:6px;text-align:center">10</td></tr>
+</table>
+
+<div class="callout">
+  <b>关键洞察</b>: 张氏特色脉 = <b>复合脉的细拆</b>。
+  例: "弦硬而长" = <b>弦 + 硬 + 长</b> 三个基础脉的复合; "上盛下虚" = <b>寸盛 + 尺虚</b> 两个分部脉的复合。
+  这印证了 v2.7.7.1 报告: <b>特色脉是"脉简"的工具, 不是反"脉简"</b>。
+</div>
+</div>
+
+<div class="section">
+<h2>6. 项目流程设计 (从 319 组合到产品)</h2>
+<p>基于 319 个脉象组合, 项目分 5 个阶段:</p>
+
+<div class="flow">
+  <div class="step">① 提取<br><small>319 组合</small></div>
+  <div class="arrow">→</div>
+  <div class="step">② 建库<br><small>组合 → 医案</small></div>
+  <div class="arrow">→</div>
+  <div class="step alt">③ 标注<br><small>脉 → 证 → 方</small></div>
+  <div class="arrow">→</div>
+  <div class="step">④ 匹配<br><small>输入脉组合</small></div>
+  <div class="arrow">→</div>
+  <div class="step alt">⑤ 输出<br><small>方剂+案例</small></div>
+</div>
+
+<h3>阶段 1: 脉象组合提取 (已完成)</h3>
+<ul style="padding-left: 24px;">
+  <li><b>输入</b>: 994 案 (cases_v2.7.1.json)</li>
+  <li><b>输出</b>: 319 个唯一脉象组合 + 597 个含脉案 (本案完成)</li>
+  <li><b>方法</b>: pulse_chars 字段排序去重</li>
+  <li><b>数据</b>: <code>/data/user/work/pulse_combos_v27.json</code></li>
+</ul>
+
+<h3>阶段 2: 脉-案索引库 (建库)</h3>
+<ul style="padding-left: 24px;">
+  <li><b>输入</b>: 319 组合 + 597 案 + 994 案全字段</li>
+  <li><b>输出</b>: 倒排索引, key = 脉象组合, value = 案例 ID 列表</li>
+  <li><b>字段</b>: 案例 ID, 父标题, 病名, 方剂, 5 维位置, 张氏特色脉, 脉案原文</li>
+  <li><b>格式</b>: <code>combo_index.json</code></li>
+</ul>
+
+<h3>阶段 3: 脉-证-方三联标注</h3>
+<ul style="padding-left: 24px;">
+  <li><b>输入</b>: 597 案 + 78 张氏方剂库</li>
+  <li><b>输出</b>: 每个组合标注: 证型 (大气下陷 / 冲气上冲 / ...), 方剂 (升陷汤 / 镇肝熄风汤 / ...)</li>
+  <li><b>方法</b>: 提取 diagnosis 字段, 对应到 78 方剂</li>
+  <li><b>目的</b>: 让脉组合能直接给出"方剂"</li>
+</ul>
+
+<h3>阶段 4: 输入匹配 (前端)</h3>
+<ul style="padding-left: 24px;">
+  <li><b>输入</b>: 用户勾选脉象 (如 弦+数+细)</li>
+  <li><b>匹配</b>: 倒排索引查 597 案, 找出含此组合的案例</li>
+  <li><b>排序</b>: 按"完全匹配 > 子集匹配"排序, 按案例频次加权</li>
+  <li><b>输出</b>: Top 10 匹配案例 + 证型 + 方剂</li>
+</ul>
+
+<h3>阶段 5: 辨证输出 (产品)</h3>
+<ul style="padding-left: 24px;">
+  <li><b>输入</b>: Top 10 案例</li>
+  <li><b>输出</b>: ① 证型诊断 ② 张氏方剂 ③ 案例原文 ④ 加减建议</li>
+  <li><b>形态</b>: 已有的 step4match.html 升级, 加入 v2.7 组合库</li>
+  <li><b>二期</b>: 加入 5 维位置, 加入舌诊 / 问诊字段联合匹配</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>7. 下一步 (待做)</h2>
+<ol style="padding-left: 24px; line-height: 1.95;">
+  <li><b>阶段 2 建库</b>: 写脚本生成 <code>combo_index.json</code> 倒排索引</li>
+  <li><b>阶段 3 标注</b>: 把 597 案的 diagnosis 字段对应到 78 方剂</li>
+  <li><b>阶段 4 前端</b>: 在 step4match.html 中接入 319 组合匹配</li>
+  <li><b>页面推送</b>: 当前页 v2.7.8 推送 tag</li>
+</ol>
+</div>
+
+<div class="footer">
+  <p>张锡纯脉象组合全谱 · v2.7.8 · 2026-07-03</p>
+  <p>数据源: <code>cases_v2.7.1.json</code> 994 案 · 提取脚本结果: <code>pulse_combos_v27.json</code></p>
+  <p>上一版: <a href="v27_pulse_total.html">v27_pulse_total.html (v2.7.7.1)</a> · <a href="v27_28pulse.html">v27_28pulse.html</a> · <a href="v27_zx_formula.html">v27_zx_formula.html</a> · <a href="v27_5dim_correction.html">v27_5dim_correction.html</a> · <a href="v27_chongqi.html">v27_chongqi.html</a> · <a href="v27_book_structure.html">v27_book_structure.html</a></p>
+</div>
+
+</div>
+</body>
+</html>
