@@ -361,8 +361,8 @@ body {
 </div>
 
 <div class="section">
-<h2><span class="num">①</span>位置 (7 种, 按 994 案频次) <span class="sub">来自 994 案 pulse_5dim 字段</span></h2>
-<p class="hint">张锡纯 <b>不细分寸关尺</b>, 只用 7 种位置描述: <code>总按</code> (一手或两手总按) · <code>重按</code> (重按才显) · <code>左手</code> / <code>右手</code> (分部) · <code>关前</code> (寸脉) · <code>关后/尺</code> (尺脉) · <code>轻取</code></p>
+<h2><span class="num">①</span>位置 (7 种合并, 按 994 案频次) <span class="sub">v2.7.15 合并关前=寸 / 关后=尺</span></h2>
+<p class="hint">张锡纯 <b>不细分寸关尺</b>, 主要用 7 种位置描述: <code>总按</code> (一手或两手总按) · <code>左部/右部</code> (一手整体) · <code>左关/右关/右寸</code> (一手某部) · <code>寸脉/尺脉</code> (合称, 含关前/关后/两寸/两尺) · <code>重按/轻取</code> (按压力度)。<b>左寸/左尺/右尺 0 案</b>, 张锡纯不写。</p>
 <div class="pos-grid" id="pos-picker"></div>
 </div>
 
@@ -424,8 +424,8 @@ let SEL_POS = new Set();
 let SEL_PULSE = new Set();
 let SEL_ZX = new Set();
 
-// 张锡纯 994 案实证的 7 种位置
-const POS_LIST = ['总按','重按','左手','右手','关前','关后/尺','轻取'];
+// 张锡纯 994 案实证的 7 种位置 (v2.7.15 合并: 关前=寸, 关后=尺, 左手→左部, 右手→右部)
+const POS_LIST = ['总按','左部','右部','左关','右关','右寸','寸脉','尺脉','重按','轻取'];
 // 994 案实证的 27 脉 (案均 2.96)
 const PULSE_LIST = ['弦','数','洪','实','微','大','浮','弱','细','长','沉','滑','虚','迟','缓','濡','短','动','结','伏','紧','涩','芤','牢','代','散','促'];
 // 18 张氏特色脉
