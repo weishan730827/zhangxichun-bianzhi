@@ -196,8 +196,15 @@ body {
 
 .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding: 20px; }
 
-.step-section { display: block; }
-.step-section.active { display: block; }
+/* === 步骤向导 — 真正分页: 只显示当前步 === */
+.step-section { display: none; }
+.step-section.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* 汇总页也是 .step-section 风格 */
+.step-section.final-page { background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%); border: 2px solid #fc8181; border-radius: 10px; padding: 24px; }
 .step-status {
   display: inline-block;
   background: #edf2f7;
@@ -294,6 +301,43 @@ body {
   line-height: 1.7;
 }
 .step-next-hint b { color: #2c5282; }
+.step-cum-title {
+  background: linear-gradient(135deg, #fef5e7 0%, #fde8b8 100%);
+  border-left: 4px solid #b7791f;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: #744210;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+.step-cum-title b { color: #c53030; font-size: 15px; }
+.step-cum-cases { margin: 6px 0; line-height: 1.8; }
+.step-cum-cases a.case-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 2px 3px 2px 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.step-cum-cases a.case-tag:hover { background: var(--primary-d); transform: scale(1.05); }
+.step-cum-preview {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid #2c5282;
+  padding: 6px 10px;
+  margin-top: 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.step-cum-preview b { color: #1a365d; font-size: 13px; }
 .step-nav {
   display: flex;
   justify-content: space-between;
@@ -561,11 +605,11 @@ body {
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.20.8</span>
+    <span class="tag">v2.7.20.9</span>
     <span class="tag">994 案实证</span>
     <span class="tag">5 步引导</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">每步结果+下一步建议</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">每步累进汇总 Top 5</span>
     <span class="tag" style="background:#fed7d7;color:#9b2c2c">手法单选互斥</span>
   </p>
 </div>
@@ -678,7 +722,7 @@ body {
 <div class="option-grid" id="step1-grid"></div>
 <!-- 第 1 步结果 — 紧贴选项下方, 选了立刻显示 -->
 <div class="step-result" id="step1-result">
-  <div class="step-result-empty">👇 选完上面任一手法, 这里立即显示 <b>该手法下的张氏代表案 + 张氏原话</b> (Top 3)。<br>选完会<b>自动跳到第 2 步: 选部位</b>。</div>
+  <div class="step-result-empty">👇 选完上面任一手法, 这里立即显示 <b>第 1 步命中张氏原案的累计 Top 5</b>。<br>然后第 2 步选完会显示<b>前 2 步交集</b>的 Top 5, 以此类推。</div>
 </div>
 <div class="step-nav">
   <button class="btn-next" data-go="2" disabled>下一步: 选部位 →</button>
@@ -697,7 +741,7 @@ body {
 <p style="margin-top:8px">点选你摸到异常的部位 (<b style="color:#2c5282">可多选</b> — 可能左右都有异常)：</p>
 <div class="option-grid" id="step2-grid"></div>
 <div class="step-result" id="step2-result">
-  <div class="step-result-empty">👇 选完上面任一部位, 这里立即显示 <b>该部位下的张氏代表案</b> (Top 3)</div>
+  <div class="step-result-empty">👇 第 2 步选完, 这里显示 <b>前 2 步 (手法 + 部位) 交集</b>的真实张氏原案 (Top 5)。<br>每选一步, 候选会<b>逐步收窄</b>直到定位最终辨证。</div>
 </div>
 <div class="step-nav">
   <button class="btn-prev" data-go="1">← 上一步</button>
@@ -720,7 +764,7 @@ body {
 <h3 style="color:var(--zx); font-size:14px; margin:14px 0 6px">张氏特色脉 (10)</h3>
 <div class="option-grid" id="step3-zx-grid"></div>
 <div class="step-result" id="step3-result">
-  <div class="step-result-empty">👇 选完上面任一脉象, 这里立即显示 <b>该脉象下的张氏代表案</b> (Top 3)</div>
+  <div class="step-result-empty">👇 第 3 步选完, 这里显示 <b>前 3 步 (手法 + 部位 + 脉象) 交集</b>的真实张氏原案 (Top 5)。</div>
 </div>
 <div class="step-nav">
   <button class="btn-prev" data-go="2">← 上一步</button>
@@ -740,7 +784,7 @@ body {
 <p style="margin-top:8px">点选你摸到的复合脉 (可多选, 不确定可跳):</p>
 <div class="option-grid" id="step4-grid"></div>
 <div class="step-result" id="step4-result">
-  <div class="step-result-empty">👇 选完上面任一复合脉, 这里立即显示 <b>该复合脉下的张氏代表案</b> (Top 3)。<b>不确定可点 "下一步" 跳过</b>。</div>
+  <div class="step-result-empty">👇 第 4 步选完, 这里显示 <b>前 4 步交集</b>的真实张氏原案 (Top 5)。<b>不确定可点 "下一步" 跳过</b>。</div>
 </div>
 <div class="step-nav">
   <button class="btn-prev" data-go="3">← 上一步</button>
@@ -760,7 +804,7 @@ body {
 <p style="margin-top:8px">勾选患者主证 (可多选, 不确定可跳):</p>
 <div class="option-grid" id="step5-grid"></div>
 <div class="step-result" id="step5-result">
-  <div class="step-result-empty">👇 选完上面任一主证, 这里立即显示 <b>该主证下的张氏代表案</b> (Top 3)。<b>不确定可点 "完成辨证" 跳过</b>。</div>
+  <div class="step-result-empty">👇 第 5 步选完, 这里显示 <b>前 5 步全集命中</b>的真实张氏原案 (Top 5, 最终辨证)。<b>不确定可点 "完成" 跳过</b>。</div>
 </div>
 <div class="step-nav">
   <button class="btn-prev" data-go="4">← 上一步</button>
@@ -838,8 +882,8 @@ body {
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.20.8 — 来源: 《医学衷中参西录》994 案实证</p>
-  <p>每步选项 / 张氏原话 / 真实医案引用 + 下一步建议 — 全部来自 994 案原文 · 手法单选 / 部位脉象复合脉主证多选</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.20.9 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>累进汇总: 第 1 步→候选, 第 2 步→前 2 步交集, …, 第 5 步→最终辨证 Top 5 (每步选完立即显示)</p>
 </div>
 
 </div>
@@ -1066,16 +1110,54 @@ function getStepNum(group) {
   return { handful: 1, pos: 2, pulse: 3, compound: 4, zheng: 5 }[group];
 }
 
-// 实时更新"每步结果" — 紧贴每步选项下方, 选了立刻显示该步代表医案
+// 实时更新"每步结果" — 累进汇总: 第 N 步 result = 前 N 步所有选项的 case 交集 Top 5
 function updateStepResults() {
   if (!PROCESS) return;
   const map = [
-    { group: 'handful', step: 1 },
-    { group: 'pos', step: 2 },
-    { group: 'pulse', step: 3 },
-    { group: 'compound', step: 4 },
-    { group: 'zheng', step: 5 },
+    { group: 'handful', step: 1, name: '手法' },
+    { group: 'pos',     step: 2, name: '部位' },
+    { group: 'pulse',   step: 3, name: '脉象' },
+    { group: 'compound',step: 4, name: '复合脉' },
+    { group: 'zheng',   step: 5, name: '主证' },
   ];
+
+  // 1. 算每步的"候选 case_id 集"
+  //    step1: 第 1 步所有选项的 case 并集
+  //    step2: 第 1+2 步所有选项的 case 交集
+  //    ...
+  //    step5: 前 5 步所有选项的 case 交集 = 最终候选
+  const stepCandidates = [];
+  let runningSet = null;
+  for (const m of map) {
+    const sel = SELECTED[m.group];
+    if (sel.size === 0) {
+      // 该步还没选, 没有候选
+      stepCandidates.push(null);
+      runningSet = null;  // 一旦有步没选, 后面累进也空
+      continue;
+    }
+    // 该步所有选项的 case 集合
+    const currentUnion = new Set();
+    for (const key of sel) {
+      const opt = PROCESS.process['step' + m.step].options[key];
+      if (opt && opt.matches) {
+        for (const c of opt.matches) currentUnion.add(String(c.case_id));
+      }
+    }
+    if (runningSet === null) {
+      runningSet = currentUnion;
+    } else {
+      // 累进: 交集
+      const next = new Set();
+      for (const cid of currentUnion) {
+        if (runningSet.has(cid)) next.add(cid);
+      }
+      runningSet = next;
+    }
+    stepCandidates.push(runningSet ? new Set(runningSet) : new Set());
+  }
+
+  // 2. 渲染每步 result 区
   for (const m of map) {
     const resultBox = document.getElementById('step' + m.step + '-result');
     const status = document.getElementById('step' + m.step + '-status');
@@ -1097,42 +1179,47 @@ function updateStepResults() {
     const nextBtn = document.querySelector(`#step${m.step} .btn-next`);
     if (nextBtn) nextBtn.disabled = (sel.size === 0);
 
-    // 渲染该步结果
+    // 渲染
+    const candidateSet = stepCandidates[m.step - 1];
     if (sel.size === 0) {
       const emptyText = (m.step === 4 || m.step === 5)
-        ? `👇 选完上面任一项, 这里立即显示 <b>该选项下的张氏代表案</b> (Top 3)。<b>不确定可点 "下一步" 跳过</b>。`
-        : `👇 选完上面任一项, 这里立即显示 <b>该选项下的张氏代表案</b> (Top 3)`;
+        ? `👇 选完上面任一项, 这里立即显示 <b>前 ${m.step} 步命中所有选项的真实张氏原案</b> (累进汇总 Top 5)。<b>不确定可点 "下一步" 跳过</b>。`
+        : `👇 选完上面任一项, 这里立即显示 <b>前 ${m.step} 步命中所有选项的真实张氏原案</b> (累进汇总 Top 5)`;
       resultBox.innerHTML = `<div class="step-result-empty">${emptyText}</div>`;
       continue;
     }
 
+    // 取候选 case 的完整数据 + 显示 step 命中标签
+    const caseData = getCasesWithHitDim(candidateSet, m.step);
+
     let html = '';
-    for (const key of sel) {
-      const opt = PROCESS.process['step' + m.step].options[key];
-      if (!opt) continue;
-      const top3 = opt.matches.slice(0, 3);
-      html += `<div class="step-result-opt">
-        <div class="step-result-opt-name">▸ ${opt.name} <span style="color:#a0aec0;font-weight:normal;font-size:10px">(${opt.matches.length} 案命中)</span></div>`;
-      // 显示张氏原话 (如有)
-      if (opt.zx_quote) {
-        html += `<div class="step-result-opt-zxquote">张氏原话: "${esc(opt.zx_quote)}"</div>`;
-      }
-      html += `<div class="step-result-opt-cases">`;
-      for (const c of top3) {
-        html += `<a onclick="event.preventDefault();showCaseDetail('${c.case_id}')" title="${esc(c.title || '')}">#${c.case_id}</a>`;
-      }
-      if (top3[0] && top3[0].content_excerpt) {
-        html += `<div class="step-result-opt-quote">"${esc(top3[0].content_excerpt).slice(0, 120)}…"</div>`;
-      }
-      html += '</div></div>';
+    // 累进汇总标题
+    if (m.step === 1) {
+      html += `<div class="step-cum-title">📊 第 1 步选完 — 当前候选 ${candidateSet.size} 案 (前 1 步命中)</div>`;
+    } else {
+      const prev = stepCandidates[m.step - 2];
+      const prevCount = prev ? prev.size : 0;
+      html += `<div class="step-cum-title">📊 第 ${m.step} 步选完 — 前 ${m.step} 步交集 <b>${candidateSet.size}</b> 案 (第 ${m.step-1} 步有 ${prevCount} 案, 累进收窄)</div>`;
     }
 
-    // 加上"下一步建议"卡片
-    const nextHint = getNextStepHint(m.step);
-    if (nextHint) {
-      html += `<div class="step-next-hint">
-        <b>👉 下一步建议</b>: ${nextHint}
-      </div>`;
+    if (caseData.length === 0) {
+      html += `<div class="step-result-empty">⚠ 前 ${m.step} 步没有同时命中的医案。建议放宽条件 (如取消某项, 或跳到下一步)。</div>`;
+    } else {
+      const top5 = caseData.slice(0, 5);
+      html += `<div class="step-cum-cases">`;
+      for (const cd of top5) {
+        html += `<a class="case-tag" onclick="event.preventDefault();showCaseDetail('${cd.case_id}')" title="${esc(cd.title || '')}">#${cd.case_id}</a>`;
+      }
+      html += `</div>`;
+      // 第 1 个候选案显示标题/方剂 (快速预览)
+      const first = caseData[0];
+      if (first && (first.title || first.diagnosis)) {
+        html += `<div class="step-cum-preview">`;
+        if (first.title) html += `<b>${esc(first.title)}</b><br>`;
+        if (first.diagnosis) html += `<span style="color:#744210">诊断: ${esc(first.diagnosis).slice(0, 60)}</span><br>`;
+        if (first.formula) html += `<span style="color:#9b2c2c">方剂: ${esc(first.formula).slice(0, 60)}</span>`;
+        html += `</div>`;
+      }
     }
 
     resultBox.innerHTML = html;
@@ -1140,6 +1227,47 @@ function updateStepResults() {
 
   // 同步更新底部 dim-grid (保留, 方便用户对比)
   updatePerDimResults();
+}
+
+// 根据候选 case_id 集, 取出完整 case 数据 (按选中的 dim 优先级)
+function getCasesWithHitDim(caseIds, upToStep) {
+  if (!caseIds || caseIds.size === 0) return [];
+  const dimOrder = [
+    { key: 'handful', step: 1 },
+    { key: 'pos',     step: 2 },
+    { key: 'pulse',   step: 3 },
+    { key: 'compound',step: 4 },
+    { key: 'zheng',   step: 5 },
+  ];
+  const result = [];
+  for (const cid of caseIds) {
+    const cs = CASES_MAP[cid];
+    if (!cs) continue;
+    // 计算该 case 在前 upToStep 中命中了哪些 dim
+    const hitDims = [];
+    for (const d of dimOrder) {
+      if (d.step > upToStep) break;
+      const sel = SELECTED[d.key];
+      if (sel.size === 0) continue;
+      const opt = PROCESS.process['step' + d.step].options;
+      for (const k of sel) {
+        if (opt[k] && opt[k].matches.some(m => String(m.case_id) === cid)) {
+          hitDims.push(d.step);
+          break;
+        }
+      }
+    }
+    result.push({
+      case_id: cid,
+      title: cs.parent_title || cs.title || '',
+      diagnosis: cs.diagnosis || '',
+      formula: Array.isArray(cs.formulas) ? cs.formulas.map(f => typeof f === 'object' ? f.name : f).join(' + ') : (cs.formula || ''),
+      hitDims
+    });
+  }
+  // 按命中维度数倒序, 然后按 case_id 升序
+  result.sort((a, b) => b.hitDims.length - a.hitDims.length || Number(a.case_id) - Number(b.case_id));
+  return result;
 }
 
 // 张氏脉诊顺序的下一步建议
