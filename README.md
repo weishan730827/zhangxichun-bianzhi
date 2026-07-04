@@ -1,7 +1,7 @@
 # 仿张锡纯辨证施治系统
 
 > 基于《医学衷中参西录》原文构建的中医辨证施治辅助工具
-> v2.7.17 (2026-07-04) — 994 案 / 472 心相关案 / 46 心+寸位置案 / 升陷汤 13 案 + 怔忡 5 案 + 左寸 2 案实证
+> v2.7.20 (2026-07-04) — **一比一还原张锡纯脉诊过程** / 5 步引导 / 5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证 / 每步张氏原话+真实医案
 
 ## 项目目标
 
@@ -69,8 +69,9 @@ zhangxichun-bianzhi/
 | `v27_pulse_total.html` | v2.7.7.1 | 脉诊总统计 (修正版) |
 | `v27_combos.html` | v2.7.8 | 319 脉象组合全谱 |
 | `v27_pulse_zangfu.html` | v2.7.9 | 脉位-脏腑对应 |
-| `v27_combo_query.html` | v2.7.11 | 脉象组合查询器 |
+| `v27_combo_query.html` | v2.7.11/14 | 脉象组合查询器 |
 | `v27_heart_cun.html` | v2.7.17 | 心脏心包相关案 + 寸位置 (472/46/13/5/2) |
+| **`v27_pulse_process.html`** | **v2.7.20** | **一比一还原张锡纯脉诊过程 (5 步引导)** |
 
 ## 知识库清单 (`assets/data/`)
 
@@ -94,6 +95,8 @@ zhangxichun-bianzhi/
 | `pos_6bu_index_v2.json` | 5 KB | 6 部脉宽匹配 (v2.7.16) |
 | `positions_merged.json` | 2 KB | 7 位置合并规则 (v2.7.15) |
 | `heart_cun_index.json` | 24 KB | 心相关 + 寸位置 (v2.7.17) |
+| `zangfu_cun_index.json` | 202 KB | 5 脏腑 × 6 部脉 × 28 脉 (v2.7.19) |
+| **`zhangxichun_pulse_process.json`** | **124 KB** | **5 步脉诊过程数据 (v2.7.20)** |
 
 ## 项目流程 (5 阶段)
 
