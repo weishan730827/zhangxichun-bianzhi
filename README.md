@@ -113,8 +113,28 @@ zhangxichun-bianzhi/
 
 ## 部署地址
 
-- **GitHub Pages**: https://weishan730827.github.io/pulse-diagnosis/
+- **GitHub Pages**: https://weishan730827.github.io/zhangxichun-bianzhi/
 - **GitHub 仓库**: https://github.com/weishan730827/zhangxichun-bianzhi
+- **主入口**: https://weishan730827.github.io/zhangxichun-bianzhi/index.html
+- **4 步合参**: https://weishan730827.github.io/zhangxichun-bianzhi/step4match.html
+- **脉象组合查询**: https://weishan730827.github.io/zhangxichun-bianzhi/v27_combo_query.html
+
+## 验证状态 (v2.7.12 部署校验)
+
+- [x] index.html (31 KB) — 200 OK
+- [x] step4match.html (9 KB) — 200 OK
+- [x] v27_28pulse.html (25 KB) — 200 OK
+- [x] v27_zx_formula.html (18 KB) — 200 OK
+- [x] v27_5dim_correction.html (12 KB) — 200 OK
+- [x] v27_chongqi.html (12 KB) — 200 OK
+- [x] v27_book_structure.html (19 KB) — 200 OK
+- [x] v27_pulse_total.html (19 KB) — 200 OK
+- [x] v27_combos.html (24 KB) — 200 OK
+- [x] v27_pulse_zangfu.html (12 KB) — 200 OK
+- [x] v27_combo_query.html (17 KB) — 200 OK
+- [x] cases_v2.7.1.json (2.2 MB) — 200 OK
+- [x] combo_index.json (928 KB) — 200 OK
+- [x] pulse_formula_syndrome.json (13 KB) — 200 OK
 
 ## 当前状态
 
