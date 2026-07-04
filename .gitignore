@@ -1,20 +1,29 @@
-# 中间产物 (大文件/OCR 原始文件)
+# 系统
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 中间产物 (大文件 / OCR 原始文件)
 zhangxichun_originals/*.txt
 zhangxichun_originals/*.md
 zhangxichun_originals/*_v0.*.json
 zhangxichun_originals/*_v1.*.json
-zhangxichun_originals/医案全量提取_*.json
-zhangxichun_originals/方剂-*.json
-zhangxichun_originals/脉象-*.json
-zhangxichun_originals/症状-*.json
-zhangxichun_originals/关键方剂-*.json
-zhangxichun_originals/三部九候指纹库_v1.2.json
-zhangxichun_originals/重按指纹库_v1.2.json
-zhangxichun_originals/左右对比指纹库_v1.2.json
-zhangxichun_originals/脉诊指纹库_v0.5.json
-zhangxichun_originals/脉诊指纹库_v0.6.json
 
-# screenshots 目录
+# screenshots
 screenshots/
 
-# python/data 中间脚本 (只保留 .py, 不保留结果)
+# 空目录占位
+links_qr/.gitkeep
+
+# Python 临时文件
+__pycache__/
+*.pyc
+*.pyo
+
+# 临时分析结果
+/tmp/
+*.log
