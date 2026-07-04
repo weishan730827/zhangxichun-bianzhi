@@ -203,7 +203,188 @@ body {
 
 .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding: 20px; }
 
-/* === 步骤向导 — 真正分页: 只显示当前步 === */
+/* === 全屏步骤模态 — 一次只显示一个 === */
+.step-modal {
+  display: none;
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  flex-direction: column;
+}
+.step-modal.active {
+  display: flex;
+  animation: modalIn 0.35s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.sm-progress {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 20px;
+  background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 100%);
+  border-bottom: 1.5px solid #cbd5e0;
+  flex-wrap: wrap;
+}
+.sm-progress .sm-step {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  color: #a0aec0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sm-progress .sm-step span {
+  display: inline-block;
+  width: 20px; height: 20px;
+  line-height: 20px; text-align: center;
+  background: #cbd5e0; color: #fff;
+  border-radius: 50%; font-size: 11px; font-weight: bold;
+}
+.sm-progress .sm-step.done {
+  background: #e6f2ec; color: #22543d; border-color: #22543d;
+  cursor: pointer;
+}
+.sm-progress .sm-step.done span { background: #22543d; }
+.sm-progress .sm-step.active {
+  background: #fff5f5; color: #c53030; border-color: #c53030; border-width: 2px;
+  cursor: default;
+}
+.sm-progress .sm-step.active span { background: #c53030; }
+.sm-progress .sm-arrow { color: #cbd5e0; font-size: 14px; font-weight: bold; }
+.sm-progress .sm-step.done + .sm-arrow { color: #22543d; }
+.sm-progress .sm-clear {
+  margin-left: auto;
+  background: #fff;
+  color: #c53030;
+  border: 1px solid #fed7d7;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.sm-progress .sm-clear:hover { background: #fff5f5; }
+
+.sm-body { flex: 1; padding: 20px 24px; overflow-y: auto; }
+.sm-header {
+  color: #fff;
+  padding: 18px 22px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+.sm-header .sm-num {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.sm-header h2 { font-size: 22px; color: #fff; margin: 4px 0; }
+.sm-header .sm-sub { font-size: 13px; opacity: 0.92; }
+.sm-guide {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-left: 4px solid #2c5282;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 12px 0 16px;
+}
+.sm-guide b { color: #1a365d; }
+.sm-h3 { font-size: 14px; margin: 18px 0 8px; font-weight: bold; }
+.sm-prompt { margin: 12px 0 6px; font-size: 13px; }
+.sm-result {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #f0fff4 0%, #e6f2ec 100%);
+  border: 1.5px solid #22543d;
+  border-left: 5px solid #22543d;
+  border-radius: 8px;
+  min-height: 60px;
+}
+.sm-result-empty {
+  color: #4a5568;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: left;
+}
+.sm-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: linear-gradient(180deg, #fff 0%, #f7fafc 100%);
+  border-top: 2px solid var(--primary, #2c5282);
+}
+.sm-footer .sm-prev {
+  background: #fff;
+  color: #2c5282;
+  border: 1.5px solid #2c5282;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sm-footer .sm-prev:hover:not(:disabled) { background: #2c5282; color: #fff; }
+.sm-footer .sm-prev:disabled { opacity: 0.3; cursor: not-allowed; }
+.sm-footer .sm-next {
+  background: var(--primary, #2c5282);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(44,82,130,0.3);
+  margin-left: auto;
+}
+.sm-footer .sm-next:hover:not(:disabled) { background: #1a365d; transform: translateY(-1px); }
+.sm-footer .sm-next:disabled { background: #cbd5e0; color: #a0aec0; cursor: not-allowed; box-shadow: none; }
+.sm-footer .sm-finish {
+  background: #c53030;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(197,48,48,0.3);
+  margin-left: auto;
+}
+.sm-footer .sm-finish:hover { background: #9b2c2c; transform: translateY(-1px); }
+.sm-footer .sm-cuminfo {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: #4a5568;
+}
+.sm-footer .sm-cuminfo b { color: #c53030; font-size: 15px; }
+.sm-final-btns { display: flex; gap: 10px; margin-top: 20px; }
+@media (max-width: 700px) {
+  .sm-progress { flex-direction: column; align-items: stretch; }
+  .sm-progress .sm-arrow { display: none; }
+  .sm-footer { flex-direction: column; gap: 8px; }
+  .sm-footer .sm-next, .sm-footer .sm-finish { margin-left: 0; width: 100%; }
+}
+
+/* === 步骤向导 — 真正分页: 只显示当前步 (兼容旧选择器) === */
 .step-section { display: none; }
 .step-section.active { display: block; animation: fadeIn 0.3s ease; }
 @keyframes fadeIn {
@@ -802,12 +983,12 @@ body { padding-bottom: 80px; }
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.23</span>
+    <span class="tag">v2.7.24</span>
     <span class="tag">994 案实证</span>
-    <span class="tag">5 步引导 (单步显示)</span>
+    <span class="tag">5 步引导 (全屏模态)</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">每步引导卡</span>
-    <span class="tag" style="background:#fed7d7;color:#9b2c2c">底部固定操作条</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">一次只显示 1 步</span>
+    <span class="tag" style="background:#fed7d7;color:#9b2c2c">底部大按钮</span>
   </p>
 </div>
 
@@ -886,94 +1067,72 @@ body { padding-bottom: 80px; }
   </div>
 </div>
 
-<!-- ========== 顶部面包屑 — 累进式 — 显示前几步已选 + 当前候选数 ========== -->
-<div id="breadcrumb" class="breadcrumb">
-  <div class="bc-title">📜 张锡纯脉诊 — 累进式辨证 (当前候选 <span id="bc-cum-count">—</span> 案)</div>
-  <div class="bc-steps" id="bc-steps">
-    <div class="bc-step empty" data-bc="1">
-      <span class="bc-num">①</span>
-      <span class="bc-label">手法</span>
-      <span class="bc-value">未选</span>
-    </div>
-    <div class="bc-arrow">→</div>
-    <div class="bc-step empty" data-bc="2">
-      <span class="bc-num">②</span>
-      <span class="bc-label">部位</span>
-      <span class="bc-value">未选</span>
-    </div>
-    <div class="bc-arrow">→</div>
-    <div class="bc-step empty" data-bc="3">
-      <span class="bc-num">③</span>
-      <span class="bc-label">脉象</span>
-      <span class="bc-value">未选</span>
-    </div>
-    <div class="bc-arrow">→</div>
-    <div class="bc-step empty" data-bc="4">
-      <span class="bc-num">④</span>
-      <span class="bc-label">复合脉</span>
-      <span class="bc-value">未选</span>
-    </div>
-    <div class="bc-arrow">→</div>
-    <div class="bc-step empty" data-bc="5">
-      <span class="bc-num">⑤</span>
-      <span class="bc-label">主证</span>
-      <span class="bc-value">未选</span>
-    </div>
-  </div>
-  <button class="btn sm ghost" onclick="clearAll()">🗑 清空重选</button>
-</div>
+<!-- ========== 全屏步骤模态 — 5 步各一个 modal (互不重叠) ========== -->
 
-<!-- ========== 第 1 步: 手法 ========== -->
-<div class="step-section step1-color active" id="step1">
-  <div class="section">
-    <div class="step-head-row">
-      <span class="step-badge" style="background:#2c5282">第 1 步 / 共 5 步</span>
-      <span class="step-status" id="step1-status">⏳ 未选</span>
+<!-- ====== 第 1 步: 手法 ====== -->
+<div class="step-modal active" id="modal-1">
+  <div class="sm-progress">
+    <div class="sm-step done"><span>①</span> 手法</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>②</span> 部位</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>③</span> 脉象</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>④</span> 复合脉</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>⑤</span> 主证</div>
+    <button class="sm-clear" onclick="clearAll()">🗑 清空</button>
+  </div>
+  <div class="sm-body">
+    <div class="sm-header" style="background:#2c5282">
+      <div class="sm-num">第 1 步 / 共 5 步</div>
+      <h2>选手法 (按脉顺序)</h2>
+      <div class="sm-sub">张氏脉诊第 1 步, 决定后续思路 · 单选互斥</div>
     </div>
-    <h2>第 1 步: 选手法 (按脉顺序)</h2>
-    <div class="step-guide" style="background:#ebf8ff;border-left:5px solid #2c5282">
-      <b>👋 引导</b> — 张氏按脉第 1 步, 决定后续思路<br>
-      <b>1️</b> 点选下方任一手法 (重按/轻取/总按/单按/举按)<br>
-      <b>2️</b> 紧贴下方立即显示该手法下的张氏原案 (Top 5)<br>
-      <b>3️</b> 看清楚后点页面底部"下一步 →"或"下一步: 选部位"
+    <div class="sm-guide">
+      <b>👋 现在该做什么</b>: 选 <b>当前</b> 使用的按脉手法。<br>
+      <b>张氏原书顺序</b>: <b style="color:#c53030">重按 (辨真假有力) → 轻取 (辨浮沉) → 总按 (三指同按) → 单按 (分寸关尺) → 举按 (举之浮按之沉)</b><br>
+      选完任一项 → 看紧贴下方 Top 5 医案 → 点底部"下一步: 选部位"
     </div>
-    <div class="zx-intro">
-      <b>张氏脉诊第 1 步</b> — 决定按脉顺序, 顺序对了才能判断后续<br>
-      <b>张氏原书顺序</b>: <b style="color:#c53030">重按 (辨真假有力) → 轻取 (辨浮沉) → 总按 (三指同按) → 单按 (分寸关尺) → 举按 (举之浮按之沉)</b>
-    </div>
-    <p style="margin-top:10px">选 <b>当前第 1 步</b> 使用的按脉手法 (<b style="color:#c53030">单选互斥 — 按脉时只可能用一种力</b>)：</p>
+    <p class="sm-prompt">点选下方任一手法 (<b style="color:#c53030">单选互斥</b>)：</p>
     <div class="option-grid" id="step1-grid"></div>
-    <!-- 本步当前结果 — 紧贴选项下方 -->
-    <div class="step-result" id="step1-result">
-      <div class="step-result-empty">👇 选完上面任一手法, 紧贴这里显示 <b>该手法下的张氏原案 (Top 5)</b>。选完会自动跳到第 2 步。</div>
+    <div class="sm-result" id="step1-result">
+      <div class="sm-result-empty">👇 选完上面任一手法, 紧贴这里立即显示 <b>该手法下的张氏原案 (Top 5)</b></div>
     </div>
-    <div class="step-nav">
-      <span></span>
-      <button class="btn-next" data-go="2" disabled>下一步: 选部位 →</button>
-    </div>
+  </div>
+  <div class="sm-footer">
+    <button class="sm-prev" disabled>← 上一步</button>
+    <div class="sm-cuminfo" id="sm-cuminfo-1">候选 <b>—</b> 案</div>
+    <button class="sm-next" data-goto="2" disabled onclick="gotoStep(2)">下一步: 选部位 →</button>
   </div>
 </div>
 
-<!-- ========== 第 2 步: 部位 ========== -->
-<div class="step-section step2-color" id="step2">
-  <div class="section">
-    <div class="step-head-row">
-      <span class="step-badge" style="background:#9b2c2c">第 2 步 / 共 5 步</span>
-      <span class="step-status" id="step2-status">⏳ 未选</span>
+<!-- ====== 第 2 步: 部位 ====== -->
+<div class="step-modal" id="modal-2">
+  <div class="sm-progress">
+    <div class="sm-step done" onclick="gotoStep(1)"><span>①</span> 手法</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step active"><span>②</span> 部位</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>③</span> 脉象</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>④</span> 复合脉</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>⑤</span> 主证</div>
+    <button class="sm-clear" onclick="clearAll()">🗑 清空</button>
+  </div>
+  <div class="sm-body">
+    <div class="sm-header" style="background:#9b2c2c">
+      <div class="sm-num">第 2 步 / 共 5 步</div>
+      <h2>选部位 (异常在哪)</h2>
+      <div class="sm-sub">张氏分部: 先整体 (左/右) → 再局部 (寸/关/尺)</div>
     </div>
-    <h2>第 2 步: 选部位 (异常在哪)</h2>
-    <div class="step-guide" style="background:#fff5f5;border-left:5px solid #9b2c2c">
-      <b>👋 引导</b> — 张氏分部顺序: <b>先整体 (左/右) → 再局部 (寸/关/尺)</b><br>
-      <b>1️</b> 先点左/右整体大按钮 (左手=心肝肾, 右手=肺脾命)<br>
-      <b>2️</b> 展开后再选组内具体寸关尺 (可细化, 也可跳过)
+    <div class="sm-guide">
+      <b>👋 现在该做什么</b>: 先选左/右整体 (可多选), 再选组内具体寸关尺<br>
+      <b>1️</b> 选左/右 → 展开对应子组<br>
+      <b>2️</b> 看紧贴下方 Top 5 → 点底部"下一步: 选脉象"
     </div>
-    <div class="zx-intro">
-      <b>张氏分部不是教科书 6 部</b> — 而是按实证 8 部位 (张氏实际用的)<br>
-      <b>核心</b>: 部位 = 反推脏腑的依据 ("左关弦" = 肝, "右关实" = 脾胃, "右寸弱" = 肺)
-    </div>
-
-    <!-- 2a: 左/右整体 -->
-    <h3 style="color:#9b2c2c; font-size:14px; margin:14px 0 6px">🅰 整体 (可多选)</h3>
+    <h3 class="sm-h3" style="color:#9b2c2c">🅰 整体 (可多选)</h3>
     <div class="option-grid" id="step2a-grid">
       <div class="option big" data-pos="左部" onclick="togglePos('左部', this)">
         <div class="opt-name">左部 (左手整体)</div>
@@ -984,11 +1143,9 @@ body { padding-bottom: 80px; }
         <div class="opt-desc">肺·脾·命 — 张氏常 "右部弱" 辨大气下陷</div>
       </div>
     </div>
-
-    <!-- 2b: 具体寸关尺 (选完整体后展开) -->
-    <h3 style="color:#9b2c2c; font-size:14px; margin:18px 0 6px">🅱 局部 (选完整体后展开, 可跳过)</h3>
+    <h3 class="sm-h3" style="color:#9b2c2c">🅱 局部 (选完整体后展开, 可跳过)</h3>
     <div class="pos-group" id="pos-group-left" style="display:none">
-      <div class="pos-group-title">👈 左手细分 (选了 "左部" 后可细化)</div>
+      <div class="pos-group-title">👈 左手细分</div>
       <div class="option-grid" id="step2b-left-grid">
         <div class="option" data-pos="左寸" onclick="togglePos('左寸', this)">
           <div class="opt-name">左寸</div>
@@ -1005,7 +1162,7 @@ body { padding-bottom: 80px; }
       </div>
     </div>
     <div class="pos-group" id="pos-group-right" style="display:none">
-      <div class="pos-group-title">👉 右手细分 (选了 "右部" 后可细化)</div>
+      <div class="pos-group-title">👉 右手细分</div>
       <div class="option-grid" id="step2b-right-grid">
         <div class="option" data-pos="右寸" onclick="togglePos('右寸', this)">
           <div class="opt-name">右寸</div>
@@ -1021,221 +1178,174 @@ body { padding-bottom: 80px; }
         </div>
       </div>
     </div>
-
-    <div class="step-result" id="step2-result">
-      <div class="step-result-empty">👇 第 2 步选完, 这里显示 <b>前 2 步 (手法 + 部位) 交集</b>的真实张氏原案 (Top 5)。<br>候选会逐步<b>收窄</b>。</div>
+    <div class="sm-result" id="step2-result">
+      <div class="sm-result-empty">👇 选完上面任一部位, 紧贴这里立即显示 <b>前 2 步 (手法 + 部位) 交集</b>的真实张氏原案 (Top 5)</div>
     </div>
-    <div class="step-nav">
-      <button class="btn-prev" data-go="1">← 上一步</button>
-      <button class="btn-next" data-go="3" disabled>下一步: 选脉象 →</button>
-    </div>
+  </div>
+  <div class="sm-footer">
+    <button class="sm-prev" onclick="gotoStep(1)">← 上一步</button>
+    <div class="sm-cuminfo" id="sm-cuminfo-2">候选 <b>—</b> 案</div>
+    <button class="sm-next" data-goto="3" disabled onclick="gotoStep(3)">下一步: 选脉象 →</button>
   </div>
 </div>
 
-<!-- ========== 第 3 步: 脉象 (含正常脉 + 病理脉) ========== -->
-<div class="step-section step3-color" id="step3">
-  <div class="section">
-    <div class="step-head-row">
-      <span class="step-badge" style="background:#22543d">第 3 步 / 共 5 步</span>
-      <span class="step-status" id="step3-status">⏳ 未选</span>
+<!-- ====== 第 3 步: 脉象 ====== -->
+<div class="step-modal" id="modal-3">
+  <div class="sm-progress">
+    <div class="sm-step done" onclick="gotoStep(1)"><span>①</span> 手法</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(2)"><span>②</span> 部位</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step active"><span>③</span> 脉象</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>④</span> 复合脉</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>⑤</span> 主证</div>
+    <button class="sm-clear" onclick="clearAll()">🗑 清空</button>
+  </div>
+  <div class="sm-body">
+    <div class="sm-header" style="background:#22543d">
+      <div class="sm-num">第 3 步 / 共 5 步</div>
+      <h2>选脉象 (正常脉 + 病理脉)</h2>
+      <div class="sm-sub">张氏第 3 步才辨具体脉象 · 可多选 1-3 个最佳</div>
     </div>
-    <h2>第 3 步: 选脉象 (正常脉 + 病理脉)</h2>
-    <div class="step-guide" style="background:#f0fff4;border-left:5px solid #22543d">
-      <b>👋 引导</b> — 张氏第 3 步才辨具体脉象<br>
-      <b>1️</b> 绿框 = 正常脉 (缓/和缓/长/大) — 摸到说明胃气尚存<br>
-      <b>2️</b> 红框 = 病理脉 (浮/沉/迟/数/弦/细/微弱/濡/芤…) — 张氏原书高频<br>
-      <b>3️</b> 可多选 1-3 个, 选完下方立即显示前 3 步交集的 Top 5
+    <div class="sm-guide">
+      <b>👋 现在该做什么</b>: 选摸到的脉象<br>
+      <b>绿框 = 正常脉</b> (缓/和缓/长/大) · 摸到说明胃气尚存<br>
+      <b>红框 = 病理脉</b> (浮/沉/迟/数/弦/细/微弱/濡/芤…)<br>
+      选完 → 看紧贴下方 Top 5 → 点底部"下一步: 选复合脉"
     </div>
-    <div class="zx-intro">
-      <b>不是所有脉都是病脉</b> — 张氏: "缓为有胃气, 和缓为常人脉, 长为有气"<br>
-      <b>36 脉分两类</b>: 正常脉 (生理脉) + 病理脉 (病脉)。<b>案均 2.96 个脉</b>，1-3 个最常见。
-    </div>
-    <p style="margin-top:10px">点选你摸到的脉象 (<b style="color:#2c5282">可多选</b>，1-3 个最佳)：</p>
-    <h3 style="color:#22543d; font-size:14px; margin:10px 0 6px">✅ 正常脉 (生理脉, 4 个) — 摸到说明胃气尚存, 不一定是病</h3>
+    <h3 class="sm-h3" style="color:#22543d">✅ 正常脉 (4 个, 绿框)</h3>
     <div class="option-grid" id="step3-normal-grid"></div>
-    <h3 style="color:var(--accent); font-size:14px; margin:14px 0 6px">⚠ 病理脉 (病脉, 32 个) — 张氏原书出现频率高</h3>
+    <h3 class="sm-h3" style="color:#c53030">⚠ 病理脉 (32 个, 红框)</h3>
     <div class="option-grid" id="step3-path-grid"></div>
-    <!-- 本步当前结果 — 前 3 步交集 -->
-    <div class="step-result" id="step3-result">
-      <div class="step-result-empty">👇 第 3 步选完, 这里显示 <b>前 3 步 (手法 + 部位 + 脉象) 交集</b>的真实张氏原案 (Top 5)。</div>
+    <div class="sm-result" id="step3-result">
+      <div class="sm-result-empty">👇 选完上面任一脉象, 紧贴这里立即显示 <b>前 3 步 (手法+部位+脉象) 交集</b>的真实张氏原案 (Top 5)</div>
     </div>
-    <div class="step-nav">
-      <button class="btn-prev" data-go="2">← 上一步</button>
-      <button class="btn-next" data-go="4" disabled>下一步: 选复合脉 (可跳) →</button>
-    </div>
+  </div>
+  <div class="sm-footer">
+    <button class="sm-prev" onclick="gotoStep(2)">← 上一步</button>
+    <div class="sm-cuminfo" id="sm-cuminfo-3">候选 <b>—</b> 案</div>
+    <button class="sm-next" data-goto="4" disabled onclick="gotoStep(4)">下一步: 选复合脉 (可跳) →</button>
   </div>
 </div>
 
-<!-- ========== 第 4 步: 复合脉 ========== -->
-<div class="step-section step4-color" id="step4">
-  <div class="section">
-    <div class="step-head-row">
-      <span class="step-badge" style="background:#b7791f">第 4 步 / 共 5 步 (可跳)</span>
-      <span class="step-status" id="step4-status">⏳ 未选</span>
+<!-- ====== 第 4 步: 复合脉 ====== -->
+<div class="step-modal" id="modal-4">
+  <div class="sm-progress">
+    <div class="sm-step done" onclick="gotoStep(1)"><span>①</span> 手法</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(2)"><span>②</span> 部位</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(3)"><span>③</span> 脉象</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step active"><span>④</span> 复合脉</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step"><span>⑤</span> 主证</div>
+    <button class="sm-clear" onclick="clearAll()">🗑 清空</button>
+  </div>
+  <div class="sm-body">
+    <div class="sm-header" style="background:#b7791f">
+      <div class="sm-num">第 4 步 / 共 5 步 (可跳)</div>
+      <h2>选复合脉 (病机指纹)</h2>
+      <div class="sm-sub">复合脉 = 病机指纹 · 张氏常直接定方剂</div>
     </div>
-    <h2>第 4 步: 选复合脉 (病机指纹)</h2>
-    <div class="step-guide" style="background:#fef5e7;border-left:5px solid #b7791f">
-      <b>👋 引导</b> — 复合脉 = 病机指纹, 张氏常直接定方剂<br>
-      <b>1️</b> 例: <b>微弱</b>=气血两虚 · <b>弦硬而长</b>=肝阳上亢 · <b>重按不实</b>=大气下陷<br>
-      <b>2️</b> 可跳过 (点底部"下一步"即可), 跳过不会清空前 3 步
+    <div class="sm-guide">
+      <b>👋 现在该做什么</b>: 选复合脉 (可跳)<br>
+      <b>微弱</b>=气血两虚 · <b>弦硬而长</b>=肝阳上亢 · <b>重按不实</b>=大气下陷<br>
+      跳过也 OK, 点底部"下一步: 选主证"即可
     </div>
-    <div class="zx-intro">
-      <b>复合脉 = 病机指纹</b> — 张氏原书常用的复合脉直接指向病机和方剂<br>
-      <b>核心</b>: 系统根据第 3 步选择的脉象, 自动提示最可能的复合脉
-    </div>
-    <p style="margin-top:10px">点选你摸到的复合脉 (<b style="color:#2c5282">可多选, 不确定可点 "下一步" 跳过</b>)：</p>
     <div class="option-grid" id="step4-grid"></div>
-    <div class="step-result" id="step4-result">
-      <div class="step-result-empty">👇 第 4 步选完, 这里显示 <b>前 4 步交集</b>的真实张氏原案 (Top 5)。<b>不确定可点 "下一步" 跳过</b>。</div>
+    <div class="sm-result" id="step4-result">
+      <div class="sm-result-empty">👇 选完任一复合脉, 紧贴这里显示 <b>前 4 步交集</b>的真实张氏原案 (Top 5)</div>
     </div>
-    <div class="step-nav">
-      <button class="btn-prev" data-go="3">← 上一步</button>
-      <button class="btn-next" data-go="5" disabled>下一步: 选主证 (可跳) →</button>
-    </div>
+  </div>
+  <div class="sm-footer">
+    <button class="sm-prev" onclick="gotoStep(3)">← 上一步</button>
+    <div class="sm-cuminfo" id="sm-cuminfo-4">候选 <b>—</b> 案</div>
+    <button class="sm-next" data-goto="5" disabled onclick="gotoStep(5)">下一步: 选主证 (可跳) →</button>
   </div>
 </div>
 
-<!-- ========== 第 5 步: 主证 ========== -->
-<div class="step-section step5-color" id="step5">
-  <div class="section">
-    <div class="step-head-row">
-      <span class="step-badge" style="background:#553c9a">第 5 步 / 共 5 步 (可跳)</span>
-      <span class="step-status" id="step5-status">⏳ 未选</span>
+<!-- ====== 第 5 步: 主证 ====== -->
+<div class="step-modal" id="modal-5">
+  <div class="sm-progress">
+    <div class="sm-step done" onclick="gotoStep(1)"><span>①</span> 手法</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(2)"><span>②</span> 部位</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(3)"><span>③</span> 脉象</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(4)"><span>④</span> 复合脉</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step active"><span>⑤</span> 主证</div>
+    <button class="sm-clear" onclick="clearAll()">🗑 清空</button>
+  </div>
+  <div class="sm-body">
+    <div class="sm-header" style="background:#553c9a">
+      <div class="sm-num">第 5 步 / 共 5 步 (可跳)</div>
+      <h2>选主证 (患者主诉)</h2>
+      <div class="sm-sub">主证 + 复合脉 = 张氏定方关键</div>
     </div>
-    <h2>第 5 步: 选主证 (患者主诉)</h2>
-    <div class="step-guide" style="background:#f9f5ff;border-left:5px solid #553c9a">
-      <b>👋 引导</b> — 主证 + 复合脉 = 张氏定方关键<br>
-      <b>1️</b> 例: <b>气短</b>=大气下陷 · <b>怔忡</b>=心气虚 · <b>喘</b>=肺气上逆<br>
-      <b>2️</b> 选完点底部"完成"出 Top 5, 也可跳过 (但跳过会让结果多)
+    <div class="sm-guide">
+      <b>👋 现在该做什么</b>: 选患者主证<br>
+      <b>气短</b>=大气下陷 · <b>怔忡</b>=心气虚 · <b>喘</b>=肺气上逆 · <b>呕吐</b>=胃气上逆<br>
+      选完 → 点底部"完成出 Top 5"出最终辨证
     </div>
-    <div class="zx-intro">
-      <b>18 个张氏原书主证</b> — 不是您必须勾选, 而是加速匹配<br>
-      <b>核心</b>: 主证 + 脉象 = 直接指向张氏方剂
-    </div>
-    <p style="margin-top:10px">勾选患者主证 (<b style="color:#2c5282">可多选, 不确定可点 "完成" 跳过</b>)：</p>
     <div class="option-grid" id="step5-grid"></div>
-    <div class="step-result" id="step5-result">
-      <div class="step-result-empty">👇 第 5 步选完, 这里显示 <b>前 5 步全集命中</b>的真实张氏原案 (Top 5, 最终辨证)。<b>不确定可点 "完成" 跳过</b>。</div>
+    <div class="sm-result" id="step5-result">
+      <div class="sm-result-empty">👇 选完任一主证, 紧贴这里显示 <b>前 5 步全集命中</b>的真实张氏原案 (Top 5, 最终辨证)</div>
     </div>
-    <div class="step-nav">
-      <button class="btn-prev" data-go="4">← 上一步</button>
-      <button class="btn-finish">✅ 完成 — 出最终辨证 Top 5</button>
-    </div>
+  </div>
+  <div class="sm-footer">
+    <button class="sm-prev" onclick="gotoStep(4)">← 上一步</button>
+    <div class="sm-cuminfo" id="sm-cuminfo-5">候选 <b>—</b> 案</div>
+    <button class="sm-finish" onclick="sabFinish()">✅ 完成 — 出最终辨证 Top 5</button>
   </div>
 </div>
 
-<!-- ========== 汇总页 (最后完成才显示) ========== -->
-<div class="step-section final-page" id="step-final">
-  <h2>📋 最终辨证 — 张锡纯原案 Top 5</h2>
-  <div class="algo-info">算法: 累进交集 — 前 5 步所有选项同时命中的真实医案, 按命中维度数排序, 取 Top 5。</div>
-  <div id="final-summary">
-    <div class="case-list" id="match-cases"></div>
+<!-- ====== 最终结果页 ====== -->
+<div class="step-modal" id="modal-final">
+  <div class="sm-progress">
+    <div class="sm-step done" onclick="gotoStep(1)"><span>①</span> 手法</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(2)"><span>②</span> 部位</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(3)"><span>③</span> 脉象</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(4)"><span>④</span> 复合脉</div>
+    <div class="sm-arrow">→</div>
+    <div class="sm-step done" onclick="gotoStep(5)"><span>⑤</span> 主证</div>
+    <button class="sm-clear" onclick="clearAll()">🗑 清空重选</button>
   </div>
-  <div class="btn-row" style="margin-top:20px">
-    <button class="btn gold" onclick="doMatch()">🔍 重新匹配</button>
-    <button class="btn ghost" onclick="goStep(1)">← 回第 1 步修改</button>
-    <button class="btn ghost" onclick="clearAll()">🗑 清空所有重选</button>
+  <div class="sm-body">
+    <div class="sm-header" style="background:#c53030">
+      <div class="sm-num">🎉 最终辨证</div>
+      <h2>张锡纯原案 Top 5</h2>
+      <div class="sm-sub">累进交集 — 前 5 步所有选项同时命中的真实医案</div>
+    </div>
+    <div class="sm-guide">
+      <b>算法</b>: 前 5 步所有选项同时命中的真实医案, 按命中维度数排序, 取 Top 5。
+    </div>
+    <div id="final-summary">
+      <div class="case-list" id="match-cases"></div>
+    </div>
+    <div class="sm-final-btns">
+      <button class="btn gold" onclick="doMatch()">🔍 重新匹配</button>
+      <button class="btn ghost" onclick="gotoStep(1)">← 回第 1 步修改</button>
+    </div>
+  </div>
+  <div class="sm-footer">
+    <button class="sm-prev" onclick="gotoStep(5)">← 上一步</button>
+    <div class="sm-cuminfo">🎉 <b>最终辨证</b></div>
+    <button class="sm-finish" onclick="clearAll()">🗑 清空重选</button>
   </div>
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.23 — 来源: 《医学衷中参西录》994 案实证</p>
-  <p>5 步引导 + 每步引导卡 + 底部固定操作条 + 顶部累进面包屑 — 真正的步骤式向导</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.24 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>全屏模态步骤式: 一次只显示 1 步 (5 个 modal 互不重叠) + 顶部 sm-progress 进度条 + 底部 sm-footer 大按钮</p>
 </div>
-
-<!-- ========== 底部固定操作条 (永远可见) ========== -->
-<div class="step-action-bar" id="step-action-bar">
-  <div class="sab-hint" id="sab-hint">
-    💡 请完成当前步的选择, 然后点 "下一步"
-  </div>
-  <button class="sab-prev" id="sab-prev" onclick="sabPrev()">← 上一步</button>
-  <button class="sab-next" id="sab-next" onclick="sabNext()" disabled>下一步 →</button>
-  <button class="sab-finish" id="sab-finish" onclick="sabFinish()" style="display:none">✅ 完成出 Top 5</button>
-</div>
-
-<script>
-// 底部固定操作条逻辑
-const SAB_HINTS = {
-  1: '💡 <b>第 1 步</b>: 选 <b>重按</b>/<b>轻取</b>/<b>总按</b>/<b>单按</b>/<b>举按</b> 中任一手法 (单选互斥)',
-  2: '💡 <b>第 2 步</b>: 选异常部位 (可多选)。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
-  3: '💡 <b>第 3 步</b>: 选脉象 (可多选, 1-3 个最佳)。绿框=正常脉, 红框=病脉。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
-  4: '💡 <b>第 4 步 (可跳)</b>: 选复合脉 (病机指纹)。不确定可点 "下一步" 跳过。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
-  5: '💡 <b>第 5 步 (可跳)</b>: 选主证 (患者主诉)。完成后点 "完成" 出 Top 5。左侧候选 <span class="sab-cnt" id="sab-cnt">—</span> 案',
-  'final': '🎉 <b>最终辨证</b>: Top 5 张锡纯原案已生成'
-};
-let CURRENT_STEP = 1;
-function sabRefresh() {
-  const n = CURRENT_STEP;
-  const hint = document.getElementById('sab-hint');
-  const prev = document.getElementById('sab-prev');
-  const next = document.getElementById('sab-next');
-  const finish = document.getElementById('sab-finish');
-  if (hint) hint.innerHTML = SAB_HINTS[n] || SAB_HINTS[1];
-  // 更新候选数
-  const cntEl = document.getElementById('sab-cnt');
-  if (cntEl) {
-    const cum = document.getElementById('bc-cum-count');
-    cntEl.textContent = cum ? cum.textContent : '—';
-  }
-  // 切换按钮
-  if (n === 'final') {
-    prev.style.display = 'none';
-    next.style.display = 'none';
-    finish.style.display = 'none';
-  } else {
-    prev.style.display = '';
-    next.style.display = '';
-    finish.style.display = 'none';
-    prev.disabled = (n === 1);
-    // 第 5 步: 按钮变"完成"
-    if (n === 5) {
-      next.style.display = 'none';
-      finish.style.display = '';
-      const sel5 = SELECTED.zheng;
-      finish.disabled = false;  // 第 5 步可空 (可跳)
-    } else {
-      const sel = SELECTED[({1:'handful',2:'pos',3:'pulse',4:'compound',5:'zheng'})[n]];
-      next.disabled = (sel.size === 0);
-    }
-  }
-}
-function sabPrev() {
-  if (CURRENT_STEP > 1) goStep(CURRENT_STEP - 1);
-}
-function sabNext() {
-  if (CURRENT_STEP < 5) goStep(CURRENT_STEP + 1);
-}
-function sabFinish() {
-  doMatch();
-  goStep('final');
-}
-// 监听 goStep 调用, 同步 CURRENT_STEP
-const _origGoStep = goStep;
-goStep = function(n) {
-  _origGoStep(n);
-  CURRENT_STEP = n;
-  // 立即调用, 不延迟
-  if (typeof sabRefresh === 'function') sabRefresh();
-  // 同步底部按钮 enabled 状态
-  const stepNum = (typeof n === 'number') ? n : 0;
-  const stepToGroup = {1:'handful', 2:'pos', 3:'pulse', 4:'compound', 5:'zheng'};
-  const next = document.getElementById('sab-next');
-  const finish = document.getElementById('sab-finish');
-  const prev = document.getElementById('sab-prev');
-  if (stepNum >= 1 && stepNum <= 5) {
-    const sel = SELECTED[stepToGroup[stepNum]];
-    if (next) next.disabled = (sel.size === 0);
-    if (finish) finish.disabled = false;  // 第 5 步可空
-    if (prev) prev.disabled = (stepNum === 1);
-  } else {
-    // final 页
-    if (next) next.disabled = true;
-    if (finish) finish.disabled = true;
-  }
-};
-// 初始化时也调一次
-setTimeout(() => { if (typeof sabRefresh === 'function') sabRefresh(); }, 100);
-</script>
 
 </div>
 
@@ -1585,8 +1695,45 @@ function updateStepResults() {
 
   // 同步更新顶部面包屑
   updateBreadcrumb(stepCandidates);
+  // 同步 sm-footer 候选数
+  if (typeof refreshCuminfo === 'function') refreshCuminfo();
+  // 同步 sm-footer 按钮 enabled 状态
+  if (typeof refreshSmFooter === 'function') refreshSmFooter();
   // 同步更新底部 dim-grid (保留, 方便用户对比)
   updatePerDimResults();
+}
+
+// 全局函数: 取累进候选数
+function getCumCount() {
+  if (!PROCESS) return '—';
+  const dimOrder = [
+    { key: 'handful', step: 1 },
+    { key: 'pos',     step: 2 },
+    { key: 'pulse',   step: 3 },
+    { key: 'compound',step: 4 },
+    { key: 'zheng',   step: 5 },
+  ];
+  let runningSet = null;
+  for (const d of dimOrder) {
+    const sel = SELECTED[d.key];
+    if (sel.size === 0) break;
+    const currentUnion = new Set();
+    for (const key of sel) {
+      const opt = PROCESS.process['step' + d.step].options[key];
+      if (opt && opt.matches) {
+        for (const c of opt.matches) currentUnion.add(String(c.case_id));
+      }
+    }
+    if (runningSet === null) runningSet = currentUnion;
+    else {
+      const next = new Set();
+      for (const cid of currentUnion) if (runningSet.has(cid)) next.add(cid);
+      runningSet = next;
+    }
+  }
+  if (runningSet === null) return '—';
+  if (runningSet.size === 0) return '⚠0';
+  return runningSet.size;
 }
 
 // 更新顶部面包屑 — 显示前几步已选 + 当前候选数
@@ -1827,8 +1974,65 @@ function clearAll() {
   const fs = document.getElementById('final-summary');
   if (fs) fs.style.display = 'none';
   document.getElementById('match-cases').innerHTML = '';
-  goStep(1);
+  gotoStep(1);
+  // 重置 step-progress 中各步 done 状态
+  document.querySelectorAll('.sm-step').forEach(s => {
+    if (!s.classList.contains('active')) s.classList.remove('done');
+  });
 }
+
+// 跳到第 n 步 (1-5 / 'final')
+// 全屏模态切换: 只显示一个 modal, 折叠其他
+function gotoStep(n) {
+  // 1. 折叠所有 modal
+  document.querySelectorAll('.step-modal').forEach(m => m.classList.remove('active'));
+  // 2. 显示目标 modal
+  const targetId = (n === 'final' || n === 6) ? 'modal-final' : 'modal-' + n;
+  const target = document.getElementById(targetId);
+  if (target) target.classList.add('active');
+  // 3. 滚到顶部
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 4. 同步候选数
+  refreshCuminfo();
+  // 5. 同步 sm-footer 按钮 enabled 状态
+  refreshSmFooter(n);
+}
+
+// 同步所有 sm-cuminfo 候选数
+function refreshCuminfo() {
+  const cumCount = (typeof getCumCount === 'function') ? getCumCount() : '—';
+  for (let i = 1; i <= 5; i++) {
+    const el = document.getElementById('sm-cuminfo-' + i);
+    if (el) el.innerHTML = '候选 <b>' + cumCount + '</b> 案';
+  }
+}
+
+// 同步 sm-footer 各步按钮 enabled 状态
+function refreshSmFooter(currentStep) {
+  const stepToGroup = {1:'handful', 2:'pos', 3:'pulse', 4:'compound', 5:'zheng'};
+  // 当前 modal 的 footer 按钮
+  for (let i = 1; i <= 5; i++) {
+    const modal = document.getElementById('modal-' + i);
+    if (!modal) continue;
+    const next = modal.querySelector('.sm-next');
+    const finish = modal.querySelector('.sm-finish');
+    const sel = SELECTED[stepToGroup[i]];
+    if (next) {
+      // 第 4 5 步可跳, 按钮始终 enabled
+      if (i === 4 || i === 5) {
+        next.disabled = false;
+      } else {
+        next.disabled = (sel.size === 0);
+      }
+    }
+    if (finish) {
+      finish.disabled = false;
+    }
+  }
+}
+
+// 兼容旧 goStep 函数
+function goStep(n) { gotoStep(n); }
 
 // ========== 匹配算法 ==========
 function doMatch() {
@@ -1977,6 +2181,14 @@ function loadDemo3() {
 
 // 启动
 loadData();
+</script>
+
+<script>
+// 全局: 完成按钮 — 跳到 final 页
+function sabFinish() {
+  doMatch();
+  gotoStep('final');
+}
 </script>
 </body>
 </html>
