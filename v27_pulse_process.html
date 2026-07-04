@@ -109,6 +109,8 @@ body {
 .option.on { background: var(--primary); color: #fff; border-color: var(--primary-d); }
 .option.zx { background: #f9f5ff; border-color: var(--zx); }
 .option.zx.on { background: var(--zx); color: #fff; }
+.option.normal { background: #f0fff4; border-color: #22543d; }
+.option.normal.on { background: #22543d; color: #fff; }
 .option .opt-name { font-size: 16px; font-weight: bold; }
 .option .opt-desc { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
 .option.on .opt-desc { color: rgba(255,255,255,0.85); }
@@ -205,6 +207,111 @@ body {
 }
 /* 汇总页也是 .step-section 风格 */
 .step-section.final-page { background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%); border: 2px solid #fc8181; border-radius: 10px; padding: 24px; }
+
+/* === 顶部面包屑 === */
+.breadcrumb {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border: 1.5px solid #cbd5e0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+.bc-title {
+  font-size: 14px;
+  color: #2d3748;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bc-title #bc-cum-count {
+  display: inline-block;
+  background: #c53030;
+  color: #fff;
+  padding: 1px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 4px;
+}
+.bc-steps {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.bc-step {
+  flex: 1 1 100px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.bc-step.empty { background: #f7fafc; color: #a0aec0; border-style: dashed; }
+.bc-step.active { background: #fff5f5; border-color: #c53030; border-width: 2px; box-shadow: 0 2px 6px rgba(197,48,48,0.2); }
+.bc-step.done { background: #e6f2ec; border-color: #22543d; color: #22543d; }
+.bc-step .bc-num {
+  display: inline-block;
+  width: 18px; height: 18px;
+  line-height: 18px;
+  text-align: center;
+  background: #cbd5e0;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.bc-step.done .bc-num { background: #22543d; }
+.bc-step.active .bc-num { background: #c53030; }
+.bc-step .bc-label { font-weight: bold; flex-shrink: 0; }
+.bc-step .bc-value {
+  flex: 1;
+  text-align: right;
+  font-size: 11px;
+  color: #4a5568;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bc-step.empty .bc-value { color: #a0aec0; font-style: italic; }
+.bc-step.done .bc-value { color: #22543d; font-weight: bold; }
+.bc-arrow { color: #cbd5e0; font-size: 16px; font-weight: bold; flex: 0 0 auto; }
+.bc-step.done + .bc-arrow { color: #22543d; }
+@media (max-width: 700px) {
+  .bc-steps { flex-direction: column; align-items: stretch; }
+  .bc-arrow { transform: rotate(90deg); align-self: center; }
+  .bc-step { min-width: 0; }
+}
+
+/* === 步骤头部: badge + status === */
+.step-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.step-badge {
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
 .step-status {
   display: inline-block;
   background: #edf2f7;
@@ -605,37 +712,16 @@ body {
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.20.9</span>
+    <span class="tag">v2.7.21</span>
     <span class="tag">994 案实证</span>
-    <span class="tag">5 步引导</span>
+    <span class="tag">5 步引导 (单步显示)</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
-    <span class="tag" style="background:#c6f6d5;color:#22543d">每步累进汇总 Top 5</span>
-    <span class="tag" style="background:#fed7d7;color:#9b2c2c">手法单选互斥</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">顶部面包屑 + 累进</span>
+    <span class="tag" style="background:#fed7d7;color:#9b2c2c">正常脉+病理脉分类</span>
   </p>
 </div>
 
-<div class="process-bar" id="process-bar">
-  <div class="process-step active" data-step="1" onclick="goStep(1)">
-    <div class="num">第 1 步</div>
-    <div class="name">手法</div>
-  </div>
-  <div class="process-step" data-step="2" onclick="goStep(2)">
-    <div class="num">第 2 步</div>
-    <div class="name">分部</div>
-  </div>
-  <div class="process-step" data-step="3" onclick="goStep(3)">
-    <div class="num">第 3 步</div>
-    <div class="name">脉象</div>
-  </div>
-  <div class="process-step" data-step="4" onclick="goStep(4)">
-    <div class="num">第 4 步</div>
-    <div class="name">复合脉</div>
-  </div>
-  <div class="process-step" data-step="5" onclick="goStep(5)">
-    <div class="num">第 5 步</div>
-    <div class="name">主证</div>
-  </div>
-</div>
+<!-- ========== 顶部面包屑 — 累进式 — 显示前几步已选 + 当前候选数 ========== -->
 
 <div id="current-pill" class="current-pill" style="display:none">
   <b>当前选择：</b>
@@ -710,180 +796,186 @@ body {
   </div>
 </div>
 
-<!-- 第 1 步：手法 -->
-<div class="step-section step1-color active" id="step1">
-<div class="section">
-<h2>第 1 步：手法 (按脉顺序) <span class="step-status" id="step1-status">⏳ 未选</span></h2>
-<div class="zx-intro">
-<b>张氏脉诊第 1 步</b> — 决定按脉顺序, 顺序对了才能判断后续<br>
-<b>张氏原书顺序</b>: <b style="color:#c53030">重按 (辨真假有力) → 轻取 (辨浮沉) → 总按 (三指同按) → 单按 (分寸关尺) → 举按 (举之浮按之沉)</b>
-</div>
-<p style="margin-top:8px">张氏按脉 <b style="color:#c53030">按顺序走</b>, 每步完成才进下一步。请选当前 <b>第一步</b> 使用的按脉手法 (<b style="color:#c53030">单选互斥</b>)：</p>
-<div class="option-grid" id="step1-grid"></div>
-<!-- 第 1 步结果 — 紧贴选项下方, 选了立刻显示 -->
-<div class="step-result" id="step1-result">
-  <div class="step-result-empty">👇 选完上面任一手法, 这里立即显示 <b>第 1 步命中张氏原案的累计 Top 5</b>。<br>然后第 2 步选完会显示<b>前 2 步交集</b>的 Top 5, 以此类推。</div>
-</div>
-<div class="step-nav">
-  <button class="btn-next" data-go="2" disabled>下一步: 选部位 →</button>
-</div>
-</div>
-</div>
-
-<!-- 第 2 步：分部 -->
-<div class="step-section step2-color active" id="step2">
-<div class="section">
-<h2>第 2 步：分部 (异常部位) <span class="step-status" id="step2-status">⏳ 未选</span></h2>
-<div class="zx-intro">
-<b>张氏分部不是教科书 6 部</b> — 而是按实证 8 部位 (张氏实际用的)<br>
-<b>核心</b>: 部位 = 反推脏腑的依据 ("左关弦" = 肝, "右关实" = 脾胃, "右寸弱" = 肺)
-</div>
-<p style="margin-top:8px">点选你摸到异常的部位 (<b style="color:#2c5282">可多选</b> — 可能左右都有异常)：</p>
-<div class="option-grid" id="step2-grid"></div>
-<div class="step-result" id="step2-result">
-  <div class="step-result-empty">👇 第 2 步选完, 这里显示 <b>前 2 步 (手法 + 部位) 交集</b>的真实张氏原案 (Top 5)。<br>每选一步, 候选会<b>逐步收窄</b>直到定位最终辨证。</div>
-</div>
-<div class="step-nav">
-  <button class="btn-prev" data-go="1">← 上一步</button>
-  <button class="btn-next" data-go="3" disabled>下一步: 选脉象 →</button>
-</div>
-</div>
-</div>
-
-<!-- 第 3 步：脉象 -->
-<div class="step-section step3-color" id="step3">
-<div class="section">
-<h2>第 3 步：脉象 (单选/多选) <span class="step-status" id="step3-status">⏳ 未选</span></h2>
-<div class="zx-intro">
-<b>26 个核心脉 + 10 个张氏特色脉</b> — 全部来自 994 案实证<br>
-<b>案均 2.96 个脉</b> — 1-3 个最常见, ≤ 3 个为常态
-</div>
-<p style="margin-top:8px">点选你摸到的脉象 (可多选)：</p>
-<h3 style="color:var(--good); font-size:14px; margin:10px 0 6px">核心脉 (26)</h3>
-<div class="option-grid" id="step3-core-grid"></div>
-<h3 style="color:var(--zx); font-size:14px; margin:14px 0 6px">张氏特色脉 (10)</h3>
-<div class="option-grid" id="step3-zx-grid"></div>
-<div class="step-result" id="step3-result">
-  <div class="step-result-empty">👇 第 3 步选完, 这里显示 <b>前 3 步 (手法 + 部位 + 脉象) 交集</b>的真实张氏原案 (Top 5)。</div>
-</div>
-<div class="step-nav">
-  <button class="btn-prev" data-go="2">← 上一步</button>
-  <button class="btn-next" data-go="4" disabled>下一步: 选复合脉 (可跳) →</button>
-</div>
-</div>
-</div>
-
-<!-- 第 4 步：复合脉 -->
-<div class="step-section step4-color active" id="step4">
-<div class="section">
-<h2>第 4 步：复合脉 (病机指纹, 可跳) <span class="step-status" id="step4-status">⏳ 未选</span></h2>
-<div class="zx-intro">
-<b>复合脉 = 病机指纹</b> — 张氏原书常用的复合脉直接指向病机和方剂<br>
-<b>核心</b>: 系统根据第 3 步选择的脉象, 自动提示最可能的复合脉
-</div>
-<p style="margin-top:8px">点选你摸到的复合脉 (可多选, 不确定可跳):</p>
-<div class="option-grid" id="step4-grid"></div>
-<div class="step-result" id="step4-result">
-  <div class="step-result-empty">👇 第 4 步选完, 这里显示 <b>前 4 步交集</b>的真实张氏原案 (Top 5)。<b>不确定可点 "下一步" 跳过</b>。</div>
-</div>
-<div class="step-nav">
-  <button class="btn-prev" data-go="3">← 上一步</button>
-  <button class="btn-next" data-go="5" disabled>下一步: 选主证 (可跳) →</button>
-</div>
-</div>
-</div>
-
-<!-- 第 5 步：主证 -->
-<div class="step-section step5-color active" id="step5">
-<div class="section">
-<h2>第 5 步：主证 (患者主诉, 可跳) <span class="step-status" id="step5-status">⏳ 未选</span></h2>
-<div class="zx-intro">
-<b>18 个张氏原书主证</b> — 不是您必须勾选, 而是加速匹配<br>
-<b>核心</b>: 主证 + 脉象 = 直接指向张氏方剂
-</div>
-<p style="margin-top:8px">勾选患者主证 (可多选, 不确定可跳):</p>
-<div class="option-grid" id="step5-grid"></div>
-<div class="step-result" id="step5-result">
-  <div class="step-result-empty">👇 第 5 步选完, 这里显示 <b>前 5 步全集命中</b>的真实张氏原案 (Top 5, 最终辨证)。<b>不确定可点 "完成" 跳过</b>。</div>
-</div>
-<div class="step-nav">
-  <button class="btn-prev" data-go="4">← 上一步</button>
-  <button class="btn-finish">✅ 完成 — 出汇总辨证 Top 5</button>
-</div>
-</div>
-</div>
-
-<!-- 匹配区 — 分维度结果 + 汇总 -->
-<div class="section match-section" id="match-section">
-  <h2>🎯 实时辨证 — 分维度结果 + 汇总</h2>
-  <div class="match-area" id="match-area">
-    <div class="match-hint">
-      <b>用法</b>: 你每选一项, 下面立即显示 <b>该维度下的代表张氏原案</b> (Top 3)。<br>
-      5 个维度都选完后, <b>点底部按钮</b> 出汇总 Top 5 辨证结果 (4 维加权, 各 25%)。
+<!-- ========== 顶部面包屑 — 累进式 — 显示前几步已选 + 当前候选数 ========== -->
+<div id="breadcrumb" class="breadcrumb">
+  <div class="bc-title">📜 张锡纯脉诊 — 累进式辨证 (当前候选 <span id="bc-cum-count">—</span> 案)</div>
+  <div class="bc-steps" id="bc-steps">
+    <div class="bc-step empty" data-bc="1">
+      <span class="bc-num">①</span>
+      <span class="bc-label">手法</span>
+      <span class="bc-value">未选</span>
     </div>
-
-    <!-- 5 维分结果 — 每选一项实时更新 -->
-    <div class="dim-grid">
-      <div class="dim-card" id="dim-1">
-        <div class="dim-head" style="background:#2c5282">
-          <span class="dim-num">①</span> 手法 (你按压力度)
-        </div>
-        <div class="dim-body" id="dim-body-1">
-          <div class="dim-empty">未选 — 选 "重按"/"轻取" 等看结果</div>
-        </div>
-      </div>
-      <div class="dim-card" id="dim-2">
-        <div class="dim-head" style="background:#9b2c2c">
-          <span class="dim-num">②</span> 部位 (异常在哪)
-        </div>
-        <div class="dim-body" id="dim-body-2">
-          <div class="dim-empty">未选 — 选 "左部"/"右部" 等看结果</div>
-        </div>
-      </div>
-      <div class="dim-card" id="dim-3">
-        <div class="dim-head" style="background:#2f855a">
-          <span class="dim-num">③</span> 脉象 (你摸到)
-        </div>
-        <div class="dim-body" id="dim-body-3">
-          <div class="dim-empty">未选 — 选 "弦"/"数"/"微弱" 等看结果</div>
-        </div>
-      </div>
-      <div class="dim-card" id="dim-4">
-        <div class="dim-head" style="background:#b7791f">
-          <span class="dim-num">④</span> 复合脉 (病机指纹)
-        </div>
-        <div class="dim-body" id="dim-body-4">
-          <div class="dim-empty">未选 — 选 "弦细微弱" 等看结果 (可跳)</div>
-        </div>
-      </div>
-      <div class="dim-card" id="dim-5">
-        <div class="dim-head" style="background:#553c9a">
-          <span class="dim-num">⑤</span> 主证 (患者主诉)
-        </div>
-        <div class="dim-body" id="dim-body-5">
-          <div class="dim-empty">未选 — 选 "大气下陷"/"怔忡" 等看结果 (可跳)</div>
-        </div>
-      </div>
+    <div class="bc-arrow">→</div>
+    <div class="bc-step empty" data-bc="2">
+      <span class="bc-num">②</span>
+      <span class="bc-label">部位</span>
+      <span class="bc-value">未选</span>
     </div>
-
-    <!-- 汇总区 — 点按钮才显示 -->
-    <div class="final-summary" id="final-summary" style="display:none">
-      <h3>📋 汇总辨证结果 (Top 5 张锡纯原案)</h3>
-      <div class="algo-info">算法: 4 维加权 — 手法 25% + 部位 25% + 脉象 25% + 主证 25% (复合脉作加权子项)。Top 5 = 至少 2 维命中 + 加权分最高。</div>
-      <div class="case-list" id="match-cases"></div>
+    <div class="bc-arrow">→</div>
+    <div class="bc-step empty" data-bc="3">
+      <span class="bc-num">③</span>
+      <span class="bc-label">脉象</span>
+      <span class="bc-value">未选</span>
+    </div>
+    <div class="bc-arrow">→</div>
+    <div class="bc-step empty" data-bc="4">
+      <span class="bc-num">④</span>
+      <span class="bc-label">复合脉</span>
+      <span class="bc-value">未选</span>
+    </div>
+    <div class="bc-arrow">→</div>
+    <div class="bc-step empty" data-bc="5">
+      <span class="bc-num">⑤</span>
+      <span class="bc-label">主证</span>
+      <span class="bc-value">未选</span>
     </div>
   </div>
-  <div class="btn-row">
-    <button class="btn gold" onclick="doMatch()">🔍 汇总辨证 — 出 Top 5 张氏原方</button>
-    <button class="btn ghost" onclick="loadDemo()">📋 一键演示: 升陷汤证</button>
-    <button class="btn ghost" onclick="loadDemo2()">📋 演示: 大气下陷重症</button>
-    <button class="btn ghost" onclick="loadDemo3()">📋 演示: 肝气上冲</button>
+  <button class="btn sm ghost" onclick="clearAll()">🗑 清空重选</button>
+</div>
+
+<!-- ========== 第 1 步: 手法 ========== -->
+<div class="step-section step1-color active" id="step1">
+  <div class="section">
+    <div class="step-head-row">
+      <span class="step-badge" style="background:#2c5282">第 1 步 / 共 5 步</span>
+      <span class="step-status" id="step1-status">⏳ 未选</span>
+    </div>
+    <h2>第 1 步: 选手法 (按脉顺序)</h2>
+    <div class="zx-intro">
+      <b>张氏脉诊第 1 步</b> — 决定按脉顺序, 顺序对了才能判断后续<br>
+      <b>张氏原书顺序</b>: <b style="color:#c53030">重按 (辨真假有力) → 轻取 (辨浮沉) → 总按 (三指同按) → 单按 (分寸关尺) → 举按 (举之浮按之沉)</b>
+    </div>
+    <p style="margin-top:10px">选 <b>当前第 1 步</b> 使用的按脉手法 (<b style="color:#c53030">单选互斥 — 按脉时只可能用一种力</b>)：</p>
+    <div class="option-grid" id="step1-grid"></div>
+    <!-- 本步当前结果 — 紧贴选项下方 -->
+    <div class="step-result" id="step1-result">
+      <div class="step-result-empty">👇 选完上面任一手法, 紧贴这里显示 <b>该手法下的张氏原案 (Top 5)</b>。选完会自动跳到第 2 步。</div>
+    </div>
+    <div class="step-nav">
+      <span></span>
+      <button class="btn-next" data-go="2" disabled>下一步: 选部位 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 第 2 步: 部位 ========== -->
+<div class="step-section step2-color" id="step2">
+  <div class="section">
+    <div class="step-head-row">
+      <span class="step-badge" style="background:#9b2c2c">第 2 步 / 共 5 步</span>
+      <span class="step-status" id="step2-status">⏳ 未选</span>
+    </div>
+    <h2>第 2 步: 选部位 (异常在哪)</h2>
+    <div class="zx-intro">
+      <b>张氏分部不是教科书 6 部</b> — 而是按实证 8 部位 (张氏实际用的)<br>
+      <b>核心</b>: 部位 = 反推脏腑的依据 ("左关弦" = 肝, "右关实" = 脾胃, "右寸弱" = 肺)
+    </div>
+    <p style="margin-top:10px">点选你摸到异常的部位 (<b style="color:#2c5282">可多选</b> — 可能左右都有异常)：</p>
+    <div class="option-grid" id="step2-grid"></div>
+    <!-- 本步当前结果 — 前 2 步交集 -->
+    <div class="step-result" id="step2-result">
+      <div class="step-result-empty">👇 第 2 步选完, 这里显示 <b>前 2 步 (手法 + 部位) 交集</b>的真实张氏原案 (Top 5)。<br>候选会逐步<b>收窄</b>。</div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-prev" data-go="1">← 上一步</button>
+      <button class="btn-next" data-go="3" disabled>下一步: 选脉象 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 第 3 步: 脉象 (含正常脉 + 病理脉) ========== -->
+<div class="step-section step3-color" id="step3">
+  <div class="section">
+    <div class="step-head-row">
+      <span class="step-badge" style="background:#22543d">第 3 步 / 共 5 步</span>
+      <span class="step-status" id="step3-status">⏳ 未选</span>
+    </div>
+    <h2>第 3 步: 选脉象 (正常脉 + 病理脉)</h2>
+    <div class="zx-intro">
+      <b>不是所有脉都是病脉</b> — 张氏: "缓为有胃气, 和缓为常人脉, 长为有气"<br>
+      <b>36 脉分两类</b>: 正常脉 (生理脉) + 病理脉 (病脉)。<b>案均 2.96 个脉</b>，1-3 个最常见。
+    </div>
+    <p style="margin-top:10px">点选你摸到的脉象 (<b style="color:#2c5282">可多选</b>，1-3 个最佳)：</p>
+    <h3 style="color:#22543d; font-size:14px; margin:10px 0 6px">✅ 正常脉 (生理脉, 4 个) — 摸到说明胃气尚存, 不一定是病</h3>
+    <div class="option-grid" id="step3-normal-grid"></div>
+    <h3 style="color:var(--accent); font-size:14px; margin:14px 0 6px">⚠ 病理脉 (病脉, 32 个) — 张氏原书出现频率高</h3>
+    <div class="option-grid" id="step3-path-grid"></div>
+    <!-- 本步当前结果 — 前 3 步交集 -->
+    <div class="step-result" id="step3-result">
+      <div class="step-result-empty">👇 第 3 步选完, 这里显示 <b>前 3 步 (手法 + 部位 + 脉象) 交集</b>的真实张氏原案 (Top 5)。</div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-prev" data-go="2">← 上一步</button>
+      <button class="btn-next" data-go="4" disabled>下一步: 选复合脉 (可跳) →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 第 4 步: 复合脉 ========== -->
+<div class="step-section step4-color" id="step4">
+  <div class="section">
+    <div class="step-head-row">
+      <span class="step-badge" style="background:#b7791f">第 4 步 / 共 5 步 (可跳)</span>
+      <span class="step-status" id="step4-status">⏳ 未选</span>
+    </div>
+    <h2>第 4 步: 选复合脉 (病机指纹)</h2>
+    <div class="zx-intro">
+      <b>复合脉 = 病机指纹</b> — 张氏原书常用的复合脉直接指向病机和方剂<br>
+      <b>核心</b>: 系统根据第 3 步选择的脉象, 自动提示最可能的复合脉
+    </div>
+    <p style="margin-top:10px">点选你摸到的复合脉 (<b style="color:#2c5282">可多选, 不确定可点 "下一步" 跳过</b>)：</p>
+    <div class="option-grid" id="step4-grid"></div>
+    <div class="step-result" id="step4-result">
+      <div class="step-result-empty">👇 第 4 步选完, 这里显示 <b>前 4 步交集</b>的真实张氏原案 (Top 5)。<b>不确定可点 "下一步" 跳过</b>。</div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-prev" data-go="3">← 上一步</button>
+      <button class="btn-next" data-go="5" disabled>下一步: 选主证 (可跳) →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 第 5 步: 主证 ========== -->
+<div class="step-section step5-color" id="step5">
+  <div class="section">
+    <div class="step-head-row">
+      <span class="step-badge" style="background:#553c9a">第 5 步 / 共 5 步 (可跳)</span>
+      <span class="step-status" id="step5-status">⏳ 未选</span>
+    </div>
+    <h2>第 5 步: 选主证 (患者主诉)</h2>
+    <div class="zx-intro">
+      <b>18 个张氏原书主证</b> — 不是您必须勾选, 而是加速匹配<br>
+      <b>核心</b>: 主证 + 脉象 = 直接指向张氏方剂
+    </div>
+    <p style="margin-top:10px">勾选患者主证 (<b style="color:#2c5282">可多选, 不确定可点 "完成" 跳过</b>)：</p>
+    <div class="option-grid" id="step5-grid"></div>
+    <div class="step-result" id="step5-result">
+      <div class="step-result-empty">👇 第 5 步选完, 这里显示 <b>前 5 步全集命中</b>的真实张氏原案 (Top 5, 最终辨证)。<b>不确定可点 "完成" 跳过</b>。</div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-prev" data-go="4">← 上一步</button>
+      <button class="btn-finish">✅ 完成 — 出最终辨证 Top 5</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 汇总页 (最后完成才显示) ========== -->
+<div class="step-section final-page" id="step-final">
+  <h2>📋 最终辨证 — 张锡纯原案 Top 5</h2>
+  <div class="algo-info">算法: 累进交集 — 前 5 步所有选项同时命中的真实医案, 按命中维度数排序, 取 Top 5。</div>
+  <div id="final-summary">
+    <div class="case-list" id="match-cases"></div>
+  </div>
+  <div class="btn-row" style="margin-top:20px">
+    <button class="btn gold" onclick="doMatch()">🔍 重新匹配</button>
+    <button class="btn ghost" onclick="goStep(1)">← 回第 1 步修改</button>
+    <button class="btn ghost" onclick="clearAll()">🗑 清空所有重选</button>
   </div>
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.20.9 — 来源: 《医学衷中参西录》994 案实证</p>
-  <p>累进汇总: 第 1 步→候选, 第 2 步→前 2 步交集, …, 第 5 步→最终辨证 Top 5 (每步选完立即显示)</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.21 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>真正的步骤式向导: 一次只显示当前步, 顶部面包屑显示前几步已选 + 累进候选数 (逐步收窄到精准)</p>
 </div>
 
 </div>
@@ -959,13 +1051,7 @@ function bindStepNav() {
     btn.onclick = (e) => {
       e.preventDefault();
       doMatch();
-      // 滚到汇总区
-      const fs = document.getElementById('final-summary');
-      if (fs) {
-        const rect = fs.getBoundingClientRect();
-        const top = window.scrollY + rect.top - 70;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
+      goStep('final');
     };
   });
 }
@@ -1006,23 +1092,28 @@ function renderStep2() {
   }
 }
 
+// 正常脉 (生理脉) — 张氏: 缓为有胃气, 和缓为常人脉, 长为有气
+const NORMAL_PULSES = new Set(['缓', '和缓', '长', '大']);
+
 function renderStep3() {
-  const coreGrid = document.getElementById('step3-core-grid');
-  const zxGrid = document.getElementById('step3-zx-grid');
-  coreGrid.innerHTML = '';
-  zxGrid.innerHTML = '';
+  const normalGrid = document.getElementById('step3-normal-grid');
+  const pathGrid = document.getElementById('step3-path-grid');
+  if (normalGrid) normalGrid.innerHTML = '';
+  if (pathGrid) pathGrid.innerHTML = '';
 
   // 按 case_count 倒序排, 案多的脉放前面 (濡脉 10 案会出现在 8/10 案前面)
   const sorted = Object.entries(PROCESS.process.step3.options)
     .sort((a, b) => (b[1].case_count || 0) - (a[1].case_count || 0));
 
   for (const [key, opt] of sorted) {
-    const grid = opt.is_zx ? zxGrid : coreGrid;
+    const isNormal = NORMAL_PULSES.has(key);
+    const grid = isNormal ? normalGrid : pathGrid;
+    if (!grid) continue;
     const div = document.createElement('div');
-    div.className = 'option' + (opt.is_zx ? ' zx' : '');
+    div.className = 'option' + (isNormal ? ' normal' : '');
     div.innerHTML = `
-      <div class="opt-name">${opt.name}</div>
-      <div class="opt-desc">${opt.case_count} 案</div>
+      <div class="opt-name">${opt.name} ${isNormal ? '<span style="color:#22543d;font-size:10px;font-weight:normal">✓常</span>' : ''}</div>
+      <div class="opt-desc">${opt.case_count} 案${isNormal ? ' · 生理' : ''}</div>
       <div class="opt-cnt">${opt.matches.length}</div>
     `;
     div.onclick = () => toggleOption('pulse', key, div);
@@ -1225,8 +1316,52 @@ function updateStepResults() {
     resultBox.innerHTML = html;
   }
 
+  // 同步更新顶部面包屑
+  updateBreadcrumb(stepCandidates);
   // 同步更新底部 dim-grid (保留, 方便用户对比)
   updatePerDimResults();
+}
+
+// 更新顶部面包屑 — 显示前几步已选 + 当前候选数
+function updateBreadcrumb(stepCandidates) {
+  const map = [
+    { key: 'handful', step: 1, label: '手法', dataKey: 'handful' },
+    { key: 'pos',     step: 2, label: '部位', dataKey: 'pos' },
+    { key: 'pulse',   step: 3, label: '脉象', dataKey: 'pulse' },
+    { key: 'compound',step: 4, label: '复合脉', dataKey: 'compound' },
+    { key: 'zheng',   step: 5, label: '主证', dataKey: 'zheng' },
+  ];
+  for (const m of map) {
+    const bc = document.querySelector(`.bc-step[data-bc="${m.step}"]`);
+    if (!bc) continue;
+    const sel = SELECTED[m.dataKey];
+    const valEl = bc.querySelector('.bc-value');
+    if (sel.size === 0) {
+      bc.classList.add('empty');
+      bc.classList.remove('done');
+      if (valEl) valEl.textContent = '未选';
+    } else {
+      bc.classList.add('done');
+      bc.classList.remove('empty');
+      if (valEl) valEl.textContent = Array.from(sel).join('+');
+    }
+  }
+
+  // 累进候选数: 取最后一个非 null 的候选集大小
+  let cumCount = null;
+  for (const s of stepCandidates) {
+    if (s !== null) cumCount = s.size;
+  }
+  const bcCnt = document.getElementById('bc-cum-count');
+  if (bcCnt) {
+    if (cumCount === null) {
+      bcCnt.textContent = '—';
+      bcCnt.style.color = '#a0aec0';
+    } else {
+      bcCnt.textContent = cumCount;
+      bcCnt.style.color = cumCount > 0 ? '#22543d' : '#c53030';
+    }
+  }
 }
 
 // 根据候选 case_id 集, 取出完整 case 数据 (按选中的 dim 优先级)
@@ -1379,19 +1514,33 @@ function autoAdvance() {
   }
 }
 
+// 跳到第 n 步 (1-5 或 'final')
+// 真正的步骤式: 只显示当前步, 折叠其他步
 function goStep(n) {
+  // 1. 折叠所有 .step-section
   document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('step' + n);
-  if (target) target.classList.add('active');
+  // 2. 顶部进度条
   document.querySelectorAll('.process-step').forEach(s => s.classList.remove('active'));
-  const ps = document.querySelector(`.process-step[data-step="${n}"]`);
-  if (ps) ps.classList.add('active');
-  // 滚到该步的内容区, 而不是回到顶部进度条
-  if (target) {
-    const rect = target.getBoundingClientRect();
-    const top = window.scrollY + rect.top - 70;
-    window.scrollTo({ top, behavior: 'smooth' });
+
+  let target = null;
+  if (n === 'final' || n === 6) {
+    target = document.getElementById('step-final');
+  } else {
+    target = document.getElementById('step' + n);
   }
+  if (target) target.classList.add('active');
+
+  // 顶部面包屑 active 标记
+  document.querySelectorAll('.bc-step').forEach(bs => bs.classList.remove('active'));
+  if (typeof n === 'number') {
+    const bc = document.querySelector(`.bc-step[data-bc="${n}"]`);
+    if (bc) bc.classList.add('active');
+    const ps = document.querySelector(`.process-step[data-step="${n}"]`);
+    if (ps) ps.classList.add('active');
+  }
+
+  // 滚到顶部 (步骤式 — 永远从顶部看, 顶部有面包屑显示前几步结果)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderCurrentPill() {
@@ -1411,6 +1560,7 @@ function clearAll() {
   const fs = document.getElementById('final-summary');
   if (fs) fs.style.display = 'none';
   document.getElementById('match-cases').innerHTML = '';
+  goStep(1);
 }
 
 // ========== 匹配算法 ==========
