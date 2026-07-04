@@ -1,0 +1,218 @@
+[
+  {
+    "zheng": "伤寒",
+    "orig_count": 473,
+    "case_count": 173,
+    "show": true
+  },
+  {
+    "zheng": "温病",
+    "orig_count": 422,
+    "case_count": 175,
+    "show": true
+  },
+  {
+    "zheng": "痢",
+    "orig_count": 330,
+    "case_count": 97,
+    "show": true
+  },
+  {
+    "zheng": "咳嗽",
+    "orig_count": 180,
+    "case_count": 69,
+    "show": true
+  },
+  {
+    "zheng": "吐血",
+    "orig_count": 166,
+    "case_count": 76,
+    "show": true
+  },
+  {
+    "zheng": "大气下陷",
+    "orig_count": 142,
+    "case_count": 73,
+    "show": true
+  },
+  {
+    "zheng": "泄泻",
+    "orig_count": 125,
+    "case_count": 61,
+    "show": true
+  },
+  {
+    "zheng": "疟",
+    "orig_count": 111,
+    "case_count": 15,
+    "show": true
+  },
+  {
+    "zheng": "怔忡",
+    "orig_count": 105,
+    "case_count": 47,
+    "show": true
+  },
+  {
+    "zheng": "中风",
+    "orig_count": 105,
+    "case_count": 40,
+    "show": true
+  },
+  {
+    "zheng": "痹",
+    "orig_count": 105,
+    "case_count": 22,
+    "show": true
+  },
+  {
+    "zheng": "霍乱",
+    "orig_count": 101,
+    "case_count": 21,
+    "show": true
+  },
+  {
+    "zheng": "痿",
+    "orig_count": 91,
+    "case_count": 34,
+    "show": true
+  },
+  {
+    "zheng": "脑充血",
+    "orig_count": 83,
+    "case_count": 29,
+    "show": true
+  },
+  {
+    "zheng": "眩晕",
+    "orig_count": 64,
+    "case_count": 35,
+    "show": true
+  },
+  {
+    "zheng": "下利",
+    "orig_count": 56,
+    "case_count": 9,
+    "show": true
+  },
+  {
+    "zheng": "水肿",
+    "orig_count": 42,
+    "case_count": 25,
+    "show": true
+  },
+  {
+    "zheng": "衄血",
+    "orig_count": 40,
+    "case_count": 6,
+    "show": true
+  },
+  {
+    "zheng": "喘逆",
+    "orig_count": 35,
+    "case_count": 20,
+    "show": true
+  },
+  {
+    "zheng": "痉",
+    "orig_count": 35,
+    "case_count": 31,
+    "show": true
+  },
+  {
+    "zheng": "癫狂",
+    "orig_count": 34,
+    "case_count": 18,
+    "show": true
+  },
+  {
+    "zheng": "喘息",
+    "orig_count": 30,
+    "case_count": 26,
+    "show": true
+  },
+  {
+    "zheng": "不寐",
+    "orig_count": 29,
+    "case_count": 9,
+    "show": true
+  },
+  {
+    "zheng": "腹胀",
+    "orig_count": 27,
+    "case_count": 17,
+    "show": true
+  },
+  {
+    "zheng": "惊悸",
+    "orig_count": 25,
+    "case_count": 3,
+    "show": true
+  },
+  {
+    "zheng": "腹痛",
+    "orig_count": 20,
+    "case_count": 11,
+    "show": true
+  },
+  {
+    "zheng": "脑贫血",
+    "orig_count": 16,
+    "case_count": 5,
+    "show": true
+  },
+  {
+    "zheng": "头痛",
+    "orig_count": 15,
+    "case_count": 9,
+    "show": true
+  },
+  {
+    "zheng": "气短",
+    "orig_count": 13,
+    "case_count": 10,
+    "show": true
+  },
+  {
+    "zheng": "癃闭",
+    "orig_count": 13,
+    "case_count": 4,
+    "show": true
+  },
+  {
+    "zheng": "便血",
+    "orig_count": 9,
+    "case_count": 6,
+    "show": true
+  },
+  {
+    "zheng": "便秘",
+    "orig_count": 7,
+    "case_count": 5,
+    "show": true
+  },
+  {
+    "zheng": "失眠",
+    "orig_count": 3,
+    "case_count": 6,
+    "show": true
+  },
+  {
+    "zheng": "胁痛",
+    "orig_count": 2,
+    "case_count": 0,
+    "show": true
+  },
+  {
+    "zheng": "咯血",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  },
+  {
+    "zheng": "瘛疭",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  }
+]

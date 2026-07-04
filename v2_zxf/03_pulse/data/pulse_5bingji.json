@@ -1,0 +1,92 @@
+[
+  {
+    "bingji": "阴虚",
+    "orig_count": 135,
+    "case_count": 67,
+    "show": true
+  },
+  {
+    "bingji": "气虚",
+    "orig_count": 108,
+    "case_count": 62,
+    "show": true
+  },
+  {
+    "bingji": "血虚",
+    "orig_count": 36,
+    "case_count": 20,
+    "show": true
+  },
+  {
+    "bingji": "上盛下虚",
+    "orig_count": 25,
+    "case_count": 12,
+    "show": true
+  },
+  {
+    "bingji": "阳虚",
+    "orig_count": 24,
+    "case_count": 15,
+    "show": true
+  },
+  {
+    "bingji": "阳盛",
+    "orig_count": 8,
+    "case_count": 4,
+    "show": true
+  },
+  {
+    "bingji": "里寒",
+    "orig_count": 5,
+    "case_count": 1,
+    "show": true
+  },
+  {
+    "bingji": "阴阳两虚",
+    "orig_count": 3,
+    "case_count": 0,
+    "show": true
+  },
+  {
+    "bingji": "阴盛",
+    "orig_count": 3,
+    "case_count": 2,
+    "show": true
+  },
+  {
+    "bingji": "表热",
+    "orig_count": 3,
+    "case_count": 2,
+    "show": true
+  },
+  {
+    "bingji": "里热",
+    "orig_count": 2,
+    "case_count": 1,
+    "show": true
+  },
+  {
+    "bingji": "表虚",
+    "orig_count": 1,
+    "case_count": 0,
+    "show": true
+  },
+  {
+    "bingji": "表寒",
+    "orig_count": 1,
+    "case_count": 1,
+    "show": true
+  },
+  {
+    "bingji": "上热下寒",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  },
+  {
+    "bingji": "里虚",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  }
+]

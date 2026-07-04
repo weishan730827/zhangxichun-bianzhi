@@ -1,0 +1,72 @@
+[
+  {
+    "zangfu": "督",
+    "name": "督脉",
+    "orig_count": 22,
+    "case_count": 9,
+    "show": true
+  },
+  {
+    "zangfu": "冲",
+    "name": "冲脉",
+    "orig_count": 21,
+    "case_count": 12,
+    "show": true
+  },
+  {
+    "zangfu": "肝",
+    "name": "肝脉",
+    "orig_count": 11,
+    "case_count": 12,
+    "show": true
+  },
+  {
+    "zangfu": "心",
+    "name": "心脉",
+    "orig_count": 11,
+    "case_count": 4,
+    "show": true
+  },
+  {
+    "zangfu": "任",
+    "name": "任脉",
+    "orig_count": 7,
+    "case_count": 2,
+    "show": true
+  },
+  {
+    "zangfu": "脾",
+    "name": "脾脉",
+    "orig_count": 3,
+    "case_count": 0,
+    "show": true
+  },
+  {
+    "zangfu": "带",
+    "name": "带脉",
+    "orig_count": 3,
+    "case_count": 0,
+    "show": true
+  },
+  {
+    "zangfu": "肺",
+    "name": "肺脉",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  },
+  {
+    "zangfu": "肾",
+    "name": "肾脉",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  },
+  {
+    "zangfu": "命门",
+    "name": "命门脉",
+    "orig_count": 0,
+    "case_count": 0,
+    "show": false
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "真有力",
+    "meaning": "脾胃元气壮旺",
+    "case_count": 3
+  },
+  {
+    "name": "假有力",
+    "meaning": "弦硬大按之不实（脾胃外泄）",
+    "case_count": 0
+  },
+  {
+    "name": "无力",
+    "meaning": "张氏第一辨 与\"实\"对",
+    "case_count": 154
+  },
+  {
+    "name": "无根",
+    "meaning": "元气脱/将脱",
+    "case_count": 24
+  },
+  {
+    "name": "和缓",
+    "meaning": "平脉",
+    "case_count": 16
+  },
+  {
+    "name": "不任循按",
+    "meaning": "元气大虚",
+    "case_count": 5
+  },
+  {
+    "name": "参伍不调",
+    "meaning": "肝风/元气将脱",
+    "case_count": 1
+  }
+]

@@ -198,6 +198,120 @@ body {
 
 .step-section { display: block; }
 .step-section.active { display: block; }
+.step-status {
+  display: inline-block;
+  background: #edf2f7;
+  color: #718096;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: normal;
+  margin-left: 8px;
+}
+.step-status.done {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.step-result {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #f0fff4 0%, #e6f2ec 100%);
+  border: 1.5px solid var(--good, #2f855a);
+  border-left: 5px solid var(--good, #2f855a);
+  border-radius: 6px;
+  min-height: 50px;
+}
+.step-result-empty {
+  color: #a0aec0;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 0;
+}
+.step-result-opt {
+  margin: 6px 0;
+  padding: 6px 8px;
+  background: #fff;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 4px;
+  border-left: 3px solid var(--primary, #2c5282);
+}
+.step-result-opt-name {
+  font-weight: bold;
+  color: var(--primary-d, #1a365d);
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.step-result-opt-cases {
+  font-size: 11px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+.step-result-opt-cases a {
+  display: inline-block;
+  background: var(--primary, #2c5282);
+  color: #fff;
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 11px;
+  margin: 1px 2px 1px 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.step-result-opt-cases a:hover { background: var(--primary-d, #1a365d); }
+.step-result-opt-quote {
+  background: #fef5e7;
+  border-left: 2px solid #b7791f;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: #744210;
+  margin-top: 4px;
+  border-radius: 2px;
+  line-height: 1.5;
+  max-height: 70px;
+  overflow: hidden;
+}
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #cbd5e0;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-next, .btn-prev, .btn-finish {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-next {
+  background: var(--primary, #2c5282);
+  color: #fff;
+  margin-left: auto;
+}
+.btn-next:hover:not(:disabled) { background: var(--primary-d, #1a365d); }
+.btn-next:disabled {
+  background: #cbd5e0;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+.btn-prev {
+  background: #fff;
+  color: var(--primary, #2c5282);
+  border: 1.5px solid var(--primary, #2c5282);
+}
+.btn-prev:hover { background: var(--primary, #2c5282); color: #fff; }
+.btn-finish {
+  background: var(--accent, #c53030);
+  color: #fff;
+  margin-left: auto;
+}
+.btn-finish:hover { background: #9b2c2c; }
 
 /* === 流程引导卡片 === */
 .flow-guide {
@@ -424,10 +538,11 @@ body {
   <h1>一比一还原张锡纯脉诊过程</h1>
   <p>张氏怎么切脉, 系统就怎么设计 — 5 步引导, 每步张氏原话驱动, 每步真实医案引用</p>
   <p style="margin-top:6px">
-    <span class="tag">v2.7.20</span>
+    <span class="tag">v2.7.20.6</span>
     <span class="tag">994 案实证</span>
     <span class="tag">5 步引导</span>
     <span class="tag">5 手法 + 8 部位 + 36 脉象 + 17 复合脉 + 18 主证</span>
+    <span class="tag" style="background:#c6f6d5;color:#22543d">每步结果即时显示</span>
   </p>
 </div>
 
@@ -530,33 +645,47 @@ body {
 <!-- 第 1 步：手法 -->
 <div class="step-section step1-color active" id="step1">
 <div class="section">
-<h2>第 1 步：手法 (按压力度)</h2>
+<h2>第 1 步：手法 (按压力度) <span class="step-status" id="step1-status">⏳ 未选</span></h2>
 <div class="zx-intro">
 <b>张氏脉诊第一步</b> — 先按压力度, 决定后续思路<br>
 <b>核心</b>: <b>重按是张氏第一辨</b> (辨真假有力) — "脉之有力无力者…重按之而实者, 真有力也; 重按之而虚者, 非真有力也"
 </div>
 <p style="margin-top:8px">点选你按脉时使用的力度 (可多选)：</p>
 <div class="option-grid" id="step1-grid"></div>
+<!-- 第 1 步结果 — 紧贴选项下方, 选了立刻显示 -->
+<div class="step-result" id="step1-result">
+  <div class="step-result-empty">👇 选完上面任一力度, 这里立即显示 <b>该力度下的张氏代表案</b> (Top 3)</div>
+</div>
+<div class="step-nav">
+  <button class="btn-next" data-go="2" disabled>下一步: 选部位 →</button>
+</div>
 </div>
 </div>
 
 <!-- 第 2 步：分部 -->
-<div class="step-section step2-color" id="step2">
+<div class="step-section step2-color active" id="step2">
 <div class="section">
-<h2>第 2 步：分部 (异常部位)</h2>
+<h2>第 2 步：分部 (异常部位) <span class="step-status" id="step2-status">⏳ 未选</span></h2>
 <div class="zx-intro">
 <b>张氏分部不是教科书 6 部</b> — 而是按实证 8 部位 (张氏实际用的)<br>
 <b>核心</b>: 部位 = 反推脏腑的依据 ("左关弦" = 肝, "右关实" = 脾胃, "右寸弱" = 肺)
 </div>
 <p style="margin-top:8px">点选你摸到异常的部位 (可多选)：</p>
 <div class="option-grid" id="step2-grid"></div>
+<div class="step-result" id="step2-result">
+  <div class="step-result-empty">👇 选完上面任一部位, 这里立即显示 <b>该部位下的张氏代表案</b> (Top 3)</div>
+</div>
+<div class="step-nav">
+  <button class="btn-prev" data-go="1">← 上一步</button>
+  <button class="btn-next" data-go="3" disabled>下一步: 选脉象 →</button>
+</div>
 </div>
 </div>
 
 <!-- 第 3 步：脉象 -->
 <div class="step-section step3-color" id="step3">
 <div class="section">
-<h2>第 3 步：脉象 (单选/多选)</h2>
+<h2>第 3 步：脉象 (单选/多选) <span class="step-status" id="step3-status">⏳ 未选</span></h2>
 <div class="zx-intro">
 <b>26 个核心脉 + 10 个张氏特色脉</b> — 全部来自 994 案实证<br>
 <b>案均 2.96 个脉</b> — 1-3 个最常见, ≤ 3 个为常态
@@ -566,32 +695,53 @@ body {
 <div class="option-grid" id="step3-core-grid"></div>
 <h3 style="color:var(--zx); font-size:14px; margin:14px 0 6px">张氏特色脉 (10)</h3>
 <div class="option-grid" id="step3-zx-grid"></div>
+<div class="step-result" id="step3-result">
+  <div class="step-result-empty">👇 选完上面任一脉象, 这里立即显示 <b>该脉象下的张氏代表案</b> (Top 3)</div>
+</div>
+<div class="step-nav">
+  <button class="btn-prev" data-go="2">← 上一步</button>
+  <button class="btn-next" data-go="4" disabled>下一步: 选复合脉 (可跳) →</button>
+</div>
 </div>
 </div>
 
 <!-- 第 4 步：复合脉 -->
-<div class="step-section step4-color" id="step4">
+<div class="step-section step4-color active" id="step4">
 <div class="section">
-<h2>第 4 步：复合脉 (系统自动提示)</h2>
+<h2>第 4 步：复合脉 (病机指纹, 可跳) <span class="step-status" id="step4-status">⏳ 未选</span></h2>
 <div class="zx-intro">
 <b>复合脉 = 病机指纹</b> — 张氏原书常用的复合脉直接指向病机和方剂<br>
 <b>核心</b>: 系统根据第 3 步选择的脉象, 自动提示最可能的复合脉
 </div>
-<p style="margin-top:8px">点选你摸到的复合脉 (可多选)：</p>
+<p style="margin-top:8px">点选你摸到的复合脉 (可多选, 不确定可跳):</p>
 <div class="option-grid" id="step4-grid"></div>
+<div class="step-result" id="step4-result">
+  <div class="step-result-empty">👇 选完上面任一复合脉, 这里立即显示 <b>该复合脉下的张氏代表案</b> (Top 3)。<b>不确定可点 "下一步" 跳过</b>。</div>
+</div>
+<div class="step-nav">
+  <button class="btn-prev" data-go="3">← 上一步</button>
+  <button class="btn-next" data-go="5" disabled>下一步: 选主证 (可跳) →</button>
+</div>
 </div>
 </div>
 
 <!-- 第 5 步：主证 -->
-<div class="step-section step5-color" id="step5">
+<div class="step-section step5-color active" id="step5">
 <div class="section">
-<h2>第 5 步：主证 (可选加速匹配)</h2>
+<h2>第 5 步：主证 (患者主诉, 可跳) <span class="step-status" id="step5-status">⏳ 未选</span></h2>
 <div class="zx-intro">
 <b>18 个张氏原书主证</b> — 不是您必须勾选, 而是加速匹配<br>
 <b>核心</b>: 主证 + 脉象 = 直接指向张氏方剂
 </div>
-<p style="margin-top:8px">勾选患者主证 (可多选, 非必须)：</p>
+<p style="margin-top:8px">勾选患者主证 (可多选, 不确定可跳):</p>
 <div class="option-grid" id="step5-grid"></div>
+<div class="step-result" id="step5-result">
+  <div class="step-result-empty">👇 选完上面任一主证, 这里立即显示 <b>该主证下的张氏代表案</b> (Top 3)。<b>不确定可点 "完成辨证" 跳过</b>。</div>
+</div>
+<div class="step-nav">
+  <button class="btn-prev" data-go="4">← 上一步</button>
+  <button class="btn-finish">✅ 完成 — 出汇总辨证 Top 5</button>
+</div>
 </div>
 </div>
 
@@ -664,8 +814,8 @@ body {
 </div>
 
 <div class="footer">
-  <p>一比一还原张锡纯脉诊过程 v2.7.20 — 来源: 《医学衷中参西录》994 案实证</p>
-  <p>每步选项 / 张氏原话 / 真实医案引用 — 全部来自 994 案原文</p>
+  <p>一比一还原张锡纯脉诊过程 v2.7.20.6 — 来源: 《医学衷中参西录》994 案实证</p>
+  <p>每步选项 / 张氏原话 / 真实医案引用 — 全部来自 994 案原文 · 每步选完立即显示对应代表医案</p>
 </div>
 
 </div>
@@ -719,8 +869,33 @@ function renderAll() {
   renderStep3();
   renderStep4();
   renderStep5();
+  bindStepNav();
   renderCurrentPill();
-  updatePerDimResults();
+  updateStepResults();
+}
+
+// 绑定上一步/下一步/完成按钮
+function bindStepNav() {
+  document.querySelectorAll('.btn-next, .btn-prev').forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      const n = parseInt(btn.getAttribute('data-go') || '0', 10);
+      if (n) goStep(n);
+    };
+  });
+  document.querySelectorAll('.btn-finish').forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      doMatch();
+      // 滚到汇总区
+      const fs = document.getElementById('final-summary');
+      if (fs) {
+        const rect = fs.getBoundingClientRect();
+        const top = window.scrollY + rect.top - 70;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    };
+  });
 }
 
 function renderStep1() {
@@ -819,16 +994,89 @@ function toggleOption(group, key, el) {
     el.classList.add('on');
   }
   renderCurrentPill();
-  // 实时更新分维度结果
-  updatePerDimResults();
-  // 自动跳到下一步 (如果当前步全选了)
-  autoAdvance();
+  // 实时更新每步结果 (紧贴每步选项下方)
+  updateStepResults();
+  // 自动跳到下一步 (强步骤感 — 张氏就是一步步切脉)
+  const stepMap = { handful: 1, pos: 2, pulse: 3, compound: 4, zheng: 5 };
+  const myStep = stepMap[group];
+  // 标记顶部进度条该步为已完成
+  const ps = document.querySelector(`.process-step[data-step="${myStep}"]`);
+  if (ps && SELECTED[group].size > 0) {
+    ps.classList.add('done');
+    ps.classList.remove('active');
+  }
+  // 若该步选完 (任一项) 且还没到第 5 步, 自动跳下一步
+  if (SELECTED[group].size > 0 && myStep < 5) {
+    setTimeout(() => goStep(myStep + 1), 250);
+  }
 }
 
-// 实时更新"分维度结果" — 每选一项立刻显示该维度的代表医案
+// 实时更新"每步结果" — 紧贴每步选项下方, 选了立刻显示该步代表医案
+function updateStepResults() {
+  if (!PROCESS) return;
+  const map = [
+    { group: 'handful', step: 1 },
+    { group: 'pos', step: 2 },
+    { group: 'pulse', step: 3 },
+    { group: 'compound', step: 4 },
+    { group: 'zheng', step: 5 },
+  ];
+  for (const m of map) {
+    const resultBox = document.getElementById('step' + m.step + '-result');
+    const status = document.getElementById('step' + m.step + '-status');
+    const sel = SELECTED[m.group];
+    if (!resultBox) continue;
+
+    // 更新状态标签
+    if (status) {
+      if (sel.size === 0) {
+        status.textContent = '⏳ 未选';
+        status.className = 'step-status';
+      } else {
+        status.textContent = '✅ 已选 ' + Array.from(sel).join(' / ') + ' (' + sel.size + ' 项)';
+        status.className = 'step-status done';
+      }
+    }
+
+    // 启用下一步按钮
+    const nextBtn = document.querySelector(`#step${m.step} .btn-next`);
+    if (nextBtn) nextBtn.disabled = (sel.size === 0);
+
+    // 渲染该步结果
+    if (sel.size === 0) {
+      const emptyText = (m.step === 4 || m.step === 5)
+        ? `👇 选完上面任一项, 这里立即显示 <b>该选项下的张氏代表案</b> (Top 3)。<b>不确定可点 "下一步" 跳过</b>。`
+        : `👇 选完上面任一项, 这里立即显示 <b>该选项下的张氏代表案</b> (Top 3)`;
+      resultBox.innerHTML = `<div class="step-result-empty">${emptyText}</div>`;
+      continue;
+    }
+
+    let html = '';
+    for (const key of sel) {
+      const opt = PROCESS.process['step' + m.step].options[key];
+      if (!opt) continue;
+      const top3 = opt.matches.slice(0, 3);
+      html += `<div class="step-result-opt">
+        <div class="step-result-opt-name">▸ ${opt.name} <span style="color:#a0aec0;font-weight:normal;font-size:10px">(${opt.matches.length} 案命中)</span></div>
+        <div class="step-result-opt-cases">`;
+      for (const c of top3) {
+        html += `<a onclick="event.preventDefault();showCaseDetail('${c.case_id}')" title="${esc(c.title || '')}">#${c.case_id}</a>`;
+      }
+      if (top3[0] && top3[0].content_excerpt) {
+        html += `<div class="step-result-opt-quote">"${esc(top3[0].content_excerpt).slice(0, 120)}…"</div>`;
+      }
+      html += '</div></div>';
+    }
+    resultBox.innerHTML = html;
+  }
+
+  // 同步更新底部 dim-grid (保留, 方便用户对比)
+  updatePerDimResults();
+}
+
+// 实时更新"分维度结果" — 5 个 dim-card 汇总 (保留, 方便用户对比)
 function updatePerDimResults() {
   if (!PROCESS) return;
-  // group → step 映射: handful→1, pos→2, pulse→3, compound→4, zheng→5
   const map = [
     { group: 'handful', step: 1 },
     { group: 'pos', step: 2 },
@@ -841,23 +1089,11 @@ function updatePerDimResults() {
     if (!body) continue;
     const sel = SELECTED[m.group];
     if (sel.size === 0) {
-      body.innerHTML = '<div class="dim-empty">未选 — 选上面 5 步的按钮, 这里会显示结果</div>';
+      body.innerHTML = '<div class="dim-empty">未选</div>';
       continue;
     }
     let html = '';
-    // 把所有勾选项的代表案聚合并去重
     const seen = new Set();
-    const items = [];
-    for (const key of sel) {
-      const opt = PROCESS.process['step' + m.step].options[key];
-      if (!opt) continue;
-      for (const m_ of opt.matches) {
-        if (seen.has(m_.case_id)) continue;
-        seen.add(m_.case_id);
-        items.push(m_);
-      }
-    }
-    // 按勾选项分组列出, 每组前 3 个案
     for (const key of sel) {
       const opt = PROCESS.process['step' + m.step].options[key];
       if (!opt) continue;
@@ -866,7 +1102,12 @@ function updatePerDimResults() {
         <div class="dim-opt-name">▸ ${opt.name} <span style="color:#a0aec0;font-weight:normal;font-size:10px">(${opt.matches.length} 案)</span></div>
         <div class="dim-opt-cases">`;
       for (const c of top3) {
-        html += `<a onclick="event.preventDefault();showCaseDetail('${c.case_id}')" title="${c.title || ''}">#${c.case_id}</a>`;
+        if (seen.has(c.case_id)) {
+          // 跳过重复
+        } else {
+          seen.add(c.case_id);
+          html += `<a onclick="event.preventDefault();showCaseDetail('${c.case_id}')" title="${esc(c.title || '')}">#${c.case_id}</a>`;
+        }
       }
       if (top3[0] && top3[0].content_excerpt) {
         html += `<div class="dim-opt-quote">"${esc(top3[0].content_excerpt).slice(0, 80)}…"</div>`;
@@ -939,7 +1180,7 @@ function clearAll() {
   Object.keys(SELECTED).forEach(k => SELECTED[k].clear());
   document.querySelectorAll('.option.on').forEach(o => o.classList.remove('on'));
   renderCurrentPill();
-  updatePerDimResults();
+  updateStepResults();
   const fs = document.getElementById('final-summary');
   if (fs) fs.style.display = 'none';
   document.getElementById('match-cases').innerHTML = '';
@@ -1034,7 +1275,10 @@ function loadDemo() {
   clearAll();
   SELECTED.handful.add('重按');
   SELECTED.pos.add('关前');
-  SELECTED.pulse.add('沉', '迟', '微', '弱');
+  SELECTED.pulse.add('沉');
+  SELECTED.pulse.add('迟');
+  SELECTED.pulse.add('微');
+  SELECTED.pulse.add('弱');
   SELECTED.compound.add('微弱');
   SELECTED.zheng.add('大气下陷');
   document.querySelectorAll('.option').forEach(o => {
@@ -1044,6 +1288,7 @@ function loadDemo() {
     }
   });
   renderCurrentPill();
+  updateStepResults();
   doMatch();
 }
 
@@ -1051,7 +1296,9 @@ function loadDemo2() {
   clearAll();
   SELECTED.handful.add('重按');
   SELECTED.pos.add('左寸');
-  SELECTED.pulse.add('芤', '弦', '数');
+  SELECTED.pulse.add('芤');
+  SELECTED.pulse.add('弦');
+  SELECTED.pulse.add('数');
   SELECTED.compound.add('弦细');
   SELECTED.zheng.add('怔忡');
   document.querySelectorAll('.option').forEach(o => {
@@ -1061,6 +1308,7 @@ function loadDemo2() {
     }
   });
   renderCurrentPill();
+  updateStepResults();
   doMatch();
 }
 
@@ -1068,7 +1316,8 @@ function loadDemo3() {
   clearAll();
   SELECTED.handful.add('重按');
   SELECTED.pos.add('左关');
-  SELECTED.pulse.add('弦', '长');
+  SELECTED.pulse.add('弦');
+  SELECTED.pulse.add('长');
   SELECTED.compound.add('弦长');
   SELECTED.zheng.add('怔忡');
   document.querySelectorAll('.option').forEach(o => {
@@ -1078,6 +1327,7 @@ function loadDemo3() {
     }
   });
   renderCurrentPill();
+  updateStepResults();
   doMatch();
 }
 

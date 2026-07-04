@@ -1,0 +1,265 @@
+{
+  "pos_18_raw": [
+    {
+      "pos": "右部",
+      "orig_count": 119,
+      "case_count": 139,
+      "total": 258
+    },
+    {
+      "pos": "左部",
+      "orig_count": 92,
+      "case_count": 102,
+      "total": 194
+    },
+    {
+      "pos": "右脉",
+      "orig_count": 66,
+      "case_count": 66,
+      "total": 132
+    },
+    {
+      "pos": "左脉",
+      "orig_count": 61,
+      "case_count": 61,
+      "total": 122
+    },
+    {
+      "pos": "两尺",
+      "orig_count": 46,
+      "case_count": 49,
+      "total": 95
+    },
+    {
+      "pos": "关前",
+      "orig_count": 42,
+      "case_count": 39,
+      "total": 81
+    },
+    {
+      "pos": "左关",
+      "orig_count": 23,
+      "case_count": 19,
+      "total": 42
+    },
+    {
+      "pos": "左手",
+      "orig_count": 19,
+      "case_count": 18,
+      "total": 37
+    },
+    {
+      "pos": "右关",
+      "orig_count": 16,
+      "case_count": 15,
+      "total": 31
+    },
+    {
+      "pos": "右寸",
+      "orig_count": 13,
+      "case_count": 14,
+      "total": 27
+    },
+    {
+      "pos": "尺脉",
+      "orig_count": 11,
+      "case_count": 12,
+      "total": 23
+    },
+    {
+      "pos": "两寸",
+      "orig_count": 9,
+      "case_count": 10,
+      "total": 19
+    },
+    {
+      "pos": "尺部",
+      "orig_count": 7,
+      "case_count": 8,
+      "total": 15
+    },
+    {
+      "pos": "三部",
+      "orig_count": 5,
+      "case_count": 7,
+      "total": 12
+    },
+    {
+      "pos": "关后",
+      "orig_count": 7,
+      "case_count": 4,
+      "total": 11
+    },
+    {
+      "pos": "右手",
+      "orig_count": 4,
+      "case_count": 4,
+      "total": 8
+    },
+    {
+      "pos": "寸口",
+      "orig_count": 1,
+      "case_count": 2,
+      "total": 3
+    },
+    {
+      "pos": "左寸",
+      "orig_count": 2,
+      "case_count": 2,
+      "total": 4
+    },
+    {
+      "pos": "寸脉",
+      "orig_count": 2,
+      "case_count": 1,
+      "total": 3
+    },
+    {
+      "pos": "寸部",
+      "orig_count": 1,
+      "case_count": 1,
+      "total": 2
+    },
+    {
+      "pos": "右尺",
+      "orig_count": 1,
+      "case_count": 1,
+      "total": 2
+    },
+    {
+      "pos": "两关",
+      "orig_count": 2,
+      "case_count": 1,
+      "total": 3
+    },
+    {
+      "pos": "尺寸",
+      "orig_count": 1,
+      "case_count": 1,
+      "total": 2
+    },
+    {
+      "pos": "左尺",
+      "orig_count": 0,
+      "case_count": 0,
+      "total": 0
+    },
+    {
+      "pos": "关上",
+      "orig_count": 2,
+      "case_count": 0,
+      "total": 2
+    }
+  ],
+  "pos_merged": [
+    {
+      "pos": "右部",
+      "subs": [
+        "右部",
+        "右脉",
+        "右手"
+      ],
+      "orig_count": 189,
+      "case_count": 209,
+      "tier": "顶层"
+    },
+    {
+      "pos": "左部",
+      "subs": [
+        "左部",
+        "左脉",
+        "左手",
+        "左脉"
+      ],
+      "orig_count": 172,
+      "case_count": 181,
+      "tier": "顶层"
+    },
+    {
+      "pos": "寸脉",
+      "subs": [
+        "寸脉",
+        "寸部",
+        "关前",
+        "两寸"
+      ],
+      "orig_count": 54,
+      "case_count": 51,
+      "tier": "顶层"
+    },
+    {
+      "pos": "两尺",
+      "subs": [
+        "两尺"
+      ],
+      "orig_count": 46,
+      "case_count": 49,
+      "tier": "顶层"
+    },
+    {
+      "pos": "尺脉",
+      "subs": [
+        "尺脉",
+        "尺部",
+        "关后"
+      ],
+      "orig_count": 25,
+      "case_count": 24,
+      "tier": "顶层"
+    },
+    {
+      "pos": "左关",
+      "subs": [
+        "左关"
+      ],
+      "orig_count": 23,
+      "case_count": 19,
+      "tier": "二级"
+    },
+    {
+      "pos": "右关",
+      "subs": [
+        "右关"
+      ],
+      "orig_count": 16,
+      "case_count": 15,
+      "tier": "二级"
+    },
+    {
+      "pos": "右寸",
+      "subs": [
+        "右寸"
+      ],
+      "orig_count": 13,
+      "case_count": 14,
+      "tier": "二级"
+    },
+    {
+      "pos": "左寸",
+      "subs": [
+        "左寸"
+      ],
+      "orig_count": 2,
+      "case_count": 2,
+      "tier": "二级"
+    },
+    {
+      "pos": "右尺",
+      "subs": [
+        "右尺"
+      ],
+      "orig_count": 1,
+      "case_count": 1,
+      "tier": "二级"
+    },
+    {
+      "pos": "左尺",
+      "subs": [
+        "左尺"
+      ],
+      "orig_count": 0,
+      "case_count": 0,
+      "tier": "二级"
+    }
+  ]
+}
