@@ -199,7 +199,7 @@ body {
 
 .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; padding: 20px; }
 
-.step-section { display: none; }
+.step-section { display: block; }
 .step-section.active { display: block; }
 
 .step1-color { border-top: 4px solid var(--step1); }
@@ -510,10 +510,17 @@ function autoAdvance() {
 
 function goStep(n) {
   document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('step' + n).classList.add('active');
+  const target = document.getElementById('step' + n);
+  if (target) target.classList.add('active');
   document.querySelectorAll('.process-step').forEach(s => s.classList.remove('active'));
-  document.querySelector(`.process-step[data-step="${n}"]`).classList.add('active');
-  window.scrollTo(0, document.getElementById('process-bar').offsetTop - 20);
+  const ps = document.querySelector(`.process-step[data-step="${n}"]`);
+  if (ps) ps.classList.add('active');
+  // 滚到该步的内容区, 而不是回到顶部进度条
+  if (target) {
+    const rect = target.getBoundingClientRect();
+    const top = window.scrollY + rect.top - 70;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
 }
 
 function renderCurrentPill() {
