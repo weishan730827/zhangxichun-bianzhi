@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>脉象组合查询 v2.7.11 — 倒排索引验证 (319 组合 / 597 案)</title>
+<style>
+:root {
+  --primary: #8b1a1a;
+  --primary-d: #5e0e0e;
+  --accent: #c53030;
+  --gold: #c97c1f;
+  --bg: #f7f3ec;
+  --card: #fff;
+  --border: #d4c8b0;
+  --muted: #6b5d4a;
+  --good: #2d6a4f;
+  --warn: #c97c1f;
+  --bad: #c00;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif CJK SC", serif;
+  background: var(--bg);
+  color: #2d2520;
+  line-height: 1.75;
+  padding: 16px;
+}
+.container { max-width: 1280px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, #5e0e0e 0%, #2d0808 100%);
+  color: #fff;
+  padding: 28px 26px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after { content: '索'; position: absolute; right: -10px; top: -30px; font-size: 200px; opacity: 0.08; font-weight: bold; }
+.hero h1 { font-size: 26px; margin-bottom: 8px; position: relative; z-index: 2; }
+.hero p { font-size: 14px; opacity: 0.92; position: relative; z-index: 2; }
+.hero .meta { margin-top: 8px; font-size: 12px; opacity: 0.85; }
+.section {
+  background: var(--card);
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.section h2 {
+  color: var(--primary-d);
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--primary);
+}
+.pulse-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 6px;
+  margin: 10px 0;
+}
+.pulse-btn {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  color: var(--primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.15s;
+  user-select: none;
+}
+.pulse-btn:hover { background: #fff8e1; border-color: var(--gold); }
+.pulse-btn.on {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary-d);
+  box-shadow: 0 2px 6px rgba(139,26,26,0.3);
+}
+.pulse-btn .cnt {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: normal;
+  margin-top: 2px;
+}
+.pulse-btn.on .cnt { color: #ffd700; }
+.zx-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px;
+  margin: 10px 0;
+}
+.zx-btn {
+  background: #fff8e1;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+.zx-btn.on {
+  background: var(--gold);
+  color: #fff;
+}
+.zx-btn .cnt {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: normal;
+  margin-top: 1px;
+}
+.zx-btn.on .cnt { color: #fff8e1; }
+.action-row {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+.btn:hover { background: var(--primary-d); }
+.btn.warn { background: var(--gold); }
+.btn.ghost {
+  background: #fff;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+}
+.summary {
+  background: #fff8e1;
+  border: 1.5px solid var(--gold);
+  border-left: 6px solid var(--gold);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.summary b { color: var(--gold); }
+.match-mode {
+  display: inline-block;
+  background: var(--good);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-right: 4px;
+}
+.match-mode.partial { background: var(--warn); }
+.match-mode.subset { background: var(--muted); }
+.result-card {
+  background: #fdf6e3;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--good);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  transition: all 0.15s;
+}
+.result-card:hover { transform: translateX(2px); }
+.result-card.partial { border-left-color: var(--warn); }
+.result-card .rc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.result-card .rc-id {
+  background: var(--primary);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.result-card .rc-title {
+  font-weight: bold;
+  color: var(--primary-d);
+  font-size: 14px;
+  flex: 1;
+  min-width: 100px;
+}
+.result-card .rc-pulse {
+  display: inline-block;
+  background: #fff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin: 0 2px;
+}
+.result-card .rc-formula {
+  color: var(--bad);
+  font-weight: bold;
+  font-size: 13px;
+}
+.result-card .rc-diag {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+  width: 100%;
+}
+.result-card .rc-effic {
+  background: var(--good);
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.tag { display: inline-block; background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-right: 4px; }
+.tag.good { background: var(--good); }
+.tag.warn { background: var(--warn); }
+.section h3 {
+  color: var(--primary);
+  font-size: 14px;
+  margin: 12px 0 6px;
+  padding-left: 8px;
+  border-left: 3px solid var(--primary);
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+.stat-box {
+  background: #fff8e1;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 8px 12px;
+  text-align: center;
+}
+.stat-box .v { font-size: 22px; font-weight: bold; color: var(--primary-d); }
+.stat-box .l { font-size: 11px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>脉象组合查询 v2.7.11</h1>
+  <p>倒排索引验证页 — <b>勾选脉象 → 倒排索引查 597 案 → 输出 Top 案例 + 方剂</b></p>
+  <div class="meta">
+    标签: <span class="tag">v2.7.11</span> ·
+    数据: <code>combo_index.json</code> (881 KB, 491 组合 + 172 脉+特色 + 54 方剂 + 11 证型 + 994 案例轻量库) ·
+    上一版: v2.7.8 脉象组合全谱
+  </div>
+</div>
+
+<div class="section">
+<h2>① 勾选 28 脉 (单选/多选)</h2>
+<p style="font-size:12px;color:#666;margin-bottom:6px">点击脉象 → 加入查询, 频次显示在下方 (来自 994 案)</p>
+<div class="pulse-picker" id="pulse-picker"></div>
+</div>
+
+<div class="section">
+<h2>② 勾选 19 张氏特色脉 (可选)</h2>
+<p style="font-size:12px;color:#666;margin-bottom:6px">张氏特色脉 = 复合脉细拆, 与基础脉组合查</p>
+<div class="zx-picker" id="zx-picker"></div>
+</div>
+
+<div class="section">
+<h2>③ 查询控制</h2>
+<div class="action-row">
+  <button class="btn" onclick="doQuery()">🔍 倒排索引查询</button>
+  <button class="btn warn" onclick="subsetQuery()">🎯 子集匹配 (推荐)</button>
+  <button class="btn ghost" onclick="clearAll()">清空</button>
+  <span style="font-size:12px;color:#666;margin-left:8px">
+    当前选择: <b id="current-picks">(未选)</b>
+  </span>
+</div>
+</div>
+
+<div class="section" id="result-section" style="display:none">
+<h2>④ 查询结果</h2>
+<div class="summary" id="result-summary"></div>
+<div id="result-list"></div>
+</div>
+
+<div class="section">
+<h2>⑤ 索引统计</h2>
+<div class="stats">
+  <div class="stat-box">
+    <div class="v" id="stat-combo">—</div>
+    <div class="l">完整组合数</div>
+  </div>
+  <div class="stat-box">
+    <div class="v" id="stat-sig">—</div>
+    <div class="l">1-2 脉特征</div>
+  </div>
+  <div class="stat-box">
+    <div class="v" id="stat-formula">—</div>
+    <div class="l">方剂索引</div>
+  </div>
+  <div class="stat-box">
+    <div class="v" id="stat-syn">—</div>
+    <div class="l">证型关键词</div>
+  </div>
+  <div class="stat-box">
+    <div class="v" id="stat-case">—</div>
+    <div class="l">案例轻量库</div>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<h2>⑥ 倒排索引原理</h2>
+<ol style="padding-left:24px;font-size:13px;line-height:1.85">
+  <li><b>完整组合索引</b>: 用户勾选 N 脉 → 查 <code>combo_index["脉1|脉2|..."]</code> → 直接得案例 ID 列表</li>
+  <li><b>子集匹配</b>: 任何 N 脉的子集都查 <code>signature_index</code> (1-2 脉索引), 累加得分</li>
+  <li><b>脉+特色组合</b>: 查 <code>combo_index["+|脉|特色"]</code></li>
+  <li><b>方剂反向</b>: 根据匹配案例统计方剂频次, 输出 Top 5 方剂</li>
+  <li><b>评分</b>: 完全匹配 100 分, 子集匹配按 交集/并集 比</li>
+</ol>
+</div>
+
+<div class="section" style="text-align:center;font-size:12px;color:var(--muted)">
+  张锡纯脉象组合查询 · v2.7.11 · 2026-07-04<br>
+  数据: <code>combo_index.json</code> · 算法: 倒排索引 + 子集匹配 + 频次加权
+</div>
+
+</div>
+
+<script>
+let INDEX = null;
+let SELECTED_PULSE = new Set();
+let SELECTED_ZX = new Set();
+
+const PULSE_LIST = ['浮','沉','伏','迟','数','缓','虚','实','滑','涩','弦','紧','细','微','弱','洪','大','长','短','濡','芤','牢','动','促','结','代','散'];
+const ZX_LIST = ['弦长有力','重按不实','按之不实','重按甚实','重按无','按之即无','上盛下虚','两尺无根','两尺不任','关前','右寸独','弦硬而长','重按无力','按之有力','按之虚','参伍不调','六脉皆闭','和缓'];
+
+async function loadIndex() {
+  const r = await fetch('assets/data/combo_index.json');
+  INDEX = await r.json();
+  // 渲染脉象按钮
+  const pulseFreq = {};
+  for (const k of Object.keys(INDEX.signature_index)) {
+    if (!k.includes('|')) pulseFreq[k] = INDEX.signature_index[k].length;
+  }
+  const pp = document.getElementById('pulse-picker');
+  pp.innerHTML = PULSE_LIST.map(p => {
+    const c = pulseFreq[p] || 0;
+    return `<div class="pulse-btn" data-pulse="${p}" onclick="togglePulse('${p}')">
+      ${p}<span class="cnt">${c} 案</span>
+    </div>`;
+  }).join('');
+  // 渲染特色脉按钮
+  const zxFreq = {};
+  for (const k of Object.keys(INDEX.combo_index)) {
+    if (k.startsWith('+|')) {
+      const parts = k.split('|');
+      const zx = parts[parts.length - 1];
+      zxFreq[zx] = (zxFreq[zx] || 0) + INDEX.combo_index[k].length;
+    }
+  }
+  const zp = document.getElementById('zx-picker');
+  zp.innerHTML = ZX_LIST.map(z => {
+    const c = zxFreq[z] || 0;
+    return `<div class="zx-btn" data-zx="${z}" onclick="toggleZX('${z}')">
+      ${z}<span class="cnt">${c} 案</span>
+    </div>`;
+  }).join('');
+  // 统计
+  document.getElementById('stat-combo').textContent = INDEX.stats.total_pure_combos;
+  document.getElementById('stat-sig').textContent = INDEX.stats.total_signature_keys;
+  document.getElementById('stat-formula').textContent = INDEX.stats.total_formulas_indexed;
+  document.getElementById('stat-syn').textContent = INDEX.stats.total_syndrome_kw;
+  document.getElementById('stat-case').textContent = Object.keys(INDEX.case_light_index).length;
+}
+
+function togglePulse(p) {
+  if (SELECTED_PULSE.has(p)) SELECTED_PULSE.delete(p);
+  else SELECTED_PULSE.add(p);
+  document.querySelectorAll(`.pulse-btn[data-pulse="${p}"]`).forEach(b => b.classList.toggle('on'));
+  updateCurrent();
+}
+
+function toggleZX(z) {
+  if (SELECTED_ZX.has(z)) SELECTED_ZX.delete(z);
+  else SELECTED_ZX.add(z);
+  document.querySelectorAll(`.zx-btn[data-zx="${z}"]`).forEach(b => b.classList.toggle('on'));
+  updateCurrent();
+}
+
+function updateCurrent() {
+  const all = [...SELECTED_PULSE, ...[...SELECTED_ZX].map(z => `[${z}]`)];
+  document.getElementById('current-picks').textContent = all.length ? all.join(' + ') : '(未选)';
+}
+
+function clearAll() {
+  SELECTED_PULSE.clear();
+  SELECTED_ZX.clear();
+  document.querySelectorAll('.pulse-btn, .zx-btn').forEach(b => b.classList.remove('on'));
+  updateCurrent();
+  document.getElementById('result-section').style.display = 'none';
+}
+
+// 完全匹配: 倒排索引直接查
+function doQuery() {
+  if (!INDEX) return;
+  const pulse = [...SELECTED_PULSE].sort();
+  const zx = [...SELECTED_ZX];
+  if (!pulse.length && !zx.length) {
+    alert('请至少勾选一个脉象或特色脉');
+    return;
+  }
+  // 完整组合查询
+  let matched = [];
+  let mode = '';
+  if (pulse.length) {
+    const key = pulse.join('|');
+    if (INDEX.combo_index[key]) {
+      matched = INDEX.combo_index[key].map(cid => ({
+        cid, score: 100, mode: 'exact', reason: '完整组合匹配'
+      }));
+      mode = 'exact';
+    } else {
+      // 子集匹配
+      matched = subsetMatch(pulse);
+      mode = 'subset';
+    }
+  }
+  // 脉+特色脉组合
+  if (pulse.length && zx.length) {
+    const zxKey = '+|' + pulse.join('|') + '|' + zx.join('|');
+    if (INDEX.combo_index[zxKey]) {
+      const zxMatched = INDEX.combo_index[zxKey].map(cid => ({
+        cid, score: 110, mode: 'exact+zx', reason: '脉+特色 完全匹配'
+      }));
+      matched = matched.concat(zxMatched);
+    }
+  }
+  // 排序去重
+  const uniq = {};
+  for (const m of matched) {
+    if (!uniq[m.cid] || uniq[m.cid].score < m.score) uniq[m.cid] = m;
+  }
+  const final = Object.values(uniq).sort((a, b) => b.score - a.score).slice(0, 20);
+  renderResult(final, mode, pulse, zx);
+}
+
+// 子集匹配 (推荐): 累加每个子集的得分
+function subsetQuery() {
+  if (!INDEX) return;
+  const pulse = [...SELECTED_PULSE].sort();
+  const zx = [...SELECTED_ZX];
+  if (!pulse.length) {
+    alert('请勾选至少 1 个脉象');
+    return;
+  }
+  const matched = subsetMatch(pulse);
+  const final = matched.sort((a, b) => b.score - a.score).slice(0, 30);
+  renderResult(final, 'subset', pulse, zx);
+}
+
+function subsetMatch(pulse) {
+  // 对每个 1-2 子集查 signature_index, 累加得分
+  const scores = {};
+  // 1 脉子集
+  for (const p of pulse) {
+    if (INDEX.signature_index[p]) {
+      for (const cid of INDEX.signature_index[p]) {
+        scores[cid] = (scores[cid] || 0) + 10;
+      }
+    }
+  }
+  // 2 脉子集
+  for (let i = 0; i < pulse.length; i++) {
+    for (let j = i + 1; j < pulse.length; j++) {
+      const k = [pulse[i], pulse[j]].sort().join('|');
+      if (INDEX.signature_index[k]) {
+        for (const cid of INDEX.signature_index[k]) {
+          scores[cid] = (scores[cid] || 0) + 30;  // 2 脉共现权重高
+        }
+      }
+    }
+  }
+  return Object.entries(scores).map(([cid, score]) => ({
+    cid: parseInt(cid), score, mode: 'subset', reason: '子集匹配'
+  }));
+}
+
+function renderResult(matched, mode, pulse, zx) {
+  document.getElementById('result-section').style.display = 'block';
+  // 汇总
+  const formulaCount = {};
+  for (const m of matched) {
+    const c = INDEX.case_light_index[m.cid];
+    if (c && c.formulas) {
+      for (const f of c.formulas) {
+        formulaCount[f] = (formulaCount[f] || 0) + 1;
+      }
+    }
+  }
+  const topFormulas = Object.entries(formulaCount).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const modeLabel = mode === 'exact' ? '✅ 完全匹配 (倒排索引直查)' :
+                    mode === 'subset' ? '🎯 子集匹配 (累加得分)' : mode;
+  document.getElementById('result-summary').innerHTML = `
+    <b>${modeLabel}</b><br>
+    输入: <b>${pulse.join(' + ')}</b>${zx.length ? ' + 张氏特色 <b>' + zx.join(' + ') + '</b>' : ''}<br>
+    匹配案例: <b>${matched.length}</b> 案<br>
+    Top 5 方剂: ${topFormulas.map(([f, c]) => `<span class="rc-formula">${f}</span> <span style="color:#888;font-size:12px">(${c} 案)</span>`).join(' · ') || '(无)'}
+  `;
+  // 列表
+  if (!matched.length) {
+    document.getElementById('result-list').innerHTML = '<div class="empty">😶 无匹配案例, 试试减少脉象或换成 Top 5 常见脉</div>';
+    return;
+  }
+  const html = matched.map((m, i) => {
+    const c = INDEX.case_light_index[m.cid];
+    if (!c) return '';
+    const isExact = m.mode === 'exact' || m.mode === 'exact+zx';
+    return `
+      <div class="result-card ${isExact ? '' : 'partial'}">
+        <div class="rc-head">
+          <span class="rc-id">#${m.cid}</span>
+          <span class="match-mode ${isExact ? '' : 'partial'}">${isExact ? '完全' : '子集'} ${m.score}分</span>
+          <span class="rc-title">${c.title}</span>
+        </div>
+        <div style="margin-top:6px">
+          ${(c.pulse_chars || []).map(p => `<span class="rc-pulse">${p}</span>`).join('')}
+          ${(c.zx_special || []).map(z => `<span class="rc-pulse" style="color:var(--gold);border-color:var(--gold)">${z}</span>`).join('')}
+          ${c.formulas && c.formulas.length ? '<span style="margin-left:8px">' + c.formulas.map(f => `<span class="rc-formula">${f}</span>`).join(' ') + '</span>' : ''}
+          ${c.efficacy ? `<span class="rc-effic" style="margin-left:8px">${c.efficacy}</span>` : ''}
+        </div>
+        ${c.diagnosis ? `<div class="rc-diag">📋 ${c.diagnosis}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+  document.getElementById('result-list').innerHTML = html;
+}
+
+loadIndex();
+</script>
+</body>
+</html>
