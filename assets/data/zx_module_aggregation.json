@@ -1,0 +1,5639 @@
+{
+  "version": "zx_module_aggregation v1.0",
+  "method": "7 大模块分类 + 模块内所有方剂跨方剂整合",
+  "modules": [
+    {
+      "mod_id": "1_气虚虚劳与急救",
+      "name": "气虚虚劳与急救",
+      "desc": "治气虚/阴虚/虚劳/阴阳离决/大汗/出血/休克",
+      "formula_count": 30,
+      "total_cases": 36,
+      "total_pulse": 120,
+      "total_length": 33044,
+      "items": [
+        {
+          "chap_id": "2",
+          "formula_name": "十全育真汤",
+          "sub_case_count": 1,
+          "content_length": 4422,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 2
+        },
+        {
+          "chap_id": "3",
+          "formula_name": "醴泉饮",
+          "sub_case_count": 1,
+          "content_length": 2206,
+          "pulse_count": 16,
+          "yao_count": 17,
+          "case_id": 3
+        },
+        {
+          "chap_id": "4",
+          "formula_name": "一味薯蓣饮",
+          "sub_case_count": 4,
+          "content_length": 1136,
+          "pulse_count": 3,
+          "yao_count": 8,
+          "case_id": 4
+        },
+        {
+          "chap_id": "5",
+          "formula_name": "参麦汤",
+          "sub_case_count": 1,
+          "content_length": 2113,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 5
+        },
+        {
+          "chap_id": "6",
+          "formula_name": "珠玉二宝粥",
+          "sub_case_count": 1,
+          "content_length": 667,
+          "pulse_count": 5,
+          "yao_count": 3,
+          "case_id": 6
+        },
+        {
+          "chap_id": "7",
+          "formula_name": "沃雪汤",
+          "sub_case_count": 1,
+          "content_length": 265,
+          "pulse_count": 1,
+          "yao_count": 0,
+          "case_id": 7
+        },
+        {
+          "chap_id": "8",
+          "formula_name": "水晶桃",
+          "sub_case_count": 1,
+          "content_length": 502,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 8
+        },
+        {
+          "chap_id": "9",
+          "formula_name": "既济汤",
+          "sub_case_count": 1,
+          "content_length": 965,
+          "pulse_count": 2,
+          "yao_count": 1,
+          "case_id": 9
+        },
+        {
+          "chap_id": "10",
+          "formula_name": "来复汤",
+          "sub_case_count": 2,
+          "content_length": 1357,
+          "pulse_count": 14,
+          "yao_count": 6,
+          "case_id": 10
+        },
+        {
+          "chap_id": "11",
+          "formula_name": "镇摄汤",
+          "sub_case_count": 2,
+          "content_length": 945,
+          "pulse_count": 7,
+          "yao_count": 1,
+          "case_id": 11
+        },
+        {
+          "chap_id": "12",
+          "formula_name": "敦复汤",
+          "sub_case_count": 1,
+          "content_length": 905,
+          "pulse_count": 3,
+          "yao_count": 9,
+          "case_id": 12
+        },
+        {
+          "chap_id": "13",
+          "formula_name": "敦复汤",
+          "sub_case_count": 1,
+          "content_length": 1366,
+          "pulse_count": 10,
+          "yao_count": 4,
+          "case_id": 13
+        },
+        {
+          "chap_id": "19",
+          "formula_name": "薯蓣纳气汤",
+          "sub_case_count": 1,
+          "content_length": 905,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 19
+        },
+        {
+          "chap_id": "50",
+          "formula_name": "一味铁养汤",
+          "sub_case_count": 1,
+          "content_length": 955,
+          "pulse_count": 5,
+          "yao_count": 9,
+          "case_id": 50
+        },
+        {
+          "chap_id": "64",
+          "formula_name": "薯蓣半夏粥",
+          "sub_case_count": 1,
+          "content_length": 753,
+          "pulse_count": 2,
+          "yao_count": 4,
+          "case_id": 64
+        },
+        {
+          "chap_id": "65",
+          "formula_name": "急救回生丹",
+          "sub_case_count": 1,
+          "content_length": 1037,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 65
+        },
+        {
+          "chap_id": "67",
+          "formula_name": "急救回阳汤",
+          "sub_case_count": 1,
+          "content_length": 2946,
+          "pulse_count": 5,
+          "yao_count": 15,
+          "case_id": 67
+        },
+        {
+          "chap_id": "70",
+          "formula_name": "薯蓣粥",
+          "sub_case_count": 1,
+          "content_length": 1008,
+          "pulse_count": 4,
+          "yao_count": 3,
+          "case_id": 70
+        },
+        {
+          "chap_id": "71",
+          "formula_name": "薯蓣鸡子黄粥",
+          "sub_case_count": 2,
+          "content_length": 320,
+          "pulse_count": 3,
+          "yao_count": 0,
+          "case_id": 71
+        },
+        {
+          "chap_id": "72",
+          "formula_name": "薯蓣苜汤",
+          "sub_case_count": 1,
+          "content_length": 454,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 72
+        },
+        {
+          "chap_id": "131",
+          "formula_name": "一味莱菔子汤",
+          "sub_case_count": 1,
+          "content_length": 366,
+          "pulse_count": 2,
+          "yao_count": 1,
+          "case_id": 131
+        },
+        {
+          "chap_id": "179",
+          "formula_name": "人参解",
+          "sub_case_count": 1,
+          "content_length": 625,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 180
+        },
+        {
+          "chap_id": "183",
+          "formula_name": "山萸肉解",
+          "sub_case_count": 1,
+          "content_length": 1603,
+          "pulse_count": 12,
+          "yao_count": 9,
+          "case_id": 184
+        },
+        {
+          "chap_id": "355",
+          "formula_name": "虚劳温病皆忌橘红说",
+          "sub_case_count": 1,
+          "content_length": 730,
+          "pulse_count": 4,
+          "yao_count": 12,
+          "case_id": 357
+        },
+        {
+          "chap_id": "374",
+          "formula_name": "答庞××问大便脱肛治法",
+          "sub_case_count": 1,
+          "content_length": 108,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 376
+        },
+        {
+          "chap_id": "399",
+          "formula_name": "虚劳证阳亢阴亏",
+          "sub_case_count": 1,
+          "content_length": 687,
+          "pulse_count": 6,
+          "yao_count": 6,
+          "case_id": 399
+        },
+        {
+          "chap_id": "400",
+          "formula_name": "虚劳兼劳碌过度",
+          "sub_case_count": 1,
+          "content_length": 866,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 400
+        },
+        {
+          "chap_id": "402",
+          "formula_name": "虚劳咳嗽兼外感实热证",
+          "sub_case_count": 1,
+          "content_length": 874,
+          "pulse_count": 6,
+          "yao_count": 9,
+          "case_id": 402
+        },
+        {
+          "chap_id": "521",
+          "formula_name": "霍乱脱证",
+          "sub_case_count": 1,
+          "content_length": 693,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 521
+        },
+        {
+          "chap_id": "522",
+          "formula_name": "霍乱暴脱证",
+          "sub_case_count": 1,
+          "content_length": 1265,
+          "pulse_count": 4,
+          "yao_count": 5,
+          "case_id": 522
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "数",
+            15
+          ],
+          [
+            "弦",
+            11
+          ],
+          [
+            "虚",
+            10
+          ],
+          [
+            "细",
+            8
+          ],
+          [
+            "微",
+            6
+          ],
+          [
+            "实",
+            6
+          ],
+          [
+            "弱",
+            5
+          ],
+          [
+            "滑",
+            4
+          ],
+          [
+            "洪",
+            4
+          ],
+          [
+            "长",
+            3
+          ],
+          [
+            "迟",
+            3
+          ],
+          [
+            "濡",
+            2
+          ],
+          [
+            "动",
+            2
+          ],
+          [
+            "紧",
+            1
+          ],
+          [
+            "散",
+            1
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "浮",
+            9
+          ],
+          [
+            "沉",
+            5
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "无根",
+            4
+          ],
+          [
+            "有力",
+            4
+          ],
+          [
+            "有根",
+            1
+          ]
+        ],
+        "至数Top5": [
+          [
+            "七至",
+            3
+          ],
+          [
+            "六至",
+            2
+          ],
+          [
+            "八至",
+            1
+          ],
+          [
+            "五至",
+            1
+          ],
+          [
+            "四至",
+            1
+          ]
+        ],
+        "重按总案例数": 1,
+        "分诊总案例数": 5,
+        "独字总案例数": 0,
+        "证候Top20": [
+          [
+            "热",
+            22
+          ],
+          [
+            "喘",
+            16
+          ],
+          [
+            "痰",
+            15
+          ],
+          [
+            "血",
+            14
+          ],
+          [
+            "咳",
+            11
+          ],
+          [
+            "发热",
+            11
+          ],
+          [
+            "重",
+            11
+          ],
+          [
+            "咳嗽",
+            8
+          ],
+          [
+            "泄泻",
+            8
+          ],
+          [
+            "汗出",
+            7
+          ],
+          [
+            "怔忡",
+            7
+          ],
+          [
+            "木",
+            7
+          ],
+          [
+            "呕吐",
+            6
+          ],
+          [
+            "酸",
+            6
+          ],
+          [
+            "冷",
+            6
+          ],
+          [
+            "寒热",
+            4
+          ],
+          [
+            "吐泻",
+            4
+          ],
+          [
+            "小便不利",
+            4
+          ],
+          [
+            "胀",
+            3
+          ],
+          [
+            "恶寒",
+            3
+          ]
+        ],
+        "证候不重复数": 45,
+        "药物Top20": [
+          [
+            "山药",
+            21
+          ],
+          [
+            "生山药",
+            15
+          ],
+          [
+            "玄参",
+            10
+          ],
+          [
+            "甘草",
+            9
+          ],
+          [
+            "人参",
+            8
+          ],
+          [
+            "龙骨",
+            6
+          ],
+          [
+            "牡蛎",
+            5
+          ],
+          [
+            "枸杞",
+            5
+          ],
+          [
+            "熟地",
+            4
+          ],
+          [
+            "生地",
+            4
+          ],
+          [
+            "薄荷",
+            4
+          ],
+          [
+            "党参",
+            4
+          ],
+          [
+            "沙参",
+            4
+          ],
+          [
+            "天冬",
+            3
+          ],
+          [
+            "杏仁",
+            3
+          ],
+          [
+            "朱砂",
+            3
+          ],
+          [
+            "半夏",
+            3
+          ],
+          [
+            "山萸肉",
+            3
+          ],
+          [
+            "白术",
+            2
+          ],
+          [
+            "石斛",
+            2
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加多，身体强壮",
+            2
+          ],
+          [
+            "加三棱",
+            1
+          ],
+          [
+            "加，今已完全成功矣",
+            1
+          ],
+          [
+            "加滋阴之药",
+            1
+          ],
+          [
+            "加减服之",
+            1
+          ],
+          [
+            "加鸡内金二钱",
+            1
+          ],
+          [
+            "加增，心中仍有热时",
+            1
+          ],
+          [
+            "加知母二钱",
+            1
+          ],
+          [
+            "加生地",
+            1
+          ],
+          [
+            "加玄参三钱",
+            1
+          ]
+        ],
+        "辨证原句Top3": [
+          "按∶\\x短气与喘原迥异。",
+          "按∶\\x方书名咳喘曰“咳逆”，喘曰“喘逆”，因二证多由逆气上干也。",
+          "此证得之努力任重 \n，胸中大气因努力而陷，所以脉现沉濡，且其背恶寒而兼发紧，此亦大气下陷之征也。"
+        ]
+      }
+    },
+    {
+      "mod_id": "2_胸腹气机升降",
+      "name": "胸腹气机升降",
+      "desc": "治大气下陷/气逆/胸闷/胃下垂/噎膈/呕/痞",
+      "formula_count": 38,
+      "total_cases": 63,
+      "total_pulse": 218,
+      "total_length": 54702,
+      "items": [
+        {
+          "chap_id": "14",
+          "formula_name": "升陷汤",
+          "sub_case_count": 20,
+          "content_length": 14683,
+          "pulse_count": 82,
+          "yao_count": 73,
+          "case_id": 14
+        },
+        {
+          "chap_id": "15",
+          "formula_name": "回阳升陷汤",
+          "sub_case_count": 1,
+          "content_length": 1043,
+          "pulse_count": 3,
+          "yao_count": 1,
+          "case_id": 15
+        },
+        {
+          "chap_id": "16",
+          "formula_name": "理郁升陷汤",
+          "sub_case_count": 1,
+          "content_length": 901,
+          "pulse_count": 10,
+          "yao_count": 12,
+          "case_id": 16
+        },
+        {
+          "chap_id": "17",
+          "formula_name": "醒脾升陷汤",
+          "sub_case_count": 1,
+          "content_length": 1082,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 17
+        },
+        {
+          "chap_id": "18",
+          "formula_name": "参赭镇气汤",
+          "sub_case_count": 2,
+          "content_length": 1498,
+          "pulse_count": 6,
+          "yao_count": 8,
+          "case_id": 18
+        },
+        {
+          "chap_id": "62",
+          "formula_name": "参赭培气汤",
+          "sub_case_count": 3,
+          "content_length": 2811,
+          "pulse_count": 13,
+          "yao_count": 13,
+          "case_id": 62
+        },
+        {
+          "chap_id": "63",
+          "formula_name": "镇逆汤",
+          "sub_case_count": 1,
+          "content_length": 107,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 63
+        },
+        {
+          "chap_id": "127",
+          "formula_name": "镇逆白虎汤",
+          "sub_case_count": 1,
+          "content_length": 994,
+          "pulse_count": 1,
+          "yao_count": 4,
+          "case_id": 127
+        },
+        {
+          "chap_id": "132",
+          "formula_name": "镇逆承气汤",
+          "sub_case_count": 1,
+          "content_length": 687,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 132
+        },
+        {
+          "chap_id": "137",
+          "formula_name": "升降汤",
+          "sub_case_count": 1,
+          "content_length": 643,
+          "pulse_count": 1,
+          "yao_count": 6,
+          "case_id": 137
+        },
+        {
+          "chap_id": "138",
+          "formula_name": "培脾舒肝汤",
+          "sub_case_count": 1,
+          "content_length": 706,
+          "pulse_count": 2,
+          "yao_count": 0,
+          "case_id": 138
+        },
+        {
+          "chap_id": "146",
+          "formula_name": "理冲汤",
+          "sub_case_count": 1,
+          "content_length": 2432,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 146
+        },
+        {
+          "chap_id": "147",
+          "formula_name": "理冲丸",
+          "sub_case_count": 1,
+          "content_length": 983,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 147
+        },
+        {
+          "chap_id": "148",
+          "formula_name": "安冲汤",
+          "sub_case_count": 3,
+          "content_length": 1182,
+          "pulse_count": 7,
+          "yao_count": 10,
+          "case_id": 148
+        },
+        {
+          "chap_id": "149",
+          "formula_name": "固冲汤",
+          "sub_case_count": 2,
+          "content_length": 1959,
+          "pulse_count": 5,
+          "yao_count": 2,
+          "case_id": 149
+        },
+        {
+          "chap_id": "150",
+          "formula_name": "温冲汤",
+          "sub_case_count": 1,
+          "content_length": 691,
+          "pulse_count": 0,
+          "yao_count": 10,
+          "case_id": 150
+        },
+        {
+          "chap_id": "270",
+          "formula_name": "太阳病大陷胸汤证",
+          "sub_case_count": 1,
+          "content_length": 1830,
+          "pulse_count": 6,
+          "yao_count": 4,
+          "case_id": 272
+        },
+        {
+          "chap_id": "271",
+          "formula_name": "太阳病小陷胸汤证",
+          "sub_case_count": 1,
+          "content_length": 1965,
+          "pulse_count": 7,
+          "yao_count": 11,
+          "case_id": 273
+        },
+        {
+          "chap_id": "326",
+          "formula_name": "论胃病噎膈（即胃癌）治法及反胃治法",
+          "sub_case_count": 1,
+          "content_length": 2333,
+          "pulse_count": 1,
+          "yao_count": 12,
+          "case_id": 328
+        },
+        {
+          "chap_id": "327",
+          "formula_name": "论胃气不降治法",
+          "sub_case_count": 1,
+          "content_length": 1608,
+          "pulse_count": 8,
+          "yao_count": 8,
+          "case_id": 329
+        },
+        {
+          "chap_id": "338",
+          "formula_name": "论冲气上冲之病因病状病脉及治法",
+          "sub_case_count": 1,
+          "content_length": 873,
+          "pulse_count": 8,
+          "yao_count": 11,
+          "case_id": 340
+        },
+        {
+          "chap_id": "372",
+          "formula_name": "答章××问腹内动气冲气症治法",
+          "sub_case_count": 1,
+          "content_length": 551,
+          "pulse_count": 1,
+          "yao_count": 7,
+          "case_id": 374
+        },
+        {
+          "chap_id": "411",
+          "formula_name": "大气下陷兼小便不禁",
+          "sub_case_count": 1,
+          "content_length": 1050,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 411
+        },
+        {
+          "chap_id": "412",
+          "formula_name": "大气下陷",
+          "sub_case_count": 1,
+          "content_length": 422,
+          "pulse_count": 2,
+          "yao_count": 4,
+          "case_id": 412
+        },
+        {
+          "chap_id": "413",
+          "formula_name": "大气下陷身冷",
+          "sub_case_count": 1,
+          "content_length": 749,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 413
+        },
+        {
+          "chap_id": "414",
+          "formula_name": "大气陷兼消食",
+          "sub_case_count": 1,
+          "content_length": 1093,
+          "pulse_count": 5,
+          "yao_count": 4,
+          "case_id": 414
+        },
+        {
+          "chap_id": "415",
+          "formula_name": "大气陷兼疝气",
+          "sub_case_count": 1,
+          "content_length": 731,
+          "pulse_count": 3,
+          "yao_count": 8,
+          "case_id": 415
+        },
+        {
+          "chap_id": "416",
+          "formula_name": "冲气上冲兼奔豚",
+          "sub_case_count": 1,
+          "content_length": 728,
+          "pulse_count": 1,
+          "yao_count": 10,
+          "case_id": 416
+        },
+        {
+          "chap_id": "417",
+          "formula_name": "胃气不降",
+          "sub_case_count": 1,
+          "content_length": 583,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 417
+        },
+        {
+          "chap_id": "418",
+          "formula_name": "肝气郁兼胃气不降",
+          "sub_case_count": 1,
+          "content_length": 1226,
+          "pulse_count": 3,
+          "yao_count": 12,
+          "case_id": 418
+        },
+        {
+          "chap_id": "419",
+          "formula_name": "胃气不降",
+          "sub_case_count": 1,
+          "content_length": 458,
+          "pulse_count": 3,
+          "yao_count": 5,
+          "case_id": 419
+        },
+        {
+          "chap_id": "437",
+          "formula_name": "噎膈",
+          "sub_case_count": 1,
+          "content_length": 1035,
+          "pulse_count": 4,
+          "yao_count": 6,
+          "case_id": 437
+        },
+        {
+          "chap_id": "438",
+          "formula_name": "反胃吐食",
+          "sub_case_count": 1,
+          "content_length": 523,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 438
+        },
+        {
+          "chap_id": "478",
+          "formula_name": "温病兼大气下陷",
+          "sub_case_count": 1,
+          "content_length": 1318,
+          "pulse_count": 6,
+          "yao_count": 11,
+          "case_id": 478
+        },
+        {
+          "chap_id": "503",
+          "formula_name": "温病兼呕吐",
+          "sub_case_count": 1,
+          "content_length": 738,
+          "pulse_count": 4,
+          "yao_count": 2,
+          "case_id": 503
+        },
+        {
+          "chap_id": "504",
+          "formula_name": "温病兼呕吐",
+          "sub_case_count": 1,
+          "content_length": 735,
+          "pulse_count": 5,
+          "yao_count": 4,
+          "case_id": 504
+        },
+        {
+          "chap_id": "514",
+          "formula_name": "温病兼冲气上冲",
+          "sub_case_count": 1,
+          "content_length": 1072,
+          "pulse_count": 4,
+          "yao_count": 4,
+          "case_id": 514
+        },
+        {
+          "chap_id": "524",
+          "formula_name": "受妊呕吐",
+          "sub_case_count": 1,
+          "content_length": 679,
+          "pulse_count": 5,
+          "yao_count": 8,
+          "case_id": 524
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "微",
+            23
+          ],
+          [
+            "细",
+            19
+          ],
+          [
+            "数",
+            19
+          ],
+          [
+            "弦",
+            19
+          ],
+          [
+            "弱",
+            17
+          ],
+          [
+            "迟",
+            10
+          ],
+          [
+            "滑",
+            10
+          ],
+          [
+            "长",
+            10
+          ],
+          [
+            "实",
+            9
+          ],
+          [
+            "虚",
+            6
+          ],
+          [
+            "濡",
+            5
+          ],
+          [
+            "动",
+            4
+          ],
+          [
+            "洪",
+            4
+          ],
+          [
+            "短",
+            3
+          ],
+          [
+            "结",
+            3
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "沉",
+            19
+          ],
+          [
+            "浮",
+            11
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "有力",
+            13
+          ],
+          [
+            "无力",
+            13
+          ],
+          [
+            "不起",
+            2
+          ],
+          [
+            "鼓指",
+            1
+          ]
+        ],
+        "至数Top5": [
+          [
+            "五至",
+            4
+          ],
+          [
+            "六至",
+            3
+          ],
+          [
+            "四至",
+            2
+          ],
+          [
+            "百至",
+            1
+          ]
+        ],
+        "重按总案例数": 9,
+        "分诊总案例数": 21,
+        "独字总案例数": 3,
+        "证候Top20": [
+          [
+            "重",
+            35
+          ],
+          [
+            "热",
+            34
+          ],
+          [
+            "血",
+            26
+          ],
+          [
+            "无力",
+            17
+          ],
+          [
+            "胀",
+            16
+          ],
+          [
+            "呕吐",
+            15
+          ],
+          [
+            "短气",
+            14
+          ],
+          [
+            "痰",
+            14
+          ],
+          [
+            "木",
+            13
+          ],
+          [
+            "喘",
+            12
+          ],
+          [
+            "气上冲",
+            12
+          ],
+          [
+            "咳",
+            9
+          ],
+          [
+            "发热",
+            8
+          ],
+          [
+            "气逆",
+            7
+          ],
+          [
+            "冷",
+            7
+          ],
+          [
+            "厥",
+            7
+          ],
+          [
+            "咳嗽",
+            6
+          ],
+          [
+            "气陷",
+            6
+          ],
+          [
+            "怔忡",
+            6
+          ],
+          [
+            "寒热",
+            5
+          ]
+        ],
+        "证候不重复数": 72,
+        "药物Top20": [
+          [
+            "山药",
+            21
+          ],
+          [
+            "柴胡",
+            17
+          ],
+          [
+            "甘草",
+            17
+          ],
+          [
+            "升麻",
+            16
+          ],
+          [
+            "半夏",
+            15
+          ],
+          [
+            "当归",
+            14
+          ],
+          [
+            "牡蛎",
+            12
+          ],
+          [
+            "玄参",
+            10
+          ],
+          [
+            "人参",
+            10
+          ],
+          [
+            "生山药",
+            10
+          ],
+          [
+            "龙骨",
+            10
+          ],
+          [
+            "白术",
+            10
+          ],
+          [
+            "天冬",
+            9
+          ],
+          [
+            "枸杞",
+            8
+          ],
+          [
+            "桂枝",
+            8
+          ],
+          [
+            "桔梗",
+            7
+          ],
+          [
+            "干姜",
+            7
+          ],
+          [
+            "生地",
+            7
+          ],
+          [
+            "枳实",
+            5
+          ],
+          [
+            "陈皮",
+            5
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加龙骨",
+            4
+          ],
+          [
+            "加人参",
+            2
+          ],
+          [
+            "加减治愈",
+            2
+          ],
+          [
+            "加此二药",
+            2
+          ],
+          [
+            "加重也",
+            2
+          ],
+          [
+            "加人参汤",
+            2
+          ],
+          [
+            "加石膏汤辄效",
+            1
+          ],
+          [
+            "加倍，再加玄参四钱",
+            1
+          ],
+          [
+            "加桂汤",
+            1
+          ],
+          [
+            "加玄参四钱",
+            1
+          ]
+        ],
+        "辨证原句Top3": [
+          "按∶\\x此证虽大气下陷，而初则实兼不纳气也。",
+          "此证因阴虚不能纳气，故难于吸。",
+          "此证虽大气下陷，而初则实兼不纳气也。"
+        ]
+      }
+    },
+    {
+      "mod_id": "3_伤寒温病与热病",
+      "name": "伤寒温病与热病",
+      "desc": "治伤寒/温病/热病/外感/发热/疟疾/霍乱",
+      "formula_count": 107,
+      "total_cases": 120,
+      "total_pulse": 741,
+      "total_length": 162632,
+      "items": [
+        {
+          "chap_id": "81",
+          "formula_name": "通变白虎加人参汤",
+          "sub_case_count": 2,
+          "content_length": 2315,
+          "pulse_count": 19,
+          "yao_count": 15,
+          "case_id": 81
+        },
+        {
+          "chap_id": "93",
+          "formula_name": "升麻黄汤",
+          "sub_case_count": 1,
+          "content_length": 1012,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 93
+        },
+        {
+          "chap_id": "109",
+          "formula_name": "麻黄加知母汤",
+          "sub_case_count": 1,
+          "content_length": 1571,
+          "pulse_count": 6,
+          "yao_count": 6,
+          "case_id": 109
+        },
+        {
+          "chap_id": "110",
+          "formula_name": "加味桂枝代粥汤",
+          "sub_case_count": 1,
+          "content_length": 1609,
+          "pulse_count": 5,
+          "yao_count": 5,
+          "case_id": 110
+        },
+        {
+          "chap_id": "112",
+          "formula_name": "馏水石膏饮",
+          "sub_case_count": 1,
+          "content_length": 649,
+          "pulse_count": 7,
+          "yao_count": 5,
+          "case_id": 112
+        },
+        {
+          "chap_id": "113",
+          "formula_name": "通变大柴胡汤",
+          "sub_case_count": 1,
+          "content_length": 552,
+          "pulse_count": 3,
+          "yao_count": 4,
+          "case_id": 113
+        },
+        {
+          "chap_id": "115",
+          "formula_name": "清解汤",
+          "sub_case_count": 1,
+          "content_length": 2663,
+          "pulse_count": 3,
+          "yao_count": 4,
+          "case_id": 115
+        },
+        {
+          "chap_id": "116",
+          "formula_name": "凉解汤",
+          "sub_case_count": 1,
+          "content_length": 289,
+          "pulse_count": 1,
+          "yao_count": 3,
+          "case_id": 116
+        },
+        {
+          "chap_id": "117",
+          "formula_name": "寒解汤",
+          "sub_case_count": 5,
+          "content_length": 2493,
+          "pulse_count": 24,
+          "yao_count": 10,
+          "case_id": 117
+        },
+        {
+          "chap_id": "118",
+          "formula_name": "石膏阿斯匹林汤",
+          "sub_case_count": 1,
+          "content_length": 383,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 118
+        },
+        {
+          "chap_id": "120",
+          "formula_name": "宣解汤",
+          "sub_case_count": 1,
+          "content_length": 343,
+          "pulse_count": 1,
+          "yao_count": 4,
+          "case_id": 120
+        },
+        {
+          "chap_id": "121",
+          "formula_name": "滋阴宣解汤",
+          "sub_case_count": 1,
+          "content_length": 772,
+          "pulse_count": 3,
+          "yao_count": 8,
+          "case_id": 121
+        },
+        {
+          "chap_id": "124",
+          "formula_name": "犹龙汤",
+          "sub_case_count": 1,
+          "content_length": 822,
+          "pulse_count": 5,
+          "yao_count": 3,
+          "case_id": 124
+        },
+        {
+          "chap_id": "125",
+          "formula_name": "仙露汤",
+          "sub_case_count": 1,
+          "content_length": 2860,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 125
+        },
+        {
+          "chap_id": "126",
+          "formula_name": "石膏粳米汤",
+          "sub_case_count": 1,
+          "content_length": 1353,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 126
+        },
+        {
+          "chap_id": "128",
+          "formula_name": "白虎加人参以山药代粳米汤",
+          "sub_case_count": 3,
+          "content_length": 8601,
+          "pulse_count": 65,
+          "yao_count": 40,
+          "case_id": 128
+        },
+        {
+          "chap_id": "133",
+          "formula_name": "青盂汤",
+          "sub_case_count": 1,
+          "content_length": 2887,
+          "pulse_count": 7,
+          "yao_count": 5,
+          "case_id": 133
+        },
+        {
+          "chap_id": "135",
+          "formula_name": "清疹汤",
+          "sub_case_count": 1,
+          "content_length": 1536,
+          "pulse_count": 1,
+          "yao_count": 14,
+          "case_id": 135
+        },
+        {
+          "chap_id": "136",
+          "formula_name": "加味小柴胡汤",
+          "sub_case_count": 1,
+          "content_length": 1489,
+          "pulse_count": 9,
+          "yao_count": 12,
+          "case_id": 136
+        },
+        {
+          "chap_id": "178",
+          "formula_name": "石膏解",
+          "sub_case_count": 4,
+          "content_length": 10098,
+          "pulse_count": 44,
+          "yao_count": 21,
+          "case_id": 178
+        },
+        {
+          "chap_id": "178",
+          "formula_name": "石膏解",
+          "sub_case_count": 4,
+          "content_length": 10072,
+          "pulse_count": 44,
+          "yao_count": 21,
+          "case_id": 179
+        },
+        {
+          "chap_id": "203",
+          "formula_name": "麻黄解",
+          "sub_case_count": 1,
+          "content_length": 1129,
+          "pulse_count": 2,
+          "yao_count": 4,
+          "case_id": 204
+        },
+        {
+          "chap_id": "204",
+          "formula_name": "柴胡解",
+          "sub_case_count": 1,
+          "content_length": 1570,
+          "pulse_count": 1,
+          "yao_count": 7,
+          "case_id": 205
+        },
+        {
+          "chap_id": "205",
+          "formula_name": "桂枝解",
+          "sub_case_count": 1,
+          "content_length": 1108,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 206
+        },
+        {
+          "chap_id": "263",
+          "formula_name": "太阳病桂枝汤证",
+          "sub_case_count": 1,
+          "content_length": 1808,
+          "pulse_count": 6,
+          "yao_count": 6,
+          "case_id": 265
+        },
+        {
+          "chap_id": "264",
+          "formula_name": "太阳病麻黄汤证",
+          "sub_case_count": 1,
+          "content_length": 3201,
+          "pulse_count": 3,
+          "yao_count": 9,
+          "case_id": 266
+        },
+        {
+          "chap_id": "265",
+          "formula_name": "太阳与阳明合病麻黄汤证",
+          "sub_case_count": 1,
+          "content_length": 325,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 267
+        },
+        {
+          "chap_id": "266",
+          "formula_name": "太阳温病麻杏甘石汤证",
+          "sub_case_count": 1,
+          "content_length": 2635,
+          "pulse_count": 9,
+          "yao_count": 11,
+          "case_id": 268
+        },
+        {
+          "chap_id": "276",
+          "formula_name": "太阳阳明合病桂枝加葛根汤证",
+          "sub_case_count": 1,
+          "content_length": 384,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 278
+        },
+        {
+          "chap_id": "277",
+          "formula_name": "太阳阳明合病葛根汤证",
+          "sub_case_count": 1,
+          "content_length": 417,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 279
+        },
+        {
+          "chap_id": "278",
+          "formula_name": "阳明病葛根黄连黄芩汤证",
+          "sub_case_count": 1,
+          "content_length": 1309,
+          "pulse_count": 5,
+          "yao_count": 10,
+          "case_id": 280
+        },
+        {
+          "chap_id": "279",
+          "formula_name": "阳明病白虎汤证",
+          "sub_case_count": 1,
+          "content_length": 5589,
+          "pulse_count": 37,
+          "yao_count": 14,
+          "case_id": 281
+        },
+        {
+          "chap_id": "280",
+          "formula_name": "阳明病白虎加人参汤证",
+          "sub_case_count": 1,
+          "content_length": 3598,
+          "pulse_count": 23,
+          "yao_count": 13,
+          "case_id": 282
+        },
+        {
+          "chap_id": "281",
+          "formula_name": "阳明病三承气汤证",
+          "sub_case_count": 1,
+          "content_length": 5441,
+          "pulse_count": 52,
+          "yao_count": 12,
+          "case_id": 283
+        },
+        {
+          "chap_id": "284",
+          "formula_name": "阳明病麻黄连轺赤小豆汤证",
+          "sub_case_count": 1,
+          "content_length": 1865,
+          "pulse_count": 4,
+          "yao_count": 14,
+          "case_id": 286
+        },
+        {
+          "chap_id": "288",
+          "formula_name": "少阳病小柴胡汤证",
+          "sub_case_count": 1,
+          "content_length": 3240,
+          "pulse_count": 4,
+          "yao_count": 14,
+          "case_id": 290
+        },
+        {
+          "chap_id": "289",
+          "formula_name": "少阳病大柴胡汤证",
+          "sub_case_count": 1,
+          "content_length": 2228,
+          "pulse_count": 2,
+          "yao_count": 9,
+          "case_id": 291
+        },
+        {
+          "chap_id": "292",
+          "formula_name": "太阴病桂枝汤证",
+          "sub_case_count": 1,
+          "content_length": 275,
+          "pulse_count": 5,
+          "yao_count": 3,
+          "case_id": 294
+        },
+        {
+          "chap_id": "294",
+          "formula_name": "太阴病坏证桂枝加芍药汤及桂枝加大黄汤证",
+          "sub_case_count": 1,
+          "content_length": 647,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 296
+        },
+        {
+          "chap_id": "296",
+          "formula_name": "少阴病麻黄附子细辛汤证",
+          "sub_case_count": 1,
+          "content_length": 735,
+          "pulse_count": 7,
+          "yao_count": 8,
+          "case_id": 298
+        },
+        {
+          "chap_id": "305",
+          "formula_name": "少阴病大承气汤证",
+          "sub_case_count": 1,
+          "content_length": 726,
+          "pulse_count": 6,
+          "yao_count": 0,
+          "case_id": 307
+        },
+        {
+          "chap_id": "308",
+          "formula_name": "厥阴病白虎汤证",
+          "sub_case_count": 1,
+          "content_length": 220,
+          "pulse_count": 3,
+          "yao_count": 1,
+          "case_id": 310
+        },
+        {
+          "chap_id": "311",
+          "formula_name": "不分经之病理中丸证、竹叶石膏汤证",
+          "sub_case_count": 1,
+          "content_length": 990,
+          "pulse_count": 0,
+          "yao_count": 12,
+          "case_id": 313
+        },
+        {
+          "chap_id": "312",
+          "formula_name": "温病遗方",
+          "sub_case_count": 1,
+          "content_length": 2971,
+          "pulse_count": 15,
+          "yao_count": 18,
+          "case_id": 314
+        },
+        {
+          "chap_id": "313",
+          "formula_name": "伤寒风温始终皆宜汗解说",
+          "sub_case_count": 1,
+          "content_length": 1135,
+          "pulse_count": 3,
+          "yao_count": 12,
+          "case_id": 315
+        },
+        {
+          "chap_id": "315",
+          "formula_name": "温病之治法详于伤寒论解",
+          "sub_case_count": 1,
+          "content_length": 2760,
+          "pulse_count": 14,
+          "yao_count": 12,
+          "case_id": 317
+        },
+        {
+          "chap_id": "316",
+          "formula_name": "论伤寒温病神昏谵语之原因及治法",
+          "sub_case_count": 1,
+          "content_length": 2425,
+          "pulse_count": 24,
+          "yao_count": 9,
+          "case_id": 318
+        },
+        {
+          "chap_id": "317",
+          "formula_name": "论吴又可达原饮不可以治温病",
+          "sub_case_count": 1,
+          "content_length": 752,
+          "pulse_count": 2,
+          "yao_count": 3,
+          "case_id": 319
+        },
+        {
+          "chap_id": "332",
+          "formula_name": "论霍乱治法",
+          "sub_case_count": 1,
+          "content_length": 3493,
+          "pulse_count": 8,
+          "yao_count": 18,
+          "case_id": 334
+        },
+        {
+          "chap_id": "334",
+          "formula_name": "论黄胆有内伤外感及内伤外感之兼证并详治法",
+          "sub_case_count": 1,
+          "content_length": 3880,
+          "pulse_count": 8,
+          "yao_count": 22,
+          "case_id": 336
+        },
+        {
+          "chap_id": "342",
+          "formula_name": "论四肢疼痛其病因凉热各异之治法",
+          "sub_case_count": 1,
+          "content_length": 778,
+          "pulse_count": 6,
+          "yao_count": 6,
+          "case_id": 344
+        },
+        {
+          "chap_id": "347",
+          "formula_name": "详论猩红热治法",
+          "sub_case_count": 1,
+          "content_length": 2347,
+          "pulse_count": 9,
+          "yao_count": 13,
+          "case_id": 349
+        },
+        {
+          "chap_id": "357",
+          "formula_name": "目疾由于伏气化热者治法",
+          "sub_case_count": 1,
+          "content_length": 483,
+          "pulse_count": 2,
+          "yao_count": 2,
+          "case_id": 359
+        },
+        {
+          "chap_id": "359",
+          "formula_name": "治幼年温热证宜预防其出痧疹",
+          "sub_case_count": 1,
+          "content_length": 1468,
+          "pulse_count": 7,
+          "yao_count": 11,
+          "case_id": 361
+        },
+        {
+          "chap_id": "371",
+          "formula_name": "答胡××问小儿暑天水泻及由泻变痢由疟转痢之治法",
+          "sub_case_count": 1,
+          "content_length": 492,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 373
+        },
+        {
+          "chap_id": "375",
+          "formula_name": "答徐××读《伤寒论》质疑四则",
+          "sub_case_count": 1,
+          "content_length": 1528,
+          "pulse_count": 15,
+          "yao_count": 0,
+          "case_id": 377
+        },
+        {
+          "chap_id": "377",
+          "formula_name": "答王××问《神州医药学报》何以用真武汤治其热日夜无休止立效",
+          "sub_case_count": 1,
+          "content_length": 365,
+          "pulse_count": 5,
+          "yao_count": 0,
+          "case_id": 379
+        },
+        {
+          "chap_id": "401",
+          "formula_name": "肺劳咳嗽由于伏气化热所伤证",
+          "sub_case_count": 1,
+          "content_length": 1125,
+          "pulse_count": 2,
+          "yao_count": 12,
+          "case_id": 401
+        },
+        {
+          "chap_id": "403",
+          "formula_name": "劳热咳嗽",
+          "sub_case_count": 1,
+          "content_length": 1109,
+          "pulse_count": 2,
+          "yao_count": 11,
+          "case_id": 403
+        },
+        {
+          "chap_id": "442",
+          "formula_name": "肠结腹疼兼外感实热",
+          "sub_case_count": 1,
+          "content_length": 517,
+          "pulse_count": 3,
+          "yao_count": 3,
+          "case_id": 442
+        },
+        {
+          "chap_id": "454",
+          "formula_name": "黄胆兼外感",
+          "sub_case_count": 1,
+          "content_length": 1281,
+          "pulse_count": 5,
+          "yao_count": 6,
+          "case_id": 454
+        },
+        {
+          "chap_id": "473",
+          "formula_name": "伤寒兼脑膜炎",
+          "sub_case_count": 1,
+          "content_length": 999,
+          "pulse_count": 6,
+          "yao_count": 7,
+          "case_id": 473
+        },
+        {
+          "chap_id": "474",
+          "formula_name": "伤寒脉闭",
+          "sub_case_count": 1,
+          "content_length": 419,
+          "pulse_count": 2,
+          "yao_count": 4,
+          "case_id": 474
+        },
+        {
+          "chap_id": "475",
+          "formula_name": "伤寒脉闭",
+          "sub_case_count": 1,
+          "content_length": 485,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 475
+        },
+        {
+          "chap_id": "476",
+          "formula_name": "少阴伤寒",
+          "sub_case_count": 1,
+          "content_length": 778,
+          "pulse_count": 4,
+          "yao_count": 7,
+          "case_id": 476
+        },
+        {
+          "chap_id": "477",
+          "formula_name": "伤寒兼有伏热证",
+          "sub_case_count": 1,
+          "content_length": 880,
+          "pulse_count": 2,
+          "yao_count": 2,
+          "case_id": 477
+        },
+        {
+          "chap_id": "479",
+          "formula_name": "温病兼气虚气郁",
+          "sub_case_count": 1,
+          "content_length": 1863,
+          "pulse_count": 8,
+          "yao_count": 14,
+          "case_id": 479
+        },
+        {
+          "chap_id": "480",
+          "formula_name": "温病兼吐泻腿抽",
+          "sub_case_count": 1,
+          "content_length": 1509,
+          "pulse_count": 9,
+          "yao_count": 12,
+          "case_id": 480
+        },
+        {
+          "chap_id": "481",
+          "formula_name": "温病少阴证",
+          "sub_case_count": 1,
+          "content_length": 1553,
+          "pulse_count": 11,
+          "yao_count": 8,
+          "case_id": 481
+        },
+        {
+          "chap_id": "482",
+          "formula_name": "温病结胸",
+          "sub_case_count": 1,
+          "content_length": 429,
+          "pulse_count": 2,
+          "yao_count": 0,
+          "case_id": 482
+        },
+        {
+          "chap_id": "483",
+          "formula_name": "温病结胸",
+          "sub_case_count": 1,
+          "content_length": 610,
+          "pulse_count": 3,
+          "yao_count": 5,
+          "case_id": 483
+        },
+        {
+          "chap_id": "484",
+          "formula_name": "温病",
+          "sub_case_count": 1,
+          "content_length": 467,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 484
+        },
+        {
+          "chap_id": "485",
+          "formula_name": "风温",
+          "sub_case_count": 1,
+          "content_length": 944,
+          "pulse_count": 3,
+          "yao_count": 4,
+          "case_id": 485
+        },
+        {
+          "chap_id": "486",
+          "formula_name": "风温兼伏气化热",
+          "sub_case_count": 1,
+          "content_length": 774,
+          "pulse_count": 6,
+          "yao_count": 5,
+          "case_id": 486
+        },
+        {
+          "chap_id": "487",
+          "formula_name": "温病兼痧疹",
+          "sub_case_count": 1,
+          "content_length": 1292,
+          "pulse_count": 8,
+          "yao_count": 4,
+          "case_id": 487
+        },
+        {
+          "chap_id": "488",
+          "formula_name": "温病兼劳力过度",
+          "sub_case_count": 1,
+          "content_length": 668,
+          "pulse_count": 4,
+          "yao_count": 7,
+          "case_id": 488
+        },
+        {
+          "chap_id": "489",
+          "formula_name": "温病兼下痢",
+          "sub_case_count": 1,
+          "content_length": 734,
+          "pulse_count": 4,
+          "yao_count": 5,
+          "case_id": 489
+        },
+        {
+          "chap_id": "490",
+          "formula_name": "温病兼脑膜炎",
+          "sub_case_count": 1,
+          "content_length": 418,
+          "pulse_count": 2,
+          "yao_count": 3,
+          "case_id": 490
+        },
+        {
+          "chap_id": "491",
+          "formula_name": "温热泄泻",
+          "sub_case_count": 1,
+          "content_length": 585,
+          "pulse_count": 1,
+          "yao_count": 5,
+          "case_id": 491
+        },
+        {
+          "chap_id": "492",
+          "formula_name": "温病兼虚热",
+          "sub_case_count": 1,
+          "content_length": 842,
+          "pulse_count": 2,
+          "yao_count": 8,
+          "case_id": 492
+        },
+        {
+          "chap_id": "493",
+          "formula_name": "温病体虚",
+          "sub_case_count": 1,
+          "content_length": 573,
+          "pulse_count": 4,
+          "yao_count": 7,
+          "case_id": 493
+        },
+        {
+          "chap_id": "494",
+          "formula_name": "温热腹疼兼下痢",
+          "sub_case_count": 1,
+          "content_length": 1590,
+          "pulse_count": 7,
+          "yao_count": 11,
+          "case_id": 494
+        },
+        {
+          "chap_id": "495",
+          "formula_name": "温病兼下痢",
+          "sub_case_count": 1,
+          "content_length": 854,
+          "pulse_count": 6,
+          "yao_count": 7,
+          "case_id": 495
+        },
+        {
+          "chap_id": "496",
+          "formula_name": "温病兼下痢",
+          "sub_case_count": 1,
+          "content_length": 707,
+          "pulse_count": 5,
+          "yao_count": 9,
+          "case_id": 496
+        },
+        {
+          "chap_id": "497",
+          "formula_name": "暑温兼泄泻",
+          "sub_case_count": 1,
+          "content_length": 1014,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 497
+        },
+        {
+          "chap_id": "498",
+          "formula_name": "温病",
+          "sub_case_count": 1,
+          "content_length": 1395,
+          "pulse_count": 7,
+          "yao_count": 5,
+          "case_id": 498
+        },
+        {
+          "chap_id": "499",
+          "formula_name": "温病兼项后作疼",
+          "sub_case_count": 1,
+          "content_length": 511,
+          "pulse_count": 2,
+          "yao_count": 4,
+          "case_id": 499
+        },
+        {
+          "chap_id": "500",
+          "formula_name": "温病兼胁疼",
+          "sub_case_count": 1,
+          "content_length": 708,
+          "pulse_count": 7,
+          "yao_count": 9,
+          "case_id": 500
+        },
+        {
+          "chap_id": "501",
+          "formula_name": "风温兼喘促",
+          "sub_case_count": 1,
+          "content_length": 1471,
+          "pulse_count": 4,
+          "yao_count": 8,
+          "case_id": 501
+        },
+        {
+          "chap_id": "502",
+          "formula_name": "秋温兼伏气化热",
+          "sub_case_count": 1,
+          "content_length": 871,
+          "pulse_count": 7,
+          "yao_count": 6,
+          "case_id": 502
+        },
+        {
+          "chap_id": "505",
+          "formula_name": "温病兼衄血便血",
+          "sub_case_count": 1,
+          "content_length": 849,
+          "pulse_count": 6,
+          "yao_count": 5,
+          "case_id": 505
+        },
+        {
+          "chap_id": "508",
+          "formula_name": "温病兼喉痧痰喘",
+          "sub_case_count": 1,
+          "content_length": 1324,
+          "pulse_count": 3,
+          "yao_count": 8,
+          "case_id": 508
+        },
+        {
+          "chap_id": "509",
+          "formula_name": "温病兼喉疼",
+          "sub_case_count": 1,
+          "content_length": 505,
+          "pulse_count": 2,
+          "yao_count": 0,
+          "case_id": 509
+        },
+        {
+          "chap_id": "510",
+          "formula_name": "温病兼阴虚",
+          "sub_case_count": 1,
+          "content_length": 1368,
+          "pulse_count": 5,
+          "yao_count": 7,
+          "case_id": 510
+        },
+        {
+          "chap_id": "511",
+          "formula_name": "温病兼喘胀",
+          "sub_case_count": 1,
+          "content_length": 669,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 511
+        },
+        {
+          "chap_id": "512",
+          "formula_name": "温病兼虚热",
+          "sub_case_count": 1,
+          "content_length": 735,
+          "pulse_count": 1,
+          "yao_count": 9,
+          "case_id": 512
+        },
+        {
+          "chap_id": "513",
+          "formula_name": "温病兼吐血",
+          "sub_case_count": 1,
+          "content_length": 583,
+          "pulse_count": 3,
+          "yao_count": 4,
+          "case_id": 513
+        },
+        {
+          "chap_id": "515",
+          "formula_name": "疟疾兼阴虚",
+          "sub_case_count": 1,
+          "content_length": 500,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 515
+        },
+        {
+          "chap_id": "516",
+          "formula_name": "疟疾兼脾胀",
+          "sub_case_count": 1,
+          "content_length": 703,
+          "pulse_count": 2,
+          "yao_count": 8,
+          "case_id": 516
+        },
+        {
+          "chap_id": "517",
+          "formula_name": "疟疾兼暑热",
+          "sub_case_count": 1,
+          "content_length": 427,
+          "pulse_count": 2,
+          "yao_count": 2,
+          "case_id": 517
+        },
+        {
+          "chap_id": "518",
+          "formula_name": "疟痢兼证",
+          "sub_case_count": 1,
+          "content_length": 469,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 518
+        },
+        {
+          "chap_id": "519",
+          "formula_name": "霍乱兼转筋",
+          "sub_case_count": 1,
+          "content_length": 1181,
+          "pulse_count": 7,
+          "yao_count": 10,
+          "case_id": 519
+        },
+        {
+          "chap_id": "520",
+          "formula_name": "霍乱吐泻",
+          "sub_case_count": 1,
+          "content_length": 548,
+          "pulse_count": 3,
+          "yao_count": 0,
+          "case_id": 520
+        },
+        {
+          "chap_id": "523",
+          "formula_name": "怀妊受温病",
+          "sub_case_count": 1,
+          "content_length": 823,
+          "pulse_count": 5,
+          "yao_count": 7,
+          "case_id": 523
+        },
+        {
+          "chap_id": "525",
+          "formula_name": "怀妊得温病兼痰喘",
+          "sub_case_count": 1,
+          "content_length": 1520,
+          "pulse_count": 6,
+          "yao_count": 8,
+          "case_id": 525
+        },
+        {
+          "chap_id": "526",
+          "formula_name": "怀妊受温病兼下痢",
+          "sub_case_count": 1,
+          "content_length": 983,
+          "pulse_count": 6,
+          "yao_count": 7,
+          "case_id": 526
+        },
+        {
+          "chap_id": "531",
+          "formula_name": "产后温病",
+          "sub_case_count": 1,
+          "content_length": 784,
+          "pulse_count": 6,
+          "yao_count": 7,
+          "case_id": 531
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "洪",
+            49
+          ],
+          [
+            "数",
+            48
+          ],
+          [
+            "实",
+            44
+          ],
+          [
+            "弦",
+            42
+          ],
+          [
+            "滑",
+            32
+          ],
+          [
+            "长",
+            29
+          ],
+          [
+            "微",
+            29
+          ],
+          [
+            "细",
+            28
+          ],
+          [
+            "虚",
+            23
+          ],
+          [
+            "弱",
+            16
+          ],
+          [
+            "动",
+            13
+          ],
+          [
+            "迟",
+            12
+          ],
+          [
+            "涩",
+            9
+          ],
+          [
+            "代",
+            8
+          ],
+          [
+            "短",
+            6
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "浮",
+            46
+          ],
+          [
+            "沉",
+            22
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "有力",
+            53
+          ],
+          [
+            "无力",
+            21
+          ],
+          [
+            "无根",
+            3
+          ],
+          [
+            "有根",
+            2
+          ],
+          [
+            "鼓指",
+            1
+          ]
+        ],
+        "至数Top5": [
+          [
+            "五至",
+            15
+          ],
+          [
+            "六至",
+            13
+          ],
+          [
+            "七至",
+            6
+          ],
+          [
+            "四至",
+            4
+          ],
+          [
+            "八至",
+            2
+          ]
+        ],
+        "重按总案例数": 43,
+        "分诊总案例数": 38,
+        "独字总案例数": 2,
+        "证候Top20": [
+          [
+            "热",
+            116
+          ],
+          [
+            "重",
+            74
+          ],
+          [
+            "发热",
+            63
+          ],
+          [
+            "舌苔",
+            47
+          ],
+          [
+            "血",
+            43
+          ],
+          [
+            "汗出",
+            37
+          ],
+          [
+            "喘",
+            36
+          ],
+          [
+            "痰",
+            30
+          ],
+          [
+            "无力",
+            29
+          ],
+          [
+            "胀",
+            25
+          ],
+          [
+            "寒热",
+            21
+          ],
+          [
+            "肿",
+            21
+          ],
+          [
+            "壮热",
+            21
+          ],
+          [
+            "咳",
+            20
+          ],
+          [
+            "冷",
+            20
+          ],
+          [
+            "呕吐",
+            18
+          ],
+          [
+            "无汗",
+            18
+          ],
+          [
+            "烦躁",
+            18
+          ],
+          [
+            "酸",
+            18
+          ],
+          [
+            "神昏",
+            17
+          ]
+        ],
+        "证候不重复数": 101,
+        "药物Top20": [
+          [
+            "甘草",
+            71
+          ],
+          [
+            "山药",
+            61
+          ],
+          [
+            "人参",
+            50
+          ],
+          [
+            "玄参",
+            42
+          ],
+          [
+            "连翘",
+            36
+          ],
+          [
+            "生山药",
+            33
+          ],
+          [
+            "滑石",
+            26
+          ],
+          [
+            "柴胡",
+            25
+          ],
+          [
+            "麻黄",
+            24
+          ],
+          [
+            "桂枝",
+            22
+          ],
+          [
+            "生姜",
+            20
+          ],
+          [
+            "薄荷",
+            19
+          ],
+          [
+            "生地",
+            18
+          ],
+          [
+            "沙参",
+            16
+          ],
+          [
+            "蝉蜕",
+            15
+          ],
+          [
+            "党参",
+            15
+          ],
+          [
+            "枸杞",
+            14
+          ],
+          [
+            "杏仁",
+            11
+          ],
+          [
+            "半夏",
+            11
+          ],
+          [
+            "天冬",
+            11
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加人参汤",
+            27
+          ],
+          [
+            "加人参",
+            16
+          ],
+          [
+            "加连翘",
+            4
+          ],
+          [
+            "加人参以山药代粳米汤",
+            4
+          ],
+          [
+            "加石膏汤",
+            4
+          ],
+          [
+            "加生黄",
+            3
+          ],
+          [
+            "加杏仁",
+            3
+          ],
+          [
+            "加生石膏",
+            3
+          ],
+          [
+            "加人参者",
+            3
+          ],
+          [
+            "加减俾再服之",
+            3
+          ]
+        ],
+        "辨证原句Top3": [
+          "此证用滑石不用石膏者，以其证兼泻也。",
+          "此证，若不疑其中有阻隔，则燥粪不除，病 \n将何由愈乎？ \n有奇恒痢者，张隐庵谓，其证三阳并至，三阴莫当，九窍皆塞，阳气旁溢，咽干喉塞痛，并于阴则上下无 \n常，薄为肠 。",
+          "按∶\\x土狗即蝼蛄，《日华诸家本草》谓其治水肿，头面肿。"
+        ]
+      }
+    },
+    {
+      "mod_id": "4_脑卒中与气血上逆",
+      "name": "脑卒中与气血上逆",
+      "desc": "治脑充血/中风/偏枯/高血压/痿/瘫痪",
+      "formula_count": 26,
+      "total_cases": 28,
+      "total_pulse": 137,
+      "total_length": 32292,
+      "items": [
+        {
+          "chap_id": "53",
+          "formula_name": "搜风汤",
+          "sub_case_count": 1,
+          "content_length": 1252,
+          "pulse_count": 7,
+          "yao_count": 12,
+          "case_id": 53
+        },
+        {
+          "chap_id": "54",
+          "formula_name": "逐风汤",
+          "sub_case_count": 1,
+          "content_length": 441,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 54
+        },
+        {
+          "chap_id": "55",
+          "formula_name": "加味黄五物汤",
+          "sub_case_count": 2,
+          "content_length": 626,
+          "pulse_count": 3,
+          "yao_count": 1,
+          "case_id": 55
+        },
+        {
+          "chap_id": "57",
+          "formula_name": "镇肝熄风汤",
+          "sub_case_count": 1,
+          "content_length": 3438,
+          "pulse_count": 4,
+          "yao_count": 2,
+          "case_id": 57
+        },
+        {
+          "chap_id": "59",
+          "formula_name": "振颓汤",
+          "sub_case_count": 1,
+          "content_length": 954,
+          "pulse_count": 3,
+          "yao_count": 14,
+          "case_id": 59
+        },
+        {
+          "chap_id": "60",
+          "formula_name": "振颓丸",
+          "sub_case_count": 1,
+          "content_length": 765,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 60
+        },
+        {
+          "chap_id": "140",
+          "formula_name": "活络效灵丹",
+          "sub_case_count": 2,
+          "content_length": 2161,
+          "pulse_count": 12,
+          "yao_count": 12,
+          "case_id": 140
+        },
+        {
+          "chap_id": "141",
+          "formula_name": "活络祛寒汤",
+          "sub_case_count": 1,
+          "content_length": 235,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 141
+        },
+        {
+          "chap_id": "142",
+          "formula_name": "健运汤",
+          "sub_case_count": 1,
+          "content_length": 301,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 142
+        },
+        {
+          "chap_id": "143",
+          "formula_name": "振中汤",
+          "sub_case_count": 1,
+          "content_length": 422,
+          "pulse_count": 5,
+          "yao_count": 6,
+          "case_id": 143
+        },
+        {
+          "chap_id": "144",
+          "formula_name": "曲直汤",
+          "sub_case_count": 1,
+          "content_length": 893,
+          "pulse_count": 4,
+          "yao_count": 3,
+          "case_id": 144
+        },
+        {
+          "chap_id": "156",
+          "formula_name": "和血熄风汤",
+          "sub_case_count": 1,
+          "content_length": 1631,
+          "pulse_count": 3,
+          "yao_count": 18,
+          "case_id": 156
+        },
+        {
+          "chap_id": "243",
+          "formula_name": "乳香、没药解",
+          "sub_case_count": 1,
+          "content_length": 366,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 244
+        },
+        {
+          "chap_id": "319",
+          "formula_name": "论脑充血之原因及治法",
+          "sub_case_count": 1,
+          "content_length": 1688,
+          "pulse_count": 7,
+          "yao_count": 7,
+          "case_id": 321
+        },
+        {
+          "chap_id": "320",
+          "formula_name": "论脑充血证可预防及其证误名中风之由",
+          "sub_case_count": 1,
+          "content_length": 2304,
+          "pulse_count": 15,
+          "yao_count": 14,
+          "case_id": 322
+        },
+        {
+          "chap_id": "321",
+          "formula_name": "论脑贫血治法",
+          "sub_case_count": 1,
+          "content_length": 1153,
+          "pulse_count": 2,
+          "yao_count": 10,
+          "case_id": 323
+        },
+        {
+          "chap_id": "322",
+          "formula_name": "论脑贫血痿废治法",
+          "sub_case_count": 1,
+          "content_length": 2000,
+          "pulse_count": 6,
+          "yao_count": 9,
+          "case_id": 324
+        },
+        {
+          "chap_id": "341",
+          "formula_name": "论肢体痿废之原因及治法",
+          "sub_case_count": 1,
+          "content_length": 3305,
+          "pulse_count": 21,
+          "yao_count": 13,
+          "case_id": 343
+        },
+        {
+          "chap_id": "343",
+          "formula_name": "论治偏枯者不可轻用补阳还五汤",
+          "sub_case_count": 1,
+          "content_length": 1034,
+          "pulse_count": 8,
+          "yao_count": 2,
+          "case_id": 345
+        },
+        {
+          "chap_id": "431",
+          "formula_name": "脑充血头疼",
+          "sub_case_count": 1,
+          "content_length": 1107,
+          "pulse_count": 8,
+          "yao_count": 11,
+          "case_id": 431
+        },
+        {
+          "chap_id": "432",
+          "formula_name": "脑充血头疼",
+          "sub_case_count": 1,
+          "content_length": 1321,
+          "pulse_count": 6,
+          "yao_count": 8,
+          "case_id": 432
+        },
+        {
+          "chap_id": "433",
+          "formula_name": "脑充血头疼",
+          "sub_case_count": 1,
+          "content_length": 1139,
+          "pulse_count": 5,
+          "yao_count": 10,
+          "case_id": 433
+        },
+        {
+          "chap_id": "434",
+          "formula_name": "脑充血兼腿痿弱",
+          "sub_case_count": 1,
+          "content_length": 756,
+          "pulse_count": 5,
+          "yao_count": 7,
+          "case_id": 434
+        },
+        {
+          "chap_id": "435",
+          "formula_name": "脑充血兼痰厥",
+          "sub_case_count": 1,
+          "content_length": 827,
+          "pulse_count": 5,
+          "yao_count": 6,
+          "case_id": 435
+        },
+        {
+          "chap_id": "436",
+          "formula_name": "脑充血兼偏枯",
+          "sub_case_count": 1,
+          "content_length": 1620,
+          "pulse_count": 5,
+          "yao_count": 8,
+          "case_id": 436
+        },
+        {
+          "chap_id": "466",
+          "formula_name": "痫风兼脑充血",
+          "sub_case_count": 1,
+          "content_length": 553,
+          "pulse_count": 3,
+          "yao_count": 2,
+          "case_id": 466
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "弦",
+            15
+          ],
+          [
+            "数",
+            9
+          ],
+          [
+            "洪",
+            8
+          ],
+          [
+            "长",
+            8
+          ],
+          [
+            "实",
+            8
+          ],
+          [
+            "细",
+            7
+          ],
+          [
+            "微",
+            7
+          ],
+          [
+            "虚",
+            6
+          ],
+          [
+            "弱",
+            5
+          ],
+          [
+            "迟",
+            4
+          ],
+          [
+            "动",
+            3
+          ],
+          [
+            "涩",
+            2
+          ],
+          [
+            "短",
+            2
+          ],
+          [
+            "结",
+            1
+          ],
+          [
+            "散",
+            1
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "浮",
+            2
+          ],
+          [
+            "沉",
+            1
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "有力",
+            12
+          ],
+          [
+            "无力",
+            3
+          ],
+          [
+            "有根",
+            2
+          ]
+        ],
+        "至数Top5": [
+          [
+            "八十至",
+            1
+          ]
+        ],
+        "重按总案例数": 3,
+        "分诊总案例数": 14,
+        "独字总案例数": 0,
+        "证候Top20": [
+          [
+            "血",
+            24
+          ],
+          [
+            "热",
+            21
+          ],
+          [
+            "重",
+            16
+          ],
+          [
+            "木",
+            15
+          ],
+          [
+            "发热",
+            13
+          ],
+          [
+            "厥",
+            8
+          ],
+          [
+            "中风",
+            8
+          ],
+          [
+            "疼痛",
+            7
+          ],
+          [
+            "痰",
+            6
+          ],
+          [
+            "昏厥",
+            5
+          ],
+          [
+            "麻木",
+            5
+          ],
+          [
+            "酸",
+            5
+          ],
+          [
+            "冷",
+            4
+          ],
+          [
+            "头重",
+            4
+          ],
+          [
+            "胀",
+            4
+          ],
+          [
+            "气上冲",
+            4
+          ],
+          [
+            "短气",
+            4
+          ],
+          [
+            "无力",
+            4
+          ],
+          [
+            "微热",
+            3
+          ],
+          [
+            "气逆",
+            3
+          ]
+        ],
+        "证候不重复数": 61,
+        "药物Top20": [
+          [
+            "当归",
+            16
+          ],
+          [
+            "玄参",
+            8
+          ],
+          [
+            "甘草",
+            7
+          ],
+          [
+            "山药",
+            7
+          ],
+          [
+            "人参",
+            6
+          ],
+          [
+            "桂枝",
+            6
+          ],
+          [
+            "干姜",
+            6
+          ],
+          [
+            "白术",
+            6
+          ],
+          [
+            "牡蛎",
+            6
+          ],
+          [
+            "茵陈",
+            6
+          ],
+          [
+            "蜈蚣",
+            5
+          ],
+          [
+            "防风",
+            5
+          ],
+          [
+            "鹿角",
+            5
+          ],
+          [
+            "鹿角胶",
+            5
+          ],
+          [
+            "龙骨",
+            5
+          ],
+          [
+            "天冬",
+            5
+          ],
+          [
+            "柏子仁",
+            5
+          ],
+          [
+            "枸杞",
+            5
+          ],
+          [
+            "龙胆草",
+            4
+          ],
+          [
+            "石决明",
+            4
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加生黄",
+            4
+          ],
+          [
+            "加味黄",
+            2
+          ],
+          [
+            "加干姜三钱",
+            2
+          ],
+          [
+            "加生石膏一两",
+            2
+          ],
+          [
+            "加减（干姜",
+            1
+          ],
+          [
+            "加蜈蚣一条",
+            1
+          ],
+          [
+            "加生大黄数钱",
+            1
+          ],
+          [
+            "加 \n生军一钱为末",
+            1
+          ],
+          [
+            "加蜈蚣于托药之中",
+            1
+          ],
+          [
+            "加知母",
+            1
+          ]
+        ],
+        "辨证原句Top3": [
+          "此证皆痰涎壅滞，有半夏以降之，柿霜以润之，而痰涎自息也。",
+          "此证有表不解，而浸生内热者，宜急用发汗药，解其表，而兼清其内热。",
+          "按∶\\x此病因甚奇，然不外气血凝滞。"
+        ]
+      }
+    },
+    {
+      "mod_id": "5_痰饮喘息与肺",
+      "name": "痰饮喘息与肺",
+      "desc": "治痰/饮/喘/咳/肺病/胸水",
+      "formula_count": 51,
+      "total_cases": 53,
+      "total_pulse": 156,
+      "total_length": 50694,
+      "items": [
+        {
+          "chap_id": "21",
+          "formula_name": "理饮汤",
+          "sub_case_count": 1,
+          "content_length": 2075,
+          "pulse_count": 8,
+          "yao_count": 7,
+          "case_id": 21
+        },
+        {
+          "chap_id": "22",
+          "formula_name": "理痰汤",
+          "sub_case_count": 1,
+          "content_length": 861,
+          "pulse_count": 2,
+          "yao_count": 8,
+          "case_id": 22
+        },
+        {
+          "chap_id": "23",
+          "formula_name": "龙理痰汤",
+          "sub_case_count": 1,
+          "content_length": 955,
+          "pulse_count": 1,
+          "yao_count": 7,
+          "case_id": 23
+        },
+        {
+          "chap_id": "24",
+          "formula_name": "健脾化痰丸",
+          "sub_case_count": 1,
+          "content_length": 286,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 24
+        },
+        {
+          "chap_id": "25",
+          "formula_name": "期颐饼",
+          "sub_case_count": 1,
+          "content_length": 446,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 25
+        },
+        {
+          "chap_id": "26",
+          "formula_name": "治痰点天突穴法",
+          "sub_case_count": 1,
+          "content_length": 1773,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 26
+        },
+        {
+          "chap_id": "27",
+          "formula_name": "黄膏",
+          "sub_case_count": 1,
+          "content_length": 1056,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 27
+        },
+        {
+          "chap_id": "28",
+          "formula_name": "清金益气汤",
+          "sub_case_count": 1,
+          "content_length": 666,
+          "pulse_count": 2,
+          "yao_count": 4,
+          "case_id": 28
+        },
+        {
+          "chap_id": "29",
+          "formula_name": "清金解毒汤",
+          "sub_case_count": 1,
+          "content_length": 299,
+          "pulse_count": 1,
+          "yao_count": 1,
+          "case_id": 29
+        },
+        {
+          "chap_id": "30",
+          "formula_name": "安肺宁嗽丸",
+          "sub_case_count": 1,
+          "content_length": 411,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 30
+        },
+        {
+          "chap_id": "31",
+          "formula_name": "清凉华盖饮",
+          "sub_case_count": 1,
+          "content_length": 1990,
+          "pulse_count": 5,
+          "yao_count": 10,
+          "case_id": 31
+        },
+        {
+          "chap_id": "32",
+          "formula_name": "寒降汤",
+          "sub_case_count": 3,
+          "content_length": 2124,
+          "pulse_count": 18,
+          "yao_count": 11,
+          "case_id": 32
+        },
+        {
+          "chap_id": "33",
+          "formula_name": "温降汤",
+          "sub_case_count": 1,
+          "content_length": 1209,
+          "pulse_count": 7,
+          "yao_count": 11,
+          "case_id": 33
+        },
+        {
+          "chap_id": "34",
+          "formula_name": "清降汤",
+          "sub_case_count": 1,
+          "content_length": 169,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 34
+        },
+        {
+          "chap_id": "35",
+          "formula_name": "保元寒降汤",
+          "sub_case_count": 1,
+          "content_length": 399,
+          "pulse_count": 1,
+          "yao_count": 2,
+          "case_id": 35
+        },
+        {
+          "chap_id": "36",
+          "formula_name": "保元清降汤",
+          "sub_case_count": 1,
+          "content_length": 539,
+          "pulse_count": 6,
+          "yao_count": 8,
+          "case_id": 36
+        },
+        {
+          "chap_id": "37",
+          "formula_name": "秘红丹",
+          "sub_case_count": 1,
+          "content_length": 766,
+          "pulse_count": 1,
+          "yao_count": 11,
+          "case_id": 37
+        },
+        {
+          "chap_id": "38",
+          "formula_name": "二鲜饮",
+          "sub_case_count": 1,
+          "content_length": 356,
+          "pulse_count": 1,
+          "yao_count": 2,
+          "case_id": 38
+        },
+        {
+          "chap_id": "39",
+          "formula_name": "三鲜饮",
+          "sub_case_count": 1,
+          "content_length": 228,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 39
+        },
+        {
+          "chap_id": "40",
+          "formula_name": "化血丹",
+          "sub_case_count": 1,
+          "content_length": 378,
+          "pulse_count": 3,
+          "yao_count": 2,
+          "case_id": 40
+        },
+        {
+          "chap_id": "41",
+          "formula_name": "补络补管汤",
+          "sub_case_count": 1,
+          "content_length": 2156,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 41
+        },
+        {
+          "chap_id": "42",
+          "formula_name": "化瘀理膈丹",
+          "sub_case_count": 1,
+          "content_length": 486,
+          "pulse_count": 1,
+          "yao_count": 2,
+          "case_id": 42
+        },
+        {
+          "chap_id": "43",
+          "formula_name": "定心汤",
+          "sub_case_count": 1,
+          "content_length": 1880,
+          "pulse_count": 2,
+          "yao_count": 6,
+          "case_id": 43
+        },
+        {
+          "chap_id": "44",
+          "formula_name": "安魂汤",
+          "sub_case_count": 1,
+          "content_length": 1097,
+          "pulse_count": 5,
+          "yao_count": 5,
+          "case_id": 44
+        },
+        {
+          "chap_id": "45",
+          "formula_name": "荡痰汤",
+          "sub_case_count": 1,
+          "content_length": 75,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 45
+        },
+        {
+          "chap_id": "46",
+          "formula_name": "荡痰加甘遂汤",
+          "sub_case_count": 1,
+          "content_length": 1308,
+          "pulse_count": 3,
+          "yao_count": 2,
+          "case_id": 46
+        },
+        {
+          "chap_id": "47",
+          "formula_name": "调气养神汤",
+          "sub_case_count": 1,
+          "content_length": 617,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 47
+        },
+        {
+          "chap_id": "48",
+          "formula_name": "加味磁朱丸",
+          "sub_case_count": 1,
+          "content_length": 815,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 48
+        },
+        {
+          "chap_id": "49",
+          "formula_name": "通变黑锡丹",
+          "sub_case_count": 1,
+          "content_length": 451,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 49
+        },
+        {
+          "chap_id": "51",
+          "formula_name": "定风丹",
+          "sub_case_count": 1,
+          "content_length": 1220,
+          "pulse_count": 1,
+          "yao_count": 18,
+          "case_id": 51
+        },
+        {
+          "chap_id": "52",
+          "formula_name": "镇风汤",
+          "sub_case_count": 1,
+          "content_length": 2785,
+          "pulse_count": 6,
+          "yao_count": 24,
+          "case_id": 52
+        },
+        {
+          "chap_id": "86",
+          "formula_name": "滋饮",
+          "sub_case_count": 1,
+          "content_length": 786,
+          "pulse_count": 1,
+          "yao_count": 4,
+          "case_id": 86
+        },
+        {
+          "chap_id": "111",
+          "formula_name": "从龙汤",
+          "sub_case_count": 1,
+          "content_length": 1161,
+          "pulse_count": 2,
+          "yao_count": 10,
+          "case_id": 111
+        },
+        {
+          "chap_id": "129",
+          "formula_name": "宁嗽定喘饮",
+          "sub_case_count": 1,
+          "content_length": 385,
+          "pulse_count": 1,
+          "yao_count": 3,
+          "case_id": 129
+        },
+        {
+          "chap_id": "154",
+          "formula_name": "安胃饮",
+          "sub_case_count": 1,
+          "content_length": 572,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 154
+        },
+        {
+          "chap_id": "170",
+          "formula_name": "古方马乳饮",
+          "sub_case_count": 1,
+          "content_length": 607,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 170
+        },
+        {
+          "chap_id": "324",
+          "formula_name": "论肺病治法",
+          "sub_case_count": 1,
+          "content_length": 3812,
+          "pulse_count": 16,
+          "yao_count": 23,
+          "case_id": 326
+        },
+        {
+          "chap_id": "325",
+          "formula_name": "总论喘证治法",
+          "sub_case_count": 1,
+          "content_length": 2980,
+          "pulse_count": 13,
+          "yao_count": 19,
+          "case_id": 327
+        },
+        {
+          "chap_id": "368",
+          "formula_name": "答严××代友问痰饮治法",
+          "sub_case_count": 1,
+          "content_length": 1147,
+          "pulse_count": 0,
+          "yao_count": 8,
+          "case_id": 370
+        },
+        {
+          "chap_id": "370",
+          "formula_name": "答金××问治吐血后咳嗽法",
+          "sub_case_count": 1,
+          "content_length": 217,
+          "pulse_count": 0,
+          "yao_count": 8,
+          "case_id": 372
+        },
+        {
+          "chap_id": "404",
+          "formula_name": "肺劳喘嗽遗传性证",
+          "sub_case_count": 1,
+          "content_length": 1294,
+          "pulse_count": 8,
+          "yao_count": 13,
+          "case_id": 404
+        },
+        {
+          "chap_id": "405",
+          "formula_name": "肺劳痰喘",
+          "sub_case_count": 1,
+          "content_length": 723,
+          "pulse_count": 5,
+          "yao_count": 18,
+          "case_id": 405
+        },
+        {
+          "chap_id": "406",
+          "formula_name": "肺劳喘咳",
+          "sub_case_count": 1,
+          "content_length": 891,
+          "pulse_count": 8,
+          "yao_count": 9,
+          "case_id": 406
+        },
+        {
+          "chap_id": "407",
+          "formula_name": "肺劳喘嗽兼不寐证",
+          "sub_case_count": 1,
+          "content_length": 1093,
+          "pulse_count": 5,
+          "yao_count": 8,
+          "case_id": 407
+        },
+        {
+          "chap_id": "408",
+          "formula_name": "肺病咳嗽吐血",
+          "sub_case_count": 1,
+          "content_length": 609,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 408
+        },
+        {
+          "chap_id": "409",
+          "formula_name": "肺病咳吐脓血",
+          "sub_case_count": 1,
+          "content_length": 1357,
+          "pulse_count": 5,
+          "yao_count": 12,
+          "case_id": 409
+        },
+        {
+          "chap_id": "410",
+          "formula_name": "肺病咳吐痰血",
+          "sub_case_count": 1,
+          "content_length": 639,
+          "pulse_count": 1,
+          "yao_count": 9,
+          "case_id": 410
+        },
+        {
+          "chap_id": "421",
+          "formula_name": "咳血兼吐血证",
+          "sub_case_count": 1,
+          "content_length": 493,
+          "pulse_count": 5,
+          "yao_count": 3,
+          "case_id": 421
+        },
+        {
+          "chap_id": "422",
+          "formula_name": "吐血兼咳嗽",
+          "sub_case_count": 1,
+          "content_length": 544,
+          "pulse_count": 4,
+          "yao_count": 6,
+          "case_id": 422
+        },
+        {
+          "chap_id": "423",
+          "formula_name": "吐血兼咳嗽",
+          "sub_case_count": 1,
+          "content_length": 789,
+          "pulse_count": 5,
+          "yao_count": 8,
+          "case_id": 423
+        },
+        {
+          "chap_id": "453",
+          "formula_name": "风水有痰",
+          "sub_case_count": 1,
+          "content_length": 719,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 453
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "弦",
+            15
+          ],
+          [
+            "数",
+            15
+          ],
+          [
+            "实",
+            14
+          ],
+          [
+            "滑",
+            12
+          ],
+          [
+            "细",
+            11
+          ],
+          [
+            "虚",
+            9
+          ],
+          [
+            "微",
+            7
+          ],
+          [
+            "弱",
+            6
+          ],
+          [
+            "洪",
+            6
+          ],
+          [
+            "迟",
+            5
+          ],
+          [
+            "濡",
+            5
+          ],
+          [
+            "动",
+            5
+          ],
+          [
+            "长",
+            4
+          ],
+          [
+            "牢",
+            1
+          ],
+          [
+            "轧",
+            1
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "浮",
+            10
+          ],
+          [
+            "沉",
+            4
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "有力",
+            9
+          ],
+          [
+            "无力",
+            9
+          ],
+          [
+            "无根",
+            3
+          ]
+        ],
+        "至数Top5": [
+          [
+            "五至",
+            5
+          ],
+          [
+            "六至",
+            1
+          ],
+          [
+            "八十五至",
+            1
+          ],
+          [
+            "九十至",
+            1
+          ]
+        ],
+        "重按总案例数": 16,
+        "分诊总案例数": 8,
+        "独字总案例数": 0,
+        "证候Top20": [
+          [
+            "痰",
+            38
+          ],
+          [
+            "热",
+            38
+          ],
+          [
+            "血",
+            37
+          ],
+          [
+            "咳",
+            27
+          ],
+          [
+            "重",
+            25
+          ],
+          [
+            "喘",
+            22
+          ],
+          [
+            "吐血",
+            20
+          ],
+          [
+            "咳嗽",
+            19
+          ],
+          [
+            "发热",
+            13
+          ],
+          [
+            "无力",
+            12
+          ],
+          [
+            "酸",
+            10
+          ],
+          [
+            "木",
+            10
+          ],
+          [
+            "胀",
+            7
+          ],
+          [
+            "冷",
+            6
+          ],
+          [
+            "短气",
+            5
+          ],
+          [
+            "不寐",
+            5
+          ],
+          [
+            "呕吐",
+            5
+          ],
+          [
+            "大便干",
+            5
+          ],
+          [
+            "烦热",
+            4
+          ],
+          [
+            "衄血",
+            4
+          ]
+        ],
+        "证候不重复数": 68,
+        "药物Top20": [
+          [
+            "山药",
+            28
+          ],
+          [
+            "甘草",
+            25
+          ],
+          [
+            "生山药",
+            15
+          ],
+          [
+            "半夏",
+            14
+          ],
+          [
+            "川贝",
+            12
+          ],
+          [
+            "天冬",
+            11
+          ],
+          [
+            "龙骨",
+            10
+          ],
+          [
+            "玄参",
+            10
+          ],
+          [
+            "牡蛎",
+            10
+          ],
+          [
+            "枸杞",
+            10
+          ],
+          [
+            "人参",
+            9
+          ],
+          [
+            "柏子仁",
+            7
+          ],
+          [
+            "朱砂",
+            7
+          ],
+          [
+            "白术",
+            6
+          ],
+          [
+            "桂枝",
+            6
+          ],
+          [
+            "干姜",
+            6
+          ],
+          [
+            "薄荷",
+            6
+          ],
+          [
+            "熟地",
+            6
+          ],
+          [
+            "杏仁",
+            6
+          ],
+          [
+            "沙参",
+            6
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加人参汤",
+            3
+          ],
+          [
+            "加生石膏",
+            3
+          ],
+          [
+            "加减治之",
+            2
+          ],
+          [
+            "加赭石",
+            2
+          ],
+          [
+            "加剧也",
+            2
+          ],
+          [
+            "加干姜",
+            2
+          ],
+          [
+            "加杏仁",
+            2
+          ],
+          [
+            "加生龙骨",
+            2
+          ],
+          [
+            "加生黄",
+            1
+          ],
+          [
+            "加多，继则饮食渐减",
+            1
+          ]
+        ],
+        "辨证原句Top3": [
+          "此证心肺阳虚，脾胃气弱，为服苦寒攻泻之药太过，故病证脉象如斯也。",
+          "此证针芥相投，服之必无他变。",
+          "按∶\\x此方若治痫风，或加朱砂，或加生铁落，或用磨刀水煎药，皆可。"
+        ]
+      }
+    },
+    {
+      "mod_id": "6_脾胃泄泻与消渴",
+      "name": "脾胃泄泻与消渴",
+      "desc": "治脾胃/泄泻/痢疾/消渴/二便/淋/癃",
+      "formula_count": 56,
+      "total_cases": 61,
+      "total_pulse": 158,
+      "total_length": 45169,
+      "items": [
+        {
+          "chap_id": "68",
+          "formula_name": "益脾饼",
+          "sub_case_count": 1,
+          "content_length": 395,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 68
+        },
+        {
+          "chap_id": "69",
+          "formula_name": "扶中汤",
+          "sub_case_count": 1,
+          "content_length": 522,
+          "pulse_count": 1,
+          "yao_count": 4,
+          "case_id": 69
+        },
+        {
+          "chap_id": "73",
+          "formula_name": "加味天水散",
+          "sub_case_count": 1,
+          "content_length": 636,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 73
+        },
+        {
+          "chap_id": "74",
+          "formula_name": "加味四神丸",
+          "sub_case_count": 1,
+          "content_length": 534,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 74
+        },
+        {
+          "chap_id": "76",
+          "formula_name": "燮理汤",
+          "sub_case_count": 4,
+          "content_length": 2291,
+          "pulse_count": 6,
+          "yao_count": 7,
+          "case_id": 76
+        },
+        {
+          "chap_id": "77",
+          "formula_name": "解毒生化丹",
+          "sub_case_count": 1,
+          "content_length": 624,
+          "pulse_count": 4,
+          "yao_count": 2,
+          "case_id": 77
+        },
+        {
+          "chap_id": "78",
+          "formula_name": "天水涤肠汤",
+          "sub_case_count": 1,
+          "content_length": 596,
+          "pulse_count": 2,
+          "yao_count": 9,
+          "case_id": 78
+        },
+        {
+          "chap_id": "79",
+          "formula_name": "通变白头翁汤",
+          "sub_case_count": 1,
+          "content_length": 806,
+          "pulse_count": 4,
+          "yao_count": 10,
+          "case_id": 79
+        },
+        {
+          "chap_id": "80",
+          "formula_name": "三宝粥",
+          "sub_case_count": 1,
+          "content_length": 1456,
+          "pulse_count": 11,
+          "yao_count": 8,
+          "case_id": 80
+        },
+        {
+          "chap_id": "82",
+          "formula_name": "硝菔通结汤",
+          "sub_case_count": 1,
+          "content_length": 742,
+          "pulse_count": 2,
+          "yao_count": 5,
+          "case_id": 82
+        },
+        {
+          "chap_id": "83",
+          "formula_name": "赭遂攻结汤",
+          "sub_case_count": 1,
+          "content_length": 1024,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 83
+        },
+        {
+          "chap_id": "84",
+          "formula_name": "通结用葱白熨法",
+          "sub_case_count": 2,
+          "content_length": 1631,
+          "pulse_count": 4,
+          "yao_count": 9,
+          "case_id": 84
+        },
+        {
+          "chap_id": "85",
+          "formula_name": "玉液汤",
+          "sub_case_count": 1,
+          "content_length": 1142,
+          "pulse_count": 7,
+          "yao_count": 13,
+          "case_id": 85
+        },
+        {
+          "chap_id": "87",
+          "formula_name": "宣阳汤",
+          "sub_case_count": 1,
+          "content_length": 80,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 87
+        },
+        {
+          "chap_id": "88",
+          "formula_name": "济阴汤",
+          "sub_case_count": 1,
+          "content_length": 1014,
+          "pulse_count": 3,
+          "yao_count": 8,
+          "case_id": 88
+        },
+        {
+          "chap_id": "89",
+          "formula_name": "白茅根汤",
+          "sub_case_count": 1,
+          "content_length": 1076,
+          "pulse_count": 2,
+          "yao_count": 1,
+          "case_id": 89
+        },
+        {
+          "chap_id": "90",
+          "formula_name": "温通汤",
+          "sub_case_count": 1,
+          "content_length": 269,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 90
+        },
+        {
+          "chap_id": "91",
+          "formula_name": "加味苓桂术甘汤",
+          "sub_case_count": 1,
+          "content_length": 1475,
+          "pulse_count": 10,
+          "yao_count": 8,
+          "case_id": 91
+        },
+        {
+          "chap_id": "92",
+          "formula_name": "寒通汤",
+          "sub_case_count": 1,
+          "content_length": 234,
+          "pulse_count": 2,
+          "yao_count": 2,
+          "case_id": 92
+        },
+        {
+          "chap_id": "94",
+          "formula_name": "鸡汤",
+          "sub_case_count": 1,
+          "content_length": 768,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 94
+        },
+        {
+          "chap_id": "95",
+          "formula_name": "鸡茅根汤",
+          "sub_case_count": 1,
+          "content_length": 1163,
+          "pulse_count": 9,
+          "yao_count": 2,
+          "case_id": 95
+        },
+        {
+          "chap_id": "96",
+          "formula_name": "理血汤",
+          "sub_case_count": 2,
+          "content_length": 1590,
+          "pulse_count": 7,
+          "yao_count": 13,
+          "case_id": 96
+        },
+        {
+          "chap_id": "97",
+          "formula_name": "膏淋汤",
+          "sub_case_count": 1,
+          "content_length": 305,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 97
+        },
+        {
+          "chap_id": "98",
+          "formula_name": "气淋汤",
+          "sub_case_count": 1,
+          "content_length": 195,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 98
+        },
+        {
+          "chap_id": "99",
+          "formula_name": "劳淋汤",
+          "sub_case_count": 1,
+          "content_length": 399,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 99
+        },
+        {
+          "chap_id": "100",
+          "formula_name": "砂淋丸",
+          "sub_case_count": 1,
+          "content_length": 565,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 100
+        },
+        {
+          "chap_id": "101",
+          "formula_name": "寒淋汤",
+          "sub_case_count": 1,
+          "content_length": 144,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 101
+        },
+        {
+          "chap_id": "102",
+          "formula_name": "秘真丹",
+          "sub_case_count": 1,
+          "content_length": 161,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 102
+        },
+        {
+          "chap_id": "103",
+          "formula_name": "毒淋汤",
+          "sub_case_count": 1,
+          "content_length": 291,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 103
+        },
+        {
+          "chap_id": "104",
+          "formula_name": "清毒二仙丹",
+          "sub_case_count": 1,
+          "content_length": 165,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 104
+        },
+        {
+          "chap_id": "105",
+          "formula_name": "鲜小蓟根汤",
+          "sub_case_count": 1,
+          "content_length": 331,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 105
+        },
+        {
+          "chap_id": "106",
+          "formula_name": "澄化汤",
+          "sub_case_count": 1,
+          "content_length": 132,
+          "pulse_count": 2,
+          "yao_count": 6,
+          "case_id": 106
+        },
+        {
+          "chap_id": "107",
+          "formula_name": "清肾汤",
+          "sub_case_count": 1,
+          "content_length": 473,
+          "pulse_count": 3,
+          "yao_count": 0,
+          "case_id": 107
+        },
+        {
+          "chap_id": "108",
+          "formula_name": "舒和汤",
+          "sub_case_count": 1,
+          "content_length": 449,
+          "pulse_count": 7,
+          "yao_count": 5,
+          "case_id": 108
+        },
+        {
+          "chap_id": "119",
+          "formula_name": "和解汤",
+          "sub_case_count": 1,
+          "content_length": 114,
+          "pulse_count": 1,
+          "yao_count": 3,
+          "case_id": 119
+        },
+        {
+          "chap_id": "122",
+          "formula_name": "滋阴清燥汤",
+          "sub_case_count": 1,
+          "content_length": 1925,
+          "pulse_count": 2,
+          "yao_count": 5,
+          "case_id": 122
+        },
+        {
+          "chap_id": "123",
+          "formula_name": "滋阴固下汤",
+          "sub_case_count": 1,
+          "content_length": 483,
+          "pulse_count": 0,
+          "yao_count": 10,
+          "case_id": 123
+        },
+        {
+          "chap_id": "130",
+          "formula_name": "荡胸汤",
+          "sub_case_count": 1,
+          "content_length": 988,
+          "pulse_count": 2,
+          "yao_count": 7,
+          "case_id": 130
+        },
+        {
+          "chap_id": "223",
+          "formula_name": "白茅根解",
+          "sub_case_count": 1,
+          "content_length": 585,
+          "pulse_count": 4,
+          "yao_count": 1,
+          "case_id": 224
+        },
+        {
+          "chap_id": "225",
+          "formula_name": "鲜小蓟根解",
+          "sub_case_count": 1,
+          "content_length": 665,
+          "pulse_count": 2,
+          "yao_count": 0,
+          "case_id": 226
+        },
+        {
+          "chap_id": "229",
+          "formula_name": "莱菔子解",
+          "sub_case_count": 1,
+          "content_length": 498,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 230
+        },
+        {
+          "chap_id": "230",
+          "formula_name": "附∶胡莱菔英能解砒石毒",
+          "sub_case_count": 1,
+          "content_length": 257,
+          "pulse_count": 0,
+          "yao_count": 0,
+          "case_id": 231
+        },
+        {
+          "chap_id": "253",
+          "formula_name": "鸡内金解",
+          "sub_case_count": 1,
+          "content_length": 1859,
+          "pulse_count": 5,
+          "yao_count": 9,
+          "case_id": 254
+        },
+        {
+          "chap_id": "329",
+          "formula_name": "论痢证治法",
+          "sub_case_count": 1,
+          "content_length": 5854,
+          "pulse_count": 22,
+          "yao_count": 29,
+          "case_id": 331
+        },
+        {
+          "chap_id": "358",
+          "formula_name": "天水散治中暑宜于南方北方用之宜稍变通",
+          "sub_case_count": 1,
+          "content_length": 733,
+          "pulse_count": 0,
+          "yao_count": 7,
+          "case_id": 360
+        },
+        {
+          "chap_id": "426",
+          "formula_name": "大便下血",
+          "sub_case_count": 1,
+          "content_length": 789,
+          "pulse_count": 4,
+          "yao_count": 7,
+          "case_id": 426
+        },
+        {
+          "chap_id": "427",
+          "formula_name": "大便下血",
+          "sub_case_count": 1,
+          "content_length": 504,
+          "pulse_count": 2,
+          "yao_count": 1,
+          "case_id": 427
+        },
+        {
+          "chap_id": "428",
+          "formula_name": "大便下血",
+          "sub_case_count": 1,
+          "content_length": 366,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 428
+        },
+        {
+          "chap_id": "429",
+          "formula_name": "大便下血",
+          "sub_case_count": 1,
+          "content_length": 556,
+          "pulse_count": 5,
+          "yao_count": 7,
+          "case_id": 429
+        },
+        {
+          "chap_id": "457",
+          "formula_name": "痢疾转肠溃疡",
+          "sub_case_count": 1,
+          "content_length": 1319,
+          "pulse_count": 6,
+          "yao_count": 6,
+          "case_id": 457
+        },
+        {
+          "chap_id": "458",
+          "formula_name": "痢疾",
+          "sub_case_count": 1,
+          "content_length": 472,
+          "pulse_count": 3,
+          "yao_count": 0,
+          "case_id": 458
+        },
+        {
+          "chap_id": "459",
+          "formula_name": "痢疾",
+          "sub_case_count": 1,
+          "content_length": 515,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 459
+        },
+        {
+          "chap_id": "460",
+          "formula_name": "噤口痢",
+          "sub_case_count": 1,
+          "content_length": 884,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 460
+        },
+        {
+          "chap_id": "461",
+          "formula_name": "泄泻兼发灼",
+          "sub_case_count": 1,
+          "content_length": 759,
+          "pulse_count": 3,
+          "yao_count": 6,
+          "case_id": 461
+        },
+        {
+          "chap_id": "462",
+          "formula_name": "小便白浊",
+          "sub_case_count": 1,
+          "content_length": 798,
+          "pulse_count": 3,
+          "yao_count": 7,
+          "case_id": 462
+        },
+        {
+          "chap_id": "463",
+          "formula_name": "小便因寒闭塞",
+          "sub_case_count": 1,
+          "content_length": 568,
+          "pulse_count": 2,
+          "yao_count": 8,
+          "case_id": 463
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "数",
+            20
+          ],
+          [
+            "弦",
+            16
+          ],
+          [
+            "微",
+            13
+          ],
+          [
+            "弱",
+            12
+          ],
+          [
+            "实",
+            11
+          ],
+          [
+            "虚",
+            11
+          ],
+          [
+            "细",
+            9
+          ],
+          [
+            "滑",
+            8
+          ],
+          [
+            "洪",
+            7
+          ],
+          [
+            "迟",
+            5
+          ],
+          [
+            "濡",
+            4
+          ],
+          [
+            "长",
+            3
+          ],
+          [
+            "涩",
+            1
+          ],
+          [
+            "代",
+            1
+          ],
+          [
+            "牢",
+            1
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "浮",
+            11
+          ],
+          [
+            "沉",
+            9
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "有力",
+            10
+          ],
+          [
+            "无力",
+            9
+          ],
+          [
+            "有根",
+            1
+          ],
+          [
+            "不起",
+            1
+          ],
+          [
+            "无根",
+            1
+          ]
+        ],
+        "至数Top5": [
+          [
+            "五至",
+            2
+          ],
+          [
+            "六至",
+            1
+          ],
+          [
+            "九十二至",
+            1
+          ],
+          [
+            "四至",
+            1
+          ]
+        ],
+        "重按总案例数": 6,
+        "分诊总案例数": 8,
+        "独字总案例数": 0,
+        "证候Top20": [
+          [
+            "热",
+            49
+          ],
+          [
+            "血",
+            30
+          ],
+          [
+            "重",
+            26
+          ],
+          [
+            "肿",
+            13
+          ],
+          [
+            "发热",
+            12
+          ],
+          [
+            "泄泻",
+            10
+          ],
+          [
+            "无力",
+            10
+          ],
+          [
+            "胀",
+            10
+          ],
+          [
+            "疼痛",
+            9
+          ],
+          [
+            "小便不利",
+            9
+          ],
+          [
+            "怔忡",
+            8
+          ],
+          [
+            "木",
+            7
+          ],
+          [
+            "呕吐",
+            6
+          ],
+          [
+            "恶心",
+            6
+          ],
+          [
+            "酸",
+            6
+          ],
+          [
+            "不食",
+            6
+          ],
+          [
+            "喘",
+            5
+          ],
+          [
+            "遗精",
+            5
+          ],
+          [
+            "咳",
+            5
+          ],
+          [
+            "冷",
+            4
+          ]
+        ],
+        "证候不重复数": 63,
+        "药物Top20": [
+          [
+            "山药",
+            25
+          ],
+          [
+            "甘草",
+            20
+          ],
+          [
+            "生山药",
+            14
+          ],
+          [
+            "滑石",
+            11
+          ],
+          [
+            "干姜",
+            10
+          ],
+          [
+            "熟地",
+            9
+          ],
+          [
+            "附子",
+            9
+          ],
+          [
+            "牡蛎",
+            8
+          ],
+          [
+            "龙骨",
+            8
+          ],
+          [
+            "人参",
+            8
+          ],
+          [
+            "白头翁",
+            7
+          ],
+          [
+            "金银花",
+            7
+          ],
+          [
+            "白术",
+            7
+          ],
+          [
+            "柴胡",
+            7
+          ],
+          [
+            "生地",
+            6
+          ],
+          [
+            "小茴香",
+            6
+          ],
+          [
+            "生姜",
+            5
+          ],
+          [
+            "白芍",
+            5
+          ],
+          [
+            "党参",
+            5
+          ],
+          [
+            "赤石脂",
+            5
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加龙骨",
+            2
+          ],
+          [
+            "加知母",
+            2
+          ],
+          [
+            "加椒目",
+            1
+          ],
+          [
+            "加椒目三钱",
+            1
+          ],
+          [
+            "加花椒",
+            1
+          ],
+          [
+            "加沉重",
+            1
+          ],
+          [
+            "加升麻提之",
+            1
+          ],
+          [
+            "加 \n赤石脂四钱",
+            1
+          ],
+          [
+            "加，或加生地榆亦可",
+            1
+          ],
+          [
+            "加酒曲",
+            1
+          ]
+        ],
+        "辨证原句Top3": [
+          "此证，用此方更佳。",
+          "此证虽下焦虚寒，而便带红色，实兼有痢证也。",
+          "此证亦痢中至险之证。"
+        ]
+      }
+    },
+    {
+      "mod_id": "7_女科男科与杂症",
+      "name": "女科男科与杂症",
+      "desc": "治妇科/男科/眼/喉/牙/瘰疬/疮疡/跌打",
+      "formula_count": 57,
+      "total_cases": 57,
+      "total_pulse": 124,
+      "total_length": 51469,
+      "items": [
+        {
+          "chap_id": "151",
+          "formula_name": "清带汤",
+          "sub_case_count": 1,
+          "content_length": 1419,
+          "pulse_count": 3,
+          "yao_count": 21,
+          "case_id": 151
+        },
+        {
+          "chap_id": "152",
+          "formula_name": "加味麦门冬汤",
+          "sub_case_count": 1,
+          "content_length": 956,
+          "pulse_count": 7,
+          "yao_count": 5,
+          "case_id": 152
+        },
+        {
+          "chap_id": "153",
+          "formula_name": "寿胎丸",
+          "sub_case_count": 1,
+          "content_length": 1250,
+          "pulse_count": 0,
+          "yao_count": 14,
+          "case_id": 153
+        },
+        {
+          "chap_id": "155",
+          "formula_name": "大顺汤",
+          "sub_case_count": 1,
+          "content_length": 1178,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 155
+        },
+        {
+          "chap_id": "157",
+          "formula_name": "滋阴清胃汤",
+          "sub_case_count": 1,
+          "content_length": 289,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 157
+        },
+        {
+          "chap_id": "158",
+          "formula_name": "滋乳汤",
+          "sub_case_count": 1,
+          "content_length": 149,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 158
+        },
+        {
+          "chap_id": "159",
+          "formula_name": "消乳汤",
+          "sub_case_count": 1,
+          "content_length": 549,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 159
+        },
+        {
+          "chap_id": "160",
+          "formula_name": "升肝舒郁汤",
+          "sub_case_count": 1,
+          "content_length": 516,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 160
+        },
+        {
+          "chap_id": "161",
+          "formula_name": "资生通脉汤",
+          "sub_case_count": 1,
+          "content_length": 1698,
+          "pulse_count": 5,
+          "yao_count": 16,
+          "case_id": 161
+        },
+        {
+          "chap_id": "162",
+          "formula_name": "蒲公英汤",
+          "sub_case_count": 1,
+          "content_length": 573,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 162
+        },
+        {
+          "chap_id": "163",
+          "formula_name": "磨翳水",
+          "sub_case_count": 1,
+          "content_length": 313,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 163
+        },
+        {
+          "chap_id": "164",
+          "formula_name": "磨翳散",
+          "sub_case_count": 1,
+          "content_length": 339,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 164
+        },
+        {
+          "chap_id": "165",
+          "formula_name": "明目蓬硝水",
+          "sub_case_count": 1,
+          "content_length": 149,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 165
+        },
+        {
+          "chap_id": "166",
+          "formula_name": "清脑黄连膏",
+          "sub_case_count": 1,
+          "content_length": 178,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 166
+        },
+        {
+          "chap_id": "167",
+          "formula_name": "益瞳丸",
+          "sub_case_count": 1,
+          "content_length": 180,
+          "pulse_count": 1,
+          "yao_count": 3,
+          "case_id": 167
+        },
+        {
+          "chap_id": "168",
+          "formula_name": "羊肝猪胆丸",
+          "sub_case_count": 1,
+          "content_length": 909,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 168
+        },
+        {
+          "chap_id": "169",
+          "formula_name": "咀华清喉丹",
+          "sub_case_count": 1,
+          "content_length": 1708,
+          "pulse_count": 3,
+          "yao_count": 17,
+          "case_id": 169
+        },
+        {
+          "chap_id": "171",
+          "formula_name": "牙疳散",
+          "sub_case_count": 1,
+          "content_length": 67,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 171
+        },
+        {
+          "chap_id": "172",
+          "formula_name": "牙疳敷藤黄法",
+          "sub_case_count": 1,
+          "content_length": 1130,
+          "pulse_count": 1,
+          "yao_count": 3,
+          "case_id": 172
+        },
+        {
+          "chap_id": "173",
+          "formula_name": "消瘰丸",
+          "sub_case_count": 1,
+          "content_length": 933,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 173
+        },
+        {
+          "chap_id": "174",
+          "formula_name": "消瘰膏",
+          "sub_case_count": 1,
+          "content_length": 229,
+          "pulse_count": 0,
+          "yao_count": 2,
+          "case_id": 174
+        },
+        {
+          "chap_id": "175",
+          "formula_name": "化腐生肌散",
+          "sub_case_count": 1,
+          "content_length": 166,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 175
+        },
+        {
+          "chap_id": "176",
+          "formula_name": "内托生肌散",
+          "sub_case_count": 1,
+          "content_length": 1112,
+          "pulse_count": 1,
+          "yao_count": 7,
+          "case_id": 176
+        },
+        {
+          "chap_id": "177",
+          "formula_name": "洗髓丹",
+          "sub_case_count": 1,
+          "content_length": 1804,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 177
+        },
+        {
+          "chap_id": "220",
+          "formula_name": "麦门冬解",
+          "sub_case_count": 1,
+          "content_length": 131,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 221
+        },
+        {
+          "chap_id": "247",
+          "formula_name": "龙眼肉解",
+          "sub_case_count": 1,
+          "content_length": 334,
+          "pulse_count": 2,
+          "yao_count": 0,
+          "case_id": 248
+        },
+        {
+          "chap_id": "262",
+          "formula_name": "六经总论",
+          "sub_case_count": 1,
+          "content_length": 1854,
+          "pulse_count": 1,
+          "yao_count": 0,
+          "case_id": 263
+        },
+        {
+          "chap_id": "262",
+          "formula_name": "六经总论",
+          "sub_case_count": 1,
+          "content_length": 1828,
+          "pulse_count": 1,
+          "yao_count": 0,
+          "case_id": 264
+        },
+        {
+          "chap_id": "314",
+          "formula_name": "论冬伤于寒春必病温及冬不藏精春必病温治法",
+          "sub_case_count": 1,
+          "content_length": 2753,
+          "pulse_count": 18,
+          "yao_count": 11,
+          "case_id": 316
+        },
+        {
+          "chap_id": "345",
+          "formula_name": "详论咽喉证治法",
+          "sub_case_count": 1,
+          "content_length": 4190,
+          "pulse_count": 15,
+          "yao_count": 21,
+          "case_id": 347
+        },
+        {
+          "chap_id": "346",
+          "formula_name": "论喉证治法",
+          "sub_case_count": 1,
+          "content_length": 1322,
+          "pulse_count": 8,
+          "yao_count": 6,
+          "case_id": 348
+        },
+        {
+          "chap_id": "349",
+          "formula_name": "论女子瘕治法",
+          "sub_case_count": 1,
+          "content_length": 1730,
+          "pulse_count": 2,
+          "yao_count": 13,
+          "case_id": 351
+        },
+        {
+          "chap_id": "351",
+          "formula_name": "论治疔宜重用大黄",
+          "sub_case_count": 1,
+          "content_length": 814,
+          "pulse_count": 8,
+          "yao_count": 7,
+          "case_id": 353
+        },
+        {
+          "chap_id": "354",
+          "formula_name": "自述治愈牙疼之经过",
+          "sub_case_count": 1,
+          "content_length": 697,
+          "pulse_count": 0,
+          "yao_count": 1,
+          "case_id": 356
+        },
+        {
+          "chap_id": "360",
+          "formula_name": "痫疯治法",
+          "sub_case_count": 1,
+          "content_length": 794,
+          "pulse_count": 1,
+          "yao_count": 6,
+          "case_id": 362
+        },
+        {
+          "chap_id": "361",
+          "formula_name": "小儿痉病治法",
+          "sub_case_count": 1,
+          "content_length": 612,
+          "pulse_count": 1,
+          "yao_count": 7,
+          "case_id": 363
+        },
+        {
+          "chap_id": "365",
+          "formula_name": "牛肉反红荆之目睹",
+          "sub_case_count": 1,
+          "content_length": 418,
+          "pulse_count": 0,
+          "yao_count": 4,
+          "case_id": 367
+        },
+        {
+          "chap_id": "367",
+          "formula_name": "阅刘华封《烂喉痧证治辨异》书后",
+          "sub_case_count": 1,
+          "content_length": 915,
+          "pulse_count": 1,
+          "yao_count": 9,
+          "case_id": 369
+        },
+        {
+          "chap_id": "378",
+          "formula_name": "答刘××问七伤",
+          "sub_case_count": 1,
+          "content_length": 1051,
+          "pulse_count": 1,
+          "yao_count": 0,
+          "case_id": 380
+        },
+        {
+          "chap_id": "384",
+          "formula_name": "答××女士问疼经治法",
+          "sub_case_count": 1,
+          "content_length": 335,
+          "pulse_count": 0,
+          "yao_count": 5,
+          "case_id": 386
+        },
+        {
+          "chap_id": "392",
+          "formula_name": "答黄××问创伤及跌打损伤外敷内服止疼化瘀方",
+          "sub_case_count": 1,
+          "content_length": 200,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 394
+        },
+        {
+          "chap_id": "393",
+          "formula_name": "答陈××疑《内经》十二经有名无质",
+          "sub_case_count": 1,
+          "content_length": 731,
+          "pulse_count": 3,
+          "yao_count": 0,
+          "case_id": 395
+        },
+        {
+          "chap_id": "394",
+          "formula_name": "治疯犬伤方",
+          "sub_case_count": 1,
+          "content_length": 1424,
+          "pulse_count": 0,
+          "yao_count": 6,
+          "case_id": 396
+        },
+        {
+          "chap_id": "396",
+          "formula_name": "（1）外伤甚重救急方",
+          "sub_case_count": 1,
+          "content_length": 1050,
+          "pulse_count": 0,
+          "yao_count": 3,
+          "case_id": 398
+        },
+        {
+          "chap_id": "444",
+          "formula_name": "目病干疼",
+          "sub_case_count": 1,
+          "content_length": 481,
+          "pulse_count": 1,
+          "yao_count": 0,
+          "case_id": 444
+        },
+        {
+          "chap_id": "445",
+          "formula_name": "牙疼",
+          "sub_case_count": 1,
+          "content_length": 405,
+          "pulse_count": 1,
+          "yao_count": 2,
+          "case_id": 445
+        },
+        {
+          "chap_id": "465",
+          "formula_name": "不寐兼惊悸",
+          "sub_case_count": 1,
+          "content_length": 760,
+          "pulse_count": 3,
+          "yao_count": 9,
+          "case_id": 465
+        },
+        {
+          "chap_id": "471",
+          "formula_name": "癫狂失心",
+          "sub_case_count": 1,
+          "content_length": 904,
+          "pulse_count": 6,
+          "yao_count": 7,
+          "case_id": 471
+        },
+        {
+          "chap_id": "472",
+          "formula_name": "神经锗乱",
+          "sub_case_count": 1,
+          "content_length": 1012,
+          "pulse_count": 6,
+          "yao_count": 9,
+          "case_id": 472
+        },
+        {
+          "chap_id": "507",
+          "formula_name": "温疹兼喉痧",
+          "sub_case_count": 1,
+          "content_length": 1470,
+          "pulse_count": 4,
+          "yao_count": 11,
+          "case_id": 507
+        },
+        {
+          "chap_id": "527",
+          "formula_name": "产后下血",
+          "sub_case_count": 1,
+          "content_length": 1180,
+          "pulse_count": 4,
+          "yao_count": 10,
+          "case_id": 527
+        },
+        {
+          "chap_id": "528",
+          "formula_name": "产后手足抽掣",
+          "sub_case_count": 1,
+          "content_length": 355,
+          "pulse_count": 2,
+          "yao_count": 2,
+          "case_id": 528
+        },
+        {
+          "chap_id": "529",
+          "formula_name": "产后瘕",
+          "sub_case_count": 1,
+          "content_length": 1129,
+          "pulse_count": 4,
+          "yao_count": 9,
+          "case_id": 529
+        },
+        {
+          "chap_id": "530",
+          "formula_name": "血闭成瘕",
+          "sub_case_count": 1,
+          "content_length": 916,
+          "pulse_count": 4,
+          "yao_count": 7,
+          "case_id": 530
+        },
+        {
+          "chap_id": "532",
+          "formula_name": "流产后满闷",
+          "sub_case_count": 1,
+          "content_length": 547,
+          "pulse_count": 1,
+          "yao_count": 4,
+          "case_id": 532
+        },
+        {
+          "chap_id": "534",
+          "formula_name": "处女经闭",
+          "sub_case_count": 1,
+          "content_length": 920,
+          "pulse_count": 4,
+          "yao_count": 7,
+          "case_id": 534
+        },
+        {
+          "chap_id": "535",
+          "formula_name": "血崩证",
+          "sub_case_count": 1,
+          "content_length": 413,
+          "pulse_count": 1,
+          "yao_count": 8,
+          "case_id": 535
+        }
+      ],
+      "module_aggregation": {
+        "脉形Top15": [
+          [
+            "弦",
+            11
+          ],
+          [
+            "微",
+            10
+          ],
+          [
+            "滑",
+            9
+          ],
+          [
+            "数",
+            9
+          ],
+          [
+            "实",
+            9
+          ],
+          [
+            "洪",
+            8
+          ],
+          [
+            "弱",
+            7
+          ],
+          [
+            "细",
+            7
+          ],
+          [
+            "虚",
+            6
+          ],
+          [
+            "短",
+            4
+          ],
+          [
+            "长",
+            4
+          ],
+          [
+            "紧",
+            3
+          ],
+          [
+            "涩",
+            3
+          ],
+          [
+            "迟",
+            2
+          ],
+          [
+            "代",
+            2
+          ]
+        ],
+        "脉位Top5": [
+          [
+            "沉",
+            6
+          ],
+          [
+            "浮",
+            3
+          ]
+        ],
+        "脉势Top5": [
+          [
+            "有力",
+            9
+          ],
+          [
+            "无力",
+            6
+          ],
+          [
+            "不起",
+            1
+          ],
+          [
+            "无根",
+            1
+          ]
+        ],
+        "至数Top5": [
+          [
+            "五至",
+            6
+          ],
+          [
+            "六至",
+            3
+          ],
+          [
+            "九十至",
+            1
+          ],
+          [
+            "八十二至",
+            1
+          ],
+          [
+            "四至",
+            1
+          ]
+        ],
+        "重按总案例数": 3,
+        "分诊总案例数": 7,
+        "独字总案例数": 0,
+        "证候Top20": [
+          [
+            "热",
+            39
+          ],
+          [
+            "血",
+            37
+          ],
+          [
+            "重",
+            26
+          ],
+          [
+            "肿",
+            17
+          ],
+          [
+            "痰",
+            15
+          ],
+          [
+            "木",
+            9
+          ],
+          [
+            "发热",
+            9
+          ],
+          [
+            "无力",
+            8
+          ],
+          [
+            "胀",
+            8
+          ],
+          [
+            "酸",
+            7
+          ],
+          [
+            "疼痛",
+            7
+          ],
+          [
+            "冷",
+            7
+          ],
+          [
+            "厥",
+            6
+          ],
+          [
+            "短气",
+            6
+          ],
+          [
+            "喘",
+            5
+          ],
+          [
+            "咳",
+            5
+          ],
+          [
+            "斑",
+            5
+          ],
+          [
+            "疹",
+            5
+          ],
+          [
+            "怔忡",
+            5
+          ],
+          [
+            "咳嗽",
+            4
+          ]
+        ],
+        "证候不重复数": 76,
+        "药物Top20": [
+          [
+            "山药",
+            18
+          ],
+          [
+            "玄参",
+            17
+          ],
+          [
+            "甘草",
+            14
+          ],
+          [
+            "桃仁",
+            10
+          ],
+          [
+            "当归",
+            10
+          ],
+          [
+            "连翘",
+            9
+          ],
+          [
+            "薄荷",
+            9
+          ],
+          [
+            "龙骨",
+            8
+          ],
+          [
+            "白术",
+            7
+          ],
+          [
+            "生地",
+            7
+          ],
+          [
+            "牡蛎",
+            7
+          ],
+          [
+            "人参",
+            7
+          ],
+          [
+            "党参",
+            7
+          ],
+          [
+            "朱砂",
+            7
+          ],
+          [
+            "生山药",
+            6
+          ],
+          [
+            "鹿角",
+            6
+          ],
+          [
+            "金银花",
+            6
+          ],
+          [
+            "半夏",
+            6
+          ],
+          [
+            "枸杞",
+            6
+          ],
+          [
+            "附子",
+            6
+          ]
+        ],
+        "加味Top10": [
+          [
+            "加人参汤",
+            3
+          ],
+          [
+            "加重耳",
+            2
+          ],
+          [
+            "加以生平临证之实验",
+            2
+          ],
+          [
+            "加苏子",
+            2
+          ],
+          [
+            "加白芍",
+            1
+          ],
+          [
+            "加鹿角霜",
+            1
+          ],
+          [
+            "加温热之药",
+            1
+          ],
+          [
+            "加寒凉之药",
+            1
+          ],
+          [
+            "加白芍六钱",
+            1
+          ],
+          [
+            "加大热之药",
+            1
+          ]
+        ],
+        "辨证原句Top3": [
+          "按∶\\x白头翁不但治因热之带证甚效也。",
+          "按∶\\x没石子味苦而涩，苦则能开，涩则能敛，一药而具此 \n两长，原与拙拟清带汤之意相合。",
+          "按∶\\x此方用之数次，颇有效验。"
+        ]
+      }
+    }
+  ]
+}

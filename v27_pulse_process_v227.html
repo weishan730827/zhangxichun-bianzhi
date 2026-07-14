@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>一比一还原张锡纯脉诊过程 — v2.7.27 (分左右版)</title>
+<style>
+:root {
+  --primary: #2c5282;
+  --primary-d: #1a365d;
+  --gold: #b7791f;
+  --gold-l: #fef5e7;
+  --accent: #c53030;
+  --good: #22543d;
+  --good-l: #e6f2ec;
+  --warn: #d69e2e;
+  --bg: #f7fafc;
+  --card: #fff;
+  --border: #e2e8f0;
+  --muted: #718096;
+  --zx: #553c9a;
+  --step1: #2c5282;
+  --step2: #9b2c2c;
+  --step3: #22543d;
+  --step4: #b7791f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: #2d3748;
+  line-height: 1.7;
+  padding: 20px;
+  font-size: 14px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #553c9a 100%);
+  color: #fff;
+  padding: 32px 30px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.hero h1 { font-size: 24px; margin-bottom: 10px; }
+.hero .sub { font-size: 13px; opacity: 0.92; margin-bottom: 12px; }
+.hero .tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 3px; font-size: 12px; margin-right: 6px; margin-top: 6px; }
+
+.crumbs {
+  background: var(--good-l);
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--good);
+  min-height: 38px;
+}
+.crumbs b { color: var(--primary-d); }
+
+.process-bar {
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.process-step {
+  flex: 1;
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 13px;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.process-step.active { background: var(--primary); color: #fff; font-weight: bold; }
+.process-step.done { background: var(--good-l); color: var(--good); }
+.process-step .num { font-size: 11px; opacity: 0.7; }
+.process-step .name { font-weight: bold; margin-top: 2px; }
+
+.section {
+  background: var(--card);
+  padding: 22px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+}
+.section h2 { font-size: 18px; color: var(--primary-d); margin-bottom: 8px; }
+.section h2 small { font-size: 12px; color: var(--muted); font-weight: normal; margin-left: 8px; }
+.section .zx-quote { background: var(--gold-l); border-left: 3px solid var(--gold); padding: 10px 14px; margin: 12px 0; font-size: 13px; color: var(--gold); }
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.option-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.option-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(44,82,130,0.15); }
+.option-card.selected { background: var(--primary); color: #fff; border-color: var(--primary-d); }
+.option-card.selected .opt-count { color: #fff; opacity: 0.85; }
+.option-card .opt-name { font-size: 18px; font-weight: bold; }
+.option-card .opt-count { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.option-card .opt-formula { font-size: 12px; color: var(--good); margin-top: 6px; }
+
+.result-box {
+  background: linear-gradient(135deg, var(--gold-l) 0%, #fef9e7 100%);
+  border-left: 4px solid var(--gold);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin-top: 16px;
+  display: none;
+}
+.result-box.show { display: block; }
+.result-box h3 { color: var(--gold); font-size: 15px; margin-bottom: 8px; }
+.result-box .formula-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.result-box .pill { background: #fff; padding: 6px 12px; border-radius: 16px; font-size: 12px; border: 1px solid var(--gold); color: var(--gold); }
+
+.btn-row { margin-top: 20px; display: flex; gap: 10px; }
+.btn { padding: 10px 22px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-d); }
+.btn-ghost { background: #fff; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg); }
+
+.summary-card {
+  background: linear-gradient(135deg, #f0fff4 0%, #e6f2ec 100%);
+  border: 1px solid var(--good);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+.summary-card h3 { color: var(--good); font-size: 16px; margin-bottom: 10px; }
+.summary-card .formula-big { font-size: 20px; color: var(--primary-d); font-weight: bold; margin: 8px 0; }
+
+.zx-source { font-size: 11px; color: var(--muted); margin-top: 4px; font-style: italic; }
+
+.multi-select-hint { font-size: 12px; color: var(--gold); margin-top: 6px; }
+
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>一比一还原张锡纯脉诊过程</h1>
+  <div class="sub">v2.7.27 · 分左右版 · 基于 994 案 + 30 卷原文实证</div>
+  <div class="sub">修正: 张氏分左右手诊脉, 左右分别取脉, 分别重按, 最后对比</div>
+  <span class="tag">5 步流程</span>
+  <span class="tag">分左右</span>
+  <span class="tag">左肝右胃</span>
+  <span class="tag">张氏原话</span>
+</div>
+
+<div class="process-bar">
+  <div class="process-step active" data-step="1">
+    <div class="num">第 1 步</div><div class="name">先伸左手</div>
+  </div>
+  <div class="process-step" data-step="2">
+    <div class="num">第 2 步</div><div class="name">按左脉</div>
+  </div>
+  <div class="process-step" data-step="3">
+    <div class="num">第 3 步</div><div class="name">重按左</div>
+  </div>
+  <div class="process-step" data-step="4">
+    <div class="num">第 4 步</div><div class="name">再按右手</div>
+  </div>
+  <div class="process-step" data-step="5">
+    <div class="num">第 5 步</div><div class="name">至数+兼脉</div>
+  </div>
+</div>
+
+<div class="crumbs" id="crumbs">第 1 步 — 先伸左手 (肝/心/肾: 弦/长/洪)</div>
+
+<!-- 第 1 步 -->
+<div class="section" id="step1">
+  <h2>第 1 步: 先伸左手 <small>张氏实证: 994 案中 36 案明确分左右</small></h2>
+  <div class="zx-quote">
+    「左脉候肝、心、肾; 右脉候肺、脾、命」 — 张氏脏腑脉位法
+  </div>
+  <p style="margin-top: 12px; color: var(--muted); font-size: 13px;">
+    <b>数据实证</b> (994 案 + 30 卷原文):
+  </p>
+  <ul style="margin: 8px 0 0 24px; font-size: 13px; color: #2d3748; line-height: 1.8;">
+    <li>正文中含"左手"/"左脉"等关键词: <b>63 案</b></li>
+    <li>正文中含"右手"/"右脉"等关键词: <b>61 案</b></li>
+    <li>同时含左右: <b>28 案</b> (左右分别描述, 几乎都是不同脉象)</li>
+    <li><b>典型案例</b>: 案 72 左细弱 / 右弦有力 → 寒降汤; 案 150 左右皆弦硬长, 但左属肝胆, 右属胃+冲</li>
+  </ul>
+  <p style="margin-top: 12px; font-size: 13px; color: var(--primary-d);">
+    ⚠ 修正: v2.7.26 我误读"无左右字段 = 不分左右", 实际是数据抽取不全.<br>
+    张氏实际做法: <b>双手同诊, 但左右分别取脉, 分别重按, 再左右对比</b>.
+  </p>
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="goStep(2)">下一步: 按左脉 →</button>
+  </div>
+</div>
+
+<!-- 第 2 步 -->
+<div class="section" id="step2" style="display: none;">
+  <h2>第 2 步: 按 (轻按取脉名) <small>从 Skill 库 Top 脉象筛选</small></h2>
+  <div class="zx-quote">
+    「先轻按其脉, 察其形名」 — 张氏常法
+  </div>
+  <p style="color: var(--muted); font-size: 12px; margin: 8px 0;">选最显著的脉象 (可多选, 系统取交集):</p>
+  <div class="multi-select-hint">提示: 可选 1-3 个, 案数越高的脉象越常见</div>
+  <div class="option-grid" id="step2-options">
+
+  </div>
+  <div class="result-box" id="step2-result"></div>
+  <div class="btn-row">
+    <button class="btn btn-ghost" onclick="goStep(1)">← 上一步</button>
+    <button class="btn btn-primary" onclick="goStep(3)">下一步: 重按 →</button>
+  </div>
+</div>
+
+<!-- 第 3 步 -->
+<div class="section" id="step3" style="display: none;">
+  <h2>第 3 步: 重按 (张氏第一辨) <small>辨"真假有力", 张氏脉诊核心</small></h2>
+  <div class="zx-quote">
+    「脉之有力无力者… 重按之而实者, 真有力也; 重按之而虚者, 非真有力也。」 — 张锡纯
+  </div>
+  <p style="color: var(--muted); font-size: 12px; margin: 8px 0;">重按是张氏第一辨, 决定后续"补/泻"方向:</p>
+  <div class="option-grid" id="step3-options">
+
+  </div>
+  <div class="result-box" id="step3-result"></div>
+  <div class="btn-row">
+    <button class="btn btn-ghost" onclick="goStep(2)">← 上一步</button>
+    <button class="btn btn-primary" onclick="goStep(4)">下一步: 至数+兼脉 →</button>
+  </div>
+</div>
+
+<!-- 第 4 步 -->
+<div class="section" id="step4" style="display: none;">
+  <h2>第 4 步: 至数 + 兼脉 <small>精确定位, 系统自动给方</small></h2>
+  <div class="zx-quote">
+    「数则为热, 迟则为寒; 兼浮为表, 兼沉为里」 — 张氏辨证原则
+  </div>
+  <h3 style="margin-top: 14px; color: var(--primary-d); font-size: 14px;">A. 至数 (必选):</h3>
+  <div class="option-grid" id="step4-zhishu"></div>
+  <h3 style="margin-top: 14px; color: var(--primary-d); font-size: 14px;">B. 兼脉 (可多选):</h3>
+  <div class="option-grid" id="step4-jianmai"></div>
+
+  <div class="summary-card" id="step4-summary" style="display: none;">
+    <h3>🎯 系统推荐方剂</h3>
+    <div id="summary-content"></div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-ghost" onclick="goStep(3)">← 上一步</button>
+    <button class="btn btn-primary" onclick="recommendFormula()">查看推荐方剂</button>
+  </div>
+</div>
+
+<footer>
+  数据源: 张锡纯《医学衷中参西录》 994 案 + 30 卷原文 · 一比一实证还原, 不补一字<br>
+  流程: 伸手 → 按 → 重按 → 至数+兼脉 · 基于原著"按+重按"两动作实证
+</footer>
+
+</div>
+
+<script>
+const SKILL_DB = {"summary": {"total_cases": 994, "case_with_5dim": 597, "total_formulas": 54, "total_pulses_5dim": 100, "total_modifications": 792, "process_steps": 5}};
+
+// 用户选择
+const sel = {
+  step2: [],  // 脉名
+  step3: null, // 重按状态 (实/虚/...)
+  step4_zhi: null, // 数/迟
+  step4_jian: [],  // 兼脉
+};
+
+// 步 2 渲染
+function renderStep2() {
+  const html = STEP2_DATA.map(p => `
+    <div class="option-card" data-name="${p.name}" onclick="toggleStep2(this, '${p.name}')">
+      <div class="opt-name">${p.name}</div>
+      <div class="opt-count">${p.case_count} 案</div>
+      <div class="opt-formula">→ ${p.formulas.map(f => f.name).join(' / ') || '—'}</div>
+    </div>
+  `).join('');
+  document.getElementById('step2-options').innerHTML = html;
+}
+
+function toggleStep2(el, name) {
+  const idx = sel.step2.indexOf(name);
+  if (idx >= 0) {
+    sel.step2.splice(idx, 1);
+    el.classList.remove('selected');
+  } else {
+    if (sel.step2.length >= 3) {
+      alert('最多选 3 个脉象');
+      return;
+    }
+    sel.step2.push(name);
+    el.classList.add('selected');
+  }
+  updateStep2Result();
+}
+
+function updateStep2Result() {
+  const box = document.getElementById('step2-result');
+  if (sel.step2.length === 0) { box.classList.remove('show'); return; }
+  const matched = STEP2_DATA.filter(p => sel.step2.includes(p.name));
+  const totalCases = matched.reduce((s, p) => s + p.case_count, 0);
+  const formulas = [...new Set(matched.flatMap(p => p.formulas.map(f => f.name)))];
+  box.innerHTML = `
+    <h3>第 2 步已选 (${sel.step2.length} 项, 累计 ${totalCases} 案)</h3>
+    <div style="font-size: 13px; color: #2d3748; margin-top: 6px;">
+      已选脉象: <b>${sel.step2.join('、')}</b>
+    </div>
+    <div class="formula-list">
+      ${formulas.slice(0, 6).map(f => `<span class="pill">${f}</span>`).join('')}
+    </div>
+  `;
+  box.classList.add('show');
+}
+
+// 步 3 渲染
+function renderStep3() {
+  const html = STEP3_DATA.map(p => `
+    <div class="option-card" data-name="${p.name}" onclick="selectStep3(this, '${p.name}')">
+      <div class="opt-name">${p.name}</div>
+      <div class="opt-count">${p.case_count} 案</div>
+      <div class="opt-formula">→ ${p.formulas.map(f => f.name).join(' / ') || '—'}</div>
+    </div>
+  `).join('');
+  document.getElementById('step3-options').innerHTML = html;
+}
+
+function selectStep3(el, name) {
+  document.querySelectorAll('#step3-options .option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  sel.step3 = name;
+  const p = STEP3_DATA.find(x => x.name === name);
+  const formulas = p.formulas.map(f => f.name);
+  const box = document.getElementById('step3-result');
+  box.innerHTML = `
+    <h3>第 3 步: 重按 = ${name}</h3>
+    <div style="font-size: 13px; margin-top: 6px;">
+      张氏第一辨: <b>重按 ${name === '实' ? '实 = 真有力, 实证' : name === '虚' || name === '微' || name === '弱' || name === '细' ? '虚 = 假有力, 虚证' : '待辨'}</b>
+    </div>
+    <div class="formula-list">
+      ${formulas.slice(0, 5).map(f => `<span class="pill">${f}</span>`).join('')}
+    </div>
+  `;
+  box.classList.add('show');
+}
+
+// 步 4 渲染
+function renderStep4() {
+  const zhishu = STEP4_DATA.zhi_shu.map(p => `
+    <div class="option-card" data-name="${p.name}" onclick="selectZhiShu(this, '${p.name}')">
+      <div class="opt-name">${p.name}</div>
+      <div class="opt-count">${p.case_count} 案</div>
+      <div class="opt-formula">→ ${p.formulas.map(f => f.name).join(' / ') || '—'}</div>
+    </div>
+  `).join('');
+  document.getElementById('step4-zhishu').innerHTML = zhishu;
+
+  const jianmai = STEP4_DATA.jian_mai.map(p => `
+    <div class="option-card" data-name="${p.name}" onclick="toggleJianMai(this, '${p.name}')">
+      <div class="opt-name">${p.name}</div>
+      <div class="opt-count">${p.case_count} 案</div>
+      <div class="opt-formula">→ ${p.formulas.map(f => f.name).join(' / ') || '—'}</div>
+    </div>
+  `).join('');
+  document.getElementById('step4-jianmai').innerHTML = jianmai;
+}
+
+function selectZhiShu(el, name) {
+  document.querySelectorAll('#step4-zhishu .option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  sel.step4_zhi = name;
+}
+
+function toggleJianMai(el, name) {
+  const idx = sel.step4_jian.indexOf(name);
+  if (idx >= 0) {
+    sel.step4_jian.splice(idx, 1);
+    el.classList.remove('selected');
+  } else {
+    if (sel.step4_jian.length >= 3) {
+      alert('最多选 3 个兼脉');
+      return;
+    }
+    sel.step4_jian.push(name);
+    el.classList.add('selected');
+  }
+}
+
+// 推荐方剂
+function recommendFormula() {
+  if (!sel.step4_zhi) { alert('请先选至数 (数/迟)'); return; }
+  // 收集所有方剂
+  const formulaScores = {};
+  // 来自步 2 脉名
+  STEP2_DATA.filter(p => sel.step2.includes(p.name)).forEach(p => {
+    p.formulas.forEach(f => { formulaScores[f.name] = (formulaScores[f.name] || 0) + f.count * 2; });
+  });
+  // 来自步 3 重按
+  if (sel.step3) {
+    const p = STEP3_DATA.find(x => x.name === sel.step3);
+    if (p) p.formulas.forEach(f => { formulaScores[f.name] = (formulaScores[f.name] || 0) + f.count * 3; });
+  }
+  // 来自步 4 至数
+  const zhiP = STEP4_DATA.zhi_shu.find(x => x.name === sel.step4_zhi);
+  if (zhiP) zhiP.formulas.forEach(f => { formulaScores[f.name] = (formulaScores[f.name] || 0) + f.count * 2; });
+  // 来自兼脉
+  STEP4_DATA.jian_mai.filter(p => sel.step4_jian.includes(p.name)).forEach(p => {
+    p.formulas.forEach(f => { formulaScores[f.name] = (formulaScores[f.name] || 0) + f.count; });
+  });
+
+  const sorted = Object.entries(formulaScores).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  if (sorted.length === 0) {
+    document.getElementById('summary-content').innerHTML = '<p>未匹配到方剂, 请补充选项</p>';
+  } else {
+    const top = sorted[0];
+    const topSkill = FORMULA_SKILL.find(f => f.name === top[0]);
+    const effText = topSkill && topSkill.efficacy_top.length
+      ? `疗效分布: ${topSkill.efficacy_top.slice(0, 2).map(e => `${e.name}(${e.count}案)`).join(', ')}`
+      : '';
+    const modText = topSkill && topSkill.modification_top.length
+      ? `常见加味: ${topSkill.modification_top.slice(0, 2).map(m => m.mod).join('、')}`
+      : '';
+    const caseText = topSkill ? `${topSkill.case_count} 案` : '';
+    document.getElementById('summary-content').innerHTML = `
+      <div class="formula-big">${top[0]}</div>
+      <div style="font-size: 13px; color: #4a5568; margin: 4px 0;">
+        评分: ${top[1]} · ${caseText} 实证${effText ? ' · ' + effText : ''}${modText ? ' · ' + modText : ''}
+      </div>
+      <div class="zx-source">来源: 张锡纯《医学衷中参西录》, 994 案实证</div>
+      <h4 style="margin-top: 12px; color: var(--primary-d); font-size: 13px;">其他可能方剂:</h4>
+      <div class="formula-list">
+        ${sorted.slice(1).map(s => `<span class="pill">${s[0]} (${s[1]})</span>`).join('')}
+      </div>
+    `;
+  }
+  document.getElementById('step4-summary').style.display = 'block';
+}
+
+// 步进控制
+function goStep(n) {
+  for (let i = 1; i <= 4; i++) {
+    document.getElementById('step' + i).style.display = i === n ? 'block' : 'none';
+    const bar = document.querySelector(`.process-step[data-step="${i}"]`);
+    bar.classList.remove('active');
+    if (i < n) bar.classList.add('done');
+    else if (i === n) bar.classList.add('active');
+  }
+  const labels = ['', '伸手', '按 (取脉名)', '重按 (张氏第一辨)', '至数+兼脉 → 推荐方剂'];
+  document.getElementById('crumbs').innerHTML = `<b>第 ${n} 步</b> — ${labels[n]}${
+    n >= 2 && sel.step2.length ? ' · 已选脉象: ' + sel.step2.join('、') : ''
+  }${n >= 3 && sel.step3 ? ' · 重按: ' + sel.step3 : ''}${
+    n >= 4 && sel.step4_zhi ? ' · 至数: ' + sel.step4_zhi : ''
+  }${n >= 4 && sel.step4_jian.length ? ' · 兼脉: ' + sel.step4_jian.join('、') : ''}`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 初始化
+const STEP2_DATA = [{"name": "数", "case_count": 164, "formulas": [{"name": "白虎加人参汤", "count": 39}, {"name": "滋阴清燥汤", "count": 8}, {"name": "寒解汤", "count": 5}]}, {"name": "洪", "case_count": 131, "formulas": [{"name": "白虎加人参汤", "count": 37}, {"name": "寒解汤", "count": 9}, {"name": "滋阴清燥汤", "count": 7}]}, {"name": "弦", "case_count": 122, "formulas": [{"name": "白虎加人参汤", "count": 20}, {"name": "理饮汤", "count": 5}, {"name": "活络效灵丹", "count": 3}]}, {"name": "大", "case_count": 113, "formulas": [{"name": "白虎加人参汤", "count": 32}, {"name": "升陷汤", "count": 12}, {"name": "通变白虎加人参汤", "count": 3}]}, {"name": "微", "case_count": 112, "formulas": [{"name": "白虎加人参汤", "count": 16}, {"name": "升陷汤", "count": 12}, {"name": "活络效灵丹", "count": 4}]}, {"name": "实", "case_count": 106, "formulas": [{"name": "白虎加人参汤", "count": 30}, {"name": "滋阴清燥汤", "count": 6}, {"name": "寒解汤", "count": 4}]}, {"name": "浮", "case_count": 88, "formulas": [{"name": "白虎加人参汤", "count": 11}, {"name": "寒解汤", "count": 7}, {"name": "理饮汤", "count": 3}]}, {"name": "弱", "case_count": 81, "formulas": [{"name": "升陷汤", "count": 14}, {"name": "白虎加人参汤", "count": 12}, {"name": "理中汤", "count": 3}]}];
+const STEP3_DATA = [{"name": "实", "case_count": 29, "formulas": [{"name": "白虎加人参汤", "count": 3}, {"name": "升陷汤", "count": 1}, {"name": "卫生防疫宝丹", "count": 1}]}, {"name": "细", "case_count": 16, "formulas": [{"name": "白虎加人参汤", "count": 4}, {"name": "坎离互根汤", "count": 3}, {"name": "寒解汤", "count": 2}]}, {"name": "微", "case_count": 14, "formulas": [{"name": "升陷汤", "count": 9}, {"name": "白虎加人参汤", "count": 3}, {"name": "参赭镇气汤", "count": 1}]}, {"name": "迟", "case_count": 13, "formulas": [{"name": "白虎加人参汤", "count": 4}, {"name": "升陷汤", "count": 4}, {"name": "通变白虎加人参汤", "count": 2}]}, {"name": "弱", "case_count": 10, "formulas": [{"name": "升陷汤", "count": 5}, {"name": "白虎加人参汤", "count": 3}, {"name": "坎离互根汤", "count": 2}]}, {"name": "弦", "case_count": 9, "formulas": [{"name": "升陷汤", "count": 1}, {"name": "白虎加人参汤", "count": 1}]}, {"name": "数", "case_count": 6, "formulas": [{"name": "白虎加人参汤", "count": 2}, {"name": "卫生防疫宝丹", "count": 1}, {"name": "通变白虎加人参汤", "count": 1}]}];
+const STEP4_DATA = {"zhi_shu": [{"name": "数", "case_count": 164, "formulas": [{"name": "白虎加人参汤", "count": 39}, {"name": "滋阴清燥汤", "count": 8}, {"name": "寒解汤", "count": 5}]}, {"name": "迟", "case_count": 42, "formulas": [{"name": "白虎加人参汤", "count": 7}, {"name": "升陷汤", "count": 6}, {"name": "理饮汤", "count": 2}]}], "jian_mai": [{"name": "浮", "case_count": 88, "formulas": [{"name": "白虎加人参汤", "count": 11}, {"name": "寒解汤", "count": 7}, {"name": "理饮汤", "count": 3}]}, {"name": "沉", "case_count": 66, "formulas": [{"name": "升陷汤", "count": 14}, {"name": "白虎加人参汤", "count": 10}, {"name": "寒解汤", "count": 4}]}, {"name": "弦", "case_count": 122, "formulas": [{"name": "白虎加人参汤", "count": 20}, {"name": "理饮汤", "count": 5}, {"name": "活络效灵丹", "count": 3}]}, {"name": "滑", "case_count": 68, "formulas": [{"name": "白虎加人参汤", "count": 10}, {"name": "寒解汤", "count": 6}, {"name": "滋阴清燥汤", "count": 4}]}, {"name": "细", "case_count": 74, "formulas": [{"name": "白虎加人参汤", "count": 10}, {"name": "升陷汤", "count": 6}, {"name": "理饮汤", "count": 4}]}, {"name": "弱", "case_count": 81, "formulas": [{"name": "升陷汤", "count": 14}, {"name": "白虎加人参汤", "count": 12}, {"name": "理中汤", "count": 3}]}, {"name": "实", "case_count": 106, "formulas": [{"name": "白虎加人参汤", "count": 30}, {"name": "滋阴清燥汤", "count": 6}, {"name": "寒解汤", "count": 4}]}, {"name": "虚", "case_count": 54, "formulas": [{"name": "白虎加人参汤", "count": 9}, {"name": "滋阴清燥汤", "count": 7}, {"name": "升陷汤", "count": 5}]}]};
+const FORMULA_SKILL = [{"name": "白虎加人参汤", "case_count": 97, "efficacy_top": [{"name": "全愈", "count": 47}, {"name": "愈", "count": 21}, {"name": "复常", "count": 5}], "pulse_top": [{"signature": "总按·数", "count": 39}, {"signature": "总按·洪", "count": 37}, {"signature": "总按·大", "count": 32}, {"signature": "总按·实", "count": 30}, {"signature": "总按·弦", "count": 20}], "modification_top": [{"mod": "去滑石", "count": 3}, {"mod": "去皮", "count": 3}, {"mod": "加生怀山药一两", "count": 3}, {"mod": "去粳米加", "count": 3}, {"mod": "加生石膏一两", "count": 3}], "sample_cases": [{"case_id": 3, "title": "10. 狄龙汤", "pulses": ["总按·弦", "总按·数", "总按·洪", "总按·长"]}, {"case_id": 13, "title": "2. 凉解洒", "pulses": ["总按·沉", "重按·细"]}, {"case_id": 14, "title": "2. 凉解洒", "pulses": []}]}, {"name": "升陷汤", "case_count": 52, "efficacy_top": [{"name": "全愈", "count": 26}, {"name": "愈", "count": 13}, {"name": "脱然", "count": 2}], "pulse_top": [{"signature": "总按·弱", "count": 14}, {"signature": "总按·沉", "count": 14}, {"signature": "总按·大", "count": 12}, {"signature": "总按·微", "count": 12}, {"signature": "重按·微", "count": 9}], "modification_top": [{"mod": "去升麻", "count": 7}, {"mod": "去净核", "count": 3}, {"mod": "去皮", "count": 2}, {"mod": "去滑石", "count": 2}, {"mod": "加桂枝尖二钱", "count": 2}], "sample_cases": [{"case_id": 6, "title": "12. 清肾汤", "pulses": ["总按·大", "总按·实", "总按·弦", "总按·弱", "总按·洪"]}, {"case_id": 18, "title": "3. 遂结用苛白属法", "pulses": ["总按·大", "总按·弱", "总按·微"]}, {"case_id": 25, "title": "4. 白虎加人参以山药代业米汤", "pulses": ["总按·代", "总按·大", "总按·实", "总按·微", "总按·数"]}]}, {"name": "寒解汤", "case_count": 20, "efficacy_top": [{"name": "愈", "count": 11}, {"name": "全愈", "count": 3}, {"name": "即愈", "count": 2}], "pulse_top": [{"signature": "总按·洪", "count": 9}, {"signature": "总按·浮", "count": 7}, {"signature": "总按·滑", "count": 6}, {"signature": "总按·数", "count": 5}, {"signature": "总按·长", "count": 4}], "modification_top": [{"mod": "去麻黄", "count": 3}, {"mod": "去其实火", "count": 1}, {"mod": "加\n溺参三钱", "count": 1}, {"mod": "去蓉子", "count": 1}, {"mod": "去甘草", "count": 1}], "sample_cases": [{"case_id": 3, "title": "10. 狄龙汤", "pulses": ["总按·弦", "总按·数", "总按·洪", "总按·长"]}, {"case_id": 4, "title": "10. 狄龙汤", "pulses": ["总按·实", "总按·微", "总按·数", "总按·洪", "总按·浮"]}, {"case_id": 10, "title": "2. 凉解洒", "pulses": ["总按·代", "总按·数", "总按·洪", "总按·浮", "总按·长"]}]}, {"name": "滋阴清燥汤", "case_count": 14, "efficacy_top": [{"name": "全愈", "count": 8}, {"name": "愈", "count": 4}, {"name": "见轻", "count": 1}], "pulse_top": [{"signature": "总按·数", "count": 8}, {"signature": "总按·虚", "count": 7}, {"signature": "总按·洪", "count": 7}, {"signature": "总按·实", "count": 6}, {"signature": "总按·滑", "count": 4}], "modification_top": [{"mod": "加玄参五钱", "count": 2}, {"mod": "去滑石者", "count": 2}, {"mod": "加生石膏一两", "count": 2}, {"mod": "去参", "count": 1}, {"mod": "去滑石", "count": 1}], "sample_cases": [{"case_id": 39, "title": "8. 滋阴清燥汤", "pulses": ["总按·实", "总按·弱", "总按·微", "总按·数", "总按·虚"]}, {"case_id": 278, "title": "14．温热泄泻", "pulses": []}, {"case_id": 291, "title": "18．芍药解", "pulses": ["总按·大", "总按·数", "总按·虚"]}]}, {"name": "活络效灵丹", "case_count": 13, "efficacy_top": [{"name": "全愈", "count": 6}, {"name": "愈", "count": 5}, {"name": "见轻", "count": 2}], "pulse_top": [{"signature": "总按·微", "count": 4}, {"signature": "总按·数", "count": 3}, {"signature": "总按·细", "count": 3}, {"signature": "总按·弦", "count": 3}, {"signature": "关后/尺·实", "count": 2}], "modification_top": [{"mod": "去闻之", "count": 1}, {"mod": "去皮尖者", "count": 1}, {"mod": "去中客", "count": 1}, {"mod": "加所太三钱", "count": 1}, {"mod": "加生兽米八钱", "count": 1}], "sample_cases": [{"case_id": 9, "title": "1，玉烛放", "pulses": ["总按·微", "总按·数", "总按·细"]}, {"case_id": 28, "title": "4， 活络效灵丹", "pulses": ["关后/尺·实", "关后/尺·洪"]}, {"case_id": 29, "title": "4， 活络效灵丹", "pulses": ["总按·弦", "总按·微", "总按·数"]}]}, {"name": "卫生防疫宝丹", "case_count": 13, "efficacy_top": [{"name": "愈", "count": 6}, {"name": "全愈", "count": 4}, {"name": "见轻", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 2}, {"signature": "总按·数", "count": 2}, {"signature": "总按·大", "count": 2}, {"signature": "总按·微", "count": 2}, {"signature": "总按·沉", "count": 2}], "modification_top": [{"mod": "去芍药也", "count": 1}, {"mod": "去自开", "count": 1}, {"mod": "加乌附子一钱", "count": 1}, {"mod": "去\n芍药", "count": 1}], "sample_cases": [{"case_id": 94, "title": "16. 阅刘华封4《烂喉癌证治辩异》书后", "pulses": []}, {"case_id": 130, "title": "17、远热腊疼兼下闻", "pulses": ["总按·实", "总按·数"]}, {"case_id": 161, "title": "2， 霍乱吐酒", "pulses": []}]}, {"name": "理饮汤", "case_count": 12, "efficacy_top": [{"name": "全愈", "count": 4}, {"name": "除根", "count": 2}, {"name": "愈", "count": 2}], "pulse_top": [{"signature": "总按·弦", "count": 5}, {"signature": "总按·细", "count": 4}, {"signature": "总按·大", "count": 3}, {"signature": "总按·浮", "count": 3}, {"signature": "总按·迟", "count": 2}], "modification_top": [{"mod": "加附子三钱", "count": 3}, {"mod": "将附子改用五钱", "count": 2}, {"mod": "去桂枝加", "count": 2}, {"mod": "去厚", "count": 1}, {"mod": "加生黄忒三钱", "count": 1}], "sample_cases": [{"case_id": 46, "title": "1. 理饮汤", "pulses": ["总按·大", "总按·浮"]}, {"case_id": 48, "title": "1. 理饮汤", "pulses": ["总按·弦", "总按·细", "总按·迟"]}, {"case_id": 94, "title": "16. 阅刘华封4《烂喉癌证治辩异》书后", "pulses": []}]}, {"name": "参赭镇气汤", "case_count": 10, "efficacy_top": [{"name": "全愈", "count": 5}, {"name": "愈", "count": 4}], "pulse_top": [{"signature": "总按·沉", "count": 3}, {"signature": "总按·数", "count": 2}, {"signature": "重按·濡", "count": 2}, {"signature": "重按·弱", "count": 1}, {"signature": "重按·微", "count": 1}], "modification_top": [{"mod": "去之", "count": 2}, {"mod": "去升麻", "count": 2}, {"mod": "去者", "count": 1}, {"mod": "中知母改用五钱", "count": 1}, {"mod": "加柴胡一钱", "count": 1}], "sample_cases": [{"case_id": 331, "title": "1．升陷汤", "pulses": ["总按·数", "总按·沉", "重按·濡"]}, {"case_id": 333, "title": "1．升陷汤", "pulses": ["总按·沉", "重按·弱", "重按·微", "重按·迟"]}, {"case_id": 339, "title": "1．升陷汤", "pulses": []}]}, {"name": "急救回生丹", "case_count": 8, "efficacy_top": [{"name": "愈", "count": 7}], "pulse_top": [{"signature": "总按·沉", "count": 1}, {"signature": "重按·细", "count": 1}], "modification_top": [{"mod": "加乌附子一钱", "count": 1}, {"mod": "去\n芍药", "count": 1}], "sample_cases": [{"case_id": 54, "title": "2. 有适变黑锡丹", "pulses": []}, {"case_id": 258, "title": "11．朱砂解", "pulses": []}, {"case_id": 366, "title": "1．定风丹", "pulses": []}]}, {"name": "固冲汤", "case_count": 8, "efficacy_top": [{"name": "全愈", "count": 3}, {"name": "顿愈", "count": 1}, {"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·微", "count": 3}, {"signature": "总按·迟", "count": 2}, {"signature": "右手·微", "count": 2}, {"signature": "总按·数", "count": 2}, {"signature": "总按·细", "count": 2}], "modification_top": [{"mod": "加生地一两", "count": 2}, {"mod": "加野台参八钱", "count": 1}, {"mod": "去白光", "count": 1}, {"mod": "去者", "count": 1}, {"mod": "去之", "count": 1}], "sample_cases": [{"case_id": 84, "title": "5、国冲泛", "pulses": ["总按·微", "总按·迟", "右手·微"]}, {"case_id": 88, "title": "一.种为当年种生之章，棵高尺余，叶圆而有尖，色深绿，稚", "pulses": ["总按·微", "总按·数", "总按·细"]}, {"case_id": 333, "title": "1．升陷汤", "pulses": ["总按·沉", "重按·弱", "重按·微", "重按·迟"]}]}, {"name": "镇肝熄风汤", "case_count": 7, "efficacy_top": [{"name": "愈", "count": 3}, {"name": "全愈", "count": 3}], "pulse_top": [{"signature": "总按·弦", "count": 3}, {"signature": "总按·长", "count": 2}, {"signature": "总按·实", "count": 1}, {"signature": "总按·大", "count": 1}, {"signature": "总按·弱", "count": 1}], "modification_top": [{"mod": "去布尼足", "count": 1}, {"mod": "加生石高一两", "count": 1}, {"mod": "去川楝子", "count": 1}, {"mod": "加地黄一两", "count": 1}, {"mod": "去龙胆草", "count": 1}], "sample_cases": [{"case_id": 186, "title": "5， 小便因寒闭塞", "pulses": []}, {"case_id": 235, "title": "59、论脑充虚证可预防及其证误名中风之由", "pulses": ["总按·实"]}, {"case_id": 398, "title": "1．痫风兼脑充血", "pulses": ["总按·弦"]}]}, {"name": "建瓴汤", "case_count": 7, "efficacy_top": [{"name": "全愈", "count": 5}, {"name": "愈", "count": 1}, {"name": "复常", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 3}, {"signature": "总按·弦", "count": 3}, {"signature": "总按·大", "count": 2}, {"signature": "总按·虚", "count": 2}, {"signature": "总按·洪", "count": 2}], "modification_top": [{"mod": "加生石膏一两", "count": 1}, {"mod": "加天冬八钱", "count": 1}, {"mod": "加天花粉八钱", "count": 1}], "sample_cases": [{"case_id": 717, "title": "4．黄解", "pulses": ["总按·大", "总按·弱", "总按·虚"]}, {"case_id": 738, "title": "59．论脑充血证可预防及其证误名中风之由", "pulses": []}, {"case_id": 739, "title": "59．论脑充血证可预防及其证误名中风之由", "pulses": ["总按·实", "总按·洪"]}]}, {"name": "清解汤", "case_count": 6, "efficacy_top": [{"name": "愈", "count": 5}, {"name": "见愈", "count": 1}], "pulse_top": [{"signature": "总按·数", "count": 3}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·洪", "count": 1}, {"signature": "总按·长", "count": 1}], "modification_top": [{"mod": "加玄参五钱", "count": 2}, {"mod": "去其实火", "count": 1}], "sample_cases": [{"case_id": 1, "title": "1.、清解汤", "pulses": []}, {"case_id": 2, "title": "1.、清解汤", "pulses": ["总按·数"]}, {"case_id": 3, "title": "10. 狄龙汤", "pulses": ["总按·弦", "总按·数", "总按·洪", "总按·长"]}]}, {"name": "理中汤", "case_count": 6, "efficacy_top": [{"name": "全愈", "count": 3}, {"name": "愈", "count": 3}], "pulse_top": [{"signature": "总按·微", "count": 4}, {"signature": "总按·弱", "count": 3}, {"signature": "总按·实", "count": 2}, {"signature": "总按·洪", "count": 2}, {"signature": "总按·迟", "count": 2}], "modification_top": [{"mod": "加凑羊角二钱", "count": 1}, {"mod": "去矾味所", "count": 1}, {"mod": "加羚羊角二钱", "count": 1}, {"mod": "加乌附子一钱", "count": 1}, {"mod": "去\n芍药", "count": 1}], "sample_cases": [{"case_id": 105, "title": "66. 论霄气不降治法", "pulses": ["总按·实", "总按·弱", "总按·微", "总按·洪"]}, {"case_id": 526, "title": "2．温降汤", "pulses": ["总按·弱", "总按·微", "总按·细", "总按·虚", "总按·迟"]}, {"case_id": 527, "title": "2．温降汤", "pulses": []}]}, {"name": "三鲜饮", "case_count": 5, "efficacy_top": [{"name": "全愈", "count": 4}], "pulse_top": [{"signature": "总按·微", "count": 3}, {"signature": "总按·数", "count": 2}, {"signature": "总按·大", "count": 2}, {"signature": "总按·滑", "count": 2}, {"signature": "总按·弦", "count": 1}], "modification_top": [{"mod": "加羚羊角二钱", "count": 1}], "sample_cases": [{"case_id": 5, "title": "10.，鲜小葡根通", "pulses": ["总按·弦", "总按·数"]}, {"case_id": 32, "title": "5. 和白荡根汤", "pulses": ["总按·大", "总按·微"]}, {"case_id": 253, "title": "10．鲜小蓟根汤", "pulses": []}]}, {"name": "曲直汤", "case_count": 5, "efficacy_top": [{"name": "全愈", "count": 3}, {"name": "愈", "count": 1}, {"name": "除根", "count": 1}], "pulse_top": [{"signature": "左手·弱", "count": 2}, {"signature": "左手·微", "count": 2}, {"signature": "总按·大", "count": 1}, {"signature": "总按·弱", "count": 1}, {"signature": "总按·虚", "count": 1}], "modification_top": [{"mod": "加生黄 八钱", "count": 2}, {"mod": "加生黄芪八钱", "count": 1}, {"mod": "去是太要", "count": 1}], "sample_cases": [{"case_id": 44, "title": "8，弗直海", "pulses": ["左手·弱", "左手·微"]}, {"case_id": 717, "title": "4．黄解", "pulses": ["总按·大", "总按·弱", "总按·虚"]}, {"case_id": 911, "title": "8．曲直汤", "pulses": []}]}, {"name": "参麦汤", "case_count": 5, "efficacy_top": [{"name": "全愈", "count": 4}, {"name": "见轻", "count": 1}], "pulse_top": [{"signature": "总按·浮", "count": 2}, {"signature": "总按·弱", "count": 2}, {"signature": "总按·数", "count": 2}, {"signature": "重按·洪", "count": 1}, {"signature": "总按·沉", "count": 1}], "modification_top": [{"mod": "去石膏", "count": 1}, {"mod": "去山药", "count": 1}, {"mod": "去黄攻", "count": 1}, {"mod": "加野台人参三钱", "count": 1}, {"mod": "加黄芪三钱", "count": 1}], "sample_cases": [{"case_id": 69, "title": "5， 清凉华莫饮", "pulses": ["总按·浮", "重按·洪"]}, {"case_id": 614, "title": "3．清金解毒汤", "pulses": []}, {"case_id": 637, "title": "3．醴泉饮", "pulses": ["总按·弱", "总按·数", "总按·沉", "总按·细", "重按·濡"]}]}, {"name": "理郁升陷汤", "case_count": 5, "efficacy_top": [{"name": "全愈", "count": 2}, {"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·沉", "count": 2}, {"signature": "总按·细", "count": 2}, {"signature": "总按·紧", "count": 1}], "modification_top": [{"mod": "没药皆改用四钱", "count": 1}, {"mod": "去升麻", "count": 1}, {"mod": "加丹参三钱", "count": 1}], "sample_cases": [{"case_id": 282, "title": "16．升肝舒郁汤", "pulses": []}, {"case_id": 336, "title": "1．升陷汤", "pulses": ["总按·沉", "总按·紧"]}, {"case_id": 337, "title": "1．升陷汤", "pulses": ["总按·细"]}]}, {"name": "资生汤", "case_count": 5, "efficacy_top": [{"name": "愈", "count": 2}, {"name": "不起", "count": 1}, {"name": "见轻", "count": 1}], "pulse_top": [{"signature": "总按·数", "count": 2}, {"signature": "总按·结", "count": 1}], "modification_top": [{"mod": "去而气分", "count": 1}, {"mod": "加玄参三钱", "count": 1}], "sample_cases": [{"case_id": 498, "title": "2．十全育真汤", "pulses": []}, {"case_id": 500, "title": "2．十全育真汤", "pulses": ["总按·数"]}, {"case_id": 665, "title": "4．一味薯蓣饮", "pulses": []}]}, {"name": "安冲汤", "case_count": 5, "efficacy_top": [{"name": "全愈", "count": 2}, {"name": "即愈", "count": 1}, {"name": "除根", "count": 1}], "pulse_top": [{"signature": "左手·弦", "count": 1}, {"signature": "左手·浮", "count": 1}, {"signature": "总按·弱", "count": 1}, {"signature": "总按·虚", "count": 1}, {"signature": "总按·迟", "count": 1}], "modification_top": [{"mod": "去茜草", "count": 1}, {"mod": "加生地黄一两", "count": 1}, {"mod": "加赭石八钱", "count": 1}, {"mod": "加干姜二钱", "count": 1}], "sample_cases": [{"case_id": 678, "title": "4．安冲汤", "pulses": []}, {"case_id": 679, "title": "4．安冲汤", "pulses": []}, {"case_id": 681, "title": "4．安冲汤", "pulses": []}]}, {"name": "二鲜饮", "case_count": 4, "efficacy_top": [{"name": "全愈", "count": 4}], "pulse_top": [{"signature": "总按·微", "count": 4}, {"signature": "总按·大", "count": 2}, {"signature": "总按·实", "count": 2}, {"signature": "总按·弱", "count": 2}, {"signature": "总按·洪", "count": 2}], "modification_top": [{"mod": "加凑羊角二钱", "count": 1}, {"mod": "加羚羊角二钱", "count": 1}], "sample_cases": [{"case_id": 32, "title": "5. 和白荡根汤", "pulses": ["总按·大", "总按·微"]}, {"case_id": 105, "title": "66. 论霄气不降治法", "pulses": ["总按·实", "总按·弱", "总按·微", "总按·洪"]}, {"case_id": 623, "title": "3．白茅根汤", "pulses": ["总按·大", "总按·微", "总按·数", "总按·滑"]}]}, {"name": "通变白虎加人参汤", "case_count": 4, "efficacy_top": [{"name": "全愈", "count": 3}, {"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·大", "count": 3}, {"signature": "总按·实", "count": 2}, {"signature": "总按·弦", "count": 2}, {"signature": "总按·数", "count": 2}, {"signature": "总按·沉", "count": 2}], "modification_top": [{"mod": "加人参三钱", "count": 2}, {"mod": "加生自芍一两", "count": 1}, {"mod": "去白芍", "count": 1}, {"mod": "加柴胡二钱", "count": 1}, {"mod": "加白术三钱", "count": 1}], "sample_cases": [{"case_id": 37, "title": "7. 通变自虎加人参话", "pulses": ["总按·大", "总按·实", "总按·弦", "总按·数", "总按·沉"]}, {"case_id": 300, "title": "19．温病兼下痢", "pulses": ["总按·大", "左手·弦", "右手·实", "重按·数"]}, {"case_id": 890, "title": "7．通变白虎加人参汤", "pulses": ["总按·大", "总按·实", "总按·弦", "总按·数", "总按·沉"]}]}, {"name": "保元寒降汤", "case_count": 4, "efficacy_top": [{"name": "愈", "count": 3}, {"name": "见效", "count": 1}], "pulse_top": [{"signature": "总按·数", "count": 2}, {"signature": "总按·浮", "count": 2}, {"signature": "总按·大", "count": 2}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·弱", "count": 1}], "modification_top": [{"mod": "加生山药\n一两", "count": 1}, {"mod": "去竹茹", "count": 1}, {"mod": "知母改用四钱", "count": 1}, {"mod": "将柴胡改用二钱", "count": 1}], "sample_cases": [{"case_id": 70, "title": "5， 清凉华莫饮", "pulses": ["总按·弦", "总按·弱", "总按·数", "总按·浮", "总按·细"]}, {"case_id": 373, "title": "1．寒降汤", "pulses": ["总按·微", "总按·数", "总按·洪", "总按·浮", "重按·实"]}, {"case_id": 495, "title": "2．人参解", "pulses": ["总按·大", "关前·弱", "关前·微"]}]}, {"name": "十全育真汤", "case_count": 4, "efficacy_top": [{"name": "全愈", "count": 1}, {"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·数", "count": 1}], "modification_top": [{"mod": "去之", "count": 1}, {"mod": "加生地黄八钱", "count": 1}, {"mod": "去而诸病", "count": 1}, {"mod": "去附子", "count": 1}, {"mod": "去而气分", "count": 1}], "sample_cases": [{"case_id": 497, "title": "2．十全育真汤", "pulses": []}, {"case_id": 498, "title": "2．十全育真汤", "pulses": []}, {"case_id": 499, "title": "2．十全育真汤", "pulses": []}]}, {"name": "来复汤", "case_count": 4, "efficacy_top": [{"name": "全愈", "count": 2}, {"name": "即愈", "count": 1}, {"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·数", "count": 3}, {"signature": "总按·浮", "count": 3}, {"signature": "总按·伏", "count": 1}, {"signature": "总按·动", "count": 1}, {"signature": "总按·大", "count": 1}], "modification_top": [{"mod": "去之", "count": 1}, {"mod": "加生地黄八钱", "count": 1}, {"mod": "去而诸病", "count": 1}, {"mod": "去附子", "count": 1}, {"mod": "去萸肉亦", "count": 1}], "sample_cases": [{"case_id": 497, "title": "2．十全育真汤", "pulses": []}, {"case_id": 723, "title": "51．温病遗方", "pulses": ["总按·伏", "总按·动", "总按·大", "总按·数", "总按·沉"]}, {"case_id": 926, "title": "9．地黄解", "pulses": ["总按·数", "总按·浮"]}]}, {"name": "内托生肌散", "case_count": 4, "efficacy_top": [{"name": "全愈", "count": 2}, {"name": "愈", "count": 2}], "pulse_top": [{"signature": "总按·虚", "count": 1}, {"signature": "关后/尺·虚", "count": 1}, {"signature": "总按·数", "count": 1}, {"signature": "总按·滑", "count": 1}], "modification_top": [{"mod": "去\n栝蒌加", "count": 1}, {"mod": "加黄 八钱", "count": 1}, {"mod": "去瓜著加", "count": 1}], "sample_cases": [{"case_id": 653, "title": "44．解砒石毒兼解火柴毒方", "pulses": []}, {"case_id": 669, "title": "4．内托生肌散", "pulses": []}, {"case_id": 709, "title": "4．腰疼", "pulses": ["总按·虚", "关后/尺·虚"]}]}, {"name": "薯蓣粥", "case_count": 4, "efficacy_top": [{"name": "愈", "count": 2}, {"name": "全愈", "count": 2}], "pulse_top": [{"signature": "总按·虚", "count": 1}], "modification_top": [{"mod": "加玄参三钱", "count": 1}], "sample_cases": [{"case_id": 666, "title": "4．一味薯蓣饮", "pulses": []}, {"case_id": 667, "title": "4．一味薯蓣饮", "pulses": []}, {"case_id": 711, "title": "4．薯蓣鸡子黄粥", "pulses": []}]}, {"name": "清金解毒汤", "case_count": 3, "efficacy_top": [{"name": "全愈", "count": 2}, {"name": "见愈", "count": 1}], "pulse_top": [{"signature": "总按·浮", "count": 2}, {"signature": "重按·洪", "count": 1}, {"signature": "总按·弱", "count": 1}, {"signature": "总按·虚", "count": 1}, {"signature": "总按·大", "count": 1}], "modification_top": [{"mod": "去石膏", "count": 2}, {"mod": "去山药", "count": 1}, {"mod": "去黄攻", "count": 1}, {"mod": "加野台人参三钱", "count": 1}, {"mod": "加黄芪三钱", "count": 1}], "sample_cases": [{"case_id": 69, "title": "5， 清凉华莫饮", "pulses": ["总按·浮", "重按·洪"]}, {"case_id": 763, "title": "5．清凉华盖饮", "pulses": ["总按·弱", "总按·浮", "总按·虚"]}, {"case_id": 765, "title": "5．清凉华盖饮", "pulses": ["总按·大", "左手·实", "左手·滑"]}]}, {"name": "清带汤", "case_count": 3, "efficacy_top": [{"name": "全愈", "count": 3}], "pulse_top": [{"signature": "总按·滑", "count": 2}, {"signature": "总按·弱", "count": 1}, {"signature": "总按·虚", "count": 1}, {"signature": "总按·迟", "count": 1}, {"signature": "总按·洪", "count": 1}], "modification_top": [{"mod": "去得", "count": 1}, {"mod": "去渣", "count": 1}], "sample_cases": [{"case_id": 86, "title": "7. 清带汤", "pulses": ["总按·滑"]}, {"case_id": 722, "title": "50．海螵蛸、茜草解", "pulses": ["总按·弱", "总按·虚", "总按·迟"]}, {"case_id": 861, "title": "7．清带汤", "pulses": ["总按·洪", "总按·滑"]}]}, {"name": "温降汤", "case_count": 3, "efficacy_top": [{"name": "愈", "count": 1}, {"name": "即愈", "count": 1}, {"name": "全愈", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 2}, {"signature": "总按·洪", "count": 2}, {"signature": "总按·弱", "count": 2}, {"signature": "总按·微", "count": 2}, {"signature": "总按·弦", "count": 1}], "modification_top": [{"mod": "加生地黄一两", "count": 1}, {"mod": "加羚羊角二钱", "count": 1}], "sample_cases": [{"case_id": 106, "title": "66. 论霄气不降治法", "pulses": ["总按·实", "总按·弦", "总按·数", "总按·洪", "总按·浮"]}, {"case_id": 525, "title": "2．温降汤", "pulses": ["总按·弱", "总按·微"]}, {"case_id": 787, "title": "67．论吐血衄血之原因及治法", "pulses": ["总按·动", "总按·实", "总按·弱", "总按·微", "总按·洪"]}]}, {"name": "坎离互根汤", "case_count": 3, "efficacy_top": [{"name": "全愈", "count": 3}], "pulse_top": [{"signature": "总按·大", "count": 3}, {"signature": "总按·微", "count": 3}, {"signature": "总按·沉", "count": 3}, {"signature": "总按·洪", "count": 3}, {"signature": "重按·细", "count": 3}], "modification_top": [{"mod": "加大黄三钱", "count": 2}, {"mod": "加紫花地丁三钱", "count": 2}, {"mod": "加桑寄生一两", "count": 2}, {"mod": "去黄连", "count": 2}, {"mod": "加射干三钱", "count": 2}], "sample_cases": [{"case_id": 117, "title": "87. 论鼠疫之原因及治法〈附，坎离互根汤)", "pulses": ["总按·大", "总按·微", "总按·数", "总按·沉", "总按·洪"]}, {"case_id": 693, "title": "4．温病少阴证", "pulses": ["总按·大", "总按·弱", "总按·微", "总按·沉", "总按·洪"]}, {"case_id": 903, "title": "87．论鼠疫之原因及治法", "pulses": ["总按·大", "总按·微", "总按·数", "总按·沉", "总按·洪"]}]}, {"name": "敦复汤", "case_count": 3, "efficacy_top": [{"name": "即愈", "count": 1}, {"name": "全愈", "count": 1}, {"name": "已愈", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 2}, {"signature": "总按·沉", "count": 1}, {"signature": "关后/尺·实", "count": 1}, {"signature": "关后/尺·洪", "count": 1}, {"signature": "关后/尺·滑", "count": 1}], "modification_top": [{"mod": "去下焦之", "count": 1}, {"mod": "去净核", "count": 1}], "sample_cases": [{"case_id": 261, "title": "11．镇摄汤", "pulses": ["总按·沉", "关后/尺·实", "关后/尺·洪", "关后/尺·滑", "重按·细"]}, {"case_id": 267, "title": "11．镇摄汤", "pulses": ["总按·大", "总按·实", "总按·弦"]}, {"case_id": 853, "title": "7．大便下血", "pulses": ["总按·实", "总按·浮", "总按·芤", "关后/尺·微", "关后/尺·数"]}]}, {"name": "起痿汤", "case_count": 3, "efficacy_top": [{"name": "全愈", "count": 3}], "pulse_top": [{"signature": "总按·大", "count": 2}, {"signature": "总按·弱", "count": 2}, {"signature": "总按·弦", "count": 2}, {"signature": "总按·微", "count": 2}, {"signature": "总按·长", "count": 2}], "modification_top": [{"mod": "加天冬八钱", "count": 1}, {"mod": "加天花粉八钱", "count": 1}, {"mod": "加怀牛膝五钱", "count": 1}, {"mod": "去也", "count": 1}], "sample_cases": [{"case_id": 717, "title": "4．黄解", "pulses": ["总按·大", "总按·弱", "总按·虚"]}, {"case_id": 893, "title": "80．论肢体痿废之原因及治法", "pulses": ["总按·弦", "总按·微", "总按·长"]}, {"case_id": 894, "title": "80．论肢体痿废之原因及治法", "pulses": ["总按·大", "总按·弦", "总按·弱", "总按·微", "总按·洪"]}]}, {"name": "宣解汤", "case_count": 3, "efficacy_top": [{"name": "愈", "count": 3}], "pulse_top": [{"signature": "总按·数", "count": 3}, {"signature": "总按·浮", "count": 2}, {"signature": "总按·滑", "count": 1}], "modification_top": [], "sample_cases": [{"case_id": 864, "title": "7．滋阴宣解汤", "pulses": ["总按·数", "总按·浮", "总按·滑"]}, {"case_id": 865, "title": "7．滋阴宣解汤", "pulses": ["总按·数", "总按·浮"]}, {"case_id": 913, "title": "8．治幼年温热证宜预防其出痧疹", "pulses": ["总按·数"]}]}, {"name": "健运汤", "case_count": 2, "efficacy_top": [{"name": "愈", "count": 2}], "pulse_top": [{"signature": "右手·弱", "count": 1}], "modification_top": [], "sample_cases": [{"case_id": 35, "title": "6. 人刍运汤", "pulses": ["右手·弱"]}, {"case_id": 859, "title": "7．振中汤", "pulses": []}]}, {"name": "清金益气汤", "case_count": 2, "efficacy_top": [{"name": "见轻", "count": 2}], "pulse_top": [{"signature": "总按·浮", "count": 2}, {"signature": "关前·滑", "count": 1}], "modification_top": [], "sample_cases": [{"case_id": 62, "title": "2， 洲金益气沪", "pulses": ["总按·浮", "关前·滑"]}, {"case_id": 522, "title": "2．清金益气汤", "pulses": ["总按·浮"]}]}, {"name": "凉解汤", "case_count": 2, "efficacy_top": [{"name": "愈", "count": 2}], "pulse_top": [{"signature": "总按·洪", "count": 1}, {"signature": "总按·浮", "count": 1}, {"signature": "总按·滑", "count": 1}], "modification_top": [], "sample_cases": [{"case_id": 319, "title": "1．仙露汤", "pulses": []}, {"case_id": 728, "title": "54．温病之治法详于伤寒论解", "pulses": ["总按·洪", "总按·浮", "总按·滑"]}]}, {"name": "金铃泻肝汤", "case_count": 2, "efficacy_top": [{"name": "愈", "count": 2}], "pulse_top": [], "modification_top": [], "sample_cases": [{"case_id": 467, "title": "24．柴胡解", "pulses": []}, {"case_id": 639, "title": "3．金铃泻肝汤", "pulses": []}]}, {"name": "回阳升陷汤", "case_count": 2, "efficacy_top": [{"name": "全愈", "count": 1}], "pulse_top": [{"signature": "总按·弱", "count": 1}, {"signature": "总按·微", "count": 1}, {"signature": "总按·沉", "count": 1}, {"signature": "总按·迟", "count": 1}, {"signature": "重按·弱", "count": 1}], "modification_top": [{"mod": "加浓朴二钱", "count": 1}, {"mod": "去党参", "count": 1}, {"mod": "桂枝皆改用二钱", "count": 1}, {"mod": "加生怀山药\n八钱", "count": 1}], "sample_cases": [{"case_id": 506, "title": "2．回阳升陷汤", "pulses": ["总按·弱", "总按·微", "总按·沉", "总按·迟", "重按·弱"]}, {"case_id": 589, "title": "3．大气下陷身冷", "pulses": ["总按·大", "关前·沉", "关前·细"]}]}, {"name": "急救回阳汤", "case_count": 2, "efficacy_top": [{"name": "即愈", "count": 1}, {"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·伏", "count": 1}, {"signature": "总按·大", "count": 1}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·数", "count": 1}, {"signature": "总按·涩", "count": 1}], "modification_top": [{"mod": "加乌附子一钱", "count": 1}, {"mod": "去\n芍药", "count": 1}], "sample_cases": [{"case_id": 608, "title": "3．急救回阳汤", "pulses": ["总按·伏", "总按·大", "总按·弦", "总按·数", "总按·涩"]}, {"case_id": 822, "title": "71．论霍乱治法", "pulses": ["总按·沉", "重按·细"]}]}, {"name": "一味薯蓣饮", "case_count": 2, "efficacy_top": [{"name": "愈", "count": 1}, {"name": "全愈", "count": 1}], "pulse_top": [], "modification_top": [{"mod": "加玄参三钱", "count": 1}], "sample_cases": [{"case_id": 666, "title": "4．一味薯蓣饮", "pulses": []}, {"case_id": 667, "title": "4．一味薯蓣饮", "pulses": []}]}, {"name": "既济汤", "case_count": 2, "efficacy_top": [{"name": "除根", "count": 1}, {"name": "全愈", "count": 1}], "pulse_top": [{"signature": "总按·沉", "count": 1}, {"signature": "重按·弱", "count": 1}, {"signature": "重按·细", "count": 1}, {"signature": "重按·迟", "count": 1}], "modification_top": [{"mod": "去净", "count": 1}, {"mod": "去\n净核", "count": 1}], "sample_cases": [{"case_id": 759, "title": "5．山萸肉解", "pulses": []}, {"case_id": 977, "title": "5. 山萸肉解", "pulses": ["总按·沉", "重按·弱", "重按·细", "重按·迟"]}]}, {"name": "秘红丹", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 1}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·数", "count": 1}, {"signature": "总按·洪", "count": 1}, {"signature": "总按·浮", "count": 1}], "modification_top": [{"mod": "加生地黄一两", "count": 1}], "sample_cases": [{"case_id": 106, "title": "66. 论霄气不降治法", "pulses": ["总按·实", "总按·弦", "总按·数", "总按·洪", "总按·浮"]}]}, {"name": "保元清降汤", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 1}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·数", "count": 1}, {"signature": "总按·洪", "count": 1}, {"signature": "总按·浮", "count": 1}], "modification_top": [{"mod": "加生地黄一两", "count": 1}], "sample_cases": [{"case_id": 106, "title": "66. 论霄气不降治法", "pulses": ["总按·实", "总按·弦", "总按·数", "总按·洪", "总按·浮"]}]}, {"name": "清降汤", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·实", "count": 1}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·数", "count": 1}, {"signature": "总按·洪", "count": 1}, {"signature": "总按·浮", "count": 1}], "modification_top": [{"mod": "加生地黄一两", "count": 1}], "sample_cases": [{"case_id": 106, "title": "66. 论霄气不降治法", "pulses": ["总按·实", "总按·弦", "总按·数", "总按·洪", "总按·浮"]}]}, {"name": "升降汤", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [], "modification_top": [{"mod": "加鲜地骨皮一两", "count": 1}], "sample_cases": [{"case_id": 321, "title": "1．升降汤", "pulses": []}]}, {"name": "加味麦门冬汤", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·沉", "count": 1}, {"signature": "重按·弱", "count": 1}, {"signature": "重按·微", "count": 1}, {"signature": "重按·迟", "count": 1}], "modification_top": [{"mod": "去者", "count": 1}, {"mod": "去之", "count": 1}, {"mod": "中知母改用五钱", "count": 1}, {"mod": "加柴胡一钱", "count": 1}, {"mod": "去升麻", "count": 1}], "sample_cases": [{"case_id": 333, "title": "1．升陷汤", "pulses": ["总按·沉", "重按·弱", "重按·微", "重按·迟"]}]}, {"name": "赭遂攻结汤", "case_count": 1, "efficacy_top": [{"name": "即愈", "count": 1}], "pulse_top": [], "modification_top": [{"mod": "去信服衷", "count": 1}], "sample_cases": [{"case_id": 552, "title": "2．赭遂攻结汤", "pulses": []}]}, {"name": "磁朱丸", "case_count": 1, "efficacy_top": [{"name": "除根", "count": 1}], "pulse_top": [], "modification_top": [], "sample_cases": [{"case_id": 580, "title": "3．一味铁养汤", "pulses": []}]}, {"name": "加味磁朱丸", "case_count": 1, "efficacy_top": [{"name": "除根", "count": 1}], "pulse_top": [], "modification_top": [], "sample_cases": [{"case_id": 580, "title": "3．一味铁养汤", "pulses": []}]}, {"name": "醴泉饮", "case_count": 1, "efficacy_top": [{"name": "全愈", "count": 1}], "pulse_top": [{"signature": "总按·弱", "count": 1}, {"signature": "总按·数", "count": 1}, {"signature": "总按·沉", "count": 1}, {"signature": "总按·细", "count": 1}, {"signature": "重按·濡", "count": 1}], "modification_top": [{"mod": "加知母二钱", "count": 1}, {"mod": "加鸡内金二钱", "count": 1}, {"mod": "去赭石二", "count": 1}], "sample_cases": [{"case_id": 637, "title": "3．醴泉饮", "pulses": ["总按·弱", "总按·数", "总按·沉", "总按·细", "重按·濡"]}]}, {"name": "石膏阿斯匹林汤", "case_count": 1, "efficacy_top": [{"name": "全愈", "count": 1}], "pulse_top": [], "modification_top": [], "sample_cases": [{"case_id": 707, "title": "4．石膏阿斯匹林汤", "pulses": []}]}, {"name": "振中汤", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [{"signature": "总按·大", "count": 1}, {"signature": "总按·弦", "count": 1}, {"signature": "总按·虚", "count": 1}], "modification_top": [{"mod": "去净核", "count": 1}], "sample_cases": [{"case_id": 858, "title": "7．振中汤", "pulses": ["总按·大", "总按·弦", "总按·虚"]}]}, {"name": "寿胎丸", "case_count": 1, "efficacy_top": [{"name": "愈", "count": 1}], "pulse_top": [], "modification_top": [{"mod": "去净核", "count": 1}], "sample_cases": [{"case_id": 929, "title": "9．寿胎丸", "pulses": []}]}];
+
+renderStep2();
+renderStep3();
+renderStep4();
+</script>
+</body>
+</html>

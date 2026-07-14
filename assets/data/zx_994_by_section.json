@@ -1,0 +1,13 @@
+{
+  "version": "zx_994_by_section v1.0",
+  "method": "按章节+子段号拆分, 案号 = chap_n-sub_id (不依赖原 case_id)",
+  "stats": {
+    "total_sub_cases": 0,
+    "has_pulse": 0,
+    "has_zhongan": 0,
+    "has_fenjian": 0,
+    "has_chufang": 0,
+    "has_xiaoguo": 0
+  },
+  "cases": []
+}

@@ -1,0 +1,5214 @@
+{
+  "version": "zx_skill_db v1.0",
+  "build_date": "2026-07-14",
+  "source": "张锡纯《医学衷中参西录》 994 案 + 30 卷原文",
+  "method": "一比一实证还原, 不补一字, 不删一句",
+  "summary": {
+    "total_cases": 994,
+    "case_with_5dim": 597,
+    "total_formulas": 54,
+    "total_pulses_5dim": 100,
+    "total_modifications": 792,
+    "process_steps": 5
+  },
+  "modules": {
+    "formula_skill": [
+      {
+        "name": "白虎加人参汤",
+        "case_count": 97,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 47
+          },
+          {
+            "name": "愈",
+            "count": 21
+          },
+          {
+            "name": "复常",
+            "count": 5
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 39
+          },
+          {
+            "signature": "总按·洪",
+            "count": 37
+          },
+          {
+            "signature": "总按·大",
+            "count": 32
+          },
+          {
+            "signature": "总按·实",
+            "count": 30
+          },
+          {
+            "signature": "总按·弦",
+            "count": 20
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去滑石",
+            "count": 3
+          },
+          {
+            "mod": "去皮",
+            "count": 3
+          },
+          {
+            "mod": "加生怀山药一两",
+            "count": 3
+          },
+          {
+            "mod": "去粳米加",
+            "count": 3
+          },
+          {
+            "mod": "加生石膏一两",
+            "count": 3
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 3,
+            "title": "10. 狄龙汤",
+            "pulses": [
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·长"
+            ]
+          },
+          {
+            "case_id": 13,
+            "title": "2. 凉解洒",
+            "pulses": [
+              "总按·沉",
+              "重按·细"
+            ]
+          },
+          {
+            "case_id": 14,
+            "title": "2. 凉解洒",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "升陷汤",
+        "case_count": 52,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 26
+          },
+          {
+            "name": "愈",
+            "count": 13
+          },
+          {
+            "name": "脱然",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·弱",
+            "count": 14
+          },
+          {
+            "signature": "总按·沉",
+            "count": 14
+          },
+          {
+            "signature": "总按·大",
+            "count": 12
+          },
+          {
+            "signature": "总按·微",
+            "count": 12
+          },
+          {
+            "signature": "重按·微",
+            "count": 9
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去升麻",
+            "count": 7
+          },
+          {
+            "mod": "去净核",
+            "count": 3
+          },
+          {
+            "mod": "去皮",
+            "count": 2
+          },
+          {
+            "mod": "去滑石",
+            "count": 2
+          },
+          {
+            "mod": "加桂枝尖二钱",
+            "count": 2
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 6,
+            "title": "12. 清肾汤",
+            "pulses": [
+              "总按·大",
+              "总按·实",
+              "总按·弦",
+              "总按·弱",
+              "总按·洪"
+            ]
+          },
+          {
+            "case_id": 18,
+            "title": "3. 遂结用苛白属法",
+            "pulses": [
+              "总按·大",
+              "总按·弱",
+              "总按·微"
+            ]
+          },
+          {
+            "case_id": 25,
+            "title": "4. 白虎加人参以山药代业米汤",
+            "pulses": [
+              "总按·代",
+              "总按·大",
+              "总按·实",
+              "总按·微",
+              "总按·数"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "寒解汤",
+        "case_count": 20,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 11
+          },
+          {
+            "name": "全愈",
+            "count": 3
+          },
+          {
+            "name": "即愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·洪",
+            "count": 9
+          },
+          {
+            "signature": "总按·浮",
+            "count": 7
+          },
+          {
+            "signature": "总按·滑",
+            "count": 6
+          },
+          {
+            "signature": "总按·数",
+            "count": 5
+          },
+          {
+            "signature": "总按·长",
+            "count": 4
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去麻黄",
+            "count": 3
+          },
+          {
+            "mod": "去其实火",
+            "count": 1
+          },
+          {
+            "mod": "加\n溺参三钱",
+            "count": 1
+          },
+          {
+            "mod": "去蓉子",
+            "count": 1
+          },
+          {
+            "mod": "去甘草",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 3,
+            "title": "10. 狄龙汤",
+            "pulses": [
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·长"
+            ]
+          },
+          {
+            "case_id": 4,
+            "title": "10. 狄龙汤",
+            "pulses": [
+              "总按·实",
+              "总按·微",
+              "总按·数",
+              "总按·洪",
+              "总按·浮"
+            ]
+          },
+          {
+            "case_id": 10,
+            "title": "2. 凉解洒",
+            "pulses": [
+              "总按·代",
+              "总按·数",
+              "总按·洪",
+              "总按·浮",
+              "总按·长"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "滋阴清燥汤",
+        "case_count": 14,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 8
+          },
+          {
+            "name": "愈",
+            "count": 4
+          },
+          {
+            "name": "见轻",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 8
+          },
+          {
+            "signature": "总按·虚",
+            "count": 7
+          },
+          {
+            "signature": "总按·洪",
+            "count": 7
+          },
+          {
+            "signature": "总按·实",
+            "count": 6
+          },
+          {
+            "signature": "总按·滑",
+            "count": 4
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加玄参五钱",
+            "count": 2
+          },
+          {
+            "mod": "去滑石者",
+            "count": 2
+          },
+          {
+            "mod": "加生石膏一两",
+            "count": 2
+          },
+          {
+            "mod": "去参",
+            "count": 1
+          },
+          {
+            "mod": "去滑石",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 39,
+            "title": "8. 滋阴清燥汤",
+            "pulses": [
+              "总按·实",
+              "总按·弱",
+              "总按·微",
+              "总按·数",
+              "总按·虚"
+            ]
+          },
+          {
+            "case_id": 278,
+            "title": "14．温热泄泻",
+            "pulses": []
+          },
+          {
+            "case_id": 291,
+            "title": "18．芍药解",
+            "pulses": [
+              "总按·大",
+              "总按·数",
+              "总按·虚"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "活络效灵丹",
+        "case_count": 13,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 6
+          },
+          {
+            "name": "愈",
+            "count": 5
+          },
+          {
+            "name": "见轻",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·微",
+            "count": 4
+          },
+          {
+            "signature": "总按·数",
+            "count": 3
+          },
+          {
+            "signature": "总按·细",
+            "count": 3
+          },
+          {
+            "signature": "总按·弦",
+            "count": 3
+          },
+          {
+            "signature": "关后/尺·实",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去闻之",
+            "count": 1
+          },
+          {
+            "mod": "去皮尖者",
+            "count": 1
+          },
+          {
+            "mod": "去中客",
+            "count": 1
+          },
+          {
+            "mod": "加所太三钱",
+            "count": 1
+          },
+          {
+            "mod": "加生兽米八钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 9,
+            "title": "1，玉烛放",
+            "pulses": [
+              "总按·微",
+              "总按·数",
+              "总按·细"
+            ]
+          },
+          {
+            "case_id": 28,
+            "title": "4， 活络效灵丹",
+            "pulses": [
+              "关后/尺·实",
+              "关后/尺·洪"
+            ]
+          },
+          {
+            "case_id": 29,
+            "title": "4， 活络效灵丹",
+            "pulses": [
+              "总按·弦",
+              "总按·微",
+              "总按·数"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "卫生防疫宝丹",
+        "case_count": 13,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 6
+          },
+          {
+            "name": "全愈",
+            "count": 4
+          },
+          {
+            "name": "见轻",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 2
+          },
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "总按·大",
+            "count": 2
+          },
+          {
+            "signature": "总按·微",
+            "count": 2
+          },
+          {
+            "signature": "总按·沉",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去芍药也",
+            "count": 1
+          },
+          {
+            "mod": "去自开",
+            "count": 1
+          },
+          {
+            "mod": "加乌附子一钱",
+            "count": 1
+          },
+          {
+            "mod": "去\n芍药",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 94,
+            "title": "16. 阅刘华封4《烂喉癌证治辩异》书后",
+            "pulses": []
+          },
+          {
+            "case_id": 130,
+            "title": "17、远热腊疼兼下闻",
+            "pulses": [
+              "总按·实",
+              "总按·数"
+            ]
+          },
+          {
+            "case_id": 161,
+            "title": "2， 霍乱吐酒",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "理饮汤",
+        "case_count": 12,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 4
+          },
+          {
+            "name": "除根",
+            "count": 2
+          },
+          {
+            "name": "愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·弦",
+            "count": 5
+          },
+          {
+            "signature": "总按·细",
+            "count": 4
+          },
+          {
+            "signature": "总按·大",
+            "count": 3
+          },
+          {
+            "signature": "总按·浮",
+            "count": 3
+          },
+          {
+            "signature": "总按·迟",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加附子三钱",
+            "count": 3
+          },
+          {
+            "mod": "将附子改用五钱",
+            "count": 2
+          },
+          {
+            "mod": "去桂枝加",
+            "count": 2
+          },
+          {
+            "mod": "去厚",
+            "count": 1
+          },
+          {
+            "mod": "加生黄忒三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 46,
+            "title": "1. 理饮汤",
+            "pulses": [
+              "总按·大",
+              "总按·浮"
+            ]
+          },
+          {
+            "case_id": 48,
+            "title": "1. 理饮汤",
+            "pulses": [
+              "总按·弦",
+              "总按·细",
+              "总按·迟"
+            ]
+          },
+          {
+            "case_id": 94,
+            "title": "16. 阅刘华封4《烂喉癌证治辩异》书后",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "参赭镇气汤",
+        "case_count": 10,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 5
+          },
+          {
+            "name": "愈",
+            "count": 4
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·沉",
+            "count": 3
+          },
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "重按·濡",
+            "count": 2
+          },
+          {
+            "signature": "重按·弱",
+            "count": 1
+          },
+          {
+            "signature": "重按·微",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去之",
+            "count": 2
+          },
+          {
+            "mod": "去升麻",
+            "count": 2
+          },
+          {
+            "mod": "去者",
+            "count": 1
+          },
+          {
+            "mod": "中知母改用五钱",
+            "count": 1
+          },
+          {
+            "mod": "加柴胡一钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 331,
+            "title": "1．升陷汤",
+            "pulses": [
+              "总按·数",
+              "总按·沉",
+              "重按·濡"
+            ]
+          },
+          {
+            "case_id": 333,
+            "title": "1．升陷汤",
+            "pulses": [
+              "总按·沉",
+              "重按·弱",
+              "重按·微",
+              "重按·迟"
+            ]
+          },
+          {
+            "case_id": 339,
+            "title": "1．升陷汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "急救回生丹",
+        "case_count": 8,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 7
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·沉",
+            "count": 1
+          },
+          {
+            "signature": "重按·细",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加乌附子一钱",
+            "count": 1
+          },
+          {
+            "mod": "去\n芍药",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 54,
+            "title": "2. 有适变黑锡丹",
+            "pulses": []
+          },
+          {
+            "case_id": 258,
+            "title": "11．朱砂解",
+            "pulses": []
+          },
+          {
+            "case_id": 366,
+            "title": "1．定风丹",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "固冲汤",
+        "case_count": 8,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          },
+          {
+            "name": "顿愈",
+            "count": 1
+          },
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·微",
+            "count": 3
+          },
+          {
+            "signature": "总按·迟",
+            "count": 2
+          },
+          {
+            "signature": "右手·微",
+            "count": 2
+          },
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "总按·细",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生地一两",
+            "count": 2
+          },
+          {
+            "mod": "加野台参八钱",
+            "count": 1
+          },
+          {
+            "mod": "去白光",
+            "count": 1
+          },
+          {
+            "mod": "去者",
+            "count": 1
+          },
+          {
+            "mod": "去之",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 84,
+            "title": "5、国冲泛",
+            "pulses": [
+              "总按·微",
+              "总按·迟",
+              "右手·微"
+            ]
+          },
+          {
+            "case_id": 88,
+            "title": "一.种为当年种生之章，棵高尺余，叶圆而有尖，色深绿，稚",
+            "pulses": [
+              "总按·微",
+              "总按·数",
+              "总按·细"
+            ]
+          },
+          {
+            "case_id": 333,
+            "title": "1．升陷汤",
+            "pulses": [
+              "总按·沉",
+              "重按·弱",
+              "重按·微",
+              "重按·迟"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "镇肝熄风汤",
+        "case_count": 7,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 3
+          },
+          {
+            "name": "全愈",
+            "count": 3
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·弦",
+            "count": 3
+          },
+          {
+            "signature": "总按·长",
+            "count": 2
+          },
+          {
+            "signature": "总按·实",
+            "count": 1
+          },
+          {
+            "signature": "总按·大",
+            "count": 1
+          },
+          {
+            "signature": "总按·弱",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去布尼足",
+            "count": 1
+          },
+          {
+            "mod": "加生石高一两",
+            "count": 1
+          },
+          {
+            "mod": "去川楝子",
+            "count": 1
+          },
+          {
+            "mod": "加地黄一两",
+            "count": 1
+          },
+          {
+            "mod": "去龙胆草",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 186,
+            "title": "5， 小便因寒闭塞",
+            "pulses": []
+          },
+          {
+            "case_id": 235,
+            "title": "59、论脑充虚证可预防及其证误名中风之由",
+            "pulses": [
+              "总按·实"
+            ]
+          },
+          {
+            "case_id": 398,
+            "title": "1．痫风兼脑充血",
+            "pulses": [
+              "总按·弦"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "建瓴汤",
+        "case_count": 7,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 5
+          },
+          {
+            "name": "愈",
+            "count": 1
+          },
+          {
+            "name": "复常",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 3
+          },
+          {
+            "signature": "总按·弦",
+            "count": 3
+          },
+          {
+            "signature": "总按·大",
+            "count": 2
+          },
+          {
+            "signature": "总按·虚",
+            "count": 2
+          },
+          {
+            "signature": "总按·洪",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生石膏一两",
+            "count": 1
+          },
+          {
+            "mod": "加天冬八钱",
+            "count": 1
+          },
+          {
+            "mod": "加天花粉八钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 717,
+            "title": "4．黄解",
+            "pulses": [
+              "总按·大",
+              "总按·弱",
+              "总按·虚"
+            ]
+          },
+          {
+            "case_id": 738,
+            "title": "59．论脑充血证可预防及其证误名中风之由",
+            "pulses": []
+          },
+          {
+            "case_id": 739,
+            "title": "59．论脑充血证可预防及其证误名中风之由",
+            "pulses": [
+              "总按·实",
+              "总按·洪"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "清解汤",
+        "case_count": 6,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 5
+          },
+          {
+            "name": "见愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 3
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·长",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加玄参五钱",
+            "count": 2
+          },
+          {
+            "mod": "去其实火",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 1,
+            "title": "1.、清解汤",
+            "pulses": []
+          },
+          {
+            "case_id": 2,
+            "title": "1.、清解汤",
+            "pulses": [
+              "总按·数"
+            ]
+          },
+          {
+            "case_id": 3,
+            "title": "10. 狄龙汤",
+            "pulses": [
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·长"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "理中汤",
+        "case_count": 6,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          },
+          {
+            "name": "愈",
+            "count": 3
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·微",
+            "count": 4
+          },
+          {
+            "signature": "总按·弱",
+            "count": 3
+          },
+          {
+            "signature": "总按·实",
+            "count": 2
+          },
+          {
+            "signature": "总按·洪",
+            "count": 2
+          },
+          {
+            "signature": "总按·迟",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加凑羊角二钱",
+            "count": 1
+          },
+          {
+            "mod": "去矾味所",
+            "count": 1
+          },
+          {
+            "mod": "加羚羊角二钱",
+            "count": 1
+          },
+          {
+            "mod": "加乌附子一钱",
+            "count": 1
+          },
+          {
+            "mod": "去\n芍药",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 105,
+            "title": "66. 论霄气不降治法",
+            "pulses": [
+              "总按·实",
+              "总按·弱",
+              "总按·微",
+              "总按·洪"
+            ]
+          },
+          {
+            "case_id": 526,
+            "title": "2．温降汤",
+            "pulses": [
+              "总按·弱",
+              "总按·微",
+              "总按·细",
+              "总按·虚",
+              "总按·迟"
+            ]
+          },
+          {
+            "case_id": 527,
+            "title": "2．温降汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "三鲜饮",
+        "case_count": 5,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 4
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·微",
+            "count": 3
+          },
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "总按·大",
+            "count": 2
+          },
+          {
+            "signature": "总按·滑",
+            "count": 2
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加羚羊角二钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 5,
+            "title": "10.，鲜小葡根通",
+            "pulses": [
+              "总按·弦",
+              "总按·数"
+            ]
+          },
+          {
+            "case_id": 32,
+            "title": "5. 和白荡根汤",
+            "pulses": [
+              "总按·大",
+              "总按·微"
+            ]
+          },
+          {
+            "case_id": 253,
+            "title": "10．鲜小蓟根汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "曲直汤",
+        "case_count": 5,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          },
+          {
+            "name": "愈",
+            "count": 1
+          },
+          {
+            "name": "除根",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "左手·弱",
+            "count": 2
+          },
+          {
+            "signature": "左手·微",
+            "count": 2
+          },
+          {
+            "signature": "总按·大",
+            "count": 1
+          },
+          {
+            "signature": "总按·弱",
+            "count": 1
+          },
+          {
+            "signature": "总按·虚",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生黄 八钱",
+            "count": 2
+          },
+          {
+            "mod": "加生黄芪八钱",
+            "count": 1
+          },
+          {
+            "mod": "去是太要",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 44,
+            "title": "8，弗直海",
+            "pulses": [
+              "左手·弱",
+              "左手·微"
+            ]
+          },
+          {
+            "case_id": 717,
+            "title": "4．黄解",
+            "pulses": [
+              "总按·大",
+              "总按·弱",
+              "总按·虚"
+            ]
+          },
+          {
+            "case_id": 911,
+            "title": "8．曲直汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "参麦汤",
+        "case_count": 5,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 4
+          },
+          {
+            "name": "见轻",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·浮",
+            "count": 2
+          },
+          {
+            "signature": "总按·弱",
+            "count": 2
+          },
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "重按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·沉",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去石膏",
+            "count": 1
+          },
+          {
+            "mod": "去山药",
+            "count": 1
+          },
+          {
+            "mod": "去黄攻",
+            "count": 1
+          },
+          {
+            "mod": "加野台人参三钱",
+            "count": 1
+          },
+          {
+            "mod": "加黄芪三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 69,
+            "title": "5， 清凉华莫饮",
+            "pulses": [
+              "总按·浮",
+              "重按·洪"
+            ]
+          },
+          {
+            "case_id": 614,
+            "title": "3．清金解毒汤",
+            "pulses": []
+          },
+          {
+            "case_id": 637,
+            "title": "3．醴泉饮",
+            "pulses": [
+              "总按·弱",
+              "总按·数",
+              "总按·沉",
+              "总按·细",
+              "重按·濡"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "理郁升陷汤",
+        "case_count": 5,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 2
+          },
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·沉",
+            "count": 2
+          },
+          {
+            "signature": "总按·细",
+            "count": 2
+          },
+          {
+            "signature": "总按·紧",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "没药皆改用四钱",
+            "count": 1
+          },
+          {
+            "mod": "去升麻",
+            "count": 1
+          },
+          {
+            "mod": "加丹参三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 282,
+            "title": "16．升肝舒郁汤",
+            "pulses": []
+          },
+          {
+            "case_id": 336,
+            "title": "1．升陷汤",
+            "pulses": [
+              "总按·沉",
+              "总按·紧"
+            ]
+          },
+          {
+            "case_id": 337,
+            "title": "1．升陷汤",
+            "pulses": [
+              "总按·细"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "资生汤",
+        "case_count": 5,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 2
+          },
+          {
+            "name": "不起",
+            "count": 1
+          },
+          {
+            "name": "见轻",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "总按·结",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去而气分",
+            "count": 1
+          },
+          {
+            "mod": "加玄参三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 498,
+            "title": "2．十全育真汤",
+            "pulses": []
+          },
+          {
+            "case_id": 500,
+            "title": "2．十全育真汤",
+            "pulses": [
+              "总按·数"
+            ]
+          },
+          {
+            "case_id": 665,
+            "title": "4．一味薯蓣饮",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "安冲汤",
+        "case_count": 5,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 2
+          },
+          {
+            "name": "即愈",
+            "count": 1
+          },
+          {
+            "name": "除根",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "左手·弦",
+            "count": 1
+          },
+          {
+            "signature": "左手·浮",
+            "count": 1
+          },
+          {
+            "signature": "总按·弱",
+            "count": 1
+          },
+          {
+            "signature": "总按·虚",
+            "count": 1
+          },
+          {
+            "signature": "总按·迟",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去茜草",
+            "count": 1
+          },
+          {
+            "mod": "加生地黄一两",
+            "count": 1
+          },
+          {
+            "mod": "加赭石八钱",
+            "count": 1
+          },
+          {
+            "mod": "加干姜二钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 678,
+            "title": "4．安冲汤",
+            "pulses": []
+          },
+          {
+            "case_id": 679,
+            "title": "4．安冲汤",
+            "pulses": []
+          },
+          {
+            "case_id": 681,
+            "title": "4．安冲汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "二鲜饮",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 4
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·微",
+            "count": 4
+          },
+          {
+            "signature": "总按·大",
+            "count": 2
+          },
+          {
+            "signature": "总按·实",
+            "count": 2
+          },
+          {
+            "signature": "总按·弱",
+            "count": 2
+          },
+          {
+            "signature": "总按·洪",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加凑羊角二钱",
+            "count": 1
+          },
+          {
+            "mod": "加羚羊角二钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 32,
+            "title": "5. 和白荡根汤",
+            "pulses": [
+              "总按·大",
+              "总按·微"
+            ]
+          },
+          {
+            "case_id": 105,
+            "title": "66. 论霄气不降治法",
+            "pulses": [
+              "总按·实",
+              "总按·弱",
+              "总按·微",
+              "总按·洪"
+            ]
+          },
+          {
+            "case_id": 623,
+            "title": "3．白茅根汤",
+            "pulses": [
+              "总按·大",
+              "总按·微",
+              "总按·数",
+              "总按·滑"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "通变白虎加人参汤",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          },
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·大",
+            "count": 3
+          },
+          {
+            "signature": "总按·实",
+            "count": 2
+          },
+          {
+            "signature": "总按·弦",
+            "count": 2
+          },
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "总按·沉",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加人参三钱",
+            "count": 2
+          },
+          {
+            "mod": "加生自芍一两",
+            "count": 1
+          },
+          {
+            "mod": "去白芍",
+            "count": 1
+          },
+          {
+            "mod": "加柴胡二钱",
+            "count": 1
+          },
+          {
+            "mod": "加白术三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 37,
+            "title": "7. 通变自虎加人参话",
+            "pulses": [
+              "总按·大",
+              "总按·实",
+              "总按·弦",
+              "总按·数",
+              "总按·沉"
+            ]
+          },
+          {
+            "case_id": 300,
+            "title": "19．温病兼下痢",
+            "pulses": [
+              "总按·大",
+              "左手·弦",
+              "右手·实",
+              "重按·数"
+            ]
+          },
+          {
+            "case_id": 890,
+            "title": "7．通变白虎加人参汤",
+            "pulses": [
+              "总按·大",
+              "总按·实",
+              "总按·弦",
+              "总按·数",
+              "总按·沉"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "保元寒降汤",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 3
+          },
+          {
+            "name": "见效",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 2
+          },
+          {
+            "signature": "总按·浮",
+            "count": 2
+          },
+          {
+            "signature": "总按·大",
+            "count": 2
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·弱",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生山药\n一两",
+            "count": 1
+          },
+          {
+            "mod": "去竹茹",
+            "count": 1
+          },
+          {
+            "mod": "知母改用四钱",
+            "count": 1
+          },
+          {
+            "mod": "将柴胡改用二钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 70,
+            "title": "5， 清凉华莫饮",
+            "pulses": [
+              "总按·弦",
+              "总按·弱",
+              "总按·数",
+              "总按·浮",
+              "总按·细"
+            ]
+          },
+          {
+            "case_id": 373,
+            "title": "1．寒降汤",
+            "pulses": [
+              "总按·微",
+              "总按·数",
+              "总按·洪",
+              "总按·浮",
+              "重按·实"
+            ]
+          },
+          {
+            "case_id": 495,
+            "title": "2．人参解",
+            "pulses": [
+              "总按·大",
+              "关前·弱",
+              "关前·微"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "十全育真汤",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 1
+          },
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去之",
+            "count": 1
+          },
+          {
+            "mod": "加生地黄八钱",
+            "count": 1
+          },
+          {
+            "mod": "去而诸病",
+            "count": 1
+          },
+          {
+            "mod": "去附子",
+            "count": 1
+          },
+          {
+            "mod": "去而气分",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 497,
+            "title": "2．十全育真汤",
+            "pulses": []
+          },
+          {
+            "case_id": 498,
+            "title": "2．十全育真汤",
+            "pulses": []
+          },
+          {
+            "case_id": 499,
+            "title": "2．十全育真汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "来复汤",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 2
+          },
+          {
+            "name": "即愈",
+            "count": 1
+          },
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 3
+          },
+          {
+            "signature": "总按·浮",
+            "count": 3
+          },
+          {
+            "signature": "总按·伏",
+            "count": 1
+          },
+          {
+            "signature": "总按·动",
+            "count": 1
+          },
+          {
+            "signature": "总按·大",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去之",
+            "count": 1
+          },
+          {
+            "mod": "加生地黄八钱",
+            "count": 1
+          },
+          {
+            "mod": "去而诸病",
+            "count": 1
+          },
+          {
+            "mod": "去附子",
+            "count": 1
+          },
+          {
+            "mod": "去萸肉亦",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 497,
+            "title": "2．十全育真汤",
+            "pulses": []
+          },
+          {
+            "case_id": 723,
+            "title": "51．温病遗方",
+            "pulses": [
+              "总按·伏",
+              "总按·动",
+              "总按·大",
+              "总按·数",
+              "总按·沉"
+            ]
+          },
+          {
+            "case_id": 926,
+            "title": "9．地黄解",
+            "pulses": [
+              "总按·数",
+              "总按·浮"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "内托生肌散",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 2
+          },
+          {
+            "name": "愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·虚",
+            "count": 1
+          },
+          {
+            "signature": "关后/尺·虚",
+            "count": 1
+          },
+          {
+            "signature": "总按·数",
+            "count": 1
+          },
+          {
+            "signature": "总按·滑",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去\n栝蒌加",
+            "count": 1
+          },
+          {
+            "mod": "加黄 八钱",
+            "count": 1
+          },
+          {
+            "mod": "去瓜著加",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 653,
+            "title": "44．解砒石毒兼解火柴毒方",
+            "pulses": []
+          },
+          {
+            "case_id": 669,
+            "title": "4．内托生肌散",
+            "pulses": []
+          },
+          {
+            "case_id": 709,
+            "title": "4．腰疼",
+            "pulses": [
+              "总按·虚",
+              "关后/尺·虚"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "薯蓣粥",
+        "case_count": 4,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 2
+          },
+          {
+            "name": "全愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·虚",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加玄参三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 666,
+            "title": "4．一味薯蓣饮",
+            "pulses": []
+          },
+          {
+            "case_id": 667,
+            "title": "4．一味薯蓣饮",
+            "pulses": []
+          },
+          {
+            "case_id": 711,
+            "title": "4．薯蓣鸡子黄粥",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "清金解毒汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 2
+          },
+          {
+            "name": "见愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·浮",
+            "count": 2
+          },
+          {
+            "signature": "重按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·弱",
+            "count": 1
+          },
+          {
+            "signature": "总按·虚",
+            "count": 1
+          },
+          {
+            "signature": "总按·大",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去石膏",
+            "count": 2
+          },
+          {
+            "mod": "去山药",
+            "count": 1
+          },
+          {
+            "mod": "去黄攻",
+            "count": 1
+          },
+          {
+            "mod": "加野台人参三钱",
+            "count": 1
+          },
+          {
+            "mod": "加黄芪三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 69,
+            "title": "5， 清凉华莫饮",
+            "pulses": [
+              "总按·浮",
+              "重按·洪"
+            ]
+          },
+          {
+            "case_id": 763,
+            "title": "5．清凉华盖饮",
+            "pulses": [
+              "总按·弱",
+              "总按·浮",
+              "总按·虚"
+            ]
+          },
+          {
+            "case_id": 765,
+            "title": "5．清凉华盖饮",
+            "pulses": [
+              "总按·大",
+              "左手·实",
+              "左手·滑"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "清带汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·滑",
+            "count": 2
+          },
+          {
+            "signature": "总按·弱",
+            "count": 1
+          },
+          {
+            "signature": "总按·虚",
+            "count": 1
+          },
+          {
+            "signature": "总按·迟",
+            "count": 1
+          },
+          {
+            "signature": "总按·洪",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去得",
+            "count": 1
+          },
+          {
+            "mod": "去渣",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 86,
+            "title": "7. 清带汤",
+            "pulses": [
+              "总按·滑"
+            ]
+          },
+          {
+            "case_id": 722,
+            "title": "50．海螵蛸、茜草解",
+            "pulses": [
+              "总按·弱",
+              "总按·虚",
+              "总按·迟"
+            ]
+          },
+          {
+            "case_id": 861,
+            "title": "7．清带汤",
+            "pulses": [
+              "总按·洪",
+              "总按·滑"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "温降汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          },
+          {
+            "name": "即愈",
+            "count": 1
+          },
+          {
+            "name": "全愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 2
+          },
+          {
+            "signature": "总按·洪",
+            "count": 2
+          },
+          {
+            "signature": "总按·弱",
+            "count": 2
+          },
+          {
+            "signature": "总按·微",
+            "count": 2
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生地黄一两",
+            "count": 1
+          },
+          {
+            "mod": "加羚羊角二钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 106,
+            "title": "66. 论霄气不降治法",
+            "pulses": [
+              "总按·实",
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·浮"
+            ]
+          },
+          {
+            "case_id": 525,
+            "title": "2．温降汤",
+            "pulses": [
+              "总按·弱",
+              "总按·微"
+            ]
+          },
+          {
+            "case_id": 787,
+            "title": "67．论吐血衄血之原因及治法",
+            "pulses": [
+              "总按·动",
+              "总按·实",
+              "总按·弱",
+              "总按·微",
+              "总按·洪"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "坎离互根汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·大",
+            "count": 3
+          },
+          {
+            "signature": "总按·微",
+            "count": 3
+          },
+          {
+            "signature": "总按·沉",
+            "count": 3
+          },
+          {
+            "signature": "总按·洪",
+            "count": 3
+          },
+          {
+            "signature": "重按·细",
+            "count": 3
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加大黄三钱",
+            "count": 2
+          },
+          {
+            "mod": "加紫花地丁三钱",
+            "count": 2
+          },
+          {
+            "mod": "加桑寄生一两",
+            "count": 2
+          },
+          {
+            "mod": "去黄连",
+            "count": 2
+          },
+          {
+            "mod": "加射干三钱",
+            "count": 2
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 117,
+            "title": "87. 论鼠疫之原因及治法〈附，坎离互根汤)",
+            "pulses": [
+              "总按·大",
+              "总按·微",
+              "总按·数",
+              "总按·沉",
+              "总按·洪"
+            ]
+          },
+          {
+            "case_id": 693,
+            "title": "4．温病少阴证",
+            "pulses": [
+              "总按·大",
+              "总按·弱",
+              "总按·微",
+              "总按·沉",
+              "总按·洪"
+            ]
+          },
+          {
+            "case_id": 903,
+            "title": "87．论鼠疫之原因及治法",
+            "pulses": [
+              "总按·大",
+              "总按·微",
+              "总按·数",
+              "总按·沉",
+              "总按·洪"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "敦复汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "即愈",
+            "count": 1
+          },
+          {
+            "name": "全愈",
+            "count": 1
+          },
+          {
+            "name": "已愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 2
+          },
+          {
+            "signature": "总按·沉",
+            "count": 1
+          },
+          {
+            "signature": "关后/尺·实",
+            "count": 1
+          },
+          {
+            "signature": "关后/尺·洪",
+            "count": 1
+          },
+          {
+            "signature": "关后/尺·滑",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去下焦之",
+            "count": 1
+          },
+          {
+            "mod": "去净核",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 261,
+            "title": "11．镇摄汤",
+            "pulses": [
+              "总按·沉",
+              "关后/尺·实",
+              "关后/尺·洪",
+              "关后/尺·滑",
+              "重按·细"
+            ]
+          },
+          {
+            "case_id": 267,
+            "title": "11．镇摄汤",
+            "pulses": [
+              "总按·大",
+              "总按·实",
+              "总按·弦"
+            ]
+          },
+          {
+            "case_id": 853,
+            "title": "7．大便下血",
+            "pulses": [
+              "总按·实",
+              "总按·浮",
+              "总按·芤",
+              "关后/尺·微",
+              "关后/尺·数"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "起痿汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 3
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·大",
+            "count": 2
+          },
+          {
+            "signature": "总按·弱",
+            "count": 2
+          },
+          {
+            "signature": "总按·弦",
+            "count": 2
+          },
+          {
+            "signature": "总按·微",
+            "count": 2
+          },
+          {
+            "signature": "总按·长",
+            "count": 2
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加天冬八钱",
+            "count": 1
+          },
+          {
+            "mod": "加天花粉八钱",
+            "count": 1
+          },
+          {
+            "mod": "加怀牛膝五钱",
+            "count": 1
+          },
+          {
+            "mod": "去也",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 717,
+            "title": "4．黄解",
+            "pulses": [
+              "总按·大",
+              "总按·弱",
+              "总按·虚"
+            ]
+          },
+          {
+            "case_id": 893,
+            "title": "80．论肢体痿废之原因及治法",
+            "pulses": [
+              "总按·弦",
+              "总按·微",
+              "总按·长"
+            ]
+          },
+          {
+            "case_id": 894,
+            "title": "80．论肢体痿废之原因及治法",
+            "pulses": [
+              "总按·大",
+              "总按·弦",
+              "总按·弱",
+              "总按·微",
+              "总按·洪"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "宣解汤",
+        "case_count": 3,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 3
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·数",
+            "count": 3
+          },
+          {
+            "signature": "总按·浮",
+            "count": 2
+          },
+          {
+            "signature": "总按·滑",
+            "count": 1
+          }
+        ],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 864,
+            "title": "7．滋阴宣解汤",
+            "pulses": [
+              "总按·数",
+              "总按·浮",
+              "总按·滑"
+            ]
+          },
+          {
+            "case_id": 865,
+            "title": "7．滋阴宣解汤",
+            "pulses": [
+              "总按·数",
+              "总按·浮"
+            ]
+          },
+          {
+            "case_id": 913,
+            "title": "8．治幼年温热证宜预防其出痧疹",
+            "pulses": [
+              "总按·数"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "健运汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "右手·弱",
+            "count": 1
+          }
+        ],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 35,
+            "title": "6. 人刍运汤",
+            "pulses": [
+              "右手·弱"
+            ]
+          },
+          {
+            "case_id": 859,
+            "title": "7．振中汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "清金益气汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "见轻",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·浮",
+            "count": 2
+          },
+          {
+            "signature": "关前·滑",
+            "count": 1
+          }
+        ],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 62,
+            "title": "2， 洲金益气沪",
+            "pulses": [
+              "总按·浮",
+              "关前·滑"
+            ]
+          },
+          {
+            "case_id": 522,
+            "title": "2．清金益气汤",
+            "pulses": [
+              "总按·浮"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "凉解汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·浮",
+            "count": 1
+          },
+          {
+            "signature": "总按·滑",
+            "count": 1
+          }
+        ],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 319,
+            "title": "1．仙露汤",
+            "pulses": []
+          },
+          {
+            "case_id": 728,
+            "title": "54．温病之治法详于伤寒论解",
+            "pulses": [
+              "总按·洪",
+              "总按·浮",
+              "总按·滑"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "金铃泻肝汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 2
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 467,
+            "title": "24．柴胡解",
+            "pulses": []
+          },
+          {
+            "case_id": 639,
+            "title": "3．金铃泻肝汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "回阳升陷汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·弱",
+            "count": 1
+          },
+          {
+            "signature": "总按·微",
+            "count": 1
+          },
+          {
+            "signature": "总按·沉",
+            "count": 1
+          },
+          {
+            "signature": "总按·迟",
+            "count": 1
+          },
+          {
+            "signature": "重按·弱",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加浓朴二钱",
+            "count": 1
+          },
+          {
+            "mod": "去党参",
+            "count": 1
+          },
+          {
+            "mod": "桂枝皆改用二钱",
+            "count": 1
+          },
+          {
+            "mod": "加生怀山药\n八钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 506,
+            "title": "2．回阳升陷汤",
+            "pulses": [
+              "总按·弱",
+              "总按·微",
+              "总按·沉",
+              "总按·迟",
+              "重按·弱"
+            ]
+          },
+          {
+            "case_id": 589,
+            "title": "3．大气下陷身冷",
+            "pulses": [
+              "总按·大",
+              "关前·沉",
+              "关前·细"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "急救回阳汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "即愈",
+            "count": 1
+          },
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·伏",
+            "count": 1
+          },
+          {
+            "signature": "总按·大",
+            "count": 1
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·数",
+            "count": 1
+          },
+          {
+            "signature": "总按·涩",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加乌附子一钱",
+            "count": 1
+          },
+          {
+            "mod": "去\n芍药",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 608,
+            "title": "3．急救回阳汤",
+            "pulses": [
+              "总按·伏",
+              "总按·大",
+              "总按·弦",
+              "总按·数",
+              "总按·涩"
+            ]
+          },
+          {
+            "case_id": 822,
+            "title": "71．论霍乱治法",
+            "pulses": [
+              "总按·沉",
+              "重按·细"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "一味薯蓣饮",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          },
+          {
+            "name": "全愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [
+          {
+            "mod": "加玄参三钱",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 666,
+            "title": "4．一味薯蓣饮",
+            "pulses": []
+          },
+          {
+            "case_id": 667,
+            "title": "4．一味薯蓣饮",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "既济汤",
+        "case_count": 2,
+        "efficacy_top": [
+          {
+            "name": "除根",
+            "count": 1
+          },
+          {
+            "name": "全愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·沉",
+            "count": 1
+          },
+          {
+            "signature": "重按·弱",
+            "count": 1
+          },
+          {
+            "signature": "重按·细",
+            "count": 1
+          },
+          {
+            "signature": "重按·迟",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去净",
+            "count": 1
+          },
+          {
+            "mod": "去\n净核",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 759,
+            "title": "5．山萸肉解",
+            "pulses": []
+          },
+          {
+            "case_id": 977,
+            "title": "5. 山萸肉解",
+            "pulses": [
+              "总按·沉",
+              "重按·弱",
+              "重按·细",
+              "重按·迟"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "秘红丹",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 1
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·数",
+            "count": 1
+          },
+          {
+            "signature": "总按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·浮",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生地黄一两",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 106,
+            "title": "66. 论霄气不降治法",
+            "pulses": [
+              "总按·实",
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·浮"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "保元清降汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 1
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·数",
+            "count": 1
+          },
+          {
+            "signature": "总按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·浮",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生地黄一两",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 106,
+            "title": "66. 论霄气不降治法",
+            "pulses": [
+              "总按·实",
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·浮"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "清降汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·实",
+            "count": 1
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·数",
+            "count": 1
+          },
+          {
+            "signature": "总按·洪",
+            "count": 1
+          },
+          {
+            "signature": "总按·浮",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加生地黄一两",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 106,
+            "title": "66. 论霄气不降治法",
+            "pulses": [
+              "总按·实",
+              "总按·弦",
+              "总按·数",
+              "总按·洪",
+              "总按·浮"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "升降汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [
+          {
+            "mod": "加鲜地骨皮一两",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 321,
+            "title": "1．升降汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "加味麦门冬汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·沉",
+            "count": 1
+          },
+          {
+            "signature": "重按·弱",
+            "count": 1
+          },
+          {
+            "signature": "重按·微",
+            "count": 1
+          },
+          {
+            "signature": "重按·迟",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去者",
+            "count": 1
+          },
+          {
+            "mod": "去之",
+            "count": 1
+          },
+          {
+            "mod": "中知母改用五钱",
+            "count": 1
+          },
+          {
+            "mod": "加柴胡一钱",
+            "count": 1
+          },
+          {
+            "mod": "去升麻",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 333,
+            "title": "1．升陷汤",
+            "pulses": [
+              "总按·沉",
+              "重按·弱",
+              "重按·微",
+              "重按·迟"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "赭遂攻结汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "即愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [
+          {
+            "mod": "去信服衷",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 552,
+            "title": "2．赭遂攻结汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "磁朱丸",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "除根",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 580,
+            "title": "3．一味铁养汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "加味磁朱丸",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "除根",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 580,
+            "title": "3．一味铁养汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "醴泉饮",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·弱",
+            "count": 1
+          },
+          {
+            "signature": "总按·数",
+            "count": 1
+          },
+          {
+            "signature": "总按·沉",
+            "count": 1
+          },
+          {
+            "signature": "总按·细",
+            "count": 1
+          },
+          {
+            "signature": "重按·濡",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "加知母二钱",
+            "count": 1
+          },
+          {
+            "mod": "加鸡内金二钱",
+            "count": 1
+          },
+          {
+            "mod": "去赭石二",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 637,
+            "title": "3．醴泉饮",
+            "pulses": [
+              "总按·弱",
+              "总按·数",
+              "总按·沉",
+              "总按·细",
+              "重按·濡"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "石膏阿斯匹林汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "全愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [],
+        "sample_cases": [
+          {
+            "case_id": 707,
+            "title": "4．石膏阿斯匹林汤",
+            "pulses": []
+          }
+        ]
+      },
+      {
+        "name": "振中汤",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [
+          {
+            "signature": "总按·大",
+            "count": 1
+          },
+          {
+            "signature": "总按·弦",
+            "count": 1
+          },
+          {
+            "signature": "总按·虚",
+            "count": 1
+          }
+        ],
+        "modification_top": [
+          {
+            "mod": "去净核",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 858,
+            "title": "7．振中汤",
+            "pulses": [
+              "总按·大",
+              "总按·弦",
+              "总按·虚"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "寿胎丸",
+        "case_count": 1,
+        "efficacy_top": [
+          {
+            "name": "愈",
+            "count": 1
+          }
+        ],
+        "pulse_top": [],
+        "modification_top": [
+          {
+            "mod": "去净核",
+            "count": 1
+          }
+        ],
+        "sample_cases": [
+          {
+            "case_id": 929,
+            "title": "9．寿胎丸",
+            "pulses": []
+          }
+        ]
+      }
+    ],
+    "pulse_skill": [
+      {
+        "signature": "总按·数",
+        "case_count": 164,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 39
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 8
+          },
+          {
+            "name": "寒解汤",
+            "count": 5
+          },
+          {
+            "name": "升陷汤",
+            "count": 5
+          },
+          {
+            "name": "清解汤",
+            "count": 3
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "温病大实之证",
+            "count": 2
+          },
+          {
+            "name": "为宗筋受病",
+            "count": 2
+          },
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·洪",
+        "case_count": 131,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 37
+          },
+          {
+            "name": "寒解汤",
+            "count": 9
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 7
+          },
+          {
+            "name": "升陷汤",
+            "count": 4
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 3
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "春温之热",
+            "count": 3
+          },
+          {
+            "name": "系气分热",
+            "count": 3
+          },
+          {
+            "name": "温病大实之证",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·弦",
+        "case_count": 122,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 20
+          },
+          {
+            "name": "理饮汤",
+            "count": 5
+          },
+          {
+            "name": "活络效灵丹",
+            "count": 3
+          },
+          {
+            "name": "镇肝熄风汤",
+            "count": 3
+          },
+          {
+            "name": "建瓴汤",
+            "count": 3
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "为宗筋受病",
+            "count": 2
+          },
+          {
+            "name": "阳明之积热",
+            "count": 2
+          },
+          {
+            "name": "有伏气化热",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·大",
+        "case_count": 113,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 32
+          },
+          {
+            "name": "升陷汤",
+            "count": 12
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "理饮汤",
+            "count": 3
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 3
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "春温之热",
+            "count": 3
+          },
+          {
+            "name": "胸中大气下陷",
+            "count": 3
+          },
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·微",
+        "case_count": 112,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 16
+          },
+          {
+            "name": "升陷汤",
+            "count": 12
+          },
+          {
+            "name": "活络效灵丹",
+            "count": 4
+          },
+          {
+            "name": "二鲜饮",
+            "count": 4
+          },
+          {
+            "name": "理中汤",
+            "count": 4
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "大气下陷",
+            "count": 4
+          },
+          {
+            "name": "可治",
+            "count": 2
+          },
+          {
+            "name": "为宗筋受病",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·实",
+        "case_count": 106,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 30
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 6
+          },
+          {
+            "name": "寒解汤",
+            "count": 4
+          },
+          {
+            "name": "升陷汤",
+            "count": 3
+          },
+          {
+            "name": "建瓴汤",
+            "count": 3
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "系实热之证",
+            "count": 2
+          },
+          {
+            "name": "温病大实之证",
+            "count": 2
+          },
+          {
+            "name": "产后阴虚生内热",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·浮",
+        "case_count": 88,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 11
+          },
+          {
+            "name": "寒解汤",
+            "count": 7
+          },
+          {
+            "name": "理饮汤",
+            "count": 3
+          },
+          {
+            "name": "来复汤",
+            "count": 3
+          },
+          {
+            "name": "清金益气汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "阳明经",
+            "count": 2
+          },
+          {
+            "name": "伏气化热",
+            "count": 2
+          },
+          {
+            "name": "肝移热于脑",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·弱",
+        "case_count": 81,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 14
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 12
+          },
+          {
+            "name": "理中汤",
+            "count": 3
+          },
+          {
+            "name": "二鲜饮",
+            "count": 2
+          },
+          {
+            "name": "温降汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "大气下陷",
+            "count": 3
+          },
+          {
+            "name": "胸中大气下陷",
+            "count": 3
+          },
+          {
+            "name": "肝胆虚而挟热",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·细",
+        "case_count": 74,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 10
+          },
+          {
+            "name": "升陷汤",
+            "count": 6
+          },
+          {
+            "name": "理饮汤",
+            "count": 4
+          },
+          {
+            "name": "活络效灵丹",
+            "count": 3
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "可治",
+            "count": 3
+          },
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "已成直中少阴之伤寒也",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·滑",
+        "case_count": 68,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 10
+          },
+          {
+            "name": "寒解汤",
+            "count": 6
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 4
+          },
+          {
+            "name": "升陷汤",
+            "count": 3
+          },
+          {
+            "name": "清带汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "因痢证夹杂外感",
+            "count": 2
+          },
+          {
+            "name": "伏气化热",
+            "count": 2
+          },
+          {
+            "name": "上和焦先有郁热",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·长",
+        "case_count": 66,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 17
+          },
+          {
+            "name": "寒解汤",
+            "count": 4
+          },
+          {
+            "name": "升陷汤",
+            "count": 2
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 2
+          },
+          {
+            "name": "建瓴汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "伏气化热",
+            "count": 4
+          },
+          {
+            "name": "阳明经",
+            "count": 2
+          },
+          {
+            "name": "有伏气化热",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "总按·沉",
+        "case_count": 66,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 14
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 10
+          },
+          {
+            "name": "寒解汤",
+            "count": 4
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 3
+          },
+          {
+            "name": "参赭镇气汤",
+            "count": 3
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "第一方",
+            "count": 2
+          },
+          {
+            "name": "初受外感三四日",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "signature": "左手·弦",
+        "case_count": 56,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 6
+          },
+          {
+            "name": "升陷汤",
+            "count": 3
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "参赭镇气汤",
+            "count": 1
+          },
+          {
+            "name": "安冲汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "伏气之热与疮毒俱发也",
+            "count": 2
+          },
+          {
+            "name": "肝气蛆火",
+            "count": 1
+          },
+          {
+            "name": "上实下皮外感之热兼握有阴虚之热也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·虚",
+        "case_count": 54,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 9
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 7
+          },
+          {
+            "name": "升陷汤",
+            "count": 5
+          },
+          {
+            "name": "建瓴汤",
+            "count": 2
+          },
+          {
+            "name": "保元寒降汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "温病大实之证",
+            "count": 2
+          },
+          {
+            "name": "年虽高而",
+            "count": 1
+          },
+          {
+            "name": "脾胃湿塞",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·迟",
+        "case_count": 42,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 7
+          },
+          {
+            "name": "升陷汤",
+            "count": 6
+          },
+          {
+            "name": "理饮汤",
+            "count": 2
+          },
+          {
+            "name": "固冲汤",
+            "count": 2
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "胸中大气下陷",
+            "count": 3
+          },
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "系实热之证",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·实",
+        "case_count": 29,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          },
+          {
+            "name": "卫生防疫宝丹",
+            "count": 1
+          },
+          {
+            "name": "保元寒降汤",
+            "count": 1
+          },
+          {
+            "name": "温降汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "伏气化热",
+            "count": 4
+          },
+          {
+            "name": "阳明之积热",
+            "count": 2
+          },
+          {
+            "name": "系实热之证",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·长",
+        "case_count": 25,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 4
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "系实热之证",
+            "count": 1
+          },
+          {
+            "name": "伏气化热",
+            "count": 1
+          },
+          {
+            "name": "真阴狐",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·缓",
+        "case_count": 24,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 9
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 2
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 2
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "系实热之证",
+            "count": 1
+          },
+          {
+            "name": "玫久",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·细",
+        "case_count": 16,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 4
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 3
+          },
+          {
+            "name": "寒解汤",
+            "count": 2
+          },
+          {
+            "name": "卫生防疫宝丹",
+            "count": 2
+          },
+          {
+            "name": "敦复汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "肾经实而且热也",
+            "count": 1
+          },
+          {
+            "name": "胸中大气下陷",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·洪",
+        "case_count": 15,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 4
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "伏气之热与疮毒俱发也",
+            "count": 2
+          },
+          {
+            "name": "伏气化热",
+            "count": 1
+          },
+          {
+            "name": "有伏气化热入胃",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·短",
+        "case_count": 14,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 3
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "大气下陷",
+            "count": 2
+          },
+          {
+            "name": "年虽高而",
+            "count": 1
+          },
+          {
+            "name": "心火炽监",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·动",
+        "case_count": 14,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 1
+          },
+          {
+            "name": "来复汤",
+            "count": 1
+          },
+          {
+            "name": "温降汤",
+            "count": 1
+          },
+          {
+            "name": "二鲜饮",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "因痢证夹杂外感",
+            "count": 2
+          },
+          {
+            "name": "救急之身方",
+            "count": 1
+          },
+          {
+            "name": "为大气下",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·微",
+        "case_count": 14,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 9
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "参赭镇气汤",
+            "count": 1
+          },
+          {
+            "name": "固冲汤",
+            "count": 1
+          },
+          {
+            "name": "加味麦门冬汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "霄寒过甚",
+            "count": 1
+          },
+          {
+            "name": "胸中大气及中焦脾恨之气皆虚陷阳",
+            "count": 1
+          },
+          {
+            "name": "阴分",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·沉",
+        "case_count": 14,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "肝气郁结",
+            "count": 2
+          },
+          {
+            "name": "肝气蛆火",
+            "count": 1
+          },
+          {
+            "name": "脉虽弱而火则甚实",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·迟",
+        "case_count": 13,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 4
+          },
+          {
+            "name": "升陷汤",
+            "count": 4
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 2
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 2
+          },
+          {
+            "name": "参赭镇气汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "第一方",
+            "count": 2
+          },
+          {
+            "name": "玫久",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "右手·实",
+        "case_count": 13,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 4
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "寒解汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "伏气化热",
+            "count": 1
+          },
+          {
+            "name": "肝气郁沸不能条达",
+            "count": 1
+          },
+          {
+            "name": "真阴狐",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·结",
+        "case_count": 12,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 1
+          },
+          {
+            "name": "参麦汤",
+            "count": 1
+          },
+          {
+            "name": "资生汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "温病大实之证",
+            "count": 2
+          },
+          {
+            "name": "大便虽结不至甚燥",
+            "count": 1
+          },
+          {
+            "name": "气分郁结",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·微",
+        "case_count": 12,
+        "formula_top": [
+          {
+            "name": "曲直汤",
+            "count": 2
+          },
+          {
+            "name": "升陷汤",
+            "count": 2
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 1
+          },
+          {
+            "name": "起痿汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "肝木之气呀弱",
+            "count": 1
+          },
+          {
+            "name": "胸中大气下陷（理详升陷汤下）",
+            "count": 1
+          },
+          {
+            "name": "怒久伤肝",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·濡",
+        "case_count": 12,
+        "formula_top": [
+          {
+            "name": "秘红丹",
+            "count": 1
+          },
+          {
+            "name": "保元清降汤",
+            "count": 1
+          },
+          {
+            "name": "温降汤",
+            "count": 1
+          },
+          {
+            "name": "清降汤",
+            "count": 1
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "胸中大气下陷",
+            "count": 1
+          },
+          {
+            "name": "肺中先有痰火",
+            "count": 1
+          },
+          {
+            "name": "脾胃虚也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·细",
+        "case_count": 12,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "所以不能言",
+            "count": 2
+          },
+          {
+            "name": "肝气郁结",
+            "count": 2
+          },
+          {
+            "name": "素不健壮",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·紧",
+        "case_count": 10,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 2
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 2
+          },
+          {
+            "name": "理郁升陷汤",
+            "count": 1
+          },
+          {
+            "name": "卫生防疫宝丹",
+            "count": 1
+          },
+          {
+            "name": "理中汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "系实热之证",
+            "count": 1
+          },
+          {
+            "name": "确系 温 病",
+            "count": 1
+          },
+          {
+            "name": "大气下陷",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·弱",
+        "case_count": 10,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 5
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 2
+          },
+          {
+            "name": "参赭镇气汤",
+            "count": 1
+          },
+          {
+            "name": "固冲汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "传染之毒菌",
+            "count": 2
+          },
+          {
+            "name": "霄寒过甚",
+            "count": 1
+          },
+          {
+            "name": "病源系大气下陷",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·浮",
+        "case_count": 10,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "安冲汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "所以不能言",
+            "count": 2
+          },
+          {
+            "name": "取古方之义而通变化裁",
+            "count": 1
+          },
+          {
+            "name": "肝气胆火上冲",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "关前·洪",
+        "case_count": 9,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 2
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "已成戴阳之证",
+            "count": 2
+          },
+          {
+            "name": "系实热之证",
+            "count": 1
+          },
+          {
+            "name": "上盛下虚之证",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "关前·滑",
+        "case_count": 9,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 2
+          },
+          {
+            "name": "清金益气汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "已成戴阳之证",
+            "count": 2
+          },
+          {
+            "name": "系气分热",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·弦",
+        "case_count": 9,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 1
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "肝气郁沸不能条达",
+            "count": 1
+          },
+          {
+            "name": "素勤稼穑",
+            "count": 1
+          },
+          {
+            "name": "少阳病而连太阴也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·实",
+        "case_count": 8,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 1
+          },
+          {
+            "name": "清金解毒汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "伏气之热与疮毒俱发也",
+            "count": 2
+          },
+          {
+            "name": "肝气郁滞不能条达",
+            "count": 1
+          },
+          {
+            "name": "肝胆伏有疟邪",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·伏",
+        "case_count": 7,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "急救回阳汤",
+            "count": 1
+          },
+          {
+            "name": "来复汤",
+            "count": 1
+          },
+          {
+            "name": "卫生防疫宝丹",
+            "count": 1
+          },
+          {
+            "name": "理中汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "决系外感留邪",
+            "count": 2
+          },
+          {
+            "name": "邪闭而气道不宣",
+            "count": 1
+          },
+          {
+            "name": "内有燥粪甚多",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·滑",
+        "case_count": 7,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "清金解毒汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "外感",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·代",
+        "case_count": 6,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 3
+          },
+          {
+            "name": "升陷汤",
+            "count": 2
+          },
+          {
+            "name": "寒解汤",
+            "count": 1
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "温病大实之证",
+            "count": 2
+          },
+          {
+            "name": "年虽高而",
+            "count": 1
+          },
+          {
+            "name": "因误治",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "关后/尺·实",
+        "case_count": 6,
+        "formula_top": [
+          {
+            "name": "活络效灵丹",
+            "count": 2
+          },
+          {
+            "name": "敦复汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "肾经实而且热也",
+            "count": 1
+          },
+          {
+            "name": "为宗筋受病",
+            "count": 1
+          },
+          {
+            "name": "胃寒过甚",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "左手·弱",
+        "case_count": 6,
+        "formula_top": [
+          {
+            "name": "曲直汤",
+            "count": 2
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "滋阴清燥汤",
+            "count": 1
+          },
+          {
+            "name": "起痿汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "肝木之气呀弱",
+            "count": 1
+          },
+          {
+            "name": "怒久伤肝",
+            "count": 1
+          },
+          {
+            "name": "胸中大气下陷",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "关前·浮",
+        "case_count": 6,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 1
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "阳明之积热",
+            "count": 1
+          },
+          {
+            "name": "下焦阴分犹",
+            "count": 1
+          },
+          {
+            "name": "虚极将脱之兆也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "重按·数",
+        "case_count": 6,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 2
+          },
+          {
+            "name": "卫生防疫宝丹",
+            "count": 1
+          },
+          {
+            "name": "通变白虎加人参汤",
+            "count": 1
+          },
+          {
+            "name": "升陷汤",
+            "count": 1
+          },
+          {
+            "name": "回阳升陷汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "身体本虚",
+            "count": 1
+          },
+          {
+            "name": "邪实正虚之候",
+            "count": 1
+          },
+          {
+            "name": "胸中大气下陷",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·芤",
+        "case_count": 6,
+        "formula_top": [
+          {
+            "name": "敦复汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "气血亏极有阴阳不相维系之象",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "关后/尺·虚",
+        "case_count": 5,
+        "formula_top": [
+          {
+            "name": "内托生肌散",
+            "count": 1
+          },
+          {
+            "name": "敦复汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "下焦虚寒",
+            "count": 2
+          },
+          {
+            "name": "下焦虚塞",
+            "count": 1
+          },
+          {
+            "name": "证兼内外中风也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "右手·大",
+        "case_count": 5,
+        "formula_top": [
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "从前服小青龙即愈者",
+            "count": 1
+          },
+          {
+            "name": "阳明府热甚炽又兼阴分虚损也",
+            "count": 1
+          },
+          {
+            "name": "肝气郁结",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "总按·涩",
+        "case_count": 5,
+        "formula_top": [
+          {
+            "name": "急救回阳汤",
+            "count": 1
+          },
+          {
+            "name": "坎离互根汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "邪闭而气道不宣",
+            "count": 1
+          },
+          {
+            "name": "热邪深陷气化隔阂之候",
+            "count": 1
+          },
+          {
+            "name": "血分瘀也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "右手·微",
+        "case_count": 4,
+        "formula_top": [
+          {
+            "name": "固冲汤",
+            "count": 2
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 1
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "气生将了肛",
+            "count": 1
+          },
+          {
+            "name": "肝中先有蕴热",
+            "count": 1
+          },
+          {
+            "name": "为大气下陷也",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "signature": "关前·实",
+        "case_count": 4,
+        "formula_top": [
+          {
+            "name": "升陷汤",
+            "count": 2
+          },
+          {
+            "name": "白虎加人参汤",
+            "count": 2
+          }
+        ],
+        "diagnosis_top": [
+          {
+            "name": "霄寒过甚",
+            "count": 1
+          },
+          {
+            "name": "虚极将脱之兆也",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "process_skill": {
+      "version": "v2.7.20",
+      "title": "一比一还原张锡纯脉诊过程",
+      "source": "张锡纯《医学衷中参西录》994 案实证",
+      "steps": [
+        {
+          "step": "step1",
+          "title": "第 1 步：手法 (按压力度)",
+          "zx_intro": "张氏脉诊第一步 — 先按压力度, 决定后续思路",
+          "core": "重按是张氏第一辨 (辨真假有力)",
+          "options_count": 5
+        },
+        {
+          "step": "step2",
+          "title": "第 2 步：分部 (异常部位)",
+          "zx_intro": "张氏分部不是教科书 6 部, 而是按实证 8 部位",
+          "core": "部位是反推脏腑的依据",
+          "options_count": 8
+        },
+        {
+          "step": "step3",
+          "title": "第 3 步：脉象 (单选/多选)",
+          "zx_intro": "26 个核心脉 + 11 个张氏特色脉 (来自 994 案实证)",
+          "core": "案均 2.96 个脉",
+          "options_count": 36
+        },
+        {
+          "step": "step4",
+          "title": "第 4 步：复合脉 (系统自动提示)",
+          "zx_intro": "复合脉 = 病机指纹 (张氏原书常用)",
+          "core": "系统根据第 3 步自动提示",
+          "options_count": 17
+        },
+        {
+          "step": "step5",
+          "title": "第 5 步：主证 (可选加速匹配)",
+          "zx_intro": "18 个张氏原书主证",
+          "core": "加速匹配, 非必须",
+          "options_count": 18
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张锡纯诊方引擎 ZXDE v6 - 演示</title>
+<style>
+  :root {
+    --primary: #1e40af;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --success: #16a34a;
+    --warning: #d97706;
+    --error: #dc2626;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(30, 64, 175, 0.2);
+  }
+  header h1 { font-size: 24px; margin-bottom: 6px; }
+  header p { opacity: 0.9; font-size: 14px; }
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+  }
+  .card h2 { font-size: 18px; color: var(--primary); margin-bottom: 12px; }
+  label { display: block; font-weight: 600; margin: 12px 0 6px; color: var(--text); font-size: 14px; }
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+  }
+  textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.15s;
+  }
+  button:hover { background: var(--primary-light); }
+  button.secondary { background: var(--text-muted); }
+  .examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .example-chip {
+    background: #f1f5f9;
+    color: var(--text-muted);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+  }
+  .example-chip:hover { background: #e0e7ff; color: var(--primary); }
+  .result-empty { text-align: center; color: var(--text-muted); padding: 30px 0; }
+  .recommend {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border: 2px solid var(--success);
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .recommend h3 { color: var(--success); font-size: 16px; margin-bottom: 8px; }
+  .recommend .formula-name { font-size: 22px; font-weight: 700; color: #065f46; }
+  .recommend .module { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .topk {
+    display: grid;
+    gap: 8px;
+  }
+  .topk-item {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 30px 1fr 80px;
+    align-items: center;
+    gap: 10px;
+  }
+  .topk-rank {
+    background: var(--primary);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .topk-rank.gold { background: #f59e0b; }
+  .topk-name { font-weight: 600; color: var(--text); }
+  .topk-module { font-size: 11px; color: var(--text-muted); }
+  .topk-score {
+    text-align: right;
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .topk-hits {
+    grid-column: 2 / 4;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .query-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .tag {
+    background: #dbeafe;
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  .tag.pulse { background: #fef3c7; color: var(--warning); }
+  .modules-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .mod-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    background: white;
+  }
+  .mod-card h4 { font-size: 14px; color: var(--primary); margin-bottom: 4px; }
+  .mod-card .mod-stat { font-size: 12px; color: var(--text-muted); }
+  .mod-card.match { background: #ecfdf5; border-color: var(--success); }
+  .stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+  .stat { display: flex; gap: 4px; align-items: center; }
+  .stat strong { color: var(--primary); font-size: 14px; }
+  .error {
+    background: #fee2e2;
+    color: var(--error);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #fecaca;
+  }
+  footer { text-align: center; color: var(--text-muted); font-size: 12px; padding: 20px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>张锡纯诊方引擎 ZXDE v6</h1>
+    <p>输入主诉 + 脉象 → 推荐方剂 (基于 535 方剂 + 1100+ 医案蒸馏)</p>
+    <div style="margin-top: 8px;">
+      <span class="badge">症状投票</span>
+      <span class="badge">同义词归并</span>
+      <span class="badge">模块先验</span>
+      <span class="badge">症状硬规则</span>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2>① 输入主诉 + 脉象</h2>
+    <div class="row">
+      <div>
+        <label>主诉 (症状)</label>
+        <textarea id="symptoms" placeholder="例: 胸闷气短，气不够用，动则喘促，自汗，乏力"></textarea>
+      </div>
+      <div>
+        <label>脉象</label>
+        <textarea id="pulse" placeholder="例: 寸脉沉弱，关上虚，尺脉细弱"></textarea>
+      </div>
+    </div>
+    <label>示例 (点选):</label>
+    <div class="examples" id="examples"></div>
+    <button onclick="run()">诊方</button>
+    <button class="secondary" onclick="clearAll()">清空</button>
+  </div>
+
+  <div class="card" id="result-card" style="display: none;">
+    <h2>② 诊断结果</h2>
+    <div id="result"></div>
+  </div>
+
+  <div class="card">
+    <h2>③ 7 大模块概览</h2>
+    <div class="modules-overview" id="modules"></div>
+  </div>
+
+  <footer>ZXDE v6 · 数据基于《医学衷中参西录》30 卷 · 仅供学习参考</footer>
+</div>
+
+<script src="zxde_data.js"></script>
+<script src="zxde_engine.js"></script>
+<script>
+// ============ 模块概览数据 ============
+const MODULES_INFO = [
+    { id: "1_气虚虚劳与急救", name: "气虚虚劳与急救", desc: "气虚/阴虚/虚劳/阴阳离决/大汗/出血/休克", color: "#ef4444" },
+    { id: "2_胸腹气机升降", name: "胸腹气机升降", desc: "大气下陷/气机不升/气机不降/胸腹胀满", color: "#f59e0b" },
+    { id: "3_伤寒温病与热病", name: "伤寒温病与热病", desc: "六经/温病/三焦/热入营血", color: "#10b981" },
+    { id: "4_脑卒中与气血上逆", name: "脑卒中与气血上逆", desc: "脑充血/中风/气血上逆/肝阳上亢", color: "#3b82f6" },
+    { id: "5_痰饮喘息与肺", name: "痰饮喘息与肺", desc: "痰饮/咳嗽/喘息/肺病", color: "#8b5cf6" },
+    { id: "6_脾胃泄泻与消渴", name: "脾胃泄泻与消渴", desc: "脾胃/泄泻/消渴/中焦", color: "#ec4899" },
+    { id: "7_女科男科与杂症", name: "女科男科与杂症", desc: "妇科/男科/带下/胎产/杂症", color: "#06b6d4" },
+];
+
+const EXAMPLES = [
+    { name: "气虚下陷", symptoms: "胸闷气短，气不够用，动则喘促，自汗，乏力，懒言，食少", pulse: "寸脉沉弱，关上虚，尺脉细弱" },
+    { name: "痰饮喘息", symptoms: "咳嗽痰多，喘息短气，胸膈满闷，不能平卧", pulse: "脉弦滑，寸弱尺弱" },
+    { name: "脑充血头晕", symptoms: "头晕目眩，面赤耳鸣，头重脚轻，行走不稳", pulse: "脉弦硬有力，寸盛尺虚" },
+    { name: "脾胃泄泻", symptoms: "泄泻不止，食少倦怠，腹胀，完谷不化", pulse: "脉虚细无力" },
+    { name: "温病热盛", symptoms: "高热口渴，汗出，烦躁，面赤", pulse: "脉洪大" },
+    { name: "女科崩漏", symptoms: "月经过多，崩漏，血色淡红，乏力，头晕，面色苍白", pulse: "脉细弱" },
+    { name: "伤寒少阴", symptoms: "四肢厥冷，畏寒，嗜睡，下利清谷", pulse: "脉沉微" },
+];
+
+// 渲染示例
+const exDiv = document.getElementById("examples");
+EXAMPLES.forEach((ex, i) => {
+    const chip = document.createElement("span");
+    chip.className = "example-chip";
+    chip.textContent = ex.name;
+    chip.onclick = () => {
+        document.getElementById("symptoms").value = ex.symptoms;
+        document.getElementById("pulse").value = ex.pulse;
+    };
+    exDiv.appendChild(chip);
+});
+
+// 渲染模块概览
+const modDiv = document.getElementById("modules");
+MODULES_INFO.forEach(m => {
+    let count = 0;
+    for (const fn of Object.keys(ZXDE_DATA.formula_mod)) {
+        if (ZXDE_DATA.formula_mod[fn] === m.id) count++;
+    }
+    const card = document.createElement("div");
+    card.className = "mod-card";
+    card.id = "mod-" + m.id;
+    card.innerHTML = `<h4 style="color:${m.color}">${m.name}</h4><div class="mod-stat">${count} 方剂</div><div class="mod-stat" style="margin-top:4px">${m.desc}</div>`;
+    modDiv.appendChild(card);
+});
+
+function run() {
+    const symptoms = document.getElementById("symptoms").value;
+    const pulse = document.getElementById("pulse").value;
+    const r = ZXDE.diagnose(symptoms, pulse, 5);
+    const resultCard = document.getElementById("result-card");
+    const resultDiv = document.getElementById("result");
+    resultCard.style.display = "block";
+
+    // 清除模块高亮
+    document.querySelectorAll(".mod-card").forEach(c => c.classList.remove("match"));
+
+    if (r.error) {
+        resultDiv.innerHTML = `<div class="error">${r.error}</div>`;
+        return;
+    }
+
+    let html = "";
+    // Query
+    html += `<div class="query-tags">`;
+    r.query.症状.forEach(s => html += `<span class="tag">${s}</span>`);
+    r.query.脉象.forEach(p => html += `<span class="tag pulse">脉·${p}</span>`);
+    html += `</div>`;
+
+    // Recommend
+    if (r.recommend) {
+        html += `<div class="recommend" style="margin-top:12px;">
+            <h3>★ 推荐方剂</h3>
+            <div class="formula-name">${r.recommend.formula}</div>
+            <div class="module">${r.recommend.module} · 评分 ${r.recommend.score}</div>
+        </div>`;
+        // 高亮推荐模块
+        const modCard = document.getElementById("mod-" + r.recommend.module);
+        if (modCard) modCard.classList.add("match");
+    }
+
+    // Top 5
+    html += `<h3 style="font-size:14px; margin: 12px 0 8px;">Top 5 候选</h3>`;
+    html += `<div class="topk">`;
+    r.top_k.forEach((t, i) => {
+        html += `<div class="topk-item">
+            <div class="topk-rank ${i === 0 ? "gold" : ""}">${t.rank}</div>
+            <div>
+                <div class="topk-name">${t.formula}</div>
+                <div class="topk-module">${t.module} · 医案 ${t.sub_count}</div>
+            </div>
+            <div class="topk-score">${t.score}</div>
+            ${t.hit_symptoms.length ? `<div class="topk-hits">命中: ${t.hit_symptoms.join(", ")}</div>` : ""}
+        </div>`;
+    });
+    html += `</div>`;
+
+    resultDiv.innerHTML = html;
+}
+
+function clearAll() {
+    document.getElementById("symptoms").value = "";
+    document.getElementById("pulse").value = "";
+    document.getElementById("result-card").style.display = "none";
+    document.querySelectorAll(".mod-card").forEach(c => c.classList.remove("match"));
+}
+</script>
+</body>
+</html>
